@@ -44,7 +44,13 @@ It runs in Claude Code, in this repo. Claude Code reads `CLAUDE.md` automaticall
 
 ## Quick start
 
-    pip install pandas matplotlib
+The scripts need a Python 3.10+ with the packages in `requirements.txt` (pandas, matplotlib, python-docx). Use whichever Python you like; install into it and check:
+
+    python -m pip install -r requirements.txt
+    python -c "import pandas, matplotlib, docx; print('ok')"
+
+If the check prints `ok`, run the scripts with that same `python`:
+
     python scripts/check_piece.py pieces/piece-1.md
 
 Expected: `18 pass, 0 fail, 0 partial, 6 for a human`.

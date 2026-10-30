@@ -7,7 +7,7 @@ Written 28 October 2026 for Rick and Théo; rewritten 31 October 2026 for Claude
 `CLAUDE.md` is the rulebook. Claude Code reads it automatically whenever it starts in this folder, so there is nothing to copy or paste.
 
 1. Clone the repo and open a terminal in it.
-2. Install the two libraries for the scripts: `pip install pandas matplotlib`.
+2. Install the scripts' packages into the Python you'll use: `python -m pip install -r requirements.txt`. Check with `python -c "import pandas, matplotlib, docx; print('ok')"`.
 3. Connect Dot's MCP, once per machine: `claude mcp add --transport http ask_dot https://app.getdot.ai/ai/mcp`
 4. Run `claude` in the folder. Type `/mcp`, choose `ask_dot` and sign in to your Dot workspace. It should report "Connected to ask_dot."
 5. Check the rules loaded: ask *"What are the four human decisions?"* It should answer: the question, the outline, the title, the publish.

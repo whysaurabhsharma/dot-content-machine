@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# TRUST: spec files are trusted repo content only. The formula and filter fields are
+# run as Python, so a spec is never accepted from outside this repo. A spec from
+# anywhere else must be read in full before it is run.
 """ground_truth_from_spec.py - compute every expected value in a spec from the raw CSVs.
 
 Usage:
