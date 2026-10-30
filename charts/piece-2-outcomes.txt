@@ -1,0 +1,5 @@
+ALT:
+Five stacked horizontal bars, one per question type, showing 29 ad hoc requests by outcome. Lookup: 9 answered, 1 asked back. Definition: 5 answered, 1 refused with an alternative offered. Drill-down: 5 answered. Novel analysis: 3 answered, 1 asked back. Data quality: 3 answered, 1 asked back. No bar has a segment for needing an analyst.
+
+CAPTION:
+29 ad hoc requests by question type and outcome. Dry-run work account, Production environment, 27 October 2026. Mode: Economy for requests 1–21, Balanced for 22–29.

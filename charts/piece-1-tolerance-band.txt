@@ -1,0 +1,5 @@
+ALT:
+A scale of average order value in BRL. A shaded band runs from 133.62 to 141.88, the 3% tolerance around the expected answer of 137.75. Two points sit inside it: 137.04 from the evaluation run and 137 from a chat answer the same afternoon. Both passed.
+
+CAPTION:
+The 3% tolerance around one expected answer. Evaluation run and a chat answer, 27 October 2026.

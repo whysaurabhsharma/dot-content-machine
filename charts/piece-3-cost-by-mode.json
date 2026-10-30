@@ -1,0 +1,14 @@
+{
+  "type": "ranking",
+  "out": "charts/piece-3-cost-by-mode.png",
+  "size": [7.2, 2.4],
+  "keep_order": true,
+  "title": "Same ten questions: the all-Economy batch didn't use fewer credits",
+  "subtitle": "Credits used per batch of ten. Both batches 10 of 10 correct. The meter reads to 0.1 credits.",
+  "rows": [
+    {"label": "Batch 2: all Economy", "value": 5.8, "accent": true, "value_label": "5.8 credits"},
+    {"label": "Batch 1: 9 of 10 Balanced", "value": 5.3, "value_label": "5.3 credits"}
+  ],
+  "alt": "Two bars showing credits used for the same ten questions. Batch 2, all ten in Economy, used 5.8 credits. Batch 1, one question in Economy and nine in Balanced, used 5.3 credits. Both batches answered all ten correctly.",
+  "caption": "Credits used for the same ten questions, by batch. Trial account, Production environment, 28 October 2026. Batch 1: question 1 Economy, questions 2 to 10 Balanced. Batch 2: all ten Economy."
+}

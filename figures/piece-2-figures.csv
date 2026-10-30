@@ -1,0 +1,27 @@
+id,value,description,where_computed,date
+P01,29,Ad hoc requests run in fresh chats,Dot chats 17:37-18:03,2026-10-27
+P02,25,Answered,Dot chats; counted from answer text,2026-10-27
+P03,3,Asked back with options (L3; N4; Q1),Dot chats,2026-10-27
+P04,1,Refused with an offer (D6),Dot chats,2026-10-27
+P05,0,Needed an analyst,Dot chats,2026-10-27
+P06,26,Answers that returned a result (25 answered + D6),Dot chats,2026-10-27
+P07,22,Answers that stated their basis unprompted,Counted from answer text,2026-10-27
+P08,25,Answers with numbers checked against raw data,Recomputed from the Olist CSVs,2026-10-28
+P09,25,Of those; correct,Recomputed from the Olist CSVs,2026-10-28
+P10,4,Requests whose outcome changed from the rehearsal (L2; L3; N3; Q1),Dry-run audit vs 27 Oct run,2026-10-27
+P11,8,Answers scoped to delivered orders without being asked,Counted from answer text,2026-10-27
+P12,92.2%,Top ten sellers delivered by the estimated date (calendar day),Dot answer N2; recomputed,2026-10-28
+P13,93.2%,All sellers delivered by the estimated date (calendar day),Dot answer N2; recomputed,2026-10-28
+P14,3,Admin items raised (2 proposals marked Duplicate; 1 new data gap),Dot chats N1; N3; Q4,2026-10-27
+P15,10,Lookup requests (L1-L10),Category split of the 29,2026-10-27
+P16,9,Lookup requests answered,Category split,2026-10-27
+P17,6,Definition requests (D1-D6),Category split,2026-10-27
+P18,5,Definition answered; also drill-down requests and drill-down answered,Category split,2026-10-27
+P19,4,Novel-analysis requests; also data-quality requests,Category split,2026-10-27
+P20,21,Last request run in Economy (1-21),Run Log,2026-10-27
+P21,22,First request run in Balanced (22-29),Run Log,2026-10-27
+P22,99441,Orders in the dataset,ground_truth.py on the Olist CSVs,2026-10-28
+P23,91.0%,Top ten sellers on time counted by the hour,Recomputed from the Olist CSVs,2026-10-28
+P24,91.9%,All sellers on time counted by the hour,Recomputed from the Olist CSVs,2026-10-28
+P25,24,Answers with a number (all answers except Q4),Recomputed from the Olist CSVs,2026-10-28
+P26,30,Requests written (29 run; R2 dropped),Request list,2026-10-27

@@ -1,0 +1,22 @@
+id,value,description,where_computed,date
+GT01,99441,Rows in olist_orders_dataset,ground_truth.py on the Olist CSVs,2026-10-27
+GT02,96478,Orders with order_status = delivered,ground_truth.py on the Olist CSVs,2026-10-27
+GT03,8,Distinct values of order_status,ground_truth.py on the Olist CSVs,2026-10-27
+GT04,112650,Rows in olist_order_items_dataset,ground_truth.py on the Olist CSVs,2026-10-27
+GT05,98666,Distinct order_id values in the items table,ground_truth.py on the Olist CSVs,2026-10-27
+GT06,6735.0,Highest single item price,ground_truth.py on the Olist CSVs,2026-10-27
+GT07,3095,Distinct seller_id values in the items table,ground_truth.py on the Olist CSVs,2026-10-27
+GT08,625,Orders with order_status = canceled,ground_truth.py on the Olist CSVs,2026-10-27
+GT09,120.6537,"Average item price, excluding freight",ground_truth.py on the Olist CSVs,2026-10-27
+GT10,140.6441,Average of price plus freight_value per item,ground_truth.py on the Olist CSVs,2026-10-27
+GT11,13591643.7,Sum of price across all item rows,ground_truth.py on the Olist CSVs,2026-10-27
+GT12,13221498.11,Sum of price on items of delivered orders,ground_truth.py on the Olist CSVs,2026-10-27
+GT13,137.7541,"Average order value: per-order sum of item prices, all orders with items",ground_truth.py on the Olist CSVs,2026-10-27
+GT14,9803,Orders with more than one item row,ground_truth.py on the Olist CSVs,2026-10-27
+GT15,1.1417,Average item rows per order_id,ground_truth.py on the Olist CSVs,2026-10-27
+GT16,97.0203,Delivered orders as a percentage of all orders,ground_truth.py on the Olist CSVs,2026-10-27
+GT17,2198275.64,Total freight_value on items of delivered orders,ground_truth.py on the Olist CSVs,2026-10-27
+GT18,96478,Distinct delivered orders that appear in the items table,ground_truth.py on the Olist CSVs,2026-10-27
+GT19,6155806.98,Sum of price on items of orders purchased in calendar 2017,ground_truth.py on the Olist CSVs,2026-10-27
+GT20,2970,Distinct sellers with at least one item on a delivered order,ground_truth.py on the Olist CSVs,2026-10-27
+GT13b,137.0416,"Average order value, delivered orders only (the context note's definition)",ground_truth.py on the Olist CSVs,2026-10-27

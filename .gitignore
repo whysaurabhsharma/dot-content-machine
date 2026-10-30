@@ -1,0 +1,4 @@
+﻿data/olist/
+.venv/
+__pycache__/
+*.pyc

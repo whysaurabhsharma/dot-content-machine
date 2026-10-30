@@ -1,0 +1,34 @@
+id,value,description,where_computed,date
+F01,20,Questions in the evaluation,Dot Evaluation: Olist Orders and Items Accuracy,2026-10-27
+F02,100%,Evaluation score on run 1,Dot Evaluation run 1,2026-10-27
+F03,95%,Score after the deliberate currency change,Dot Evaluation after save,2026-10-27
+F04,19,Questions passing after the change,Dot Evaluation after save,2026-10-27
+F05,137.75,Expected average order value (all orders with items),Evaluation row 13 expected answer,2026-10-27
+F06,137.04,Dot's average order value (delivered orders only),Evaluation row 13 answer; chat at 17:28,2026-10-27
+F07,137,Dot's average order value in a later chat,Chat at 17:44,2026-10-27
+F08,0.52%,Gap between expected and Dot on row 13,Evaluation question details panel; (137.754-137.042)/137.754,2026-10-27
+F09,3%,Tolerance on the two rows opened,Evaluation question details,2026-10-27
+F10,99441,Rows in olist_orders_dataset,Evaluation row 1,2026-10-27
+F11,112650,Rows in olist_order_items_dataset,Evaluation row 4,2026-10-27
+F12,13591643.70,Sum of price across all item rows,Evaluation row 11,2026-10-27
+F13,98666,Distinct order IDs with items,Evaluation row 5,2026-10-27
+F14,13221498.11,Sum of price on delivered orders,Evaluation row 12,2026-10-27
+F15,96478,Delivered orders,Evaluation row 2,2026-10-27
+F16,97.02%,Delivered orders as a share of all orders (expected),Evaluation row 16,2026-10-27
+F17,97%,Delivered share as Dot displayed it,Evaluation row 16,2026-10-27
+F18,1.14,Average item rows per order,Evaluation row 15,2026-10-27
+F19,120.65,Average item price excluding freight,Evaluation row 9,2026-10-27
+F20,29,Ad hoc requests run in fresh chats,Piece 2 evidence run,2026-10-27
+F21,22,Answers that stated their basis unprompted,Piece 2 evidence run; counted from answer text,2026-10-27
+F22,26,Answers that returned a result,Piece 2 evidence run,2026-10-27
+F23,8,Distinct order statuses,Evaluation row 3,2026-10-27
+F24,6735,Highest single item price,Evaluation row 6,2026-10-27
+F25,3095,Distinct seller IDs,Evaluation row 7,2026-10-27
+F26,625,Orders with status canceled,Evaluation row 8,2026-10-27
+F27,140.64,Average price plus freight per item,Evaluation row 10,2026-10-27
+F28,9803,Orders with more than one item row,Evaluation row 14,2026-10-27
+F29,2198275.64,Total freight on delivered orders,Evaluation row 17,2026-10-27
+F30,6155806.98,Sum of price for orders purchased in 2017,Evaluation row 19,2026-10-27
+F31,2970,Sellers with at least one delivered item,Evaluation row 20,2026-10-27
+F32,133.62,Lower edge of the 3% band around 137.75,137.75 x 0.97,2026-10-27
+F33,141.88,Upper edge of the 3% band around 137.75,137.75 x 1.03,2026-10-27

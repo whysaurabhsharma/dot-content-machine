@@ -1,0 +1,5 @@
+ALT:
+Two bars showing credits used for the same ten questions. Batch 2, all ten in Economy, used 5.8 credits. Batch 1, one question in Economy and nine in Balanced, used 5.3 credits. Both batches answered all ten correctly.
+
+CAPTION:
+Credits used for the same ten questions, by batch. Trial account, Production environment, 28 October 2026. Batch 1: question 1 Economy, questions 2 to 10 Balanced. Batch 2: all ten Economy.

@@ -1,0 +1,15 @@
+{
+  "type": "band",
+  "out": "charts/piece-1-tolerance-band.png",
+  "title": "Both answers fall inside the 3% band around the expected value, so both pass",
+  "expected": 137.75,
+  "expected_label": "Expected answer",
+  "tolerance_pct": 3,
+  "points": [
+    {"label": "Dot, evaluation run", "value": 137.04},
+    {"label": "Dot, chat the same afternoon", "value": 137}
+  ],
+  "x_label": "Average order value, BRL",
+  "alt": "A scale of average order value in BRL. A shaded band runs from 133.62 to 141.88, the 3% tolerance around the expected answer of 137.75. Two points sit inside it: 137.04 from the evaluation run and 137 from a chat answer the same afternoon. Both passed.",
+  "caption": "The 3% tolerance around one expected answer. Evaluation run and a chat answer, 27 October 2026."
+}

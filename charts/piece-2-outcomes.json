@@ -1,0 +1,17 @@
+{
+  "type": "stacked",
+  "out": "charts/piece-2-outcomes.png",
+  "size": [7.2, 3.2],
+  "title": "Every question type was mostly answered; the four pauses came from four different types",
+  "subtitle": "29 ad hoc requests by question type and outcome. None needed an analyst.",
+  "segments": ["Answered", "Asked back", "Refused with an offer", "Needed an analyst"],
+  "categories": [
+    {"label": "Lookup", "values": [9, 1, 0, 0]},
+    {"label": "Definition", "values": [5, 0, 1, 0]},
+    {"label": "Drill-down", "values": [5, 0, 0, 0]},
+    {"label": "Novel analysis", "values": [3, 1, 0, 0]},
+    {"label": "Data quality", "values": [3, 1, 0, 0]}
+  ],
+  "alt": "Five stacked horizontal bars, one per question type, showing 29 ad hoc requests by outcome. Lookup: 9 answered, 1 asked back. Definition: 5 answered, 1 refused with an alternative offered. Drill-down: 5 answered. Novel analysis: 3 answered, 1 asked back. Data quality: 3 answered, 1 asked back. No bar has a segment for needing an analyst.",
+  "caption": "29 ad hoc requests by question type and outcome. Dry-run work account, Production environment, 27 October 2026. Mode: Economy for requests 1–21, Balanced for 22–29."
+}

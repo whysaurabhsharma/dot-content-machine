@@ -1,0 +1,30 @@
+id,value,description,where_computed,date
+C01,10,Questions per batch (same 10 questions both batches),Run Log,2026-10-28
+C02,20,Answers across both batches,Run Log,2026-10-28
+C03,61.9,Credits used before batch 1,Billing page screenshot 01:44,2026-10-28
+C04,67.2,Credits used after batch 1 / before batch 2,Billing page screenshot,2026-10-28
+C05,73,Credits used after batch 2,Billing page screenshot,2026-10-28
+C06,5.3,Credits for batch 1 (Q1 Economy; Q2-Q10 Balanced),67.2 - 61.9,2026-10-28
+C07,5.8,Credits for batch 2 (all Economy),73.0 - 67.2,2026-10-28
+C08,0.58,Credits per answer in Economy,5.8 / 10,2026-10-28
+C09,0.52,Credits per answer in Balanced (estimated; 0.5244 unrounded),(5.3 - 0.58) / 9,2026-10-28
+C10,9,Balanced answers in batch 1,Run Log,2026-10-28
+C11,100,Free credits included on signup,Billing page (O7),2026-10-28
+C12,172,Answers 100 credits buy at 0.58,100 / 0.58,2026-10-28
+C13,191,Answers 100 credits buy at the Balanced estimate,100 / 0.5244 (unrounded estimate),2026-10-28
+C14,2,Answers per batch scoped to delivered orders by the context note (Q8; Q9),Answer text,2026-10-28
+C15,5962902.01,Item prices for delivered orders purchased in 2017,Dot answer Q8; ground truth,2026-10-28
+C16,6155806.98,Item prices for all orders purchased in 2017,ground_truth.py,2026-10-28
+C17,0.1,Display precision of the billing page in credits,Billing page,2026-10-28
+C18,10,Correct answers per batch (of 10),Scored against ground_truth.py,2026-10-28
+C19,20,Correct answers across both batches (of 20),Scored against ground_truth.py,2026-10-28
+C20,11.1,Credits used across both batches,5.3 + 5.8,2026-10-28
+C21,0.06,Gap in credits per answer between the modes (rounded: 0.58 - 0.5244 = 0.0556),0.58 - 0.5244,2026-10-28
+C22,0.5,Gap between the batch totals in credits (five meter ticks),5.8 - 5.3,2026-10-28
+C23,1,Economy answers in batch 1 (question 1),Run Log,2026-10-28
+C24,4.72,Batch 1 credits after removing one Economy answer,5.3 - 0.58,2026-10-28
+C25,137.04,Average order value on delivered orders (Q9),Dot answer; ground truth,2026-10-28
+C26,300,Free credits advertised on signup (A3),Signup page (O8),2026-10-28
+C27,170,About how many answers 100 credits cover at 0.58 (100 / 0.58 = 172; stated as about 170),100 / 0.58,2026-10-28
+C28,137.75,Average order value across all orders with items,ground_truth.py,2026-10-28
+C29,0.2,Most the gap between two batch totals can be off from rounding (4 readings x 0.05),Arithmetic,2026-10-28
