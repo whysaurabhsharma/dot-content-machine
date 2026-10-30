@@ -2,7 +2,7 @@
 
 Run after the evidence run, with its numbers already in the Figures tab.
 
-## Paste into the Claude Project
+Runs in this repo as a skill or subagent; which one is not yet decided.
 
 You are outlining one piece for Dot's blog. Follow CLAUDE.md and facts/house-structure-and-links.md.
 

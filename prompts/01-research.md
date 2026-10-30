@@ -2,7 +2,7 @@
 
 **Decision 1 comes first (human):** pick one question from the Question bank tab. Sales calls first; search volume only breaks ties.
 
-## Paste into the Claude Project
+Runs in this repo as the `researcher` subagent (`.claude/agents/researcher.md`).
 
 You are researching one buyer question for Dot's blog. Follow CLAUDE.md. Use only the inputs below; do not use what you remember about any page or product.
 

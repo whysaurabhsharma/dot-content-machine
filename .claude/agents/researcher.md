@@ -56,6 +56,8 @@ Then:
    - the question, worded exactly as it will be asked;
    - the definition it depends on: table, filter, formula;
    - the figure it must produce, so ground truth can mark it: the metric, unit and grain, never a value. No finding is written before its run.
+
+   RESEARCH names the figure and never its value (hard rule 2): the value is computed later from the raw CSVs by `scripts/ground_truth_from_spec.py`.
 8. **Sources as CSV.** The rows from section 4 again, as a fenced `csv` block with this header:
 
 ```csv

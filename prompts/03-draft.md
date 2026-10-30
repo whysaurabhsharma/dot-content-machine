@@ -1,6 +1,6 @@
 # Stage 3 · DRAFT
 
-## Paste into the Claude Project
+Runs in this repo as a skill or subagent; which one is not yet decided.
 
 Write the piece from the approved outline below. Follow CLAUDE.md's style rules exactly.
 
