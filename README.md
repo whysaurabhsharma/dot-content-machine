@@ -11,7 +11,7 @@ It runs in Claude Code, in this repo. Claude Code reads `CLAUDE.md` automaticall
 | Path | What it is |
 |---|---|
 | `HANDOVER.md` | Set-up in Claude Code, a 15-minute first test, how to run a full piece, the monthly loop, what's still open |
-| `CLAUDE.md` | Every rule: 18 hard rules, 17 style rules, the seven stages, the 24-check gate, a dated change log (v1.6.3). Claude Code reads it automatically |
+| `CLAUDE.md` | Every rule: 18 hard rules, 17 style rules, the seven stages, the 24-check gate, a dated change log (v1.6.4). Claude Code reads it automatically |
 | `.claude/agents/researcher.md` | Stage 1 RESEARCH as a subagent. Reads the Ahrefs snapshot and the citation series, fetches the top three pages, writes `runs/<piece>-research.md` |
 | `.claude/agents/dot-runner.md` | The evidence run as a subagent. Asks Dot each test question verbatim through `ask_dot` and appends every answer to `runs/<piece>-run.md` |
 | `prompts/01-research.md` … `07-linkedin.md` | The seven stage prompts. 01 runs as the `researcher` subagent; how the others run in this repo is not yet decided |
@@ -29,12 +29,13 @@ It runs in Claude Code, in this repo. Claude Code reads `CLAUDE.md` automaticall
 | `measure/citations.md` | The monthly AI-citation series: citation markers per domain, Perplexity, from Day 0 |
 | `scripts/check_piece.py` | Runs the 24-check gate on a piece: 15 checks decided alone, 3 with a person, 6 flagged for a human |
 | `scripts/verify_sources.py` | Opens every link in a piece |
-| `scripts/ground_truth.py` | Recomputes the 20 evaluation answers from the raw Olist CSVs |
+| `scripts/ground_truth_from_spec.py` | Computes every expected value in a JSON spec from the raw CSVs and writes `figures/<piece>-truth.csv`, with each definition, row count and CSV date. A row that can't be computed carries its reason |
+| `specs/piece-1-truth.json` | Piece 1's 20 evaluation questions, plus delivered-only average order value, as a spec: table, filter, formula, unit, grain |
 | `scripts/charts.py` | One chart per piece from a JSON spec, with alt text and caption |
 | `scripts/hooks/only_date.py` | The hook that limits `dot-runner`'s Bash to the `date` command |
 | `pieces/piece-1.md`, `piece-2.md`, `piece-3.md` | The three pieces, in Rick's voice |
 | `figures/piece-N-figures.csv` | Every number in each piece, with where it was computed |
-| `figures/ground-truth.csv` | The 20 evaluation answers recomputed from the raw data |
+| `figures/ground-truth.csv` | The 20 evaluation answers recomputed from the raw data on 27 October 2026, by the retired `ground_truth.py` |
 | `charts/` | Each piece's chart, its spec, and its alt text |
 | `posts/` | Six LinkedIn posts: A and B (piece 1), C and D (piece 2), E and F (piece 3) |
 | `tracking/` | A note on the tracking sheet, a Google Sheet sent with this folder as a link: Question bank, Coverage, Sources, Figures, Baseline, Run Log |
@@ -60,7 +61,7 @@ Then run `claude` in this folder and type `/mcp` to check that `ask_dot` is conn
 ## What has been tested, and what hasn't
 
 - **check_piece.py** runs on all three pieces. On a deliberately broken copy of piece 1 it caught all six planted problems. Four bugs were found while using it on pieces 2 and 3 (dates, labels, a quoted-voice count, a named-thing heuristic) and fixed; all three pieces were re-run afterwards. The planted errors were planted by the author.
-- **ground_truth.py** matched 21 hand-computed answers on a small test dataset, then reproduced all 20 expected answers on the real Olist files (largest gap 0.152%, rounding). Delivered-only average order value: 137.0416, matching Dot's 137.04.
+- **ground_truth.py** (retired 31 October 2026, replaced by `ground_truth_from_spec.py`) matched 21 hand-computed answers on a small test dataset, then reproduced all 20 expected answers on the real Olist files (largest gap 0.152%, rounding). Delivered-only average order value: 137.0416, matching Dot's 137.04.
 - **verify_sources.py** works, but the build environment couldn't reach getdot.ai; the ten links were opened in a browser instead. Run it on a normal connection.
 - **charts.py** produced all three charts.
 - **Tested by an outside person, 29 October 2026,** on the earlier Claude Project set-up: a tester who had never seen the machine set it up from these files alone and ran RESEARCH on the rehearsal question. The rules loaded (she named the four human decisions correctly), and the verdict matched the author's run: PIECE, but NOT A PIECE if the test only reproduces piece 1.
@@ -88,7 +89,7 @@ One piece, end to end. One owner. Times are estimates from piece 1, which was ru
 | 1 | Pick the question | Decision 1. `bank/questions.csv` and the Question bank tab | 5 min |
 | 2 | Research | The `researcher` subagent, given the question and a piece slug. It writes `runs/<piece>-research.md`. Add its Sources rows to the Sources tab | 30 min |
 | 3 | Run the evidence in Dot | Take the five screenshots for batch 1 in Dot's UI (`runs/README.md#screenshots`). Then the `dot-runner` subagent, given the piece and batch number. Repeat per batch. Record credits from the screenshots in the Run Log | 30–75 min |
-| 4 | Recompute ground truth | `scripts/ground_truth.py`. Every number into the piece's figures CSV | 10 min |
+| 4 | Recompute ground truth | Write `specs/<piece>-truth.json` from the research file's test questions, then `python scripts/ground_truth_from_spec.py specs/<piece>-truth.json`. Every number into the piece's figures CSV | 10 min |
 | 5 | Outline | `prompts/02-outline.md`, then Decision 2 | 20 min |
 | 6 | Draft | `prompts/03-draft.md` | 30 min |
 | 7 | READER | `prompts/04-reader.md`, in a fresh chat outside this repo, with only the draft. Fix the three stopping points | 15 min |
