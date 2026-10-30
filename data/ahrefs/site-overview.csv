@@ -1,0 +1,21 @@
+metric,value,date_read
+domain_rating,43,2026-10-27
+organic_keywords,223,2026-10-27
+organic_keywords_change_30_days,+22,2026-10-27
+organic_keywords_top_countries,"US first, India second",2026-10-27
+organic_traffic_estimate_per_month,1.3K,2026-10-27
+organic_traffic_change_30_days,-1.6K,2026-10-27
+ai_responses_mentioning_dot_last_month,380,2026-10-27
+ai_responses_change,-42,2026-10-27
+ai_responses_ai_overviews,224,2026-10-27
+ai_responses_perplexity,49,2026-10-27
+top_pages_count (27 Oct vs 27 Sep),40,2026-10-27
+top_pages_total_traffic,1.3K,2026-10-27
+top_page_change: /blog/microsoft-power-bi-pricing,-1.6K to 414,2026-10-27
+top_page_ai_responses: /blog/microsoft-power-bi-pricing,30,2026-10-27
+keyword_lost: power bi desktop (India; volume 32K),"position 1 -> lost; -1,826 traffic",2026-10-27
+keyword_gain: tableau pricing,"position 8 -> 1; +82",2026-10-27
+keyword_gain: power bi competitors,"position 6 -> 2; +64",2026-10-27
+keyword_gain: power bi pricing,"new -> position 1; +56",2026-10-27
+keyword_gain: power bi license cost,"new -> position 1; +47",2026-10-27
+keyword_gain: qlik alternatives,"position 1; +30",2026-10-27
