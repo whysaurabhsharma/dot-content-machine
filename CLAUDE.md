@@ -1,6 +1,6 @@
 # CLAUDE.md — Dot content machine
 
-This file is the single source of every rule. Product statements live in `facts/dot-facts.md`, each marked Observed, Assumption or Confirmed. The Claude Project's instructions are pasted from it and never edited separately. To change a rule: edit here, add a dated line to the change log at the bottom, then re-paste into the Project.
+This file is the single source of every rule. Product statements live in `facts/dot-facts.md`, each marked Observed, Assumption or Confirmed. Claude Code reads it automatically from the repo; there is no copy to keep in step. To change a rule: edit here and add a dated line to the change log at the bottom.
 
 ## What this machine makes
 
@@ -163,3 +163,5 @@ A "no" on any line means the piece isn't done. Who checks each line is in bracke
 **29 October 2026 — v1.6.1.** Voice conversion completed outside the article bodies: piece 2's title and meta, piece 3's meta and chart caption, and a stale note in posts/piece-2-posts.md still said "I". Prompt 03 still told DRAFT to write as "I"; it now states Rick's voice. Cause: the D1 conversion was checked on the article text only. Check 14 now needs the front matter and chart captions read too.
 
 **31 October 2026 — v1.6.2.** Screenshot scheme added; rule 14's text unchanged. The scheme for the conditions screenshots now lives in [runs/README.md#screenshots](runs/README.md#screenshots): `runs/screenshots/<piece>-batch-<n>-{mode,credits-before,credits-after,environment,notes}.png`, taken in Dot's own UI, with each path referenced in the run file. Origin: the 31 October smoke test found that mode, credits, environment and active context notes are not observable via MCP ([facts/dot-mcp.md](facts/dot-mcp.md)).
+
+**31 October 2026 — v1.6.3.** Header updated: the Claude Project is gone, and CLAUDE.md is now read automatically by Claude Code from the repo. The re-paste step is removed; a rule change is an edit here plus a change-log line. Earlier entries that mention the Project are left as written, since they record what happened then.
