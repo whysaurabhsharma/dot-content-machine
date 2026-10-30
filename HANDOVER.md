@@ -1,68 +1,53 @@
 # Handover: run the machine yourself
 
-Written 28 October 2026 for Rick and Théo. Everything here works from the files in this folder; nothing depends on the author's accounts.
+Written 28 October 2026 for Rick and Théo; rewritten 31 October 2026 for Claude Code. Everything here works from the files in this repo; nothing depends on the author's accounts.
 
-## 1. Set it up in your own Claude account (10 minutes)
+## 1. Set it up in Claude Code (10 minutes)
 
-**First, two names that are easy to mix up.** `CLAUDE.md` is a file in this folder: the rulebook. "Instructions" is not a file; it's the name of a box inside your Claude Project. You copy the text of `CLAUDE.md` into that box.
+`CLAUDE.md` is the rulebook. Claude Code reads it automatically whenever it starts in this folder, so there is nothing to copy or paste.
 
-1. In Claude, create a Project named **Dot Content Machine**.
-2. Open `CLAUDE.md` in a text editor (Notepad on Windows, TextEdit on Mac) and copy all of its text.
-3. In the Project, open the box called **Instructions** ("Set project instructions"), paste the text, and save.
-4. In the Project's files area (labelled **Project knowledge** or **Files**, depending on your version of Claude), upload twelve files: the seven in `prompts/`, the two in `facts/`, and the three in `pieces/`.
-5. Check it loaded: start a chat in the Project and ask *"What are the four human decisions?"* It should answer: the question, the outline, the title, publish.
+1. Clone the repo and open a terminal in it.
+2. Install the two libraries for the scripts: `pip install pandas matplotlib`.
+3. Connect Dot's MCP, once per machine: `claude mcp add --transport http ask_dot https://app.getdot.ai/ai/mcp`
+4. Run `claude` in the folder. Type `/mcp`, choose `ask_dot` and sign in to your Dot workspace. It should report "Connected to ask_dot."
+5. Check the rules loaded: ask *"What are the four human decisions?"* It should answer: the question, the outline, the title, the publish.
+6. Check the subagents loaded: type `/agents`. You should see `researcher` and `dot-runner`.
 
-**Or use Claude Code.** Open this folder in VS Code with Claude Code, or run `claude` in it from a terminal. It reads `CLAUDE.md` automatically and runs the scripts for you. Install the two libraries first: `pip install pandas matplotlib`.
+You can also open the folder in VS Code with the Claude Code extension. The steps are the same.
 
 ## 2. A 15-minute first test
 
-Pick a question in a buyer's words. Then:
+Pick a question in a buyer's words, from `bank/questions.csv` or your own. Then:
 
-1. **Perplexity:** paste the question. Copy the whole answer. Note who is cited and whether Dot is.
-2. **Google:** search a short form of it. Copy the titles of the top three results.
-3. **Ahrefs → Keywords Explorer (US):** check two or three phrases. Note volume or "not indexed".
-4. **The Project, new chat:** paste the template below with the blanks filled. In Claude Code, replace the first line with *"Run the prompt in prompts/01-research.md for this question."*
-5. **Read the verdict:** PIECE, NOT A PIECE, or PIECE IF. Read the three test questions it proposes.
-6. **Dot, Economy mode, new chat:** ask the first test question. Check whether the answer states its basis (population, period, definition), as the verdict said a correct answer must.
+1. **Research.** In Claude Code: *"Use the researcher agent on this question, piece slug test-1: '…'"*. It reads the Ahrefs snapshot and the citation series, fetches the top three pages, and writes `runs/test-1-research.md`.
+2. **Read the verdict:** PIECE, PIECE IF, or NOT A PIECE. Read the test questions it proposes. Each has its exact wording, the definition it depends on, and the figure it must produce.
+3. **Screenshots, in Dot's own UI:** take the five for batch 1, named as in `runs/README.md#screenshots`. Mode, credits, environment and context notes can't be seen through the MCP.
+4. **Run.** *"Use the dot-runner agent on test-1, batch 1, first question only."* It asks Dot the question word for word and appends the answer to `runs/test-1-run.md`.
+5. **Check the entry** against `facts/run-format.md`: answer verbatim, the SQL, the chat link, the classification, and whether it stated population, period and definition.
 
-What a good result looks like: on 28 October, the question "How do we stop different teams getting different numbers for the same metric?" returned "PIECE, if the test covers five metrics", and Dot's answer to the first test question stated the number, the population (delivered orders), merchandise value only, and the order count. The whole run took 13 minutes.
-
-```
-Run prompts/01-research.md (from project knowledge) for this question. This is a live run, so some inputs are partial: say what's missing rather than guessing, and don't use anything you remember about any page or product.
-
-The question, in the buyer's words: "…"
-
-Inputs:
-1. Perplexity's answer to the question, pasted in full (today):
-…
-2. Top three Google results for "…": 
-- … · - … · - …
-3. Ahrefs Keywords Explorer, US: …: SV …, KD … · …: not indexed
-4. Search Console: not pulled for this run.
-
-Return the five sections as usual, and end with:
-- A one-line verdict: PIECE or NOT A PIECE, and why.
-- The first three test questions I should ask Dot, in a buyer's words, with what a correct answer would need to state.
-```
+What a good result looks like: on 28 October, the question "How do we stop different teams getting different numbers for the same metric?" returned "PIECE, if the test covers five metrics", and Dot's answer to the first test question stated the number, the population (delivered orders), merchandise value only, and the order count. The whole run took 13 minutes. That run used the earlier Claude Project set-up, by hand; the subagents haven't yet been timed.
 
 ## 3. Running a full piece
 
-**The full step-by-step guide is `guides/Dot-Run-a-Full-Piece.pdf`**: every step with what to paste, what you get, where to save it, and how it went in the trial.
+Follow the runbook in `README.md`: eleven steps, four decisions. The full step-by-step guide is `guides/Dot-Run-a-Full-Piece.pdf`. It was written for the earlier Claude Project set-up; its steps hold, but where it says to paste into the Project, use the subagent or prompt the runbook names.
 
-Follow `runbook.md`: eleven steps, four decisions. Three things to know:
+Things to know:
 
-- **Two stages run outside the Project**, in a fresh chat with no instructions: READER (`04-reader.md`) and the first fact-check (`05-fact-check.md`). The reviewer must not know what the writer meant. The second fact-check runs in a different model (ChatGPT).
+- **READER and the first fact-check run outside this repo**, in a fresh chat with only the draft: READER (`04-reader.md`) and the first fact-check (`05-fact-check.md`). A Claude Code session here loads `CLAUDE.md` automatically, and the reviewer must not know what the writer meant. Use a fresh claude.ai chat, or Claude Code started in an empty folder. The second fact-check runs in a different model (ChatGPT).
 - **Every number needs a row** in the piece's `figures/` CSV before the checker will pass it. Add rows as you go, not at the end.
-- **Log the run conditions** in the Run Log before the first question: account, environment, mode (screenshot it), active context notes, credits before and after. The mode drifted twice during the trial; checking it before every question is the fix.
+- **Log the run conditions before the first question of every batch.** Take the five screenshots in Dot's UI (`runs/README.md#screenshots`): mode, credits before, environment, context notes, then credits after the batch. `dot-runner` writes the paths into the run file; you record the values in the Run Log. The mode drifted twice during the trial; the screenshot is the fix.
+- **Batches.** `dot-runner` fits about 13–14 questions in one call. Longer runs are split into numbered batches, each with its own five screenshots (`runs/README.md#batches`).
 
 Gate: `python scripts/check_piece.py pieces/<piece>.md`. Fix every FAIL; do the six human checks; then Decision 4.
 
 ## 4. The monthly loop (one owner, about 20 minutes a week)
 
-- **Week 1:** read the Baseline tab's measures and add a dated column: Search Console, Rank Tracker, the AI-responses panel, the three Perplexity prompts.
-- **Week 2:** add new questions from sales calls and Search Console to the Question bank.
-- **Week 3:** turn any fix made twice into a rule in `CLAUDE.md`, dated, and re-paste the instructions.
+- **Week 1:** read the Baseline tab's measures and add a dated column: Search Console, Rank Tracker, the AI-responses panel, the three Perplexity prompts (recorded in `measure/citations.md`).
+- **Week 2:** add new questions from sales calls and Search Console to the question bank.
+- **Week 3:** turn any fix made twice into a rule in `CLAUDE.md`, with a dated line in its change log. Claude Code picks it up at the next session.
 - **Week 4:** re-run past evaluations in Dot; pick the next question.
+
+Ahrefs access ended on 31 October 2026, so weeks 1 and 4 can't read Ahrefs until it returns. `data/ahrefs/README.md` says how to reconnect it and where new readings go.
 
 ## 5. What's still open
 
@@ -73,9 +58,13 @@ Gate: `python scripts/check_piece.py pieces/<piece>.md`. Fix every FAIL; do the 
 | Assumptions A1–A8 | Each is labelled in the text | A yes, no or change from Dot |
 | A clean Balanced batch for piece 3 | The Balanced figure is from a mixed batch | Ten questions, all Balanced, credits read before and after |
 | Time per piece | Never logged | Time the next piece, stage by stage |
-| The question bank of 102 | Only 10 rows are in the sheet | Load the bank and re-rank it with ten sales-call questions |
+| The question bank | `bank/questions.csv` holds all 102 questions; they haven't been re-ranked with sales-call questions | Re-rank it with ten sales-call questions |
+| `scripts/mark_run.py` and `scripts/ground_truth_from_spec.py` | Named by `dot-runner` and `researcher`, but not yet written | Write both against `facts/run-format.md` |
+| Stages 2–7 in Claude Code | Only RESEARCH and the run are subagents | Decide skill or subagent for each |
+| The subagents on a real question | Neither has run yet | Section 2 |
+| Ahrefs access | Ended 31 October 2026 | Reconnect, per `data/ahrefs/README.md` |
 | Nobody but the author has run it | The core claim about the machine | Section 2, then one full piece |
 
 ## 6. Accounts and tools you need
 
-Claude (a Project, or Claude Code) · Dot (a workspace with the Olist tables or your own data) · Ahrefs (the Getdot project; Rank Tracker already holds 18 keywords) · Perplexity and ChatGPT (free plans are enough) · Google Sheets (the tracking sheet) · Python 3.10+ for the scripts.
+Claude Code · Dot (a workspace with the Olist tables or your own data, connected through the `ask_dot` MCP) · Ahrefs (the Getdot project; Rank Tracker already holds 18 keywords; access ended 31 October 2026) · Perplexity and ChatGPT (free plans are enough) · Google Sheets (the tracking sheet) · Python 3.10+ for the scripts.
