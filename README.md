@@ -30,6 +30,8 @@ It runs in Claude Code, in this repo. Claude Code reads `CLAUDE.md` automaticall
 | `scripts/check_piece.py` | Runs the 24-check gate on a piece: 15 checks decided alone, 3 with a person, 6 flagged for a human |
 | `scripts/verify_sources.py` | Opens every link in a piece |
 | `scripts/ground_truth_from_spec.py` | Computes every expected value in a JSON spec from the raw CSVs and writes `figures/<piece>-truth.csv`, with each definition, row count and CSV date. A row that can't be computed carries its reason |
+| `scripts/mark_run.py` | Marks each answer in `runs/<piece>-run.md` against `figures/<piece>-truth.csv`, under the definition the answer stated; gaps under 0.1% are rounding. Appends to `figures/<piece>-figures.csv` and prints "N of M correct" |
+| `scripts/timing.py` | Logs a stage's start and end to `runs/<piece>-timing.csv`, with minutes, for time per piece |
 | `specs/piece-1-truth.json` | Piece 1's 20 evaluation questions, plus delivered-only average order value, as a spec: table, filter, formula, unit, grain |
 | `scripts/charts.py` | One chart per piece from a JSON spec, with alt text and caption |
 | `scripts/hooks/only_date.py` | The hook that limits `dot-runner`'s Bash to the `date` command |
