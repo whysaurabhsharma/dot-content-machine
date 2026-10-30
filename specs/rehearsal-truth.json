@@ -1,0 +1,37 @@
+{
+  "piece": "rehearsal",
+  "notes": [
+    "Test questions T01-T11 from runs/rehearsal-research.md section 7, worded exactly as asked, so mark_run.py can match them by text.",
+    "Definitions reuse specs/piece-1-truth.json where they match: T01-T03 = Q12, T04 = Q11, T05-T07 = Q13b, T08 = Q13, T09 = Q01, T10 = Q02, T11 = Q08. Values are computed here from the raw CSVs, never copied.",
+    "T04 and T08 are the competing all-orders definitions. They have their own rows so the gap to T01 and T05 shows as a definition difference, not a mistake.",
+    "T09's scope is deliberately unstated in the question. It is given the plainest reading, every order row. What Dot does with an unstated scope is part of what this piece tests; mark_run.py compares an answer that states delivered or canceled under T10 or T11."
+  ],
+  "csv": {
+    "orders": "data/olist/olist_orders_dataset.csv",
+    "items": "data/olist/olist_order_items_dataset.csv"
+  },
+  "questions": [
+    {"id": "T01", "question": "Finance here: what was our total revenue?", "metric": "Revenue: sum of price on items of delivered orders (the note's definition)",
+     "table": "items_x_orders", "filter": "order_status == 'delivered'", "formula": "df.price.sum()", "unit": "BRL", "grain": "item rows of delivered orders"},
+    {"id": "T02", "question": "Ops here: what is the total value of items that reached customers?", "metric": "Revenue: sum of price on items of delivered orders (the note's definition)",
+     "table": "items_x_orders", "filter": "order_status == 'delivered'", "formula": "df.price.sum()", "unit": "BRL", "grain": "item rows of delivered orders"},
+    {"id": "T03", "question": "Marketing here: how much did customers spend with us in total?", "metric": "Revenue: sum of price on items of delivered orders (the note's definition)",
+     "table": "items_x_orders", "filter": "order_status == 'delivered'", "formula": "df.price.sum()", "unit": "BRL", "grain": "item rows of delivered orders"},
+    {"id": "T04", "question": "What is the total item price across all orders, whatever their status?", "metric": "Sum of price across all item rows (competing definition)",
+     "table": "items", "filter": "", "formula": "df.price.sum()", "unit": "BRL", "grain": "all item rows"},
+    {"id": "T05", "question": "Finance here: what is our average order value?", "metric": "Average order value, delivered orders only (the note's definition)",
+     "table": "items_x_orders", "filter": "order_status == 'delivered'", "formula": "df.groupby('order_id').price.sum().mean()", "unit": "BRL", "grain": "per order, delivered orders with items"},
+    {"id": "T06", "question": "Sales here: what does a typical order bring in?", "metric": "Average order value, delivered orders only (the note's definition)",
+     "table": "items_x_orders", "filter": "order_status == 'delivered'", "formula": "df.groupby('order_id').price.sum().mean()", "unit": "BRL", "grain": "per order, delivered orders with items"},
+    {"id": "T07", "question": "Marketing here: what is the average basket value per order?", "metric": "Average order value, delivered orders only (the note's definition)",
+     "table": "items_x_orders", "filter": "order_status == 'delivered'", "formula": "df.groupby('order_id').price.sum().mean()", "unit": "BRL", "grain": "per order, delivered orders with items"},
+    {"id": "T08", "question": "What is the average order value across all orders with items, whatever their status?", "metric": "Average order value, all orders with items (competing definition)",
+     "table": "items", "filter": "", "formula": "df.groupby('order_id').price.sum().mean()", "unit": "BRL", "grain": "per order, all orders with items"},
+    {"id": "T09", "question": "Finance here: how many orders did we have?", "metric": "Orders: every order row (scope deliberately unstated in the question)",
+     "table": "orders", "filter": "", "formula": "len(df)", "unit": "orders", "grain": "all order rows"},
+    {"id": "T10", "question": "Ops here: how many orders were delivered?", "metric": "Orders with order_status = delivered",
+     "table": "orders", "filter": "order_status == 'delivered'", "formula": "len(df)", "unit": "orders", "grain": "order rows, delivered"},
+    {"id": "T11", "question": "Support here: how many orders were canceled?", "metric": "Orders with order_status = canceled",
+     "table": "orders", "filter": "order_status == 'canceled'", "formula": "len(df)", "unit": "orders", "grain": "order rows, canceled"}
+  ]
+}

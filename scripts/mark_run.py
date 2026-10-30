@@ -11,8 +11,14 @@ Reads runs/<piece>-run.md (format: facts/run-format.md) and figures/<piece>-trut
 figures/<piece>-figures.csv and prints "N of M correct". Never writes the run file or
 the truth file.
 
-Matching. An answer is matched to the truth row whose question text is the same
-(case and spacing ignored), or to the row named with --map.
+Matching, in this order:
+  1. the truth row named with --map;
+  2. the truth row with the same id as the run entry;
+  3. the truth row with exactly the same question text;
+  4. only when none of those exists, the one definition (table, filter, formula)
+     whose filter literals are exactly those in the answer's Basis quotes.
+Several truth rows sharing one definition is expected (three teams asking the same
+metric in different words) and is never treated as ambiguous.
 
 Definitions. The answer is marked under the definition it stated, not the one we
 assumed. The candidates are the truth rows with the same formula as the matched row
@@ -38,7 +44,7 @@ import sys
 ROUNDING_PCT = 0.1
 FIGURE_FIELDS = ["id", "value", "description", "where_computed", "date"]
 
-HEADING = re.compile(r"^### Q(\w+): (.*)$", re.M)
+HEADING = re.compile(r"^### (\w+): (.*)$", re.M)
 FIELD = re.compile(r"^- ([A-Za-z ,]+): (.*)$", re.M)
 ANSWER = re.compile(r"\*\*Answer\*\*\s*```text\n(.*?)\n```", re.S)
 NUMBER = re.compile(r"(?<![\w.,])[-+]?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?%?")
@@ -62,7 +68,7 @@ def parse_run(text):
         body = text[h.end():h.end() + nxt.start()] if nxt else text[h.end():end]
         fields = {k.strip().lower(): v.strip() for k, v in FIELD.findall(body)}
         answer = ANSWER.search(body)
-        entries.append({"id": f"Q{h.group(1)}", "question": h.group(2).strip(),
+        entries.append({"id": h.group(1), "question": h.group(2).strip(),
                         "fields": fields, "answer": answer.group(1) if answer else None})
     return entries
 
@@ -95,26 +101,39 @@ def stated_basis(fields):
     return (" ".join(quotes.values()) or None), quotes.get("population", "")
 
 
-def stated_definition(matched, truth, basis, population):
-    """The truth row whose filter literals are exactly those the answer stated.
+def definition(row):
+    return (row["table"], row["filter"], row["formula"])
+
+
+def fitting_rows(candidates, basis, population):
+    """Candidates whose filter literals are exactly those the answer stated.
 
     An unfiltered row fits only if the answer stated no population, or one that
     says "all". A stated population the truth rows can't express fits nothing.
     """
-    candidates = [r for r in truth if r["formula"] == matched["formula"]]
     literals = {r["question_id"]: {l.lower() for l in LITERAL.findall(r["filter"])} for r in candidates}
     present = {l for ls in literals.values() for l in ls if l in basis}
     fits = [r for r in candidates if literals[r["question_id"]] == present]
     if fits and not present and population and "all" not in population.split():
-        return None
-    return fits[0] if len(fits) == 1 else None
+        return []
+    return fits
+
+
+def stated_definition(matched, truth, basis, population):
+    """The truth row for the definition the answer stated: the matched row if it
+    fits, otherwise the one definition that does. Rows sharing a definition count once."""
+    candidates = [r for r in truth if r["formula"] == matched["formula"]]
+    fits = fitting_rows(candidates, basis, population)
+    if matched in fits:
+        return matched
+    return fits[0] if len({definition(r) for r in fits}) == 1 else None
 
 
 def mark(entry, truth, mapping):
     """Return (verdict, description, value) for one run entry."""
     f = entry["fields"]
     cls = f.get("classification", "").lower()
-    by_text = {norm(r["question"]): r for r in truth}
+    by_text = {r["question"].strip(): r for r in truth}
     by_id = {r["question_id"]: r for r in truth}
 
     if cls != "answered":
@@ -125,16 +144,23 @@ def mark(entry, truth, mapping):
     if value is None:
         return "not marked", "The answer contains no number", ""
 
+    basis, population = stated_basis(f)
+    how = ""
     if entry["id"] in mapping:
-        matched = by_id.get(mapping[entry["id"]])
+        matched, how = by_id.get(mapping[entry["id"]]), "--map"
+    elif entry["id"] in by_id:
+        matched, how = by_id[entry["id"]], "id"
     else:
-        matched = by_text.get(norm(entry["question"]))
+        matched, how = by_text.get(entry["question"].strip()), "question text"
     if matched is None:
-        return "not marked", f"No truth row for this question (answer gave {token})", value
+        fits = fitting_rows(truth, basis, population) if basis else []
+        if not fits or len({definition(r) for r in fits}) != 1:
+            return "not marked", (f"No truth row by id or question text, and the stated basis fits "
+                                  f"{len({definition(r) for r in fits})} definitions (answer gave {token})"), value
+        matched, how = fits[0], "definition only"
     if matched["error"]:
         return "not marked", f"Truth row {matched['question_id']} failed: {matched['error']}", value
 
-    basis, population = stated_basis(f)
     note = ""
     used = matched
     if basis is None:
@@ -156,7 +182,7 @@ def mark(entry, truth, mapping):
     verdict = "correct" if kind != "real" else "real gap"
     if used is not matched and verdict == "correct":
         verdict = "correct under stated definition"
-    desc = (f"{entry['id']} vs {used['question_id']} ({used['metric']}): answer {token}, expected {used['value']} "
+    desc = (f"{entry['id']} vs {used['question_id']} ({used['metric']}), matched by {how}: answer {token}, expected {used['value']} "
             f"{used['unit']}; gap {gap:.4f}% ({kind}); {verdict}{note}")
     return verdict, desc, value
 
