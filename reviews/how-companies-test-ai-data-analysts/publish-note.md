@@ -23,6 +23,12 @@ Who answers: Rick (Dot). The question: does the page describe how merging works 
 
 (The evaluation sentence that also carried a label was confirmed by Dot on 1 November 2026, and its label removed.)
 
+## Open with Dot (none blocks publishing)
+
+**1. The context agent page.** Does the merging panel on https://www.getdot.ai/context-agent describe how Dot works today, or is it an illustration? B quotes it with an "Assumption" label. When Dot answers, apply the replacement text in "What this piece assumes" above.
+
+**2. The DABstep figures.** Does a published Dot run cover all 450 tasks of Adyen's DABstep benchmark? Dot's DABstep post reports 90% on a 30-task slice; Dot's home page shows 96% on 72 easy tasks and 89% on 378 hard ones. B cites only the 30-task post, which is accurate as it stands. If a full-set run is published, replace B's sentence "Dot publishes an accuracy figure too: 90% on a 30-task slice of Adyen's public DABstep benchmark." with one that cites that run and its figure, add a figures row for the new number, and link the run's post.
+
 ## Confirmed by Dot
 
 **The dataset licence: confirmed.** The figures come from the Olist public e-commerce dataset (CC BY-NC-SA 4.0 label). Dot confirmed on 1 November 2026 (Rick and Théo) that it may publish figures from it. Nothing to do.

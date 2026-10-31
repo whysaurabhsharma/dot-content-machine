@@ -8,6 +8,10 @@ Fill the line above with your name and the date once you have read this note. `s
 
 Nothing pending. Its one labelled sentence, on Dot's evaluation, was confirmed by Dot on 1 November 2026, and the label removed.
 
+## Open with Dot (none blocks publishing)
+
+**1. A pass bar in Dot's evaluation.** Does Dot's evaluation let a team set a pass bar? Step 7 tells readers to decide one before testing; F makes no claim that Dot's evaluation holds one. If Dot confirms it does, replace "so steps 2 and 6 live in one place." in "Where Dot fits" with "so steps 2, 6 and 7 live in one place.", then re-read that paragraph aloud.
+
 ## Confirmed by Dot
 
 **The dataset licence: confirmed.** The figures come from the Olist public e-commerce dataset (CC BY-NC-SA 4.0 label). Dot confirmed on 1 November 2026 (Rick and Théo) that it may publish figures from it. Nothing to do.

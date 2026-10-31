@@ -38,7 +38,7 @@ The earlier Claude Project trial's pieces and posts are in `archive/` and are no
 | `runs/` | Every Dot answer, word for word, one file per piece. The screenshot scheme and batching rules are in `runs/README.md` |
 | `runs/screenshots/` | The five conditions screenshots per batch, taken in Dot's UI |
 | `runs/smoke-test.md` | The 31 October 2026 smoke test of the `ask_dot` MCP |
-| `facts/dot-facts.md` | Observed in Dot (O1–O11), assumed (A1–A10, with basis), confirmed (D1: Rick's voice, "we" = Dot) |
+| `facts/dot-facts.md` | Observed in Dot (O1–O11), assumed (A1–A10, with basis), confirmed (D1: Dot's voice, "we" = Dot; P-2; the Olist licence; the byline) |
 | `facts/dot-mcp.md` | What the `ask_dot` MCP exposes, observed 31 October 2026, and what it can't show |
 | `facts/run-format.md` | The run-file format that `dot-runner` writes and check 16 and `mark_run.py` read, with a worked example |
 | `facts/house-structure-and-links.md` | The anatomy of a piece; ten internal links verified 28 October 2026 |

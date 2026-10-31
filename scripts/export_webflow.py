@@ -80,8 +80,17 @@ def main(argv):
     (out / f"{slug}.md").write_text(f"# {meta.get('title', slug)}\n\n{body.strip()}\n", encoding="utf-8")
     # v1.8.16: the publish note travels with the files the publisher pastes from.
     note = ROOT / "reviews" / piece.stem / "publish-note.md"
+    # v1.8.18: questions still open with Dot, read from the note's "Open with Dot" section: each item's
+    # bold title and its first sentence after it (the question). Shown to the publisher, never the reader.
+    open_items = []
+    if note.exists():
+        sec = re.search(r"^## Open with Dot.*?$(.*?)(?=^## |\Z)", note.read_text(encoding="utf-8"), re.M | re.S)
+        for m in re.finditer(r"^\*\*(?:\d+\. )?(.+?)\.\*\*\s+(.+?\?)", sec.group(1) if sec else "", re.M):
+            open_items.append(f"{m.group(1)}: {m.group(2)}")
     banner = ("<!-- Read PUBLISH-NOTE.md in this folder before publishing: it lists what this piece assumes "
-              "and the text to paste if Dot says no. -->\n") if note.exists() else ""
+              "and the text to paste if Dot says no."
+              + (" Open with Dot, none blocking: " + " | ".join(open_items) if open_items else "")
+              + " -->\n") if note.exists() else ""
     (out / "webflow.html").write_text(banner + to_html(parts) + "\n", encoding="utf-8")
     if note.exists():
         (out / "PUBLISH-NOTE.md").write_text(note.read_text(encoding="utf-8"), encoding="utf-8")
@@ -99,6 +108,7 @@ def main(argv):
         "images_to_upload": images,
         "faq_schema": faq.relative_to(ROOT).as_posix() if faq.exists() else None,
         "publish_note": "PUBLISH-NOTE.md: read it before publishing" if note.exists() else None,
+        "open_with_dot": open_items,
     }
     (out / "webflow-fields.json").write_text(json.dumps(fields, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     missing = [k for k in ("name", "seo_title", "meta_description") if not fields[k]]

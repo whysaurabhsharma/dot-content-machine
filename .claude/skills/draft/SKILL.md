@@ -44,7 +44,7 @@ Write the piece from the approved outline. Follow CLAUDE.md's style rules exactl
 - Quotable lines carry their own subject; they must make sense out of context.
 - Product quotes are copied word for word from `runs/<slug>-run.md` and name the question and chat they came from (hard rule 13).
 - Links on the words that need them; no bracket citations.
-- Rick's voice: "we" means Dot (decision D1). Never "I". Quoted questions typed into Dot stay as typed.
+- Dot's voice: "we" means Dot (decision D1). Never "I", whoever the byline names. Quoted questions typed into Dot stay as typed.
 - End with the instruction, then: *If this excites you, we'd love to hear from you. Get in touch.*
 
 **Front matter:** `title` (the outline's recommended candidate, until Decision 3), `queries` (from the research file's section 2), `playbook_url`, `figures: figures/<slug>-figures.csv`, `dataset` (from the research file's section 3). Leave `seo_title`, `meta`, `slug` and `reverse_links` out: `/seo-geo` sets them.

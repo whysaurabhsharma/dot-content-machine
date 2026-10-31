@@ -75,7 +75,7 @@ Assumptions that a later observation contradicted. Kept as they were stated, wit
 | P-2 | Dot's evaluation holds each test question's expected answer, a unit and a tolerance in percent (O1, observed 27 October 2026). The "not re-checked since" label was removed from B and F. | Rick (Dot), 1 November 2026, DECISIONS-FOR-DOT.md question 3 |
 | L-OLIST | Dot may publish figures computed from the Olist dataset (CC BY-NC-SA 4.0 label). L1, L2 and L4 move from "a decision, not a resolution" to confirmed. | Rick and Théo (Dot), 1 November 2026, question 4 |
 | BYLINE | The pieces carry a named author, Saurabh Sharma (hard rule 22, v1.8.17). | Rick (Dot), 1 November 2026, question 6 |
-| D1 | Voice: pieces and posts publish in Rick's voice. "We" means Dot; no "I", because Rick did not run the tests personally. | Saurabh, 28 October 2026, on Rick's direction (was assumption A9) |
+| D1 | Voice: pieces and posts publish in Dot's voice. "We" means Dot; no "I", whoever the byline names. (Was "in Rick's voice" until 1 November 2026; changed when Saurabh Sharma's byline exposed the conflict, CLAUDE.md v1.8.18.) | Saurabh, 28 October 2026, on Rick's direction (was assumption A9) |
 
 ## Decisions that leave a question open
 
