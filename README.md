@@ -10,11 +10,13 @@ It runs in Claude Code, in this repo. Claude Code reads `CLAUDE.md` automaticall
 
 Three pieces, one topic cluster, three formats (research, teardown, guide): can you trust an AI analyst's answers before you roll it out? Six LinkedIn posts, two per piece.
 
-| # | Piece | Posts | State |
+| # | Piece | Posts | State (1 November 2026) |
 |---|---|---|---|
-| 1 of 3 | `pieces/ai-analyst-follow-up-questions.md` | Post 1 of 6: Post A in `posts/ai-analyst-follow-up-questions-posts.md` | Through the gate; Decision 4 (publish) open |
-| 2 of 3 | Teardown, `how-companies-test-ai-data-analysts` (bank #36) | Posts 2–3 | Research |
-| 3 of 3 | Guide, `test-ai-analyst-before-rollout` (bank #35), the cluster's hub | Posts 4–6 | After B |
+| A | Research, `ai-analyst-follow-up-questions` (bank #43) | 1 of 2 (Post A, to be relabelled to the cluster's structures) | Through the gate and exported; Decision 4 (publish) open |
+| B | Teardown, `how-companies-test-ai-data-analysts` (bank #36) | 2 of 2 (structures 1 and 3) | Through Decision 3 and exported; Decision 4 open, with Rick's two sign-offs |
+| F | Guide, `test-ai-analyst-before-rollout` (bank #35), the cluster's hub | 0 of 2 | Outline approved 1 November 2026; draft and reviews running |
+
+Where each piece stands is read from the files by `python scripts/stage_gate.py <slug>`, not from this table. What's left and what needs Rick: `HANDOVER.md`.
 
 The plan, what each piece proves and which runs feed which: `PLAN.md`.
 
@@ -80,12 +82,12 @@ Then run `claude` in this folder and type `/mcp` to check that `ask_dot` is conn
 
 **Permissions.** `.claude/settings.json` pre-approves only the five scripts the skills call (`timing.py`, `check_piece.py`, `verify_sources.py`, `export_docx.py`, `export_webflow.py`), each by its exact path, for both the Bash and the PowerShell tool (a headless session on Windows runs commands through PowerShell, which has its own permission rules), so a stage never stops mid-way to ask about logging its time. Everything else still asks.
 
-## Where the three pieces stand (28 October 2026)
+## Where the three pieces stand (1 November 2026)
 
-- All three pass every automated check: 18 pass, 0 fail.
-- Done on each: READER, two fact-checks (Claude and ChatGPT), the lift test in Perplexity and Claude.
-- Open: the phone read (check 24) on all three; the lift test re-run on piece 1's new opening.
-- Before publishing: re-run piece 1's evaluation in a Dot workspace (the trial ran on Olist, licensed non-commercial), and get a yes, no or change on assumptions A1–A8.
+- **A and B** pass every automated check (18 pass, 0 fail; check 1 is PARTIAL on B's claim title by design). Each has had the three blind reviewers, a second fact-check on other models, the headline test, the lift test and a phone read, recorded in `reviews/<slug>/human.md`.
+- **F** is in drafting; its research, figures and outline are done.
+- **Before publishing:** the pre-publish list in `PLAN.md` and HANDOVER.md section 6: Rick's sign-offs, a re-check of facts O1 and O2 on the current account, A live before B. Run scores are quoted item by item, never as a bare total (CLAUDE.md v1.8.10).
+- The earlier pieces 1–3 of 28 October are archived in `archive/` and are not part of this submission.
 
 ## What has been tested, and what hasn't
 
@@ -96,13 +98,14 @@ Then run `claude` in this folder and type `/mcp` to check that `ask_dot` is conn
 - **Tested by an outside person, 29 October 2026,** on the earlier Claude Project set-up: a tester who had never seen the machine set it up from these files alone and ran RESEARCH on the rehearsal question. The rules loaded (she named the four human decisions correctly), and the verdict matched the author's run: PIECE, but NOT A PIECE if the test only reproduces piece 1.
 - **The ask_dot MCP, 31 October 2026:** connected from Claude Code; one question asked and answered (BRL 137.04, basis stated); what it exposes recorded in `facts/dot-mcp.md`. Mode, credits, model, environment and active context notes are not observable via MCP.
 - **The only_date.py hook** was tested on its own: it allows `date` and `date +FORMAT`, and blocks chained commands, substitutions and other commands.
-- **Not yet tested:** the `researcher` and `dot-runner` subagents on a real question; a full piece run in Claude Code; a full piece run by anyone other than the author; time per piece (never logged); the monthly loop (never run); any outcome (nothing is published).
+- **Since tested (31 October–1 November 2026):** the `researcher` subagent on A, B and F; the `dot-runner` subagent on A's run; full pieces through the gate in Claude Code (A and B); the three blind reviewers through `run_reviewer.py`; time per stage, logged in `runs/<slug>-timing.csv` (costs in HANDOVER.md section 2).
+- **Not yet tested:** a full piece run by anyone other than the author; the monthly loop (never run); any outcome (nothing is published).
 
 ---
 
 # Runbook
 
-One piece, end to end. One owner. Times are estimates from piece 1, which was run by hand; log the real times in the Run Log from piece 2 on.
+One piece, end to end. One owner. `/piece <slug>` runs these steps in the order `scripts/stage_gate.py` allows and stops at every point a person owns (HANDOVER.md section 7). Times below are logged machine minutes where we have them; a person's time on top is not logged.
 
 ## The four human decisions
 
@@ -113,23 +116,21 @@ One piece, end to end. One owner. Times are estimates from piece 1, which was ru
 
 ## Eleven steps
 
-| # | Step | How | Time |
-|---|---|---|---|
-| 1 | Pick the question | Decision 1. `bank/questions.csv` and the Question bank tab | 5 min |
-| 2 | Research | The `researcher` subagent, given the question and a piece slug. It writes `runs/<piece>-research.md`. Add its Sources rows to the Sources tab | 30 min |
-| 3 | Run the evidence in Dot | Take the five screenshots for batch 1 in Dot's UI (`runs/README.md#screenshots`). Then the `dot-runner` subagent, given the piece and batch number. Repeat per batch. Record credits from the screenshots in the Run Log | 30–75 min |
-| 4 | Recompute ground truth | Write `specs/<piece>-truth.json` from the research file's test questions, then `python scripts/ground_truth_from_spec.py specs/<piece>-truth.json`. Every number into the piece's figures CSV | 10 min |
-| 5 | Outline | `prompts/02-outline.md`, then Decision 2 | 20 min |
-| 6 | Draft | `prompts/03-draft.md` | 30 min |
-| 7 | READER | `prompts/04-reader.md`, in a fresh chat outside this repo, with only the draft. Fix the three stopping points | 15 min |
-| 8 | Fact-check | `prompts/05-fact-check.md`: a fresh chat outside this repo, then a second model, then `verify_sources.py`. Log every fix | 30 min |
-| 9 | Edit | `check_piece.py` until no FAIL; the headline test; the lift test in Perplexity and Claude. Decision 3 | 30 min |
-| 10 | Chart and posts | `charts.py`; `prompts/07-linkedin.md` for each post, each with a different opening structure | 30 min |
-| 11 | Gate and publish | The 25 checks; Decision 4; Webflow optional (Dot's team publishes); UTM links; request three reverse links; add the target queries to Rank Tracker | 20 min |
+| # | Step | How |
+|---|---|---|
+| 1 | Pick the question | Decision 1: `python scripts/stage_gate.py start <slug> --bank <id> --format research\|teardown\|guide` |
+| 2 | Research | The `researcher` subagent writes `runs/<slug>-research.md` and its verdict |
+| 3 | Evidence | Research: write the truth spec, a person reviews its rival definitions, record batch conditions in Dot's UI, the `dot-runner` subagent asks the questions, `mark_run.py` marks them (it prints correct-as-asked and correct-under-another-reading separately). Teardown or guide: build `figures/<slug>-figures.csv` from cited publications, each opened in a browser |
+| 4 | Outline | `/outline <slug>`, then Decision 2: a person fills "Approved by" and "Date" |
+| 5 | Draft | `/draft <slug>` |
+| 6 | SEO and links | `/seo-geo <slug>` |
+| 7 | Blind reviews | `python scripts/run_reviewer.py <reader\|fact-checker\|lift-tester> <slug>`, once each. It starts each reviewer in a headless session with no MCP servers and a body-only copy of the draft, so the reviewer never sees CLAUDE.md or what the writer meant |
+| 8 | Revise | Fix every point or say why it stands, in `reviews/<slug>/revisions.md`; a second fact-check on another model |
+| 9 | Edit | `check_piece.py` until no FAIL; `verify_sources.py`; the headline test, lift test and phone read, recorded in `reviews/<slug>/human.md`; Decision 3: `title_approved_by` and `reviewed_on` |
+| 10 | Posts | `/linkedin <slug>`; a person writes every first line; `check_piece.py --post` |
+| 11 | Export and publish | `/export <slug>` (refuses while any check FAILs); Decision 4, a person's; then `python scripts/bank.py status <id> published --basis "<URL>"` |
 
-Steps 5, 6 and 10 run as skills: `/outline <slug>`, then a person fills "Approved by" (Decision 2), then `/draft <slug>` and `/seo-geo <slug>`; `/linkedin <slug>` per post; `/export <slug>` last, which refuses while any check FAILs. The skills haven't yet run on a real piece.
-
-READER and the first fact-check must not run in a Claude Code session in this repo: it loads `CLAUDE.md` automatically, and the reviewer must not know what the writer meant. Use a fresh claude.ai chat, or Claude Code started in an empty folder.
+A rule 14 waiver (no screenshots) is recorded once: `python scripts/stage_gate.py waive <slug> --rule 14 --batch <n> --by "<name, date>"`, after the batch's conditions block states it (CLAUDE.md v1.8.9).
 
 ## The monthly loop: 20 minutes a week, one owner
 
