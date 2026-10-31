@@ -18,7 +18,7 @@ Six LinkedIn posts, two per piece. Post 1 of 6 is written (piece 1, Post A).
 
 ## What each run needs
 
-All runs: workspace aiinterviewagents.com, the two Olist tables (`olist_orders_dataset`, `olist_order_items_dataset`), Balanced mode unless decided otherwise. **Rule 14 is not waived for pieces 2 and 3:** all five conditions screenshots for every batch (mode, credits before, credits after, environment, notes), named as in `runs/README.md#screenshots`. Piece 1 used the only waiver.
+All runs: workspace aiinterviewagents.com, the two Olist tables (`olist_orders_dataset`, `olist_order_items_dataset`), Balanced mode unless decided otherwise. **Rule 14:** the plan first required all five screenshots for every batch of pieces 2 and 3. **Changed 31 October 2026 (Saurabh): piece 2's batch 1 is waived too**, conditions recorded as text (`runs/ai-analyst-shows-sql-run.md`). Piece 2 may claim nothing about mode, credits, environment or notes. Piece 3's requirement is open: see its section.
 
 ### Piece 1: done
 
