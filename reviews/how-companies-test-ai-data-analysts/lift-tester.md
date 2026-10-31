@@ -2,60 +2,43 @@
 
 Started with: Read reviews/how-companies-test-ai-data-analysts/draft.md as an answer engine and report what you would and would not lift.
 
-I read only `C:\Users\LENOVO\OneDrive\Documents\1Sauarbh\1Dot\dot-content-machine\dot-content-machine\reviews\how-companies-test-ai-data-analysts\draft.md`.
+**Summary**
 
-## Summary
+- The piece looked at 13 companies' published methods and found the accuracy figures can't be compared: "Seven of the 13 companies published an accuracy figure, and no two measured the same thing."
+- Only five published a method complete enough to copy, and a real question often has more than one right answer: "About 60% of LinkedIn's benchmark questions have more than one accepted answer."
+- Accuracy drifts after launch, so the careful companies re-run their tests, and the article ran the core method on Dot: "A test passed at launch says little about the same agent a month later."
 
-- The draft looked at 13 companies' own write-ups on testing their AI analyst. Only some explained how they do it: "Only 5 published a method you could copy: what they test against, how they score, and when they run the test."
-- Most build their tests from real questions, but real questions often have more than one right answer, and the LLM judges used to score answers miss things: "Hex's judge accepted a wrong 2.03% in place of the right 2.04%, 35% of the time."
-- Accuracy drifts, so the careful companies re-run their tests on every change, before each deploy, or daily: "A test passed at launch says little about the same agent a month later."
+**1. Would lift**
 
-## 1. Would lift (best first)
+1. "Anthropic's offline accuracy fell from about 95% to about 65% in a month, the case [our essay on accuracy decay](https://www.getdot.ai/blog/your-ai-analyst-will-be-worse-next-month) starts from." The most striking number in the piece, with a named source. I would quote only the clause before the comma.
+2. "Hex's judge accepted the wrong one 35% of the time." A specific, checkable figure on how often an LLM judge fails. It needs the sentence before it (2.04% vs 2.03%) to make sense.
+3. "Seven of the 13 companies published an accuracy figure, and no two measured the same thing." This is the central finding. It is self-contained and carries a count.
+4. "About 60% of LinkedIn's benchmark questions have more than one accepted answer." A sourced number for a point most readers won't know.
+5. "Without those extra answers, LinkedIn "underreported recall by 10-15%"." It is a direct quote from the source and shows what the 60% costs.
+6. "LinkedIn's judge lands within 1 point of the human score 75% of the time." A clean measure of judge reliability.
+7. "Only one of the 13 companies publishes a number to clear before launch." A rare-practice finding. I'd pair it with "Anthropic "initially used ~90%", and its stated target for offline accuracy is about 100%."
+8. "Uber does "not over-index decisions based on ~5% run-to-run changes in most metrics"." Useful practical guidance on noise, quoted from the source.
+9. "ClickHouse writes that "84.9% of scored result sets in our test match only through the linked mapping"." A strong case against exact-match scoring.
 
-1. `[Anthropic's offline accuracy drifted](https://claude.com/blog/how-anthropic-enables-self-service-data-analytics-with-claude) "from ~95% at launch to ~65% over a month".`
-   It's a direct quote from a named source with a big, concrete before-and-after number. It answers "why re-test?" by itself.
-2. "Hex's judge accepted a wrong 2.03% in place of the right 2.04%, 35% of the time."
-   It's specific and easy to picture, and it shows LLM judges are unreliable without needing any context.
-3. "About 60% of LinkedIn's benchmark questions have more than one accepted answer."
-   It has a clean subject, a number and a source, and it answers "why is building a test set hard?"
-4. "Thirteen companies published how they check their [AI analyst](https://www.getdot.ai/blog/conversational-analytics-software)'s answers; only five published a method you could copy."
-   This is the piece's own finding and stands alone. I'd quote it over the H1, which is a headline, not a sentence.
-5. "Uber does "not over-index decisions based on ~5% run-to-run changes in most metrics"."
-   It's a quoted primary source with a usable rule of thumb for noise between runs.
-6. "LinkedIn's judge lands within 1 point of the human score 75% of the time."
-   It's a measured agreement rate that pairs well with the Hex line.
-7. "At ClickHouse, 84.9% of scored result sets matched only through column-linked mapping."
-   It makes the case against plain exact-match scoring with a number, though it needs the next sentence to be clear to a general reader.
-8. "Roughly 90% of its data-model PRs now include a skill change in the same diff."
-   It's a concrete fix, but "its" needs Anthropic named, so I'd have to quote it with the sentence before it.
-9. "A test passed at launch says little about the same agent a month later."
-   It's a clean takeaway, but only usable right after the Anthropic number, because it has no evidence of its own.
+**2. Would not lift**
 
-## 2. Would not lift
+- "So none of the figures can be ranked against another, and a vendor's accuracy claim can't be ranked against them either." Reads like a takeaway, but it's an inference and has no number of its own. Line 3 says the same thing more tightly.
+- "What carries across is the method." Has the shape of a slogan but says nothing without the surrounding context.
+- "A test passed at launch says little about the same agent a month later." Quotable but generic. The 95%-to-65% sentence is the evidence and is what I'd use. (I used this line only for the summary.)
+- "A re-run therefore needs a threshold for what counts as a regression, set before the result comes in." Advice with no figure or source behind it.
+- "That is the census's more-than-one-right-answer problem, found in a run of our own." Self-referential, and based on an eight-question run the piece itself calls small.
+- "A list of real questions, answers computed before you ask, and a rule for what counts as a match are enough to start." A how-to line, but untested beyond that small run.
+- "Five companies published enough to copy: what they test against, how they score and when they run it." It's in a numbered list right next to item 6, which names a *different* five (Anthropic, Uber, Hex, GitHub, Salesforce). Quoted alone, a reader would likely confuse the two groups.
+- "When we checked it on 27 October, the score updated on save without a re-run; Assumption: it always re-scores when a question is saved." Not quotable. The "Assumption:" text looks like a leftover drafting note that went live.
+- "*If this excites you, we'd love to hear from you. Get in touch.*" Boilerplate.
 
-- "Only Anthropic publishes a number an analyst must clear before launch: about 90% per domain."
-  It reads as a ready-made answer but drops a caveat. The body says Anthropic "initially used ~90%" and that its target is about 100%. Quoted alone, it overstates ~90% as the current bar.
-- "Anthropic, Uber, Hex, GitHub and Salesforce re-run their tests on every change, before each deploy, or daily."
-  The sentence is accurate. But next to the title "5 Show How", a reader or answer engine will likely take these five to be the five strict companies. They aren't: LinkedIn and ClickHouse are strict, GitHub and Salesforce aren't. The eight-line summary still sets up that confusion.
-- "Three of the 13 companies say so, or drop the questions where answers disagree."
-  Only LinkedIn and ClickHouse are named, so the third is a mystery, and "say so" refers back to the previous sentence.
-- "Testing once is not enough, and Anthropic has the numbers to show it."
-  It's an opener that promises evidence without containing any. The next line is the one to quote.
-- "The reason to re-run is drift."
-  Too general, with nothing to attribute it to.
-- "The published LLM judges miss things, and the companies say so."
-  It's a summary claim, and the Hex and LinkedIn numbers do the job better.
-- "Exact matching would miss things too."
-  "Too" depends on the sentence before it, so it can't stand alone.
-- "The companies answer this by leaning harsh and keeping people in the loop."
-  It generalises to "the companies" from three examples, and "this" refers back.
-- "So a re-run needs a line for what counts as a regression, set before the result comes in."
-  This is the draft's own advice, not a sourced finding, and "So" ties it to the Uber line.
-- "Start with your team's real questions and every answer you would accept, then re-run them on every change."
-  Reasonable how-to advice, but it's the draft's recommendation with no source, so it's weaker than the evidence lines.
-- "Dot's evaluation re-scored on save, without a re-run, when we tested it on 27 October 2026." / "Its score fell after a deliberate change and came back after reverting, seen twice."
-  A vendor testing its own product, and "seen twice" is thin. The Dot section also says "Assumption: it always re-scores when a question is saved.", which weakens the claim further.
+**3. The one line**
 
-## 3. The one line
+"Seven of the 13 companies published an accuracy figure, and no two measured the same thing."
 
-`[Anthropic's offline accuracy drifted](https://claude.com/blog/how-anthropic-enables-self-service-data-analytics-with-claude) "from ~95% at launch to ~65% over a month".`
+**Things I noticed while reading (not fixed)**
+
+- The table's "One number" column doesn't show an accuracy figure for Snowflake ("150 questions") or Vercel ("5 queries"). Yet the body counts both among the seven that published one. An engine checking the table against that claim would find only five accuracy figures there.
+- LinkedIn's "53% rated 4 or 5" links to an arXiv paper, not the LinkedIn blog post given as the row's source. That doesn't fit the claim that "Each row draws on one company's own publications".
+
+File read: C:\Users\LENOVO\OneDrive\Documents\1Sauarbh\1Dot\dot-content-machine\dot-content-machine\reviews\how-companies-test-ai-data-analysts\draft.md

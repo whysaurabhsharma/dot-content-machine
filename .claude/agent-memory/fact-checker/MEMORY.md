@@ -36,3 +36,12 @@
 2026-10-31 · how-companies-test-ai-data-analysts · LinkedIn's "Runs when" is filled with its 3-monthly benchmark review, which is when answers are added, not when the test runs
 2026-10-31 · how-companies-test-ai-data-analysts · Dot test set "has the same shape" but holds one expected answer per question while the piece asks for every accepted answer
 2026-10-31 · how-companies-test-ai-data-analysts · the drift is attributed to "the data model moving while the agent's skills stood still" but the quoted sentence states no cause
+2026-10-31 · how-companies-test-ai-data-analysts · the 8 are defined as "real questions or ground-truth answers", but Hex (table: "A synthetic company with ground truths") fits that wording and is left out (C-4)
+2026-10-31 · how-companies-test-ai-data-analysts · ClickHouse "took 201 questions" then "dropped 39", yet its 76.6% is "across 201 questions" (CLK-5), so the 39 can't have come out of the 201
+2026-10-31 · how-companies-test-ai-data-analysts · "Snowflake measured on a 150-question internal benchmark" but the only figure tied to that set is GPT-4o's 51% (SNO-2), and the table's "One number" for Snowflake is "150 questions", not an accuracy
+2026-10-31 · how-companies-test-ai-data-analysts · H2 says companies "re-run their tests on every change" while the body's five include Hex (daily) and Uber Finch (before deploy)
+2026-10-31 · how-companies-test-ai-data-analysts · "Anthropic reports accuracy ... domain by domain" but ANT-2/ANT-3 give an aggregate and "around 99% in certain domains"
+2026-10-31 · how-companies-test-ai-data-analysts · Prosus is in the 13, but its row shows no test set, no scoring and no accuracy figure, none of the three entry criteria the draft states
+2026-10-31 · how-companies-test-ai-data-analysts · LinkedIn's "within 1 point of the human score 75% of the time" is described as publishing "how often their judge misses"
+2026-10-31 · how-companies-test-ai-data-analysts · from Uber's "~5% run-to-run" line the draft concludes a threshold must be "set before the result comes in", which Uber doesn't say
+2026-10-31 · how-companies-test-ai-data-analysts · "The method ... needs no special tooling" while the draft describes ClickHouse's multi-provider LLM jury and column-linking scorer

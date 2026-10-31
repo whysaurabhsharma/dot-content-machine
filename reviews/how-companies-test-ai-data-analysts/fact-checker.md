@@ -4,88 +4,71 @@ Started with: Fact-check reviews/how-companies-test-ai-data-analysts/draft.md ag
 
 The run file runs/how-companies-test-ai-data-analysts-run.md does not exist.
 
-1. **Numbers: internal consistency and figures-file match**
-   - 13 companies (title, lede, lines 11, 22, table): consistent; there are 13 table rows. Matches C-1.
-   - 5 strict (title, lede, lines 11, 22, 64): consistent; 5 rows are marked Strict. Matches C-2. The number holds up but the grouping doesn't:
-     - Uber's row takes its test set and scoring from QueryGPT and its timing from Finch. Line 52 says "Uber's QueryGPT post … describe[s] testing, but no trigger". So no single Uber method states all three parts.
-     - LinkedIn's "Runs when" is "Expert review every 3 months". Line 30 says that is when accepted answers are added, not when the test runs.
-   - ~95% to ~65% over a month (lines 5, 54): matches ANT-5 and ANT-6.
-   - Roughly 90% of PRs (line 7): matches ANT-7.
-   - 8 of 13 (line 12, H2 line 20): matches C-4. The label changes from place to place: "real questions or expert-checked answers" (line 12), "real questions with known answers" (H2 and lede). The C-4 list includes WisdomAI, whose table row says "Public LiveSQLBench subset", and GitHub, whose question source isn't stated. "Most of the thirteen build the test from their own work" (line 24) doesn't fit WisdomAI.
-   - About 60% (lines 13, 28): matches LIN-3 and LIN-12.
-   - 7 of 13 LLM judge (line 14, H2, line 36): matches C-5. The body names 4 and the table adds Snowflake, WisdomAI and Grab, so the count is consistent.
-   - 2.03% / 2.04% / 35% (lines 15, 40): match HEX-2, HEX-1 and HEX-3.
-   - 5 re-run (lines 16, 50): the five are named and the count matches C-6. Line 16 says "on every change", but Salesforce re-runs on knowledge-base changes (line 52, table).
-   - About 90% per domain (line 17): matches ANT-13 and C-8. The line states it in the present tense, but line 56 quotes "initially used ~90%".
-   - 10 product areas, over 130 questions (line 24): match LIN-2 and LIN-1.
-   - 201 questions (line 26, table): matches CLK-1.
-   - 150 questions (line 26, table): matches SNO-1.
-   - Three of the 13 (line 28): matches C-7. The draft names only LinkedIn and ClickHouse; Uber, the third, never appears in that section.
-   - 10-15% (line 28): matches LIN-4.
-   - 39 questions (line 30): matches CLK-4. "Models from different providers" has no support in the figures file.
-   - Every 3 months (line 30, table): matches LIN-5.
-   - 27 October 2026 (lines 32, 60): no figures ID, and there is no run file to back it.
-   - Scale of 1 to 5 (line 36): no figures ID.
-   - Within 1 point, 75% (line 40): match LIN-6 and LIN-7.
-   - 84.9% (line 42): matches CLK-13.
-   - ~90% initial, ~100% target (line 56): match ANT-13 and ANT-14.
-   - ~5% (line 58, table): matches UBR-1.
-   - "Seen twice" (line 60): no figures ID, and there is no run file.
-   - Read on 31 October 2026 (line 64): matches the date column of the figures file. It has no ID of its own.
-   - Publication dates in the table (3 June 2026, 9 December 2024, 19 September 2024, September 2026, 22 May 2026, 29 August 2024, 19 June 2026, 27 May 2025, 22 December 2025, 1 October 2024, 22 June 2026, 12 August 2026): no figures IDs for any of them.
-   - Above 95% in aggregate (table): matches ANT-2.
-   - 53% rated 4 or 5 (table): matches LIN-21.
-   - 76.6% (table): matches CLK-5.
-   - ~50% (table): matches SFC-1.
-   - 5 queries (table): matches VER-1.
-   - 20% to 85% (table): match WIS-1 and WIS-3.
-   - 3 vendors (lines 64, 87): matches C-3, and the table marks the same three.
-   - "Three different accuracy measures" for LinkedIn (line 84): no figures ID. The figures file has more than three LinkedIn measures (LIN-7, LIN-8/9, LIN-13 to LIN-17, LIN-21, LIN-22).
-   - "Eight lines" (line 9): there are 8 items. That checks out.
-   - "The five methods side by side" (lede): the table shows 13 rows. The five are never set out on their own.
+**1. Numbers**
 
-2. **Claims about what a product does**
-   - Dot "answers data questions for your team" (line 91): ASSERTED.
-   - Each Dot test-set question carries an expected answer, a unit and a tolerance in percent (lines 32, 91): ASSERTED. Line 32 says "as we observed", but no screenshot or log is shown.
-   - The tolerance decides how close counts as right (line 32): ASSERTED.
-   - Dot compares each answer with its expected answer within the tolerance (line 46): ASSERTED.
-   - Dot shows a verdict such as "Exact match" for every question (lines 46, 91): ASSERTED.
-   - Dot re-scored on save without a re-run (lines 60, 91): ASSERTED.
-   - The score fell after a deliberate change and came back after reverting, seen twice (line 60): ASSERTED.
-   - "Assumption: it always re-scores when a question is saved" (line 91): ASSERTED. The draft itself labels it an assumption.
-   - The Playbook and docs "show how" (line 91): ASSERTED.
-   - Anthropic's accuracy drift: VERIFIABLE (quoted and linked). Its cause, "the data model moving while the agent's skills stood still" (lines 5, 54), is ASSERTED.
-   - Anthropic's grader judges the query, not the number (line 44): ASSERTED.
-   - Anthropic re-runs affected evals in CI (line 50): ASSERTED (link only). The table's "On every change, in CI" is wider than the body's "when a PR touches a dependency".
-   - LinkedIn's judge with a 1 to 5 rubric, plus human review, and its investigation of disagreements (lines 36, 44): ASSERTED (link only).
-   - Uber's LLM similarity score plus table overlap (line 36), golden SQL verified by hand (line 24), and Finch re-running before deploys (line 50): ASSERTED (links only).
-   - ClickHouse's LLM jury with seats from different providers, deciding by majority (line 36): ASSERTED.
-   - Hex's mixed rubrics and daily runs (lines 38, 50): ASSERTED. Hex's "overly harsh" (line 44): VERIFIABLE (quoted).
-   - GitHub evaluates every change before it ships (line 52): ASSERTED. The table broadens it to "On every change".
-   - Salesforce's regression testing on knowledge-base changes (line 52): ASSERTED.
-   - Every table cell for Snowflake, Vercel, Ramp, Prosus, WisdomAI and Grab: ASSERTED (link only).
-   - Pinterest, OpenAI, Netflix, Delivery Hero, Swiggy and Fiverr posts "would not load" (line 86): ASSERTED.
-   - Databricks, Microsoft and Google publish testing tools for customers (line 86): ASSERTED.
+1. Title, lede, line 1, line 3, line 4 and the C-section: 13 matches C-1, 5 matches C-2, 7 matches C-9 and 8 matches C-4. These agree with each other. The table has 13 rows, 5 marked Strict and 3 marked vendor, which matches C-1, C-2 and C-3.
+2. Section 2 says "8 build their test set from real questions or ground-truth answers" (C-4). Under that wording Hex also fits, since its row says "A synthetic company with ground truths". That would make 9. C-4 leaves Hex out because the company is synthetic, but the draft's definition doesn't say that.
+3. ClickHouse "took 201 questions" (CLK-1) and "dropped 39 questions where no two of them agreed" (CLK-4), but the 76.6% is "across 201 questions" (CLK-5). If 39 were dropped from 201, 162 would be left. The figures file also has 501 candidates going to 475 after curation (CLK-12), which doesn't match either number.
+4. Snowflake: "measured on a 150-question internal benchmark" (SNO-1 for the 150). No figures-file row ties a Snowflake accuracy figure to that set. SNO-2 (51%) on the internal set is GPT-4o, and SNO-3 (90%+) is "on real-world use cases". The table's "One number" for Snowflake is "150 questions", which isn't an accuracy figure, although the draft counts Snowflake among the 7 that published one.
+5. Vercel's "One number" is "5 queries" (VER-1). The table doesn't show the 80%/100% accuracy figure (VER-2/VER-3) that puts Vercel among the 7.
+6. "About 60%" of LinkedIn's questions: matches LIN-3 and LIN-12. "10-15%": matches LIN-4. "10 product areas": LIN-2. "over 130": LIN-1 (the paper says 133, LIN-10). "every 3 months": LIN-5.
+7. "Three of the 13 deal with that in print": matches C-7. "39": CLK-4.
+8. "More than half" use an LLM judge: 7 of 13 is 53.8%, which is consistent. C-5 = 7, and the seven companies listed match C-5.
+9. "1 point", "75%": LIN-6, LIN-7. "2.04%" and "2.03%": HEX-1 and HEX-2; the 0.01pp gap is consistent with HEX-3. "35%": HEX-3. "84.9%": CLK-13.
+10. Five that re-run (lines 6 and 52): matches C-6.
+11. "about 95% to about 65% in a month": ANT-5, ANT-6. "~90%": ANT-13 and C-8. "about 100%": ANT-14. "~5%": UBR-1. "Only one of the 13": C-8.
+12. Table: "Above 95% in aggregate" is ANT-2. "53% rated 4 or 5" is LIN-21. "~5%" is UBR-1. "76.6%" is CLK-5. "~50%" is SFC-1. "20% to 85%" is WIS-1 and WIS-3.
+13. All 13 publication dates in the table (3 June 2026, 9 December 2024, 19 September 2024, September 2026, 22 May 2026, 29 August 2024, 19 June 2026, 27 May 2025, 22 December 2025, 1 October 2024, 22 June 2026, 12 August 2026, and "No date shown"): none is in the figures file.
+14. "Our census of how 14 companies built AI data analysts": 14 has no figures-file ID.
+15. Dot section: "eight questions", "asked once", and the two answers to "delivered in 2017": none has an ID. A-1 records only the year 2017, not the two values or the question count.
+16. "Pinterest, OpenAI, Netflix, Delivery Hero, Swiggy and Fiverr" (six posts that would not load): no ID.
+17. "read on 31 October 2026" matches the figures-file dates. "checked it on 27 October" (Dot evaluation) has no ID.
 
-3. **Conclusions that go further than the evidence**
-   - Line 3, "Only 5 published a method you could copy": Uber's "method" is assembled from two systems, and LinkedIn's timing is a review cadence (see item 1).
-   - Line 3 and the H2 on line 20, "Most test against real questions with known answers": WisdomAI uses a public benchmark, and Snowflake, GitHub and Anthropic aren't shown to use real questions.
-   - Line 5, "Testing once is not enough, and Anthropic has the numbers to show it": the numbers show drift. They don't show that re-testing caught or prevented it.
-   - Lines 5 and 54: drift is attributed to the data model moving while skills stood still. The quoted sentence gives no cause.
-   - Line 7, "Anthropic's fix was procedural": the 90% PR figure is presented as the fix for the drift without evidence linking the two.
-   - Line 17: the ~90% bar is stated as current, but the source says "initially".
-   - The H2 on line 34 and line 40, "the published judges are imperfect" / "The published LLM judges miss things, and the companies say so": only 2 of the 7 judges (LinkedIn, Hex) are shown.
-   - Line 44, "The companies answer this by leaning harsh and keeping people in the loop": this rests on Hex, LinkedIn and Anthropic. The draft has already excluded Anthropic from the LLM-judge count (line 38).
-   - Line 42, "A plain exact-match scorer would have failed answers that ClickHouse counts as correct": this is an inference. The draft doesn't quote ClickHouse saying it.
-   - The H2 on line 48, "the careful companies re-run": "careful" is a judgement the evidence doesn't support.
-   - Line 64, "Each row is one company's own publication": the LinkedIn row cites a blog and an arXiv paper, and the Uber row draws on QueryGPT and Finch.
-   - Line 84, "None is audited, and no two are comparable": stated with no support.
-   - Lines 32 and 91: Dot's test set "has the same shape" / is "the kind of test set this piece describes". Dot holds one expected answer per question, while the piece asks for "every answer you would accept".
-   - Line 60: Dot's re-score-on-save behaviour rests on one dated test, "seen twice", with no evidence shown and no run file.
+**2. Product claims**
 
-4. **Product quotes**
-   - "Exact match" (line 46), given as a Dot verdict: not checked: no run file.
-   - "Exact match" (line 91), given as a Dot verdict: not checked: no run file.
-   - The other quoted lines in the draft are company statements, not product output. These match quotes in the figures file: "from ~95% at launch to ~65% over a month" (ANT-5/ANT-6), "underreported recall by 10-15%" (LIN-4), "initially used ~90%" (ANT-13) and "not over-index decisions based on ~5% run-to-run changes in most metrics" (UBR-1). Two have no record in the figures file: "Treat skill maintenance as a first class citizen" and "We are biased towards being overly harsh".
+1. Dot's evaluation gives each test question "an expected answer, a unit and a tolerance in percent", with a verdict such as "Exact match". ASSERTED: no screenshot or log is shown.
+2. "the score updated on save without a re-run": ASSERTED.
+3. "Every answer matched a reading we had computed": ASSERTED. The run file is missing and no answers are shown.
+4. "we computed every expected answer from the raw data before asking, including the second reading": ASSERTED. Nothing in the three files shows the order. My memory of the earlier piece-A check records that some readings were matched after the run.
+5. "scored without a judge", "real questions": ASSERTED.
+6. Company practices with figures-file support: the judge counts and listed companies (C-5), the re-run triggers (C-6), Anthropic's gate (ANT-13), LinkedIn's review cycle (LIN-5), ClickHouse's dropped questions (CLK-4) and the 84.9% mapping (CLK-13). VERIFIABLE: each is quoted in the figures file.
+7. Company practices with no figures-file support, all ASSERTED:
+   - ClickHouse "each seat from a different provider"
+   - ClickHouse "allows a numeric tolerance"
+   - Uber "verified the golden SQL by hand" and "gives no size for that set"
+   - LinkedIn "each with a ground-truth query"
+   - LinkedIn "investigates where its judge and its human reviewers disagree"
+   - "Anthropic's grader can judge the agent's query rather than its number"
+   - Grab "Canaries and hidden certification cases"
+   - Databricks, Microsoft and Google "publish testing tools for customers"
+   - "LinkedIn alone publishes a user survey, a benchmark ablation and an expert review"
 
-I added 9 new mistake lines to C:\Users\LENOVO\OneDrive\Documents\1Sauarbh\1Dot\dot-content-machine\dot-content-machine\.claude\agent-memory\fact-checker\MEMORY.md. The missing run file was already recorded there from piece-3, so I didn't add it again.
+**3. Conclusions that go further than the evidence**
+
+1. "Anthropic reports accuracy on its own evals, domain by domain": ANT-2 and ANT-3 give an aggregate figure and "around 99% in certain domains".
+2. Heading "Accuracy drifts, so the careful companies re-run their tests on every change": the body's five include Hex (daily) and Uber Finch (before deploy). The heading also generalises drift from one company (ANT-5/ANT-6).
+3. "A test passed at launch says little about the same agent a month later": this rests on Anthropic's single drift case.
+4. "LinkedIn and Hex publish how often their judge misses": LinkedIn publishes agreement within 1 point 75% of the time, which is not a miss rate.
+5. "A re-run therefore needs a threshold ... set before the result comes in": UBR-1 doesn't say that.
+6. "The method these companies publish needs no special tooling": the draft itself describes ClickHouse's multi-provider LLM jury and its column-linking scorer.
+7. "Real questions often have more than one right answer" (line 5): this rests on LinkedIn's 60% figure.
+8. Strict is defined as stating "test set, scoring and timing" / "enough to copy", but:
+   - Anthropic's scoring is "A grader, type not stated".
+   - LinkedIn's timing is its 3-monthly benchmark review, which is when answers are added, not when the test runs.
+9. The entry rule is "a named method, an accuracy figure for its own system, or a described test set", but Prosus's row shows "Not stated" for test set and scoring, and has no accuracy figure (C-9 excludes it).
+10. "Anthropic's grader can judge the agent's query..." is placed under how companies "respond to their judges' misses", but the draft says Anthropic's grader isn't counted as an LLM judge.
+11. "Assumption: it always re-scores when a question is saved" is generalised from one check on 27 October.
+12. "Every answer matched a reading we had computed" and "That is the census's more-than-one-right-answer problem, found in a run of our own" have no run evidence shown.
+
+**4. Product quotes**
+
+1. "Exact match" (presented as a Dot evaluation verdict): not checked, because there is no run file.
+2. "delivered in 2017" (the question phrase from the Dot run): not checked, because there is no run file. The figures file points A-1 to runs/ai-analyst-follow-up-questions-run.md, which is outside the three files I was given.
+3. The company quotes are not product quotes, but checked against the figures file:
+   - "underreported recall by 10-15%" (LIN-4), "84.9% of scored result sets..." and "proved vital" (CLK-13), "initially used ~90%" (ANT-13), and "not over-index decisions based on ~5% run-to-run changes in most metrics" (UBR-1) match word for word.
+   - "We are biased towards being overly harsh." (Hex) is not in the figures file, so it isn't checked.
+
+Files:
+- C:\Users\LENOVO\OneDrive\Documents\1Sauarbh\1Dot\dot-content-machine\dot-content-machine\reviews\how-companies-test-ai-data-analysts\draft.md
+- C:\Users\LENOVO\OneDrive\Documents\1Sauarbh\1Dot\dot-content-machine\dot-content-machine\figures\how-companies-test-ai-data-analysts-figures.csv
+- C:\Users\LENOVO\OneDrive\Documents\1Sauarbh\1Dot\dot-content-machine\dot-content-machine\.claude\agent-memory\fact-checker\MEMORY.md (9 new lines added)
