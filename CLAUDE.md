@@ -83,7 +83,7 @@ RESEARCH → OUTLINE → DRAFT → READER → FACT-CHECK → EDIT → LINKEDIN
 Each stage has a prompt in `prompts/`. Four decisions stay human: the question, the outline, the title, the publish.
 
 1. **RESEARCH.** The gap chain: the buyer's question, what they find today, the gap type, what only Dot can show. Output: Sources rows, dated.
-2. **OUTLINE.** The Playbook template. Gate: no number that isn't already in Figures. A human approves before drafting.
+2. **OUTLINE.** The Playbook template. Gate: no number that isn't already in Figures. A human approves before drafting. The outline carries a quotable line (one sentence under 25 words, with a number from Figures, built to be lifted word for word) and a freshness line (when the central number was measured, and when to re-measure it, or "not re-measurable, source closed"); `stage_gate.py` refuses an outline without them.
 3. **DRAFT.** 900–1,300 words against the style rules.
 4. **READER.** A Head of Data at a 300-person company, four minutes. Returns three places they'd stop reading, the one sentence they'd quote to their CFO, and the one claim they don't believe. Rewrites nothing. The writer then fixes all three stopping points.
 5. **FACT-CHECK.** Two passes. First, a fresh chat with the draft only and no other context. Second, a different model. Each returns every number checked for internal consistency, every product claim marked VERIFIABLE or ASSERTED, every conclusion that outruns its evidence, and every quote checked for attribution. Then `verify_sources.py` on every URL.

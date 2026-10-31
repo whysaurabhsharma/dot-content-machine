@@ -201,6 +201,26 @@ def writing(slug, manifest, no_shots=False):
     if not outline:
         add("outline", "next", f"pieces/{slug}-outline.md")
         return stages
+    # The quotable line and the freshness line (v1.8). An outline already drafted from is not reopened.
+    if not Path(f"pieces/{slug}.md").exists():
+        q = re.search(r"^\**Quotable line:?\**:?\s*(.+)$", outline, re.M | re.I)
+        fresh = re.search(r"^\**Freshness:?\**:?\s*\S", outline, re.M | re.I)
+        problems = []
+        if not q:
+            problems.append("no 'Quotable line:' line")
+        else:
+            sentence = re.sub(r"\s*\((?:figures?|ID|IDs?)[^)]*\)\s*$", "", q.group(1).strip(), flags=re.I)
+            n_words = len(re.findall(r"\S+", re.sub(r"[*\"“”]", "", sentence)))
+            number_word = r"\b(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|hundred|thousand|million|half)\b"
+            if not (re.search(r"\d", sentence) or re.search(number_word, sentence, re.I)):
+                problems.append("the quotable line has no number")
+            if n_words >= 25:
+                problems.append(f"the quotable line is {n_words} words (under 25)")
+        if not fresh:
+            problems.append("no 'Freshness:' line")
+        if problems:
+            add("outline", "blocked", f"pieces/{slug}-outline.md: {'; '.join(problems)} (/outline items 11 and 12)")
+            return stages
     approved = re.search(r"^Approved by:\s*(\S.*)$", outline, re.M)
     dated = re.search(r"^Date:\s*(\S.*)$", outline, re.M)
     if not (approved and dated):

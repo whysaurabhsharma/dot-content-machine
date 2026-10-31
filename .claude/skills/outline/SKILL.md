@@ -25,9 +25,9 @@ Read all of these before writing. If one is missing, stop and say which.
 - `facts/house-structure-and-links.md`: the anatomy of a piece.
 - `facts/dot-facts.md`: Observed, Assumption, Superseded, Confirmed.
 - `runs/<slug>-research.md`: the gap chain, the words buyers type, the verdict.
-- `runs/<slug>-run.md`: the conditions block of each batch, and the observed findings.
+- `runs/<slug>-piece.json`: the piece's format (research if absent).
+- Research: `runs/<slug>-run.md` (the conditions block of each batch, and the observed findings) and `figures/<slug>-truth.csv` (the ground truth the figures were marked against). A teardown or guide has neither; its section 7 and, for a teardown, `runs/<slug>-verification.md` take their place.
 - `figures/<slug>-figures.csv`: every number the piece may use (ID, value, where computed, date).
-- `figures/<slug>-truth.csv`: the ground truth those figures were marked against.
 
 ## Output
 
@@ -47,6 +47,8 @@ You are outlining one piece for Dot's blog. Follow CLAUDE.md and facts/house-str
 8. **Where Dot fits**: under 80 words. Use only Observed or Confirmed facts, and Assumptions labelled "Assumption", from facts/dot-facts.md, by ID. Never a Superseded one.
 9. **The instruction** the reader can act on today.
 10. **Missing figures**: every number the outline wanted but the figures file doesn't have. Empty if none.
+11. **Quotable line**, on a line of its own starting `Quotable line:`: one sentence under 25 words, containing a number from the figures file (its figures ID after the sentence, as "(ID: <id>)"), that the piece is built to have an answer engine lift word for word. It carries its own subject (style rule 12) and is placed in the opening or the first H2. The outline is rejected without one (`stage_gate.py`), and the lift-tester is judged against it (check 25).
+12. **Freshness**, on a line of its own starting `Freshness:`: when the central number was measured, and the month it must be re-measured. If it can't be re-measured, say so and why, as "not re-measurable, source closed: <why>" (for example the Ahrefs snapshot of 27–28 October 2026, whose access ended 31 October 2026).
 
 End the file with these two lines, left blank for the person:
 
@@ -65,4 +67,5 @@ SEO title, meta, slug, internal links and reverse links are not part of the outl
 - Write prose beyond the opening and the surprising detail.
 - Invent, round or recompute a number. Use the figures file's values; display rounding is stated as such.
 - Fill in "Approved by" or "Date". Decision 2 is a person's.
+- Leave out the quotable line or the freshness line, or give a quotable line with no number, or one of 25 words or more.
 - Edit the research, run, figures or truth files.
