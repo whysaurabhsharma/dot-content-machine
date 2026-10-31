@@ -20,4 +20,8 @@ Paste the piece into Perplexity, and separately into Claude, with this line abov
 
 Compare the quoted lines with the three you intended to be quoted. Rewrite until the intended lines are lifted, or until the lifted lines are better than the intended ones. Lines that lean on the sentence before them are rarely quoted; give each its own subject.
 
+**Record the lines in `reviews/<slug>/lift-lines.md`** (example: `reviews/ai-analyst-follow-up-questions/lift-lines.md`). Before the test, write the three intended lines under "Intended". After it, add a table of what each tool lifted, verbatim, marked intended or not, and the verdict. A line an engine lifts without being targeted is the strongest evidence a line is liftable: if it is better than an intended line, add it to the list, with that note.
+
+**Known limit of the method (31 October 2026):** Claude may decline to give three verbatim quotes, citing its own limits on verbatim reproduction, and paraphrase the rest. Record how many quotes each tool actually gave; a tool that gave fewer than three hasn't failed the piece, but its partial result counts for less.
+
 **Decision 3 (human):** pick the title from the three candidates.
