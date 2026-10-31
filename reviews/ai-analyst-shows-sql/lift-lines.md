@@ -8,7 +8,7 @@ Approved by Saurabh, 31 October 2026, before the lift test.
 
 1. "An AI analyst that names its date in the answer lets a reader catch a flipped reading without opening the SQL."
 2. "In this run, showing the SQL mattered in two places: where the answer text went quiet, and where two chats disagreed."
-3. "Decide which grain 'late' means for your team before anyone asks."
+3. Decide which grain "late" means for your team before anyone asks.
 
 ## Lift test
 
