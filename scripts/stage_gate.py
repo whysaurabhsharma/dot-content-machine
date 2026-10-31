@@ -20,8 +20,9 @@ Gates enforced here that the skills only stated in prose:
 - outline/draft/seo-geo/linkedin/export never overwrite: a done stage is never redone;
 - the rehearsal is refused without --practice;
 - draft waits for the outline's "Approved by" and "Date" (Decision 2);
-- a batch waits for its conditions block (rules 14, 15, 17), and marking waits for
-  its credits-after reading;
+- a batch waits for its conditions block (rules 14, 15, 17) and, for a piece that isn't
+  practice, for its four screenshot files; marking waits for the credits-after reading
+  and its screenshot file;
 - export waits for check_piece.py to report no FAIL, and for Decision 3;
 - linkedin stops when all five opening structures are used;
 - the run waits for the truth spec's "reviewed_by" (rival definitions before the run);
@@ -126,14 +127,23 @@ def assess(slug):
     last_n, last_cond, last_ids = bs[-1]
     if not last_ids:
         missing = [l for l in ("Mode", "Environment", "Context notes", "Credits before") if not recorded(last_cond, l)]
+        shots = [] if manifest.get("practice") else [s for s in ("mode", "environment", "notes", "credits-before")
+                                                      if not Path(f"runs/screenshots/{slug}-batch-{last_n}-{s}.png").exists()]
         if missing:
             add("run", "waiting", f"batch {last_n}: a person records {', '.join(missing)} in its conditions block "
                 "(rules 14, 15, 17)")
+        elif shots:
+            add("run", "waiting", f"batch {last_n}: screenshot files missing in runs/screenshots/: "
+                + ", ".join(f"{slug}-batch-{last_n}-{s}.png" for s in shots) + " (rule 14; a real piece needs all five)")
         else:
             add("run", "next", f"batch {last_n}: dot-runner asks the {len(asked)} questions")
         return stages
     if len(last_ids) < len(asked):
         add("run", "next", f"batch {last_n} has {len(last_ids)} of {len(asked)} entries: dot-runner continues")
+        return stages
+    after_shot = Path(f"runs/screenshots/{slug}-batch-{last_n}-credits-after.png")
+    if not manifest.get("practice") and recorded(last_cond, "Credits after") and not after_shot.exists():
+        add("run", "waiting", f"batch {last_n}: screenshot file missing: {after_shot.as_posix()} (rule 15)")
         return stages
     if not recorded(last_cond, "Credits after"):
         add("run", "waiting", f"batch {last_n}: a person reads credits after in Dot's UI and records it")
