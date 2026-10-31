@@ -8,7 +8,7 @@
       "name": "How do I test whether an AI data analyst gives correct answers before rolling it out?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Write down real questions your team asked last month, with every answer you would accept for each. Run them against your AI analyst before rollout, and again after every change."
+        "text": "Write down real questions your team asked last month, with every answer you would accept for each. Run them against your AI analyst before rollout, then again on a schedule or when something it depends on changes."
       }
     },
     {

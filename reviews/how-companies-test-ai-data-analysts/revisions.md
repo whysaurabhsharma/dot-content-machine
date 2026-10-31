@@ -1,5 +1,19 @@
 # Revisions · how-companies-test-ai-data-analysts
 
+## Round 4b: the rest of the second fact-check (Saurabh's list of nine)
+
+1. **Anthropic's five figures unreconciled (ChatGPT): fixed.** One sentence after the launch bar places the others: above 95% with skills, about 99% in some domains, about 65% after a month without upkeep.
+2. **ClickHouse's 39 without a starting total (ChatGPT): fixed.** Now 39 of 243 dropped, then a legal review from 204 to the final 201 (CLK-15, CLK-16 added, confirmed in the verification file).
+3. **Title says 7, SEO title says 13 (ChatGPT): stands.** The title states the finding; the SEO title describes the page, as Rick's 14-company post does. Saurabh agrees.
+4. **"Those five are the methods to start from" (ChatGPT): fixed.** Now "the most complete descriptions, not proof of better testing".
+5. **LinkedIn and Hex "how far their judge can be trusted" (Gemini): fixed.** Now each publishes one check on its judge, and the two checks measure different things; the H2 says "a check on it".
+6. **Anthropic's grader (Gemini): fixed.** The count leaves it out because the post doesn't say what kind; "that says nothing about how Anthropic grades".
+7. **Sources that wouldn't load (Gemini): fixed.** The caveat now says they may describe their testing, so 13 is a floor, not a full count.
+8. **~95% to ~65% as "30%" (Gemini): stands.** The piece never says 30% or 30 points; it gives the two figures only.
+9. **"Again after every change" (Gemini): fixed.** Now "then again on a schedule or when something it depends on changes", matching what the census shows. The FAQ answer is updated to match.
+
+Cut for length (1,621 → 1,597 words): "Our reading, not Uber's: decide what counts as a regression before the re-run's result comes in."
+
 ## Round 4: second fact-check, ChatGPT and Gemini (Saurabh, 31 October 2026)
 
 Triage from Saurabh's summary of both reports; the full replies were not pasted.
