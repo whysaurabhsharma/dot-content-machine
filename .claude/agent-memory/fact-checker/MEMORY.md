@@ -45,3 +45,14 @@
 2026-10-31 · how-companies-test-ai-data-analysts · LinkedIn's "within 1 point of the human score 75% of the time" is described as publishing "how often their judge misses"
 2026-10-31 · how-companies-test-ai-data-analysts · from Uber's "~5% run-to-run" line the draft concludes a threshold must be "set before the result comes in", which Uber doesn't say
 2026-10-31 · how-companies-test-ai-data-analysts · "The method ... needs no special tooling" while the draft describes ClickHouse's multi-provider LLM jury and column-linking scorer
+2026-11-01 · test-ai-analyst-before-rollout · Anthropic quote runs on to "before we treated this as an engineering problem", but the verbatim quote in ANT-5/ANT-6 ends at "over a month."
+2026-11-01 · test-ai-analyst-before-rollout · "A test passed at launch says little about the same agent a month later" leaves out the "without skill maintenance" condition in ANT-5/ANT-6 and ANT-2's "consistently above 95%" with skills
+2026-11-01 · test-ai-analyst-before-rollout · lede says "Both numbers were right", but RP2-MR-Q5 marks 2,878 correct only under its stated definition, which differs from the one asked (T11)
+2026-11-01 · test-ai-analyst-before-rollout · step 6 says "Mark the answers by hand first" while both own runs were marked by script (RA-F05 "mark_run", RA-SPLIT "counted by script")
+2026-11-01 · test-ai-analyst-before-rollout · "the census ranges too widely to suggest" a bar, but only 1 of 13 published a bar (C-8), so there is no range
+2026-11-01 · test-ai-analyst-before-rollout · "They show the steps catch something" but the runs bear only on steps 2-6; steps 1, 7 and 8 rest on publications alone
+2026-11-01 · test-ai-analyst-before-rollout · figures file disagrees with itself: RA-F05 gives 7 correct + 1 under stated definition, RA-SPLIT gives 5 as asked + 3 under the other reading
+2026-11-01 · test-ai-analyst-before-rollout · "For two of the other three, a person read the date from the SQL" has no figures-file ID, the third is never explained, and RA-MR-Q6/Q8 say "decided by a person (--decide)" with no mention of SQL
+2026-11-01 · test-ai-analyst-before-rollout · "LinkedIn collected 133 questions ... written with domain experts" cites arXiv (LIN-10), but domain experts appear only in the blog's "over 130" quote (LIN-1)
+2026-11-01 · test-ai-analyst-before-rollout · "Dot's census lists how all 13 companies score" has no figures-file ID; C-5 covers 7 LLM judges only
+2026-11-01 · test-ai-analyst-before-rollout · Dot details panel "Exact match" on 27 October 2026 and "re-scored on save" have no figures-file ID, no screenshot and no run-file entry
