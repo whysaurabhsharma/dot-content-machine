@@ -8,6 +8,8 @@ Piece slug: `ai-analyst-follow-up-questions`. Bank #43. Outlined 31 October 2026
 
 ## 1. Title candidates
 
+**Working title for the draft, decided by Saurabh on 31 October 2026: "AI analyst follow-up questions: a context test you can copy".** /draft uses this as the front-matter title, not the recommended candidate below: candidate 3's shape (the buyer's phrase and a clear promise), with the numbers carried in the lede rather than the title. All three candidates below stay open for Decision 3, after the reviews.
+
 Buyer phrases used are from research section 2 only: "AI analyst follow-up questions context" (bank row 43, volume not measured), "ai data analyst" (700 US), "conversational analytics" (1.2K US).
 
 1. **Recommended.** AI analyst follow-up questions: a context test, and why "delivered in 2017" gave 2,453 and 1,762
@@ -106,5 +108,5 @@ None. On 31 October 2026 every figure this outline wanted was added to `figures/
 
 Decided the same day, under the rule 14 waiver: **no cost per answer** in this piece (hard rule 10 governs how cost is published, not whether every piece gives it), and the chart caption says **"Mode not recorded for publication (rule 14 waived)"** rather than naming the mode. Both are recorded in the run file.
 
-Approved by:Approved by: Saurabh
+Approved by: Saurabh
 Date: 2026-10-31
