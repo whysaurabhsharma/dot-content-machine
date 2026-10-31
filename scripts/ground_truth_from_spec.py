@@ -54,6 +54,13 @@ FIELDS = ["question_id", "question", "metric", "family", "table", "filter", "for
 
 def load_tables(csv_paths):
     tables, sources = {}, []
+    missing = [p for p in csv_paths.values() if not os.path.exists(p)]
+    if missing:
+        sys.exit("Missing data file(s): " + ", ".join(missing) + "\n"
+                 "The Olist CSVs are not in the repo (data/olist/ is gitignored). Download the dataset from\n"
+                 "  https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce\n"
+                 "(a free Kaggle account is needed), unzip it, and put the CSVs in data/olist/ under the repo root,\n"
+                 "e.g. data/olist/olist_orders_dataset.csv. Then run: python scripts/check_setup.py")
     for name, path in csv_paths.items():
         tables[name] = pd.read_csv(path)
         mtime = dt.datetime.fromtimestamp(os.path.getmtime(path)).isoformat(timespec="seconds")

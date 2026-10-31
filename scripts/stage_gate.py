@@ -4,7 +4,7 @@
 Usage:
     python scripts/stage_gate.py <slug>            # report, for a person
     python scripts/stage_gate.py <slug> --json     # the same, for the workflow
-    python scripts/stage_gate.py start <slug> --bank <id> [--format research|teardown|guide] [--practice]
+    python scripts/stage_gate.py start <slug> --bank <id> [--format research|teardown|guide] [--practice] [--why "<reason>"]
     python scripts/stage_gate.py waive <slug> --rule 14 --batch <n> --by "<name, YYYY-MM-DD>"
     python scripts/stage_gate.py clear <slug> --by "<name, YYYY-MM-DD>" --basis "<how a PIECE IF condition was met>"
 
@@ -357,8 +357,11 @@ def start(argv):
     if path.exists():
         print(f"Refused: {path} already exists.")
         return 1
-    path.write_text(json.dumps({"slug": slug, "bank_id": qid, "question": row["question"],
-                                "format": fmt, "practice": practice}, indent=2) + "\n", encoding="utf-8")
+    # The buyer's wording (ai_form) is the question; the bank's short label is kept as topic (cold-start gap 5).
+    path.write_text(json.dumps({"slug": slug, "bank_id": qid, "question": row.get("ai_form") or row["question"],
+                                "topic": row["question"], "format": fmt, "practice": practice,
+                                "why": argv[argv.index("--why") + 1] if "--why" in argv else ""},
+                               indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"Wrote {path}: Decision 1 recorded for bank #{qid}.")
     return 0
 

@@ -1,6 +1,6 @@
 ---
 name: bank
-description: Stage 3 BANK. The monthly entry point to the question bank. `add` puts new questions in (sales calls first), `rescore` re-scores the four factors, `top` names the next question to write. Started only by a person or the workflow.
+description: BANK, before stage 1. The monthly entry point to the question bank. `add` puts new questions in (sales calls first), `rescore` re-scores the four factors, `top` names the next question to write. Started only by a person or the workflow.
 disable-model-invocation: true
 argument-hint: <add|rescore|top>
 allowed-tools: Read, WebSearch, WebFetch, Bash(python scripts/bank.py:*), Bash(python -I scripts/bank.py:*), Bash(python scripts/timing.py:*), Bash(python -I scripts/timing.py:*)

@@ -8,7 +8,7 @@ It runs in Claude Code, in this repo. Claude Code reads `CLAUDE.md` automaticall
 
 ## This submission
 
-**Start with [STATUS.md](STATUS.md):** what is delivered, what each item waits on, the pre-publish sequence, and what is not done.
+**New here? [SETUP.md](SETUP.md)** takes a fresh machine to a first run, one checked step at a time. **Start with [STATUS.md](STATUS.md):** what is delivered, what each item waits on, the pre-publish sequence, and what is not done.
 
 Three pieces, one topic cluster, three formats (research, teardown, guide): can you trust an AI analyst's answers before you roll it out? Six LinkedIn posts, two per piece.
 
@@ -82,7 +82,7 @@ Then run `claude` in this folder and type `/mcp` to check that `ask_dot` is conn
 
 **Git Bash and slash commands.** Git Bash rewrites an argument that starts with `/` into a Windows path, so `claude -p "/outline <slug>"` arrives as `D:/…/Git/outline`. Set `MSYS_NO_PATHCONV=1` before invoking a skill from Git Bash, or from any script run there. `scripts/run_reviewer.py` sets it for the session it starts. Typing `/outline` at the Claude Code prompt is unaffected.
 
-**Permissions.** `.claude/settings.json` pre-approves only the five scripts the skills call (`timing.py`, `check_piece.py`, `verify_sources.py`, `export_docx.py`, `export_webflow.py`), each by its exact path, for both the Bash and the PowerShell tool (a headless session on Windows runs commands through PowerShell, which has its own permission rules), so a stage never stops mid-way to ask about logging its time. Everything else still asks.
+**Permissions.** `.claude/settings.json` pre-approves the eleven scripts the skills and workflow call (`bank.py`, `check_piece.py`, `export_docx.py`, `export_webflow.py`, `ground_truth_from_spec.py`, `mark_run.py`, `review_copy.py`, `run_reviewer.py`, `stage_gate.py`, `timing.py`, `verify_sources.py`), each by its exact path, for both the Bash and the PowerShell tool (a headless session on Windows runs commands through PowerShell, which has its own permission rules), so a stage never stops mid-way to ask about logging its time. Everything else still asks.
 
 ## Where the three pieces stand (1 November 2026)
 
