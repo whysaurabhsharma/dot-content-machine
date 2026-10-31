@@ -442,3 +442,12 @@ So Q6, the fresh-chat control for Q2, did not reproduce Q2: not because context 
 - **Q7 said which date it used:** "This uses the customer delivery date, not the purchase date."
 - **Q6 didn't:** its answer says only "1,762 orders delivered in 2017 arrived after their estimated delivery date", without naming which date "delivered in 2017" refers to. Its figure equals the delivery-date reading (T2c), which is how a person could tell.
 
+## Batch 1: downstream costs of the rule 14 waiver
+
+Decided 31 October 2026, at the outline. The waiver didn't stay inside the conditions block; it forced two choices against standing rules:
+
+- **Hard rule 10, cost per answer.** Batch 1 cost 3.0 credits, but the reading was recorded by hand with no screenshot, so it can't be published. **Chosen: the piece gives no cost per answer at all.** Rule 10 is read as governing how cost is published when a piece gives one, not as requiring every piece to give it. The alternative, a re-run with screenshots, was not taken: this piece is about context, not cost.
+- **Style rule 14, chart caption with date and mode.** The mode was recorded by hand, so it can't be published. **Chosen: the caption says "Mode not recorded for publication (rule 14 waived)".** It gives the date and says why the mode is missing, rather than naming it or silently leaving it out. `check_piece.py` check 10 asks only for a dated caption, so the script would have passed a caption with no mode; the gap is with style rule 14 as written.
+
+For the next person: waiving rule 14 costs any claim about mode and cost in the published piece, so decide whether the piece needs them before waiving.
+
