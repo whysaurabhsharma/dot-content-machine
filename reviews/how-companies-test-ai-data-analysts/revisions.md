@@ -1,5 +1,13 @@
 # Revisions · how-companies-test-ai-data-analysts
 
+## Round 8: after the partial re-read, PASS with four fixes (Saurabh, 31 October 2026, on 5f94c01)
+
+- **Judge-check paragraph promised two checks and described one (logic gap): fixed.** Hex's check is named as the 2.04% eval above, where its judge took the wrong answer 35% of the time. Hex's words are now reported speech, since quotation marks can't be heard: "Hex writes that it still sometimes struggles to calibrate its LLM judges." Checked against the post's sentence, "we still sometimes struggle to calibrate and align our LLM judges": faithful; "and align" dropped.
+- **"Not proof of better testing" lost from the lede in round 7: restored in the table intro.**
+- **ClickHouse parse: fixed, with one change to the proposed wording.** The proposal said ClickHouse "started with 243 candidate questions". The post starts from 501 (CLK-12), curated to 475, then brought down to 243 before the panel. Now: "ClickHouse narrowed 501 candidate questions to 243. Its model panel then dropped 39 where no two models agreed, and a legal review removed 3 more, leaving 201."
+- **Judge list leads with its count again:** "Seven of the 13 score answers with an LLM judge: …". The lede's seven reads "published an accuracy figure". The two sevens are different groups, overlapping in four (LinkedIn, ClickHouse, Snowflake, WisdomAI).
+- **Decision 3:** title_approved_by Saurabh, 2026-10-31; reviewed_on 2026-10-31.
+
 ## Round 7: after the third phone read, PASS with fixes (Saurabh, 31 October 2026, on 40d1ee5)
 
 - **ClickHouse arithmetic broken by the round 6 cut: fixed.** "...where no two models agreed, and a legal review removed 3 more." CLK-17 (3) added.

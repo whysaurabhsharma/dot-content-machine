@@ -16,6 +16,8 @@ queries:
 playbook_url: https://www.getdot.ai/blog/ai-data-analyst-playbook
 figures: figures/how-companies-test-ai-data-analysts-figures.csv
 dataset: "None for the census: 13 companies' own publications, each re-opened 31 October 2026; no dataset analysed and no Dot batch of its own. The Dot section cites piece A's run (runs/ai-analyst-follow-up-questions-run.md): Olist, CC BY-NC-SA 4.0, licence decision L1."
+title_approved_by: Saurabh, 2026-10-31
+reviewed_on: 2026-10-31
 ---
 
 **We read how 13 companies, including Anthropic, LinkedIn and Uber, test their AI analysts: the internal agents their staff use to ask data questions. Seven of the 13 published an accuracy figure, each measured differently: ClickHouse compared result sets, LinkedIn's experts rated answers, Vercel counted successes without defining them. By the end, you'll have one table of what all 13 measured, and the five that published enough to copy are marked. Start from those five.**
@@ -49,13 +51,13 @@ Eight of the 13 build their [AI analyst](https://www.getdot.ai/blog/conversation
 
 Three of the 13 companies deal in print with questions that have more than one right answer. About 60% of LinkedIn's benchmark questions have more than one accepted answer. Without those extra answers, LinkedIn "underreported recall by 10-15%". Uber notes that a question can have more than one correct SQL query.
 
-ClickHouse's model panel dropped 39 of 243 candidate questions where no two models agreed, and a legal review removed 3 more. LinkedIn's remedy is a calendar: experts review its benchmark every 3 months and add accepted answers.
+ClickHouse narrowed 501 candidate questions to 243. Its model panel then dropped 39 where no two models agreed, and a legal review removed 3 more, leaving 201. LinkedIn's remedy is a calendar: experts review its benchmark every 3 months and add accepted answers.
 
 ## More than half score answers with an LLM judge
 
-An LLM judge does the scoring at LinkedIn, Uber, ClickHouse, Hex, Snowflake, WisdomAI and Grab. [Hex](https://hex.tech/blog/evaluate-data-agents/) built one eval where the right answer is 2.04% and a common wrong one is 2.03%. Hex's judge accepted the wrong one 35% of the time.
+Seven of the 13 score answers with an LLM judge: LinkedIn, Uber, ClickHouse, Hex, Snowflake, WisdomAI and Grab. [Hex](https://hex.tech/blog/evaluate-data-agents/) built one eval where the right answer is 2.04% and a common wrong one is 2.03%. Hex's judge accepted the wrong one 35% of the time.
 
-LinkedIn and Hex each publish one check on their judge, and the two checks measure different things. LinkedIn's judge lands within 1 point of the human score 75% of the time. Hex writes that "we still sometimes struggle to calibrate and align our LLM judges".
+LinkedIn and Hex each publish one check on their judge. LinkedIn's lands within 1 point of the human score 75% of the time. Hex's is the eval above, where its judge took the wrong answer 35% of the time. Hex writes that it still sometimes struggles to calibrate its LLM judges.
 
 Anthropic's post doesn't say what kind of grader it uses, so the count leaves it out. ClickHouse doesn't require an exact match. Its scorer links each answer's columns to the ground truth's, aligns the rows and allows a numeric tolerance. ClickHouse reports that 84.9% of its scored answers matched only through that mapping.
 
@@ -83,7 +85,7 @@ That is the census's more-than-one-right-answer problem, found in a run of our o
 
 A company entered this census when its own publication named a method, described a test set, or gave its own accuracy figure. Prosus entered on a named method: its agent asks people to clarify and says when it can't find an answer. Each row draws on the company's own publications, read on 31 October 2026.
 
-The five names in bold state their test set, scoring and timing. "(vendor)" marks a company that sells what it evaluates. "Not stated" means the publication doesn't say.
+The five names in bold state their test set, scoring and timing; that makes them the most complete descriptions, not proof of better testing. "(vendor)" marks a company that sells what it evaluates. "Not stated" means the publication doesn't say.
 
 | Company | Accuracy figure | Tests against | Scores with | Runs when |
 |---|---|---|---|---|
