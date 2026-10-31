@@ -6,6 +6,8 @@ Format and method: `prompts/06-edit.md`, section 3.
 
 1. "Ask each test question twice, in fresh chats: in our run on Dot, one question returned 2,878 and 2,453, each correct under its own definition." (IDs: RP2-MR-Q5, RP2-MR-Q11) The outline's quotable line; the blind lift-tester lifted it word for word (check 25). Now in step 3.
 
+Replaced 1 November 2026: line 1 is now **"In our run on Dot, one question returned 2,878 late orders counting by the exact delivery timestamp, and 2,453 counting by the delivery day."** (IDs: RP2-MR-Q5, RP2-MR-Q11). The blind lift-tester chose it from the opening over the targeted line, because it names both definitions and needs no context, which is what the headline readers asked for. **An engine chose a better line than we targeted, in all three pieces:** A (see its lift-lines), B (the Hex line, added as line 4), and F (this line). Write the intended lines, but read the engine's choice as the stronger evidence.
+
 ## Lift test, 1 November 2026 (Saurabh): PASS
 
 | Tool | Lifted | Intended? |

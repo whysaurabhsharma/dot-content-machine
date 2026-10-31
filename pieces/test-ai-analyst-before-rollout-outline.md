@@ -97,9 +97,9 @@ Then the CTA: *If this excites you, we'd love to hear from you. Get in touch.* (
 
 ## 11. Quotable line
 
-Quotable line: In our run on Dot, one question asked in two fresh chats returned 2,878 and 2,453, each correct under its own definition.
+Quotable line: In our run on Dot, one question returned 2,878 late orders counting by the exact delivery timestamp, and 2,453 counting by the delivery day.
 
-(Changed after approval by Saurabh, 1 November 2026, twice: "both correct" overclaimed, per the fact-checker; then the instruction half was dropped, since it echoed step 3's heading, and the line keeps only the evidence. 21 words.)
+(Changed after approval by Saurabh, 1 November 2026, twice: "both correct" overclaimed, per the fact-checker; then the instruction half was dropped, since it echoed step 3's heading, and the line keeps only the evidence. Then, a third time, replaced by the line the blind lift-tester chose from the opening, because it names both definitions and needs no context (EDIT: the lifted line is better than the intended one). 23 words.)
 
 (19 words. Numbers RP2-MR-Q5, RP2-MR-Q11; "both correct" rests on each matching a computed definition. Placed in the opening; it carries its own subject.)
 

@@ -89,3 +89,5 @@ No revise-notes.md existed for this round. The fact-checker reported runs/test-a
 
 - Quotable line changed to "In our run on Dot, one question asked in two fresh chats returned 2,878 and 2,453, each correct under its own definition."; step 3 no longer repeats its own instruction. B's SEO title made singular: "How 13 Companies Test Their AI Data Analyst" (query words 80%).
 - **Lift-tester re-run: check 25 FAIL, 47%.** The blind tester didn't lift the new line; it lifted the opening's version instead: "In our run on Dot, one question returned 2,878 late orders counting by the exact delivery timestamp, and 2,453 counting by the delivery day." Not a checker fault. Open for Saurabh: adopt the lifted line as the quotable line (EDIT: "until the lifted lines are better than the intended ones").
+
+- **Quotable line, third change (Saurabh): the lifted line adopted.** "In our run on Dot, one question returned 2,878 late orders counting by the exact delivery timestamp, and 2,453 counting by the delivery day." Check 25 PASS, 100%. Third piece running in which an engine chose a better line than we targeted (lift-lines.md).
