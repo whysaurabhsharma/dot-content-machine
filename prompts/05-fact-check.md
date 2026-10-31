@@ -4,6 +4,8 @@ Two passes, then the link check. Tested on piece 1, 27 October 2026: the first p
 
 ## Pass 1: a fresh chat, the draft only
 
+Runs in this repo as the blind `fact-checker` agent (`.claude/agents/fact-checker.md`), which also gets the figures file and the run file, started with the fixed sentence in `runs/README.md#reviewers`. Pass 2 stays on a different model.
+
 You are fact-checking a draft blog post before publication. You have no other context. Return only a numbered list:
 
 1. Every number in the draft, and whether it is internally consistent with the other numbers in the draft. Check all arithmetic yourself.

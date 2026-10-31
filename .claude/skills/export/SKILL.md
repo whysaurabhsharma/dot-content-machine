@@ -16,11 +16,11 @@ No source prompt. The last step before Decision 4 (publish), which stays a perso
 
 ## Timing
 
-First action: `python -I scripts/timing.py <slug> export start`. Last action: `python -I scripts/timing.py <slug> export end`. Stage names: `runs/README.md#timing`.
+First action: `python scripts/timing.py <slug> export start`. Last action: `python scripts/timing.py <slug> export end`. Stage names: `runs/README.md#timing`.
 
 ## Gate
 
-Run `python -I scripts/check_piece.py pieces/<slug>.md`. If any check is FAIL, stop: report the FAILs, export nothing, and log `export end`. HUMAN checks don't block the export, but list them in the report as still open before Decision 4.
+Run `python scripts/check_piece.py pieces/<slug>.md`. If any check is FAIL, stop: report the FAILs, export nothing, and log `export end`. HUMAN checks don't block the export, but list them in the report as still open before Decision 4.
 
 If the piece's first body line is `PRACTICE ONLY`, export into `exports/<slug>-practice/` instead, and say it is not for publication (hard rule 4).
 
@@ -34,8 +34,8 @@ If the piece's first body line is `PRACTICE ONLY`, export into `exports/<slug>-p
 
 All in `exports/<slug>/`:
 
-- `<front-matter slug>.docx`: from `python -I scripts/export_docx.py pieces/<slug>.md --out exports/<slug>`.
-- `<front-matter slug>.md`, `webflow.html` and `webflow-fields.json`: from `python -I scripts/export_webflow.py pieces/<slug>.md --out exports/<slug>`. The JSON maps the Webflow CMS fields (name, slug, SEO title, meta description), lists the images to upload with their alt text, and points to the FAQ file if there is one.
+- `<front-matter slug>.docx`: from `python scripts/export_docx.py pieces/<slug>.md --out exports/<slug>`.
+- `<front-matter slug>.md`, `webflow.html` and `webflow-fields.json`: from `python scripts/export_webflow.py pieces/<slug>.md --out exports/<slug>`. The JSON maps the Webflow CMS fields (name, slug, SEO title, meta description), lists the images to upload with their alt text, and points to the FAQ file if there is one.
 
 Report each file written, any image not found, any empty CMS field, and the HUMAN checks still open.
 

@@ -14,7 +14,7 @@ No source prompt. Built from CLAUDE.md style rules 13 and 15, gate checks 3, 20 
 
 ## Timing
 
-First action: `python -I scripts/timing.py <slug> seo-geo start`. Last action: `python -I scripts/timing.py <slug> seo-geo end`. Stage names: `runs/README.md#timing`.
+First action: `python scripts/timing.py <slug> seo-geo start`. Last action: `python scripts/timing.py <slug> seo-geo end`. Stage names: `runs/README.md#timing`.
 
 ## Inputs
 
@@ -37,7 +37,7 @@ First action: `python -I scripts/timing.py <slug> seo-geo start`. Last action: `
 
 ## Check
 
-Run `python -I scripts/verify_sources.py pieces/<slug>.md`. Remove any link it can't open, and say which. Then run `python -I scripts/check_piece.py pieces/<slug>.md` and report checks 3, 20 and 21.
+Run `python scripts/verify_sources.py pieces/<slug>.md`. Remove any link it can't open, and say which. Then run `python scripts/check_piece.py pieces/<slug>.md` and report checks 3, 20 and 21.
 
 ## Must not
 

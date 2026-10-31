@@ -51,3 +51,23 @@ Every step logs its start and end with `scripts/timing.py` to `runs/<piece>-timi
 
 The `note` column says how each row was made: `logged` (written by `timing.py` at the time), `backfilled` (added later from a timestamp in the record, with its source named), or `not logged` (no evidence; no time is estimated).
 
+## Reviewers
+
+The three blind reviewers (`.claude/agents/reader.md`, `fact-checker.md`, `lift-tester.md`) start without CLAUDE.md, can read only their allowlist (`scripts/hooks/read_allowlist.py`), and read a body-only copy of the piece. Make the copy first, and again after every edit:
+
+    python scripts/review_copy.py <slug>
+
+Start a reviewer only with the launcher, which makes the copy, starts a headless session with no MCP servers, passes the fixed sentence and saves the report:
+
+    python scripts/run_reviewer.py <reader|fact-checker|lift-tester> <slug>
+
+Don't start a reviewer with the Agent tool from an interactive session: every connected MCP server's instructions, including ask_dot's description of Dot, would reach it (`facts/reviewer-blindness.md`, B4). The launcher passes exactly the sentence below, with the slug filled in and nothing else: no rules, no context, no hints about what to look for.
+
+| Reviewer | The fixed sentence |
+|---|---|
+| `reader` | Read reviews/<slug>/draft.md and give your report. |
+| `fact-checker` | Fact-check reviews/<slug>/draft.md against figures/<slug>-figures.csv and runs/<slug>-run.md. |
+| `lift-tester` | Read reviews/<slug>/draft.md as an answer engine and report what you would and would not lift. |
+
+Save each report as `reviews/<slug>/<reviewer>.md`. What still reaches a reviewer despite all this is recorded in `facts/reviewer-blindness.md`.
+

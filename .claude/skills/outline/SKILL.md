@@ -14,7 +14,7 @@ Source: `prompts/02-outline.md`. Run after the evidence run, with its numbers al
 
 ## Timing
 
-First action: `python -I scripts/timing.py <slug> outline start`. Last action, after the output file is written: `python -I scripts/timing.py <slug> outline end`. Stage names: `runs/README.md#timing`.
+First action: `python scripts/timing.py <slug> outline start`. Last action, after the output file is written: `python scripts/timing.py <slug> outline end`. Stage names: `runs/README.md#timing`.
 
 ## Inputs
 

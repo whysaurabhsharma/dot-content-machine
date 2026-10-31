@@ -2,6 +2,8 @@
 
 Run in a **fresh chat**, with only the draft. Tested on piece 1, 27 October 2026.
 
+Runs in this repo as the blind `reader` agent (`.claude/agents/reader.md`), started with the fixed sentence in `runs/README.md#reviewers`.
+
 ## Paste into a fresh chat
 
 You are a Head of Data at a 300-person company. You have four minutes. Read this and return:

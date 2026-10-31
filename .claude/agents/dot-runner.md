@@ -12,7 +12,7 @@ hooks:
     - matcher: "Bash"
       hooks:
         - type: command
-          command: python -I "$CLAUDE_PROJECT_DIR/scripts/hooks/only_date.py"
+          command: python -I scripts/hooks/only_date.py
 ---
 
 # Stage 1 · RUN

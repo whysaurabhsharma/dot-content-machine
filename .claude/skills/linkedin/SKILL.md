@@ -14,7 +14,7 @@ Source: `prompts/07-linkedin.md`.
 
 ## Timing
 
-First action: `python -I scripts/timing.py <slug> linkedin start`. Last action, after the check: `python -I scripts/timing.py <slug> linkedin end`. Stage names: `runs/README.md#timing`.
+First action: `python scripts/timing.py <slug> linkedin start`. Last action, after the check: `python scripts/timing.py <slug> linkedin end`. Stage names: `runs/README.md#timing`.
 
 ## Inputs
 
@@ -42,7 +42,7 @@ Under the heading, write in this order: `**First lines tried:**` (the three), th
 
 ## Check
 
-Run `python -I scripts/check_piece.py --post posts/<slug>-posts.md` and report the new post's result. Fix any FAIL in the new post (only the new post), then run it again.
+Run `python scripts/check_piece.py --post posts/<slug>-posts.md` and report the new post's result. Fix any FAIL in the new post (only the new post), then run it again.
 
 ## Must not
 

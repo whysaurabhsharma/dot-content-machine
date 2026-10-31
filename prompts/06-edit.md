@@ -12,6 +12,8 @@ Show the title and the first 60 words to someone who hasn't seen the piece. Can 
 
 ## 3. The lift test
 
+A first pass runs in this repo as the blind `lift-tester` agent (`.claude/agents/lift-tester.md`). It is the same model family as the writer, so the real lift test in Perplexity and Claude below still runs.
+
 Paste the piece into Perplexity, and separately into Claude, with this line above it:
 
     Summarise this article in exactly three bullet points. Each bullet must contain one direct quotation from the article, in quotation marks.

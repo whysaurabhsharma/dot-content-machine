@@ -14,7 +14,7 @@ Source: `prompts/03-draft.md`.
 
 ## Timing
 
-First action: `python -I scripts/timing.py <slug> draft start`. Last action, after the check below: `python -I scripts/timing.py <slug> draft end`. Stage names: `runs/README.md#timing`.
+First action: `python scripts/timing.py <slug> draft start`. Last action, after the check below: `python scripts/timing.py <slug> draft end`. Stage names: `runs/README.md#timing`.
 
 ## Gate: Decision 2
 
@@ -50,7 +50,7 @@ Write the piece from the approved outline. Follow CLAUDE.md's style rules exactl
 
 ## Check
 
-Run `python -I scripts/check_piece.py pieces/<slug>.md` once and report its summary line and every FAIL. Don't loop to fix them; fixing is EDIT's job. Checks 3, 20 and 21 will fail until `/seo-geo` has run; say so.
+Run `python scripts/check_piece.py pieces/<slug>.md` once and report its summary line and every FAIL. Don't loop to fix them; fixing is EDIT's job. Checks 3, 20 and 21 will fail until `/seo-geo` has run; say so.
 
 ## Must not
 
