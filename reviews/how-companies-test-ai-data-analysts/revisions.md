@@ -220,3 +220,7 @@ Also from the reader: the 84.9% claim is now ClickHouse's own sentence quoted wh
 ## Round (cluster), 1 November 2026
 
 - After Decision 3: the closing instruction links the hub guide F (link only), and "ai data analyst" moved out of this piece's queries to F, so the three pieces target distinct queries (Saurabh's cluster check). Re-read aloud the changed paragraph.
+
+## Drift sentence in Anthropic's words (1 November 2026)
+
+- Round 9's "That was before it treated drift as an engineering problem" paraphrased Anthropic ("drift" for its "this"). F's second fact-check flagged the same paraphrase. Now quoted: drifted "from ~95% at launch to ~65% over a month before we treated this as an engineering problem." FAQ answer updated word for word. Saurabh's pending read-aloud of this paragraph covers the new wording.

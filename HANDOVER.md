@@ -190,6 +190,8 @@ What's missing:
 | Tier 3 | Agreed for after the pieces | The 18-query citation reading, `bank/surfaces.csv`, `/distribute`, `check_posts.py`, a post queue |
 | Nobody but the author has run it end to end | The core claim about the machine | Section 3's first test, then one full piece |
 
+**A limit of the second fact-check method (1 November 2026, from F).** A model scoring a guide reads hard rule 19's honesty labels ("rests on one company's practice", "no run of ours tested this") as weaknesses, and reports them as defects. They aren't: a step that says what it rests on is the rule working. Don't "fix" them by removing the labels or strengthening the claim; triage each against the evidence, and stand the label.
+
 ## 7. Where the machine stops, and why
 
 **What runs on one command.** `/piece <slug>` runs research, the truth spec, the Dot run, marking, the outline, the draft, SEO, three blind reviewers, the revise step, the check loop, LinkedIn and export, in the order `scripts/stage_gate.py` allows.

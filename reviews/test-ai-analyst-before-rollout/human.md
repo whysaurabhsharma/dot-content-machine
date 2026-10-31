@@ -8,5 +8,8 @@ Tick each only after doing it, with a note of what happened. stage_gate.py reads
   - Perplexity: "Collect real questions your team already asked. Write every answer you would accept before you ask" (pocket lines 1 and 2); "Ask each question twice, each time in a fresh chat, and compare" (step 3); "Re-run the test on a schedule, and whenever something it depends on changes: a definition, a table, a model" (step 8).
   - Claude: "Hold access until the tests pass your bar (~80%)" (the Playbook, step 7); "underreported recall by 10-15%" (LinkedIn); the 2,878 / 2,453 split with both definitions; "3 matched only the delivery-date reading".
   - All checked by script as word for word in the piece. The 3 of 8 matches A's figures (RA-SPLIT: 5 as planned, 3 only under the delivery-date reading: Q6, Q7, Q8) and F's own sentence; A's table marks the same three rows "Delivery date".
-- [ ] second fact-check on a different model
+- [x] second fact-check on a different model: **ChatGPT and Gemini, 1 November 2026 (Saurabh).** Triage in revisions.md, "Second fact-check".
+  - **Fixed, a real error:** the 5.6% / 7.7% sentence implied one value rounded two ways. They are two years' shares (2017 and 2018), each rounded for display.
+  - **Not a defect: the rule working.** Every step both models flagged is already labelled in the piece ("rests on one company's practice", "rests on published practice alone"). The models read hard rule 19's labels as weaknesses. Steps unchanged; one caveat now says every step names its evidence and several say nothing tests whether they work.
+  - **Also fixed:** the "would have marked those 3 correct answers wrong" claims scoped to our test; Anthropic's drift now quoted in its own words; the launch-bar claim scoped to what Dot's census found.
 - [ ] read aloud on a phone
