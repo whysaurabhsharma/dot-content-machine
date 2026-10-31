@@ -27,6 +27,7 @@ Through the gate. Decision 4 (publish) is open. Licence: decision L1, not a reso
 - **Go or no-go:** five or more organisations meet the bar, or B is not a piece and a different third piece is chosen (Saurabh, 31 October 2026).
 - **Shape (style rules 1 and 5):** 1,000–1,600 words; one census table, one row per publication, each row linking its primary source; pocket guide, "Things to keep in mind", "Where Dot fits", CTA.
 - **Figures:** every number a `published: <URL>, read <date>` row (hard rule 3). None combined with our own figures (rule 4, condition d).
+- **Before publishing:** re-check facts O1 and O2 (Dot's evaluation: expected answer, unit, tolerance, verdict; re-scoring on save) on the current account, since both were observed on the dry-run account on 27 October 2026; and re-read in a browser the numbers the draft uses, since every source was read through WebFetch.
 
 ### F, `test-ai-analyst-before-rollout`: guide
 

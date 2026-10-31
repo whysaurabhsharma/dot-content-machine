@@ -61,7 +61,7 @@ A piece that breaks any one of these does not ship.
 11. Read every paragraph aloud, once on a phone screen. After a later edit, re-read aloud the paragraphs that changed, not the whole piece.
 12. **Quotable lines carry their own subject.** Models lift self-contained claims, not lines that lean on the sentence before.
 13. SEO title contains the query. Meta under 155 characters. Slug four to six words.
-14. Every image has alt text and a caption with the date and energy mode.
+14. Every image has alt text and a caption with the date; in research, the energy mode too. A teardown or guide has no batch of its own, and its caption doesn't explain the missing mode.
 15. **Titles use the words buyers type and say what the reader gets.** Check the words against Search Console queries, Keywords Explorer and the pages that already rank. A clever title nobody searches for fails. A flat claim that states the finding counts as saying what the reader gets, provided the lede carries the promise (style rule 16) and the headline test passes on that title.
 16. **The first 60 words say what the reader will have by the end.** The problem, the proof, then the promise: a test, a number, a fix.
 17. **A post's first two lines give a reason to click:** the reader's stake, then the promise. The post ends by saying what the link delivers.
@@ -210,4 +210,6 @@ A "no" on any line means the piece isn't done. Who checks each line is in bracke
 - **Export no longer requires Webflow files.** `export_webflow.py` stays; the gate needs the .docx and the clean Markdown only. Dot's team publishes.
 - **LinkedIn:** the roadmap's six structures are assigned across the cluster, not per piece (PLAN.md), because its post model assumes every piece is research.
 - **Not adopted:** the roadmap's skill names (`/make-piece-*`, `/gate`) and the fact-checker's confirmed-claims list; reasons in HANDOVER.md.
+
+**31 October 2026 — v1.8.1.** Style rule 14's mode requirement is research-only. Origin: piece B's outline proposed the caption "No Dot run, so no energy mode applies"; Saurabh cut it, because a caption explaining why a rule doesn't apply is a team note in public, which the readers caught in piece 1.
 
