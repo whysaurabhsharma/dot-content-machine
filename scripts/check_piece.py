@@ -260,7 +260,7 @@ def check_lift(slug):
     # The lifted line must still be in the piece: a lift-tester report older than a revision can
     # quote a sentence the piece no longer has (F, 1 November 2026: "both correct" was revised out).
     piece = ROOT / "pieces" / f"{slug}.md"
-    norm = lambda s: re.sub(r"\s+", " ", re.sub(r"\[([^\]]+)\]\([^)]+\)", r"", s)).replace("**", "").strip(" .")
+    norm = lambda s: re.sub(r"\s+", " ", re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", s)).replace("**", "").strip(" .")
     if ok and piece.exists() and norm(best) not in norm(piece.read_text(encoding="utf-8")):
         return ("FAIL", name, f"best lifted match {best_score:.0%}, but that line is no longer in the piece: "
                 f"\"{best[:70]}\". Re-run the lift-tester on the current draft")
