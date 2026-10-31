@@ -17,8 +17,8 @@ Factors, each 1 to 3 (ICP question bank PDF, page 4):
   "not measured".
 - gap, incumbent, evidence: judgements. The /bank skill proposes them with `set --by
   model`, which marks them "model-unconfirmed"; a person confirms with `confirm`.
-  incumbent is scored only for a shortlist (the top 15 by the other three factors);
-  every other row says "not scored".
+  incumbent is scored only for a shortlist (the top 15 by the other three factors, with
+  a tie at the cut kept whole); every other row says "not scored".
 
 `top` puts sales-call questions first (CLAUDE.md hard rule 1), then total, then Ahrefs
 volume where measured. It refuses to recommend a question whose evidence score is
@@ -140,11 +140,16 @@ def shortlist(argv):
     n = int(argv[argv.index("--n") + 1]) if "--n" in argv else 15
     rows = [r for r in load() if r["status"] == "unwritten"
             and all(r[f"{f}_score"].isdigit() for f in ("demand", "gap", "evidence"))]
-    rows.sort(key=lambda r: -sum(int(r[f"{f}_score"]) for f in ("demand", "gap", "evidence")))
-    for r in rows[:n]:
-        three = sum(int(r[f"{f}_score"]) for f in ("demand", "gap", "evidence"))
-        print(f"{r['id']:>4}  {three}/9  {r['question']}")
-    print(f"\n{min(n, len(rows))} shortlisted for the incumbent reading, of {len(rows)} unwritten questions "
+    def three(r):
+        return sum(int(r[f"{f}_score"]) for f in ("demand", "gap", "evidence"))
+    rows.sort(key=lambda r: (-three(r), int(r["id"])))
+    # A tie at the cut is kept whole: dropping tied questions by id would be arbitrary.
+    cut = three(rows[n - 1]) if len(rows) >= n else 0
+    picked = [r for r in rows if three(r) >= cut] if len(rows) > n else rows
+    for r in picked:
+        print(f"{r['id']:>4}  {three(r)}/9  {r['question']}")
+    extra = f" (asked for {n}; a tie at {cut}/9 is kept whole)" if len(picked) > n else ""
+    print(f"\n{len(picked)} shortlisted for the incumbent reading{extra}, of {len(rows)} unwritten questions "
           "with demand, gap and evidence scored.")
     return 0
 
@@ -205,8 +210,25 @@ def top(argv):
     return 1
 
 
+def status(argv):
+    """status <id> <unwritten|drafted|published|covered> --basis "...": a person records a piece's state."""
+    if len(argv) < 4 or argv[3] not in ("unwritten", "drafted", "published", "covered") or "--basis" not in argv:
+        print("usage: bank.py status <id> <unwritten|drafted|published|covered> --basis \"<which piece>\"")
+        return 2
+    rows = load()
+    row = next((r for r in rows if r["id"] == argv[2]), None)
+    if row is None:
+        print(f"No question {argv[2]}")
+        return 1
+    row["status"] = argv[3]
+    row["source"] = f"{row['source']}; status {argv[3]} {TODAY}: {argv[argv.index('--basis') + 1]}"
+    save(rows)
+    print(f"{argv[2]} status = {argv[3]}")
+    return 0
+
+
 COMMANDS = {"rescore": rescore, "set": set_score, "confirm": confirm, "shortlist": shortlist,
-            "add": add, "top": top}
+            "add": add, "top": top, "status": status}
 
 if __name__ == "__main__":
     if len(sys.argv) < 2 or sys.argv[1] not in COMMANDS:
