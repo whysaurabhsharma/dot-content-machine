@@ -132,7 +132,9 @@ Grounded in C-4 (real questions), C-7 and LIN-3 (more than one accepted answer),
 
 ## 11. Quotable line
 
-Quotable line: Thirteen companies published how they check their AI analyst's answers; only five published a method you could copy. (ID: C-1, C-2)
+Quotable line: Seven of the 13 companies published an accuracy figure, and no two measured the same thing. (ID: C-9)
+
+Changed after Decision 2, 31 October 2026, in Saurabh's reframe after the first headline test failed. Was: "Thirteen companies published how they check their AI analyst's answers; only five published a method you could copy." The finding is now that the figures can't be compared; the five copyable methods are what a reader does instead.
 
 18 words. Saurabh's wording, with "companies" for "companies" (item 3 of his decisions). Placed in the opening, as its first two sentences in substance, and again as the first sentence of H2 1. It carries its own subject (style rule 12).
 

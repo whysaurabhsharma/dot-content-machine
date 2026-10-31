@@ -1,7 +1,8 @@
 {
   "slug": "how-companies-test-ai-data-analysts",
-  "bank_id": "35",
-  "question": "how to evaluate AI data analyst accuracy",
+  "bank_id": "36",
+  "question": "AI data analyst test questions",
   "format": "teardown",
-  "practice": false
+  "practice": false,
+  "bank_note": "Swapped from #35 to #36 on 31 October 2026 (Saurabh): F, the guide, takes #35 and is the cluster's hub."
 }

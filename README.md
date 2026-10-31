@@ -13,8 +13,8 @@ Three pieces, one topic cluster, three formats (research, teardown, guide): can 
 | # | Piece | Posts | State |
 |---|---|---|---|
 | 1 of 3 | `pieces/ai-analyst-follow-up-questions.md` | Post 1 of 6: Post A in `posts/ai-analyst-follow-up-questions-posts.md` | Through the gate; Decision 4 (publish) open |
-| 2 of 3 | Teardown, `how-companies-test-ai-data-analysts` (bank #35) | Posts 2–3 | Research |
-| 3 of 3 | Guide, `test-ai-analyst-before-rollout` (bank #36) | Posts 4–6 | After B |
+| 2 of 3 | Teardown, `how-companies-test-ai-data-analysts` (bank #36) | Posts 2–3 | Research |
+| 3 of 3 | Guide, `test-ai-analyst-before-rollout` (bank #35), the cluster's hub | Posts 4–6 | After B |
 
 The plan, what each piece proves and which runs feed which: `PLAN.md`.
 

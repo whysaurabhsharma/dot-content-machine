@@ -1,23 +1,31 @@
 # 13 Companies Test Their AI Analyst. 5 Show How.
 
-**We read how 13 companies, including Anthropic, LinkedIn and Uber, check their AI analyst's answers before trusting them. Only 5 published a method you could copy: what they test against, how they score, and when they run the test. Most test against real questions or ground-truth answers. By the end, you'll have all 13 methods in one table, with the 5 copyable ones marked.**
-
-[Anthropic's offline accuracy drifted](https://claude.com/blog/how-anthropic-enables-self-service-data-analytics-with-claude) "from ~95% at launch to ~65% over a month". The post files the drop under one heading: "Treat skill maintenance as a first class citizen". The same post says roughly 90% of Anthropic's data-model PRs now include a skill change in the same diff.
+**We read how 13 companies, including Anthropic, LinkedIn and Uber, test their AI analysts: the internal text-to-SQL and analytics agents their staff ask for numbers. Seven of the 13 companies published an accuracy figure, and no two measured the same thing. By the end, you'll have all 13 in one table, with the five that published enough to copy marked.**
 
 **The whole piece in eight lines:**
 
-1. Of 13 companies, 5 publish what they test against, how they score and when.
-2. Of the 13, 8 build their test set from real questions or ground-truth answers.
-3. Real questions often have more than one right answer. About 60% of LinkedIn's benchmark questions do.
-4. Of the 13, 7 score answers with an LLM judge; LinkedIn and Hex publish where theirs falls short.
-5. Hex's judge accepted a wrong 2.03% in place of the right 2.04%, 35% of the time.
+1. Of 13 companies that published how they test their AI analyst, 7 published an accuracy figure.
+2. No two of those figures measured the same thing, so none of them can be compared.
+3. Five companies published enough to copy: what they test against, how they score and when they run it.
+4. Of the 13, 8 build their test set from real questions or ground-truth answers.
+5. Real questions often have more than one right answer. About 60% of LinkedIn's benchmark questions do.
 6. Anthropic, Uber, Hex, GitHub and Salesforce re-run their tests on a change, before each deploy, or daily.
-7. Only Anthropic publishes a launch bar: it initially used about 90% per domain.
-8. Start with your team's real questions and every answer you would accept, then re-run them on every change.
+7. Only Anthropic publishes a bar an analyst must clear before launch: it initially used about 90%.
+8. We ran the method's core on Dot: real questions, answers computed before asking, and a rule for a match.
+
+## Seven of the 13 companies published an accuracy figure, and no two measured the same thing
+
+Seven of the 13 companies published an accuracy figure, and no two measured the same thing. LinkedIn reports the share of answers its experts rated highly. ClickHouse reports a pass rate for the best model on 201 questions from its own traffic. Snowflake measured on a 150-question internal benchmark, and WisdomAI on a public benchmark subset.
+
+Salesforce gives a share correct at launch but not how it was counted. Vercel reports success on 5 queries without defining success. Anthropic reports accuracy on its own evals, domain by domain. Each figure answers a different question, on a different test set, scored a different way.
+
+So none of the figures can be ranked against another, and a vendor's accuracy claim can't be ranked against them either. What carries across is the method. The five companies that published enough to copy say what they test against, how they score and when they run the test.
 
 ## Eight of 13 companies test their AI analyst against real questions or ground-truth answers
 
 Eight of the 13 companies build their [AI analyst](https://www.getdot.ai/blog/conversational-analytics-software)'s test set from real questions or ground-truth answers. A company entered the census when its own blog, paper or docs described how it checks its analyst. That meant a named method, an accuracy figure for its own system, or a described test set.
+
+[Our census of how 14 companies built AI data analysts](https://www.getdot.ai/blog/how-companies-built-ai-data-analysts) counted what they built. This one counts what they published about testing it, so the two lists overlap but differ.
 
 [LinkedIn](https://www.linkedin.com/blog/engineering/ai/practical-text-to-sql-for-data-analytics) asked domain experts in 10 product areas for over 130 questions, each with a ground-truth query. [Uber](https://www.uber.com/blog/query-gpt) took real questions from QueryGPT's logs and verified the golden SQL by hand. Uber gives no size for that set.
 
@@ -27,11 +35,11 @@ A real question often has more than one right answer, and three of the 13 compan
 
 ClickHouse had a panel of models solve each question, and dropped 39 questions where no two of them agreed. LinkedIn's remedy is a calendar: experts review its benchmark every 3 months and add accepted answers.
 
-## Seven of 13 companies score answers with an LLM judge, and two publish where the judge falls short
+## More than half of the 13 companies score answers with an LLM judge, and two publish where it falls short
 
-Seven of the 13 companies use an LLM to judge their analyst's answers. LinkedIn pairs human review with an LLM judge scoring against a rubric. Uber has an LLM score each query's similarity to the golden SQL, alongside table overlap. ClickHouse uses an LLM jury, each seat from a different provider, deciding by majority.
+LinkedIn, Uber, ClickHouse, Hex, Snowflake, WisdomAI and Grab use an LLM to judge their analyst's answers. LinkedIn pairs human review with an LLM judge scoring against a rubric. Uber has an LLM score each query's similarity to the golden SQL, alongside table overlap. ClickHouse uses an LLM jury, each seat from a different provider, deciding by majority.
 
-Hex mixes deterministic, LLM-judged and hybrid rubrics. Snowflake, WisdomAI and Grab also name an LLM judge. Anthropic's post names a grader but not what kind, so it isn't counted here.
+Hex mixes deterministic, LLM-judged and hybrid rubrics. Anthropic's post names a grader but not what kind, so it isn't counted here.
 
 LinkedIn and Hex publish how often their judge misses. LinkedIn's judge lands within 1 point of the human score 75% of the time. [Hex](https://hex.tech/blog/evaluate-data-agents/) built one eval where the right answer is 2.04% and a common wrong one is 2.03%. Hex's judge accepted the wrong one 35% of the time.
 
@@ -47,11 +55,19 @@ Anthropic, Uber, Hex, GitHub and Salesforce re-run their tests on a change, befo
 
 The companies that re-run are not the same group as the strict methods in the census table. GitHub and Salesforce re-run on a change but don't say how they score. LinkedIn and ClickHouse publish a full method but don't re-run on every change.
 
-The reason to re-run is drift. Anthropic's month-long slide in offline accuracy is the published case. A test passed at launch says little about the same agent a month later.
+The reason to re-run is drift. Anthropic's offline accuracy fell from about 95% to about 65% in a month, the case [our essay on accuracy decay](https://www.getdot.ai/blog/your-ai-analyst-will-be-worse-next-month) starts from. A test passed at launch says little about the same agent a month later.
 
 Only one of the 13 companies publishes a number to clear before launch. At Anthropic, a domain owner cannot announce the agent until their eval slice clears a threshold. Anthropic "initially used ~90%", and its stated target for offline accuracy is about 100%.
 
 Re-runs vary on their own, which makes a small drop hard to read. Uber does "not over-index decisions based on ~5% run-to-run changes in most metrics". A re-run therefore needs a threshold for what counts as a regression, set before the result comes in.
+
+## The method runs on Dot, and the same problem showed up
+
+The method these companies publish needs no special tooling, so we ran its core on Dot. For [our test of follow-up questions](https://www.getdot.ai/blog/ai-analyst-follow-up-questions), we computed every expected answer from the raw data before asking, including the second reading a question allowed. Then we asked eight questions and marked each answer against the definition it stated.
+
+Every answer matched a reading we had computed. Even so, the phrase "delivered in 2017" had two right answers: one by purchase date, one by delivery date. That is the census's more-than-one-right-answer problem, found in a run of our own.
+
+The run was small: eight questions, asked once, scored without a judge. What it shows is that the method is runnable. A list of real questions, answers computed before you ask, and a rule for what counts as a match are enough to start.
 
 ## All 13 publications, side by side, each linked to its source
 
@@ -75,7 +91,7 @@ Each row draws on one company's own publications, read on 31 October 2026. Uber'
 
 ## Things to keep in mind
 
-- **Every figure is self-reported.** Each company measures its own system on its own test set, and none says the result was audited. The figures can't be compared; LinkedIn alone publishes a user survey, a benchmark ablation and an expert review, each with its own accuracy figure.
+- **Every figure is self-reported.** Each company measures its own system on its own test set, and none says the result was audited. LinkedIn alone publishes a user survey, a benchmark ablation and an expert review, each with its own accuracy figure.
 - **The census counts what was published, not what is done.** A "Not stated" means the publication doesn't mention the practice.
 - **The census isn't exhaustive.** Posts from Pinterest, OpenAI, Netflix, Delivery Hero, Swiggy and Fiverr would not load, so they aren't counted. Databricks, Microsoft and Google publish testing tools for customers; those show how customers should test, not how each company checks its own analyst.
 - **Three of the 13 sell the product they evaluate:** Hex, Snowflake and WisdomAI.

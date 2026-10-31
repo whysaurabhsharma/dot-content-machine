@@ -1,5 +1,18 @@
 # Revisions · how-companies-test-ai-data-analysts
 
+## Round 2: reframe after the first headline test failed (Saurabh, 31 October 2026)
+
+- **New finding leads:** "Seven of the 13 companies published an accuracy figure, and no two measured the same thing" (C-9, new row). New first H2 and pocket guide; the opening now carries it.
+- **Checked and rejected as the lead:** "none of the 13 published a result" (false: 7 did); Anthropic's drift (Dot already published it, in Rick's essay). The drift paragraph at the top is cut; one sentence remains in the re-run section, linked to the essay.
+- **Dot section added** ("The method runs on Dot, and the same problem showed up"), from piece A's run; no number of ours beside the census's.
+- **Fixes:** "most" is gone from the opening; "five that published enough to copy"; AI analyst defined as the internal text-to-SQL and analytics agents staff ask for numbers; one line placing the 13 beside Rick's census of 14 builds.
+- **No second "seven":** the LLM-judge section names its seven companies instead of counting them.
+- **Bank and query:** B is #36, "AI data analyst test questions"; seo_title, meta and queries changed to match. F takes #35 and is the hub.
+- **Outline:** quotable line changed after Decision 2 (recorded there).
+- **FAQ:** one answer updated to match the piece word for word.
+- **Reviews are stale:** the reframe changed most of the piece, so the three blind reviews are re-run on it.
+
+
 Revised 31 October 2026 after the blind reviews. No revise-notes.md existed for this round. Title and title_approved_by untouched. check_piece.py after revision: 19 pass, 0 fail, 6 for a human.
 
 ## Inputs
