@@ -2,17 +2,17 @@
 
 ## Batch 1: conditions
 
-Recorded by hand, not screenshotted. This is a rehearsal and nothing will be published from it, so the five screenshots were waived (runs/README.md#screenshots). Observed in Dot's UI at about 04:50 IST on 31 October 2026, before the first question.
+Three of the five screenshots were taken: credits-before, notes and mode. Environment and credits-after were recorded by hand. This is a rehearsal and nothing will be published from it, so a partial set was allowed (runs/README.md#screenshots). Observed in Dot's UI at about 04:50 IST on 31 October 2026, before the first question; the three screenshots were saved at 05:02–05:04.
 
 - Date: 2026-10-31, about 04:50 IST (conditions); each entry's time is from `date`
 - Workspace: aiinterviewagents.com
 - Tables: uploads.main.olist_orders_dataset; uploads.main.olist_order_items_dataset
 - Data sources on: olist_order_items_dataset, olist_orders_dataset
-- Mode: Balanced. Recorded by hand; no screenshot
-- Environment: Production. Recorded by hand; no screenshot
-- Context notes: on: "Olist dataset currency and monetary formatting", "Olist revenue, order value, basket size, cancellation and shipping metrics". Off: "About aiinterviewagents.com". Recorded by hand; no screenshot
-- Credits before: 73.9 of 300 used. Recorded by hand; no screenshot
-- Credits after: 76.6 of 300 used. Recorded by hand after Q11; no screenshot. Batch 1 used 2.7 credits (76.6 − 73.9), all in Balanced mode
+- Mode: Balanced. Screenshot: runs/screenshots/rehearsal-batch-1-mode.png (the chat composer's mode selector, shown in the smoke-test chat)
+- Environment: Production. Recorded by hand; no environment screenshot. "Production" is also visible in the sidebar of all three screenshots
+- Context notes: on: "Olist dataset currency and monetary formatting", "Olist revenue, order value, basket size, cancellation and shipping metrics". Off: "About aiinterviewagents.com". Screenshot: runs/screenshots/rehearsal-batch-1-notes.png (Model → Notes, which also shows both data sources on)
+- Credits before: 73.9 of 300 used. Screenshot: runs/screenshots/rehearsal-batch-1-credits-before.png (Settings → Billing)
+- Credits after: 76.6 of 300 used. Recorded by hand after Q11; no credits-after screenshot. Batch 1 used 2.7 credits (76.6 − 73.9), all in Balanced mode
 - Model: not observable via MCP
 
 ### Q1: Finance here: what was our total revenue?
