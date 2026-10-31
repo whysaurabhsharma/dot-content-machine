@@ -1,6 +1,6 @@
-# You Can't Compare AI Analyst Accuracy Numbers
+# Their Accuracy Numbers Don't Compare. Your Questions Do.
 
-**We read how 13 companies, including Anthropic, LinkedIn and Uber, test their AI analysts: the internal text-to-SQL and analytics agents their staff ask for numbers. Seven of the 13 companies published an accuracy figure, and no two measured the same thing. By the end, you'll have all 13 in one table, with the five that published enough to copy marked.**
+**We read how 13 companies, including Anthropic, LinkedIn and Uber, test their AI analysts: the internal agents staff use to ask data questions. Seven of the 13 companies published an accuracy figure, and no two measured the same thing. By the end, you'll have all 13 in one table showing what each one measured, with the five that published enough to copy marked.**
 
 **The whole piece in eight lines:**
 
@@ -20,6 +20,8 @@ Seven of the 13 companies published an accuracy figure, and no two measured the 
 WisdomAI reports a public benchmark subset. Salesforce gives a share correct at launch but not how it was counted. Vercel reports 80% to 100% success on 5 queries without defining success. Anthropic reports an aggregate figure, and around 99% in certain domains.
 
 Each figure answers a different question, on a different test set, scored a different way. So none of the figures can be ranked against another, and a vendor's accuracy claim can't be ranked against them either. What carries across is the method. The five companies that published enough to copy say what they test against, how they score and when they run the test.
+
+[Dot publishes an accuracy figure too](https://www.getdot.ai/blog/from-10-to-90-percent-on-adyens-dabstep): 90% on a 30-task slice of Adyen's public DABstep benchmark. DABstep is the one kind of test where figures can be compared, because anyone can run the same tasks. Even there, a figure compares only with others run on the same tasks.
 
 ## Eight of 13 companies test their AI analyst against real questions or ground-truth answers
 
@@ -92,7 +94,7 @@ Each row draws on one company's own publications, read on 31 October 2026. Uber'
 - **Every figure is self-reported.** Each company measures its own system on its own test set, and none says the result was audited. Three of the 13 sell the product they evaluate: Hex, Snowflake and WisdomAI.
 - **The census counts what was published, and isn't exhaustive.** A "Not stated" means the publication doesn't mention the practice. Posts from Pinterest, OpenAI, Netflix, Delivery Hero, Swiggy and Fiverr would not load, so they aren't counted.
 - **Customer testing tools aren't counted.** Databricks, Microsoft and Google publish testing tools for customers; those show how customers should test, not how each company checks its own analyst.
-- **This census of 13 differs from Dot's earlier one.** [Our census of how 14 companies built AI data analysts](https://www.getdot.ai/blog/how-companies-built-ai-data-analysts) counted what they built. This one counts what they published about testing it, so the two lists overlap but differ.
+- **This census of 13 is not Dot's census of 14.** [Our census of how 14 companies built AI data analysts](https://www.getdot.ai/blog/how-companies-built-ai-data-analysts) counted what companies built. This one counts what companies published about testing what they built, so some names appear in both and some in only one.
 
 ## Where Dot fits
 

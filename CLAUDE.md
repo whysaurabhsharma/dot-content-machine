@@ -99,7 +99,7 @@ Each stage has a prompt in `prompts/`. Four decisions stay human: the question, 
 A "no" on any line means the piece isn't done. Who checks each line is in brackets: script, model, or human.
 
 **Headline and opening**
-1. The title uses the words buyers type and says what the reader gets. (human, against search data; check_piece.py marks a claim title PARTIAL until the headline test passes on it)
+1. The title uses the words buyers type and says what the reader gets. A claim title may leave the buyers' words to the SEO title, which is what search shows. (human, against search data; check_piece.py marks a claim title PARTIAL until the headline test passes on it)
 2. The first 60 words say what the reader will have by the end. (human)
 3. The SEO title contains the query; meta under 155 characters; slug of four to six words. (check_piece.py)
 4. A bold lede with a number and a named thing. (check_piece.py)
@@ -214,4 +214,6 @@ A "no" on any line means the piece isn't done. Who checks each line is in bracke
 **31 October 2026 — v1.8.1.** Style rule 14's mode requirement is research-only. Origin: piece B's outline proposed the caption "No Dot run, so no energy mode applies"; Saurabh cut it, because a caption explaining why a rule doesn't apply is a team note in public, which the readers caught in piece 1.
 
 **31 October 2026 — v1.8.2.** A quotable or lift line must stand alone and be checkable: it carries a number, or a claim that a cited figure in the piece supports directly (its figures ID given). Was: it must carry a number. Origin: the rule rejected the most quotable sentence in piece B, "A test passed at launch says little about the same agent a month later." That sentence is checkable: it rests on Anthropic's published drift from about 95% to about 65% in a month (ANT-5, ANT-6), cited two paragraphs earlier. A number is the usual way to be checkable, not the only one. The change came from the line being better than the rule (Saurabh).
+
+**31 October 2026 — v1.8.3.** Check 1: a claim title may leave the buyers' words to the SEO title. Origin: piece B's title "Their Accuracy Numbers Don't Compare. Your Questions Do." is the two-sentence turn Saurabh chose, and its SEO title "How 13 Companies Test Their AI Data Analyst" carries the search words. A title with neither the words nor an SEO title that has them still fails.
 

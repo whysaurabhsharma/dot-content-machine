@@ -294,7 +294,13 @@ def run(path):
     # 1 title
     cue = re.search(r"\b(test|checklist|guide|how to|measured|cost|fix|steps|template|tested|compared)\b", title, re.I)
     hit = query_hit(title)
-    if hit < 0.6:
+    seo_hit = query_hit(meta.get("seo_title", ""))
+    if hit < 0.6 and seo_hit >= 0.6 and not cue:
+        # v1.8.3: a claim title may leave the buyers' words to the SEO title, which is what search shows.
+        add(1, "PARTIAL", "Title uses buyers' words and says what the reader gets",
+            f"claim title, query words {hit:.0%}; the SEO title carries them ({seo_hit:.0%}). "
+            "The headline test must pass on this title, and the lede must carry the promise (check 2)")
+    elif hit < 0.6:
         add(1, "FAIL", "Title uses buyers' words and says what the reader gets",
             f"query words {hit:.0%} (need 60%); promise word: {'yes' if cue else 'none'}")
     elif cue:

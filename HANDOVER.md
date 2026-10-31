@@ -69,12 +69,23 @@ Ahrefs access ended on 31 October 2026, so weeks 1 and 4 can't read Ahrefs until
 | Pieces older than run files | Pieces 1–3 have no `runs/<piece>-run.md`, so the fact-checker can't check their Dot quotes word for word. It is told to say so plainly, not treat them as checked | Re-run their questions with `dot-runner` if a piece is to be republished |
 | Nobody but the author has run it | The core claim about the machine | Section 2, then one full piece |
 
+## Found while writing: Dot's own accuracy claim
+
+Found on 31 October 2026 while writing the teardown `how-companies-test-ai-data-analysts`, whose finding is that published accuracy figures can't be compared unless they were measured on the same tasks. Recorded so Dot can decide what, if anything, to change; nothing on Dot's site was changed.
+
+- **Dot's home page and its impact page** (https://www.getdot.ai/ and https://www.getdot.ai/impact) carry a section headed "Benchmarked on 450+ financial analysis tasks from Adyen". Its chart sets Dot beside "Google Data Science Agent · ~52% weighted overall (Nov 2025)" and a "Human baseline from DABStep: 62% accuracy with 3+ hrs of work on easy tasks." The section doesn't state Dot's own percentage or which tasks Dot ran.
+- **Dot's DABstep post** (https://www.getdot.ai/blog/from-10-to-90-percent-on-adyens-dabstep) gives the figure: "90% accuracy, reproduced on the public Hugging Face leaderboard", on "The assigned slice … 30 representative tasks drawn from the public DABstep benchmark". Its chart reads "14 versions · 30 tasks each" and "90%: assigned slice peak"; the post doesn't mention a held-out set. The headline's 10% isn't explained in the text, whose nearby figures are "about 30%" and "~15% Original SOTA DABstep paper".
+- **Why it matters:** a heading that reads as 450+ tasks, a Dot figure from 30 tasks, a competitor's figure from the full benchmark, and a human figure from easy tasks only are four different test sets on one chart. That is the comparison the teardown says can't be made. A reader who checks will find it.
+- **What would make the claim hold:** state the slice on the home page ("90% on a 30-task slice of DABstep"), or run Dot on the full public set and publish that figure beside Google's.
+- All three pages were read through WebFetch, which returns a model's reading of the page; check the quotes against the live pages before acting on them.
+
 ## Recommendations for Dot, and roadmap items not adopted
 
 From the roadmap update of 31 October 2026, decided by Saurabh.
 
 - **Byline, a recommendation for Dot.** The roadmap cites evidence that content with a named author is cited about 2.3x more than anonymous content. The pieces carry a reviewed-on date (hard rule 22) but no named author: Rick did not run these tests, and who bylines a piece is Dot's decision. Check 19 forbids a byline nobody approved. If Dot names an author, add the field and drop that sentence from rule 22.
 - **Not adopted: the roadmap's skill names** (`/make-piece-plan`, `make-piece-write.js`, `/gate`). The machine already does the same jobs as `/piece`, `.claude/workflows/piece.js` and `scripts/stage_gate.py`; renaming would cost time and risk breaking references without changing what they do.
+- **A future piece: example test questions.** Readers of the teardown expected a bank of test questions they could copy. The census names where published examples are likely (LinkedIn's paper, ClickHouse's open-source test harness); about an hour of reading, with every question checked word for word, would produce them. Kept out of the teardown, which promises a census, not a question bank (Saurabh, 31 October 2026).
 - **FAQ schema kept, not demoted (Saurabh, 31 October 2026).** The roadmap demotes FAQ schema because it shows no measurable lift for pages already visible in AI answers. These pieces aren't visible yet, and an FAQ file costs nothing, so `/seo-geo` still writes one where it is earned. Revisit once a piece shows up in AI answers: then the roadmap's reason applies.
 - **Not adopted: the fact-checker's confirmed-claims list.** `facts/dot-facts.md` already has Confirmed and Observed tables; a second list in the fact-checker's memory would duplicate them. Confirmed product claims go in `facts/dot-facts.md`.
 

@@ -1,7 +1,7 @@
 ---
-title: "You Can't Compare AI Analyst Accuracy Numbers"
+title: "Their Accuracy Numbers Don't Compare. Your Questions Do."
 format: teardown
-seo_title: "AI Data Analyst Test Questions: What 13 Companies Use"
+seo_title: "How 13 Companies Test Their AI Data Analyst"
 meta: "13 companies published how they test their AI analyst. Seven gave an accuracy figure; no two measured the same thing. The five methods worth copying."
 slug: how-companies-test-ai-data-analysts
 query_data: "how to evaluate ai data analyst accuracy: not indexed (not measured). Related: ai data analyst 700 US, 2.0K global, difficulty 22; text to sql accuracy 10 US, difficulty not measured. Ahrefs, 27–28 October 2026"
@@ -38,6 +38,8 @@ Seven of the 13 companies published an accuracy figure, and no two measured the 
 WisdomAI reports a public benchmark subset. Salesforce gives a share correct at launch but not how it was counted. Vercel reports 80% to 100% success on 5 queries without defining success. Anthropic reports an aggregate figure, and around 99% in certain domains.
 
 Each figure answers a different question, on a different test set, scored a different way. So none of the figures can be ranked against another, and a vendor's accuracy claim can't be ranked against them either. What carries across is the method. The five companies that published enough to copy say what they test against, how they score and when they run the test.
+
+[Dot publishes an accuracy figure too](https://www.getdot.ai/blog/from-10-to-90-percent-on-adyens-dabstep): 90% on a 30-task slice of Adyen's public DABstep benchmark. DABstep is the one kind of test where figures can be compared, because anyone can run the same tasks. Even there, a figure compares only with others run on the same tasks.
 
 ## Eight of 13 companies test their AI analyst against real questions or ground-truth answers
 
