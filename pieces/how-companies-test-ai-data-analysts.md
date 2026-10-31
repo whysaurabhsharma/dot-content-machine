@@ -28,7 +28,7 @@ reviewed_on: 2026-10-31
 3. Six companies published enough to copy: what they test against, how they score and when they run it.
 4. Of the 13, 8 build their test set from real questions or ground-truth answers.
 5. A real question can have more than one right answer. About 60% of LinkedIn's benchmark questions do.
-6. Anthropic, Uber, Hex, GitHub, Salesforce and Ramp re-run their tests on a change, before each deploy, or daily.
+6. Tests are re-run on a change, before each deploy, or daily at Anthropic, Uber, Hex, Ramp, GitHub and Salesforce. GitHub and Salesforce don't say how they score.
 7. Only Anthropic's publication sets a bar to clear before launch: about 90%, at first.
 8. Our earlier run on Dot used the method's core: every expected answer computed before asking.
 
@@ -48,7 +48,7 @@ Eight of the 13 build their [AI analyst](https://www.getdot.ai/blog/conversation
 
 [LinkedIn](https://www.linkedin.com/blog/engineering/ai/practical-text-to-sql-for-data-analytics) asked domain experts in 10 product areas for over 130 questions, each with a ground-truth query. [Uber](https://www.uber.com/blog/query-gpt) took real questions from QueryGPT's logs and verified the golden SQL by hand. [ClickHouse](https://clickhouse.com/blog/agentic-analytics-benchmark-data-agent-mnist) built its set from its internal agent's production traffic.
 
-Four of the 13 companies deal in print with questions that have more than one right answer: LinkedIn, Uber, ClickHouse and Snowflake. About 60% of LinkedIn's benchmark questions have more than one accepted answer. Without those extra answers, LinkedIn "underreported recall by 10-15%". Uber notes that a question can have more than one correct SQL query.
+Four of the 13 companies deal in print with questions that have more than one right answer: LinkedIn, Uber, ClickHouse and Snowflake. About 60% of LinkedIn's benchmark questions have more than one accepted answer; without them, LinkedIn "underreported recall by 10-15%". Uber notes that a question can have more than one correct SQL query. Snowflake keeps every correct query a human evaluator picks as a gold answer.
 
 ClickHouse narrowed 501 candidate questions to 243. Its model panel then dropped 39 where no two models agreed, and a legal review removed 3 more, leaving 201. LinkedIn's remedy is a calendar: experts review its benchmark every 3 months and add accepted answers.
 
@@ -64,7 +64,7 @@ Anthropic's post doesn't say what kind of grader it uses, so the count leaves it
 
 Anthropic reports that its offline accuracy drifted from about 95% at launch to about 65% over a month. That was before Anthropic treated it as an engineering problem. [Dot's essay on accuracy decay](https://www.getdot.ai/blog/your-ai-analyst-will-be-worse-next-month) starts from that figure. Anthropic's case shows that a test passed at launch can say little about the same agent a month later.
 
-Anthropic, Uber, Hex, GitHub, Salesforce and Ramp re-run their tests on a change, before each deploy, or daily. Anthropic re-runs the affected evals in CI when a PR touches a dependency. [Uber's Finch](https://www.uber.com/blog/unlocking-financial-insights-with-finch) re-runs historical queries before a prompt or model update deploys. [Ramp](https://engineering.ramp.com/post/meet-ramp-research) runs its tests when its context changes: "update context, run tests, and confirm improvements".
+Six re-run their tests on a change, before each deploy, or daily: Anthropic, Uber, Hex, GitHub, Salesforce and Ramp. Anthropic re-runs the affected evals in CI when a PR touches a dependency. [Uber's Finch](https://www.uber.com/blog/unlocking-financial-insights-with-finch) re-runs historical queries before a prompt or model update deploys. [Ramp](https://engineering.ramp.com/post/meet-ramp-research) runs its tests when its context changes: "update context, run tests, and confirm improvements".
 
 This group isn't the same as the six full methods in the table below. GitHub and Salesforce re-run on a change but don't say how they score. LinkedIn and ClickHouse publish a full method but don't re-run on every change.
 

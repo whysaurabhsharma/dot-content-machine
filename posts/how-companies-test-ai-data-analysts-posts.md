@@ -42,17 +42,15 @@ When it runs: Snowflake, WisdomAI and Grab.
 
 How it scores: GitHub.
 
-Both: Vercel, which counts "success" without defining it, and doesn't say when it runs.
+How it scores and when it runs: Vercel, which counts "success" without defining it.
 
 What it tests against, and how it scores: Salesforce.
 
 All three: Prosus.
 
-Timing is the gap that recurs. A gap in a post isn't a gap in the testing; it's what a reader can't copy.
+Timing is the gap that recurs. At Dot, we built the census so you can see what each company's post does and doesn't say.
 
-At Dot, we built the census so you can see what each company's post does and doesn't say.
-
-The piece links every company's post, row by row.
+A gap in a post isn't a gap in the testing; it's what a reader can't copy, and the piece shows each one, row by row.
 
 **First comment:** What each of the 13 companies published about testing its AI analyst, and what each left out: https://www.getdot.ai/blog/how-companies-test-ai-data-analysts?utm_source=linkedin&utm_medium=social&utm_campaign=content-machine&utm_content=b-post-b
 

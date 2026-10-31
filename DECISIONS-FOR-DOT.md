@@ -1,6 +1,6 @@
 # Decisions for Dot
 
-1 November 2026. Seven questions for Rick, in the order they block publication. Each says what it releases. Write the answer on the line; the evidence behind each is in `HANDOVER.md` section 8.
+1 November 2026. Eight questions for Rick, in the order they block publication. Each says what it releases. Write the answer on the line; the evidence behind each is in `HANDOVER.md` section 8.
 
 ## Blocks piece B
 
@@ -34,6 +34,10 @@ Answer: ____________________
 
 Answer: ____________________
 
-**7. Assumptions A1–A8.** None is used in the three pieces as they stand. Each needs a yes, no or change before a future piece relies on it; the list, with what each would allow, is in `HANDOVER.md` section 8 and `facts/dot-facts.md`.
+**7. Naming partners' gaps in public.** B's census table and its second LinkedIn post say what each company's published testing method leaves out, by name: Snowflake, GitHub, Salesforce, Vercel and Prosus among them. Snowflake is a Dot integration partner. Every statement is about what the company's own post says, linked and read in a browser, not about how it tests. **Is Dot comfortable naming partners this way?** **Yes:** nothing changes. **No:** post 2 drops the names (the table stays, since the piece's method is the census), or Snowflake's row is reworded with Snowflake's sign-off. **Releases:** B's post 2; B itself only if the answer is no for the table too.
+
+Answer: ____________________
+
+**8. Assumptions A1–A8.** None is used in the three pieces as they stand. Each needs a yes, no or change before a future piece relies on it; the list, with what each would allow, is in `HANDOVER.md` section 8 and `facts/dot-facts.md`.
 
 Answer: ____________________

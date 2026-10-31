@@ -126,3 +126,5 @@ No revise-notes.md existed for this round. The fact-checker reported runs/test-a
 
 - Step 8: "5 re-run" became 6 (C-6, Ramp added after B's browser re-read); its tag likewise.
 - Step 3's tag now cites GitHub, whose test harness runs "Qubot N times per case" (read in Chrome). Chosen over Salesforce's "if you ask a question 10 times, you might get 8 correct answers and 2 wrong", which is a hypothetical, not a practice. GitHub's line has no number, so no figures row.
+
+- Read-aloud fixes (1 November): step 3's GitHub evidence moved into the body ("GitHub's test harness runs its analytics agent more than once per test case."), tag back to "Evidence: our run; GitHub's harness." Step 8: "Dot's own guidance" became "Our essay on accuracy decay recommends twenty minutes a week …"; tag "our essay". The source is the published essay (read in Chrome, 1 November: "twenty minutes a week with one named owner"), not only our runbook; it is Dot's essay, not the Playbook.
