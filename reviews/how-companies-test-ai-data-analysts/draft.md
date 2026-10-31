@@ -11,7 +11,7 @@
 5. A real question can have more than one right answer. About 60% of LinkedIn's benchmark questions do.
 6. Anthropic, Uber, Hex, GitHub and Salesforce re-run their tests on a change, before each deploy, or daily.
 7. Of the 13 publications, only Anthropic's states a bar to clear before launch that we found: about 90%, initially.
-8. We ran the method's core on Dot: real questions, answers computed before asking, and a rule for a match.
+8. We ran the method's core on Dot, with answers computed before asking; a person matched two of them.
 
 ## The seven accuracy figures can't be compared
 
