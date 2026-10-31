@@ -38,6 +38,10 @@ Counted by script:
 
 **The two tests, for anyone re-scoring:** (1) is the feature Observed in `facts/dot-facts.md` or `facts/dot-mcp.md`? An Assumption doesn't count. (2) Does the data or proof the score rests on actually exist and is it ours, or published and citable? Fail either, and the score comes down. The `/bank` skill states test (1) and the data half of test (2); the published-proof half applies to every 2.
 
+## Open item: the incumbent shortlist is stale
+
+The shortlist of 17 that got an incumbent reading was picked on 31 October 2026, before 40 evidence scores came down. A fresh shortlist would include some of the 16 unscored questions that could now tie fifth place. It doesn't change the top pick (#43 at 11; nothing unscored can exceed 9), but it will affect the next one. **`/bank rescore` must redo the shortlist, and its incumbent reading, after any evidence change.**
+
 ## Open question for Rick: sales-call priority is literal
 
 `bank.py top` puts every sales-call question ahead of every other question, whatever its score (hard rule 1). Tested on a scratch copy, 31 October 2026: a confirmed sales-call question scoring **4/12** outranked #43 at 11/12. So a single weak sales-call question currently jumps the whole bank.
