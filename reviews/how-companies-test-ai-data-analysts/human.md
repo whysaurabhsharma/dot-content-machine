@@ -8,6 +8,6 @@ Tick each only after doing it, with a note of what happened. stage_gate.py reads
   - Attempt 3: **FAILED.** "Their Accuracy Numbers Don't Compare. Your Questions Do." A contrarian, essay-shaped title on a teardown: it named no concrete thing and promised a way out the guide is meant to give.
   - Attempt 2: **FAILED.** "You Can't Compare AI Analyst Accuracy Numbers." Named a problem with no reason to read on; the SEO title promised example questions the page doesn't have.
   - Attempt 1: **FAILED.** "13 Companies Test Their AI Analyst. 5 Show How." Reported an inventory, not a finding.
-- [ ] lift test in Perplexity and Claude
+- [x] lift test in Perplexity and Claude: **PASSED, 31 October 2026 (Saurabh).** Perplexity lifted "no two measured the same thing", "Five companies published enough to copy: what they test against, how they score and when they run it" and "About 60% of LinkedIn's benchmark questions do". Claude lifted "no two measured the same thing", "About 60% of LinkedIn's benchmark questions have more than one accepted answer", the Hex judge detail (a wrong figure accepted 35% of the time, not targeted) and Anthropic's drift as "its offline accuracy drifted from about 95% to about 65%". Intended lines 1 and 2 lifted by both; line 3 paraphrased, not quoted. The Hex line is added as an unintended lift. Full record: `reviews/how-companies-test-ai-data-analysts/lift-lines.md`.
 - [ ] second fact-check on a different model
 - [ ] read aloud on a phone
