@@ -299,10 +299,11 @@ def main(argv):
         return 1
 
     today = dt.date.today().isoformat()
-    rows, counts = [], {}
+    rows, counts, verdicts = [], {}, []
     for entry, row_id in zip(entries, ids):
         verdict, desc, value = mark(entry, truth, mapping, decided)
         counts[verdict] = counts.get(verdict, 0) + 1
+        verdicts.append(verdict)
         rows.append({"id": row_id, "value": value, "description": desc,
                      "where_computed": f"mark_run.py: {run_path} {entry['id']} vs {truth_path}", "date": today})
         print(f"{entry['id']:>5}  {verdict:<32}  {desc}")
@@ -315,7 +316,16 @@ def main(argv):
         w.writerows(rows)
 
     correct = counts.get("correct", 0) + counts.get("correct under stated definition", 0)
-    print(f"\n{correct} of {len(entries)} correct")
+    # Never print the total alone (1 November 2026): an answer marked against a rival reading, under
+    # its stated definition or by a person's --decide is correct only under that reading. A piece
+    # quoting "N of M correct" without the split hid this twice (piece 2: 12 of 12; A: 8 of 8).
+    other = [r for r, v in zip(rows, verdicts) if v.startswith("correct") and (
+             v == "correct under stated definition" or "rival" in r["description"]
+             or "--decide" in r["description"])]
+    asked = correct - len(other)
+    print(f"\n{correct} of {len(entries)} correct: {asked} under the definition asked, "
+          f"{len(other)} only under another reading (the answer's stated definition, a rival reading, "
+          f"or a person's --decide). Quote both numbers, never the total alone.")
     print("  " + "; ".join(f"{k}: {v}" for k, v in sorted(counts.items())))
     print(f"Appended {len(rows)} rows to {figures_path}")
     return 0

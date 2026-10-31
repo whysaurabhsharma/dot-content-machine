@@ -408,7 +408,7 @@ LEFT JOIN cte_items_by_order i
 
 ## Batch 1: observed findings
 
-Recorded 31 October 2026, after `mark_run.py --batch 1 --decide Q6=T2c --decide Q8=T8c`: 8 of 8 correct. Figures rows MR-Q1 to MR-Q8; ground truth `figures/ai-analyst-follow-up-questions-truth.csv`. The findings below rest only on Dot's answers and their SQL; under the rule 14 waiver, nothing about mode, credits, environment or context notes may be claimed from this run.
+Recorded 31 October 2026, after `mark_run.py --batch 1 --decide Q6=T2c --decide Q8=T8c`: 8 of 8 correct. **Item by item (added 1 November 2026, rule 18):** 5 under the definition asked (purchase date); 3 only under the rival delivery-date reading: Q7 under its stated definition, Q6 and Q8 by a person's `--decide`. Never quote 8 of 8 without that split. Figures rows MR-Q1 to MR-Q8; ground truth `figures/ai-analyst-follow-up-questions-truth.csv`. The findings below rest only on Dot's answers and their SQL; under the rule 14 waiver, nothing about mode, credits, environment or context notes may be claimed from this run.
 
 | Item | Chat | Question as asked | Dot's figure | Marked against |
 |---|---|---|---|---|

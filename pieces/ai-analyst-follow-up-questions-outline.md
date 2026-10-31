@@ -100,7 +100,7 @@ Write five follow-ups on your own data, each leaning on the last. Then ask the f
 None. On 31 October 2026 every figure this outline wanted was added to `figures/ai-analyst-follow-up-questions-figures.csv` by script, from the run file, the truth file and the raw orders CSV:
 
 - F01–F04: design counts (8 questions, 3 chats, a 5-question chain, recall 4 turns later).
-- F05: 8 of 8 correct.
+- F05: 8 of 8 correct. (Note added 1 November 2026: 5 under the definition asked, 3 only under the delivery-date reading; the piece's table gives each row's reading, so the published piece never used the bare total.)
 - F06, F07: purchase-year contrasts for Q7 and Q8 (BRL 5,962,902.01; BRL 987,765.37).
 - F08, F09: Q6's delivery-date reading (40,930 orders; 4.3% late).
 - F10, F11: delivered orders with no delivery date (2 in 2017; 6 in 2018).

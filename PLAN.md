@@ -8,7 +8,7 @@ One buyer worry: **can I trust an AI analyst's answers before I roll it out?** T
 
 | # | Piece | Format | Bank | Evidence | What it gives the reader |
 |---|---|---|---|---|---|
-| A | `ai-analyst-follow-up-questions`, "Your AI Analyst Picked a Date. Only the SQL Said Which." | Research | #43 | Our own run (31 October 2026, 8 answers) | The problem, proved on our data: a right answer to a question you didn't mean, and a six-step test that shows which date was used |
+| A | `ai-analyst-follow-up-questions`, "Your AI Analyst Picked a Date. Only the SQL Said Which." | Research | #43 | Our own run (31 October 2026, 8 answers: all correct, 5 under the definition asked, 3 (Q6, Q7, Q8) only under the delivery-date reading) | The problem, proved on our data: a right answer to a question you didn't mean, and a six-step test that shows which date was used |
 | B | `how-companies-test-ai-data-analysts`, working title "How N Companies Test Their AI Data Analyst" | Teardown | #36 ("AI data analyst test questions"; swapped from #35, 31 October 2026) | Other organisations' published evaluation methods, primary sources only (hard rule 4's cited-publication exception) | What others actually do to test their analyst, in one census, and the patterns it shows |
 | F | `test-ai-analyst-before-rollout`, working title "How to Test an AI Analyst Before Rollout" | Guide | #35 ("how to evaluate AI data analyst accuracy", demand 3), **the hub** | B's census (cited publications) and our runs (A's, and piece 2's archived run) | How to do it: the steps, each backed by a run or a publication, or labelled untested (hard rule 19) |
 
@@ -35,7 +35,7 @@ Through the gate. Decision 4 (publish) is open. Licence: decision L1, not a reso
 ### F, `test-ai-analyst-before-rollout`: guide
 
 - **Section 7 of the research: evidence for each step.** Each step, and the publication from B's census or the run of ours behind it, or "untested".
-- **Our runs it may cite:** A's run, and piece 2's archived run (`runs/ai-analyst-shows-sql-run.md`: 6 questions in two fresh chats each, 12 of 12 correct; the late-delivery question returned 2,878 and 2,453). Piece 2's conditions were recorded by hand with rule 14 waived, so no claim about mode, credits, environment or notes may rest on it.
+- **Our runs it may cite:** A's run, and piece 2's archived run (`runs/ai-analyst-shows-sql-run.md`: 6 questions in two fresh chats each, 12 of 12 correct, but only 9 under the definition asked: 3 (Q2, Q5, Q8) were correct only under the answer's own stated rival definition; the late-delivery question returned 2,878 and 2,453). Piece 2's conditions were recorded by hand with rule 14 waived, so no claim about mode, credits, environment or notes may rest on it.
 - **Shape:** 1,000–1,900 words; five to nine numbered steps, each starting with a verb; pocket guide, caveats, "Where Dot fits", CTA.
 - **Depends on B:** F's steps cite B's census, so B's research comes first.
 - **Bank:** #35, the how-to query (swapped from #36 on 31 October 2026). F is the cluster's hub: it links to A and B as its evidence, and both link back to it once it exists.
