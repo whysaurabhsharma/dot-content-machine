@@ -23,6 +23,12 @@ Four factors, each 1 to 3, maximum 12 (ICP question bank PDF, page 4). The PDF g
 
 Each factor has a `_basis` column (what the score rests on) and a `_by` column (`data`, `model-unconfirmed` or `human`). `total` is filled only when all four factors are scored.
 
+## Open question for Rick: sales-call priority is literal
+
+`bank.py top` puts every sales-call question ahead of every other question, whatever its score (hard rule 1). Tested on a scratch copy, 31 October 2026: a confirmed sales-call question scoring **4/12** outranked #43 at 11/12. So a single weak sales-call question currently jumps the whole bank.
+
+Whether that is right is a question for Rick, not something to fix silently, so it is left literal. The alternative, **not implemented**, is a score floor: sales-call questions go first only if their total reaches a minimum (say 8/12), and below it they rank on score like any other question.
+
 ## The monthly loop
 
 Run with the `/bank` skill (`.claude/skills/bank/SKILL.md`), which calls `scripts/bank.py`:
