@@ -37,8 +37,7 @@ Made by Saurabh Sharma, 27 October 2026, answering the product-claim list. Rick 
 | ID | Assumption | Basis | Keywords | Claim-list line |
 |---|---|---|---|---|
 | A1 | Cost per answer may be published, in dollars as well as credits. | Saurabh's answer | — | 1 |
-| A2 | 1 credit ≈ $1. | O8's "$300 in free credits" together with A3's 300-credit total. No Dot page states a price per credit. | per credit | — |
-| A3 | The 300 free credits are 100 at signup plus the rest earned by connecting data sources and connectors. | Saurabh's answer; consistent with the milestones in O7 | free credits | 3 |
+| A2 | 1 credit ≈ $1. | O8's "$300 in free credits" together with O7's 31 October 2026 reading: 300 base credits included, 0 bonus credits earned. Basis corrected 31 October 2026; it cited A3 until then. No Dot page states a price per credit. | per credit | — |
 | A4 | A "cheaper than an analyst" comparison may be published if the analyst's cost and its source are stated in the text. | Saurabh's answer: assume, and say so | cheaper than an analyst, analyst cost | 2 |
 | A5 | The context agent stores a definition once, and every chat answer uses it. | O3 and O4: eight answers scoped themselves to delivered orders, matching the note | context agent | 4 |
 | A6 | Environments let a team test a definition change before it reaches everyone. | O9 only; the behaviour was not tested | environments let | 5 |
@@ -46,6 +45,12 @@ Made by Saurabh Sharma, 27 October 2026, answering the product-claim list. Rick 
 | A8 | Dot is comfortable publishing a piece where its evaluation passes a 0.52% definition disagreement. | Saurabh's answer: assume | — | 7 |
 
 | A10 | Olist is acceptable as the trial dataset. Licence: CC BY-NC-SA 4.0. | Rick: pick a realistic dataset; Dot wants to see the thought process | — | — |
+
+## Superseded
+
+Assumptions that a later observation contradicted. Kept as they were stated, with the date and the observation that ended them. A piece may not rely on them.
+
+- **A3, superseded 31 October 2026.** Stated 27 October 2026: "The 300 free credits are 100 at signup plus the rest earned by connecting data sources and connectors." Basis then: Saurabh's answer; consistent with the milestones in O7. Keywords then: free credits. Claim-list line 3. **Contradicted** by O7's 31 October 2026 reading: Settings → Billing showed "300 base credits included. Milestones add more." with 0 bonus credits earned, so the 300 is the base allowance, not 100 plus earned credits (screenshot `runs/screenshots/rehearsal-batch-1-credits-before.png`).
 
 ## Confirmed
 
