@@ -1,112 +1,280 @@
-# Handover: run the machine yourself
+# Handover: the Dot content machine
 
-Written 28 October 2026 for Rick and Théo; rewritten 31 October 2026 for Claude Code. Everything here works from the files in this repo; nothing depends on the author's accounts.
+Written 28 October 2026 for Rick and Théo. Rewritten 31 October 2026 for Claude Code. Rewritten again 1 November 2026 around what was delivered. Everything here works from the files in this repo; nothing depends on the author's accounts.
 
-## 1. Set it up in Claude Code (10 minutes)
+## 0. In one page
 
-`CLAUDE.md` is the rulebook. Claude Code reads it automatically whenever it starts in this folder, so there is nothing to copy or paste.
+**What this is.** A repo that turns a buyer's question into an evidence-led blog piece for getdot.ai, with every number checked against a file and every rule enforced by a script. It runs in Claude Code. `CLAUDE.md` is the rulebook (v1.8.10, every change dated in its change log).
+
+**What was delivered.** One cluster of three pieces on one buyer worry: *can I trust an AI analyst's answers before I roll it out?*
+
+| Piece | Format | Where it stands |
+|---|---|---|
+| A · `ai-analyst-follow-up-questions` | Research: our own run in Dot | Through the gate and exported. Waits on Decision 4 (publish). 1 post |
+| B · `how-companies-test-ai-data-analysts` | Teardown: a census of 13 companies | Through the gate and exported. Waits on Decision 4. 2 posts |
+| F · `test-ai-analyst-before-rollout` | Guide: the cluster's hub | Research and figures done. Outline next |
+
+Three of six LinkedIn posts exist. Exports are in `exports/<slug>/` (a .docx and clean Markdown each; the folder is not in git).
+
+**What Rick needs to do** (section 8 has the detail):
+
+1. Sign off two claims in B: the context agent quote, and the DABstep concession.
+2. Answer assumptions A1–A8: yes, no, or change.
+3. Decide the byline and the closing line.
+4. Read the positioning finding and the home page accuracy finding.
+5. Own the Olist licence question (decisions L1, L2, L4).
+
+**Where to start reading:** this file, then `CLAUDE.md`, then `PLAN.md` (the cluster), then any piece in `pieces/` beside its `figures/` file and its `reviews/` folder.
+
+## 1. The three pieces, and why these three
+
+**One worry, three kinds of evidence.** A buyer asks whether an AI analyst's answers can be trusted before rollout. Each piece answers it with a different kind of evidence (`CLAUDE.md`, "What this machine makes"):
+
+- **A, research.** Our own run in Dot on the Olist dataset, 31 October 2026, 8 questions. Finding: the phrase "delivered in 2017" got two correct answers, 2,453 and 1,762, because one chat read it as purchase date and the other as delivery date. Only the SQL said which. Score, item by item: all 8 correct, 5 under the definition asked and 3 (Q6, Q7, Q8) only under the delivery-date reading. Bank #43.
+- **B, teardown.** What 13 companies published about how they test their own AI analyst, one table, every row linked to the company's own post. Finding: 7 published an accuracy figure, and no two measured the same thing. 5 published enough to copy (test set, scoring and timing). Bank #36.
+- **F, guide.** Steps a reader follows to test before rollout. Each step rests on B's census, on our runs (A, and archived piece 2), or is labelled untested (hard rule 19). F links to A and B; both link back. Bank #35.
+
+The bank rows for all three now read `drafted` (`bank/questions.csv`).
+
+**Rejected candidates** (from `PLAN.md`):
+
+| Candidate | Format | Why not |
+|---|---|---|
+| C, "Your Metric Definitions Have Back Doors" | Essay | Overlaps A. Its idea is folded into future topic #44 (section 4) |
+| D, "The Definition Is in the SQL" | Essay | Overlaps A ("only the SQL said which") |
+| E, "What to Write Down Before Your AI Analyst Answers" | Guide | Needs piece 3's two Dot batches, never run |
+| G, "Does Writing It Down Change the Answer?" | Research | The same run as E |
+| H, "Text-to-SQL Benchmarks Don't Measure Your Questions" | Explainer | Overlaps Dot's DABstep post |
+| Piece 2, "Your AI Analyst Counted Late Orders Two Ways" (#41) | Research | A second test-result piece: one format twice. Archived; its run is kept as evidence for F. Its score, item by item: 12 of 12 correct, 9 under the definition asked and 3 (Q2, Q5, Q8) only under the answer's stated rival definition |
+| Piece 3, "how much context" (#47) | Research | Replaced by the three-format plan; never run. Archived |
+
+**B's reframe.** B's first title, "13 Companies Test Their AI Analyst. 5 Show How.", failed the headline test: an inventory, not a finding. Rejected leads: "none of the 13 published a result" (false, 7 did) and Anthropic's drift from about 95% to about 65% (true, but Dot's own essay already leads with it). The kept finding is the comparison problem.
+
+## 2. What each piece cost
+
+**Logged stage minutes**, summed by script from each `runs/<slug>-timing.csv`. These are the minutes a stage's skill or agent was running, not the elapsed day.
+
+| Piece | Logged minutes | Wall clock (first to last log) | Largest stages |
+|---|---|---|---|
+| Bank build (102 questions scored) | 19.9 | 31 Oct, 11:08–11:28 | — |
+| A (research) | 26.9 | 31 Oct, 12:36–16:36 (4.0 h) | revise 8.1, reviews 5.4, run 5.1 |
+| Piece 2 (archived research) | 25.6 | 31 Oct, 17:00–17:59 | run 10.2, reviews 3.7 |
+| B (teardown) | 47.0 | 31 Oct 18:47 – 1 Nov 00:04 (5.3 h) | revise 13.7, research 10.9, reviews 7.7, figures 6.7 |
+| F (guide, so far) | 9.0 | 1 Nov, 00:08–00:22 | figures 6.1 (backfilled), research 2.9 |
+
+**What the logs don't cover, plainly:**
+
+- **A person's time is not logged:** the four decisions, the headline tests, the phone reads, the fact-check triage. That is most of the elapsed time.
+- **B's revision rounds 4 to 8 are not logged.** Only two revise stages are in its timing file; rounds 4–8 are in `reviews/how-companies-test-ai-data-analysts/revisions.md` with no times.
+- **A's posts, phone reads and later fixes after 16:36** are not logged.
+- **F's figures stage was not logged.** It is backfilled from two commit times and marked so in the file. It is an upper bound: the interval also holds reading the roadmap document for this handover.
+
+So these figures are a floor, not the cost.
+
+**Credits** (Dot usage), from readings taken by hand because rule 14's screenshots were waived for both runs. Internal only: under the waiver these may not appear in a published piece.
+
+| Piece | Credits | Basis |
+|---|---|---|
+| A | 3.0 | 87.6 → 90.6 of 300 used (`runs/ai-analyst-follow-up-questions-run.md`) |
+| Piece 2 | 7.1 | 90.6 → 97.7 of 300 used (`runs/ai-analyst-shows-sql-run.md`) |
+| B | 0 | No Dot run |
+| F | 0 so far | No Dot run; it cites A's and piece 2's runs |
+
+In dollars, **assumption A2** (1 credit ≈ $1, not stated on any Dot pricing page) gives about $3.00 for A and $7.10 for piece 2.
+
+## 3. Running the machine
+
+### Set it up in Claude Code (10 minutes)
+
+`CLAUDE.md` is the rulebook. Claude Code reads it automatically whenever it starts in this folder.
 
 1. Clone the repo and open a terminal in it.
-2. Install the scripts' packages into the Python you'll use: `python -m pip install -r requirements.txt`. Check with `python -c "import pandas, matplotlib, docx; print('ok')"`.
+2. Install the scripts' packages: `python -m pip install -r requirements.txt`. Check with `python -c "import pandas, matplotlib, docx; print('ok')"`.
 3. Connect Dot's MCP, once per machine: `claude mcp add --transport http ask_dot https://app.getdot.ai/ai/mcp`
-4. Run `claude` in the folder. Type `/mcp`, choose `ask_dot` and sign in to your Dot workspace. It should report "Connected to ask_dot."
+4. Run `claude` in the folder. Type `/mcp`, choose `ask_dot`, and sign in to your Dot workspace.
 5. Check the rules loaded: ask *"What are the four human decisions?"* It should answer: the question, the outline, the title, the publish.
-6. Check the subagents loaded: type `/agents`. You should see `researcher` and `dot-runner`.
+6. Check the agents loaded: type `/agents`. You should see `researcher`, `dot-runner`, `reader`, `fact-checker` and `lift-tester`.
 
-You can also open the folder in VS Code with the Claude Code extension. The steps are the same.
+### A 15-minute first test
 
-## 2. A 15-minute first test
+1. **Research.** *"Use the researcher agent on this question, piece slug test-1: '…'"* It writes `runs/test-1-research.md`: the gap chain, the verdict, and the test questions.
+2. **Read the verdict:** PIECE, PIECE IF, NOT A PIECE, or NOT A PIECE, BUT A SURFACE.
+3. **Screenshots in Dot's own UI** for batch 1, named as in `runs/README.md#screenshots`. Mode, credits, environment and context notes can't be seen through the MCP.
+4. **Run.** *"Use the dot-runner agent on test-1, batch 1, first question only."* It asks Dot word for word and appends the answer to `runs/test-1-run.md`.
+5. **Check the entry** against `facts/run-format.md`.
 
-Pick a question in a buyer's words, from `bank/questions.csv` or your own. Then:
+### A full piece, on one command
 
-1. **Research.** In Claude Code: *"Use the researcher agent on this question, piece slug test-1: '…'"*. It reads the Ahrefs snapshot and the citation series, fetches the top three pages, and writes `runs/test-1-research.md`.
-2. **Read the verdict:** PIECE, PIECE IF, or NOT A PIECE. Read the test questions it proposes. Each has its exact wording, the definition it depends on, and the figure it must produce.
-3. **Screenshots, in Dot's own UI:** take the five for batch 1, named as in `runs/README.md#screenshots`. Mode, credits, environment and context notes can't be seen through the MCP.
-4. **Run.** *"Use the dot-runner agent on test-1, batch 1, first question only."* It asks Dot the question word for word and appends the answer to `runs/test-1-run.md`.
-5. **Check the entry** against `facts/run-format.md`: answer verbatim, the SQL, the chat link, the classification, and whether it stated population, period and definition.
-
-What a good result looks like: on 28 October, the question "How do we stop different teams getting different numbers for the same metric?" returned "PIECE, if the test covers five metrics", and Dot's answer to the first test question stated the number, the population (delivered orders), merchandise value only, and the order count. The whole run took 13 minutes. That run used the earlier Claude Project set-up, by hand; the subagents haven't yet been timed.
-
-## 3. Running a full piece
-
-Follow the runbook in `README.md`: eleven steps, four decisions. The full step-by-step guide is `guides/Dot-Run-a-Full-Piece.pdf`. It was written for the earlier Claude Project set-up; its steps hold, but where it says to paste into the Project, use the subagent or prompt the runbook names.
+1. **Decision 1.** Pick the question (`/bank top`), confirm its evidence score, then record it: `python scripts/stage_gate.py start <slug> --bank <id> --format research|teardown|guide`.
+2. **Run `/piece <slug>`.** It asks `scripts/stage_gate.py` where the piece stands, runs that one stage, and asks again.
+3. **It stops** when the gate needs a person (section 7 lists the stops), when something is blocked, or after two fix rounds that leave a FAIL.
+4. **Do what it names**, then run `/piece <slug>` again. Where a piece stands is read from the files, so a new session picks up where the last one stopped.
 
 Things to know:
 
-- **READER and the first fact-check run outside this repo**, in a fresh chat with only the draft: READER (`04-reader.md`) and the first fact-check (`05-fact-check.md`). A Claude Code session here loads `CLAUDE.md` automatically, and the reviewer must not know what the writer meant. Use a fresh claude.ai chat, or Claude Code started in an empty folder. The second fact-check runs in a different model (ChatGPT).
-- **The plan binds the run.** If `PLAN.md` has a section naming a piece's slug, the researcher reads it as input 5, and its test questions must meet that section's run needs; `/piece`'s truth stage stops, blocked, if they don't. To steer a future piece, write its section in `PLAN.md`, naming the slug, before Decision 1.
-- **Every number needs a row** in the piece's `figures/` CSV before the checker will pass it. Add rows as you go, not at the end.
-- **Log the run conditions before the first question of every batch.** Take the five screenshots in Dot's UI (`runs/README.md#screenshots`): mode, credits before, environment, context notes, then credits after the batch. `dot-runner` writes the paths into the run file; you record the values in the Run Log. The mode drifted twice during the trial; the screenshot is the fix.
-- **Batches.** `dot-runner` fits about 13–14 questions in one call. Longer runs are split into numbered batches, each with its own five screenshots (`runs/README.md#batches`).
+- **The three formats.** A teardown or guide has no run of its own: the gate skips truth, run and mark, and asks for a figures stage instead.
+- **Blind reviewers.** READER, the first fact-check and the lift test are subagents started only through `scripts/run_reviewer.py`, which gives them the draft and nothing else. The second fact-check runs in a different model (ChatGPT, Gemini) outside this repo.
+- **Every number needs a row** in the piece's `figures/` CSV before `check_piece.py` passes it.
+- **Waiving the screenshots (v1.8.9, 1 November 2026).** A waiver is a recorded state, not a flag. A person states it in the batch's conditions block in a line starting `**Rule 14 waived`, then runs `python scripts/stage_gate.py waive <slug> --rule 14 --batch <n> --by "<name, date>"` once. The gate reads it on every call. The cost: no claim about mode, credits, environment or context notes in that piece.
+- **Scores are split (v1.8.10).** `scripts/mark_run.py` prints how many answers were correct under the definition asked and how many only under another reading. Quote both, never the total alone.
+- **Gate:** `python scripts/check_piece.py pieces/<slug>.md` runs the 25 checks. `python scripts/verify_sources.py pieces/<slug>.md` opens every link.
 
-Gate: `python scripts/check_piece.py pieces/<piece>.md`. Fix every FAIL; do the six human checks; then Decision 4.
+### The monthly loop (one owner, about 20 minutes a week)
 
-## 4. The monthly loop (one owner, about 20 minutes a week)
-
-- **Week 1:** read the Baseline tab's measures and add a dated column: Search Console, Rank Tracker, the AI-responses panel, the three Perplexity prompts (recorded in `measure/citations.md`).
-- **Week 2:** add new questions from sales calls and Search Console to the question bank.
-- **Week 3:** turn any fix made twice into a rule in `CLAUDE.md`, with a dated line in its change log. Claude Code picks it up at the next session.
+- **Week 1:** take the month's readings (section 5).
+- **Week 2:** add new questions from sales calls and Search Console to the bank.
+- **Week 3:** turn any fix made twice into a rule in `CLAUDE.md`, with a dated change-log line.
 - **Week 4:** re-run past evaluations in Dot; pick the next question.
 
-Ahrefs access ended on 31 October 2026, so weeks 1 and 4 can't read Ahrefs until it returns. `data/ahrefs/README.md` says how to reconnect it and where new readings go.
+## 4. Five future topics, from the bank
 
-## 5. What's still open
+One per bank row, from `bank/questions.csv` (scores: demand · gap · incumbent · evidence, each 1–3).
+
+| # | Buyer question | Total | Evidence | What it would need |
+|---|---|---|---|---|
+| #29 | Finance and sales report different revenue. How do I find out why and stop it recurring? | 9 | 2, confirmed by a person | A Dot run tracing two revenue definitions through their SQL |
+| #37 | What accuracy should I expect on real business questions, not academic benchmarks? | 9 | 3, not yet confirmed | A person confirms the score; then an evaluation run on Olist business questions (fact O1) |
+| #42 | What does a good AI analyst do when the question is ambiguous, like "best month"? | 9 | 3, not yet confirmed | A person confirms the score; builds on fact O4 (answers state their basis; 3 of 29 asked back) |
+| #47 | How much documentation is enough? Can I start with ten definitions? | 8 | 3, confirmed by a person | Archived piece 3's two-batch design, ready to run (`archive/runs/ai-analyst-how-much-context-research.md`). Essay C's idea, that metric definitions have back doors, belongs here or with #44 ("What metric definitions do I need to write before an AI analyst answers anyone?", total 8, evidence 1), which needs customer proof we don't hold |
+| #4 | What share of a typical data team's requests are repeat lookups versus real analysis? | 9 | 1 | Real request logs, which we don't have. Listed to show what blocks a high-scoring question |
+
+## 5. Measurement plan
+
+**What to measure, and whether we can now.**
+
+| Measure | Tool | How often | Who | Can we measure it now? |
+|---|---|---|---|---|
+| Google visibility: rank for the target queries | Ahrefs Rank Tracker (18 keywords loaded 28 Oct, no positions recorded) | Weekly | Content owner | **No.** Ahrefs access ended 31 October 2026 |
+| Google visibility: impressions and clicks | Search Console | Monthly | Content owner | Only the snapshot in `data/ahrefs/search-console*.csv` |
+| AI answers mentioning Dot | Ahrefs Site Explorer, AI-responses panel | Monthly, same day | Content owner | **No**, until Ahrefs returns |
+| Perplexity citations | Free Perplexity app, by hand, counted from the answer text (`measure/citations.md`) | Monthly | Content owner | Yes |
+| ChatGPT citations | Free ChatGPT, by hand, same method | Monthly | Content owner | Yes, but **never read so far** |
+| LinkedIn engagement | LinkedIn page analytics | Per post, at 7 days | Whoever posts | Needs Dot's LinkedIn account; never accessed |
+| Qualified traffic | Dot's web analytics, filtered on `utm_campaign=content-machine` | Monthly | Dot | Needs Dot's analytics; never accessed |
+| Conversions | Dot's signups or CRM, by the same UTM | Monthly | Dot | Needs Dot's CRM; never accessed |
+
+Citation markers are counted as markers and never called sources (`CLAUDE.md`, Measurement).
+
+**The dated baseline.**
+
+What we have:
+
+- **Perplexity, 27 October 2026:** three buyer questions, recorded by topic label ("Evaluating accuracy", "What changes", "Cost and fit"). Dot was cited on 1 of 3: 5 markers, all to the AI Data Analyst Playbook, on "Evaluating accuracy".
+- **Two later readings on a different question** (28 and 29 October): Dot 0 both times.
+- **The Ahrefs snapshot, 27–28 October 2026** (`data/ahrefs/`): domain rating 43; 223 organic keywords; an estimated 1.3K organic visits a month; 380 AI responses mentioning Dot in the last month (224 in AI Overviews, 49 in Perplexity).
+
+What's missing:
+
+- **The 18 buyer queries.** They are the 18 rows of `data/ahrefs/keywords.csv` marked `is_buyer_query=yes`; 5 of the 18 have search volume. **None of the 18 has a citation reading.** The three readings above used topic labels, not these phrases, so all 18 are missing. Reading them by hand in Perplexity and ChatGPT, and recording the winning page type for each, is tier 3 work (`bank/surfaces.csv`, not yet built).
+- Any reading after Ahrefs access ended.
+
+## 6. What's still open
 
 | Item | Why it matters | What closes it |
 |---|---|---|
-| Phone read of each piece (check 24) | The last human check | Read each aloud once on a phone |
-| Piece 1's evaluation on Dot's data | The trial used Olist, licensed non-commercial | Re-create the 20 rows in a Dot workspace |
-| Assumptions A1–A8 | Each is labelled in the text | A yes, no or change from Dot |
-| A clean Balanced batch for piece 3 | The Balanced figure is from a mixed batch | Ten questions, all Balanced, credits read before and after |
-| Time per piece | Never logged | Time the next piece, stage by stage |
-| The question bank | `bank/questions.csv` holds all 102 questions; they haven't been re-ranked with sales-call questions | Re-rank it with ten sales-call questions |
-| `scripts/mark_run.py` and `scripts/ground_truth_from_spec.py` | Named by `dot-runner` and `researcher`, but not yet written | Write both against `facts/run-format.md` |
-| Stages 2–7 in Claude Code | Only RESEARCH and the run are subagents | Decide skill or subagent for each |
-| The subagents on a real question | Neither has run yet | Section 2 |
-| No chart stage in the workflow | The draft references a chart, but no stage makes it; `check_piece.py` checks the markdown, not the image file, so a missing chart passes. Found on ai-analyst-follow-up-questions, 31 October 2026, and made by hand with `scripts/charts.py` | Add a chart stage after seo-geo, and have `stage_gate.py` require every referenced image to exist |
+| F, the guide | The cluster's hub; A and B point to it | Outline (Decision 2), draft, reviews, Decision 3 |
+| Posts 2, 4, 5 and 6 of the cluster's six structures | 3 of 6 exist. Post 4 (F's contrarian read) needs a new angle: F's research found no evidence for "you don't need 50–100 questions" | `/linkedin` per post, first lines by a person |
+| A's existing post | Labelled "the checklist", from the older list of five | Relabel to the cluster table in `PLAN.md` |
+| Decision 4 for A and B | Publishing | The pre-publish lists in `PLAN.md`; A goes live before B (B links to A, which returns 404 until then) |
+| Re-check facts O1 and O2 on the current account | Both were observed on the dry-run account on 27 October | Look in Dot's UI and record the date |
+| Browser re-read of B's other eight sources | Five (Anthropic, LinkedIn, Uber, ClickHouse, Hex) were re-read in Chrome on 1 November, quotes checked verbatim (`runs/test-ai-analyst-before-rollout-verification.md`). Snowflake, GitHub, Salesforce, Vercel, Ramp, Prosus, WisdomAI, Grab and Dot's own pages were read only through WebFetch | Re-open each in a browser before B publishes |
+| The Olist licence | The CC BY-NC-SA 4.0 label (A10) was never verified at source. L1, L2 and L4 are decisions to proceed, not resolutions | Dot verifies the licence, or re-runs on its own data |
+| Assumptions A1–A8 | Each needs Dot's yes, no or change | Section 8 |
+| A number meaning two things, three times in one cluster | B's two fives and two sevens (different groups under one count), then "12 of 12 correct" and "8 of 8 correct", where 3 of 12 and 3 of 8 were correct only under the answer's own stated or a person-decided reading. Our own scores need the same item-by-item discipline rule 18 demands of Dot's answers | `mark_run.py` now prints the split (1 November 2026). A check that flags a bare "N of M correct" in a piece is not written |
+| No check that pieces agree with each other | B said two of A's answers didn't name their date; A's own table says three. Caught by a phone read, fixed in B | A script that compares a cited figure with the cited piece's Figures row |
+| No chart stage in the workflow | `check_piece.py` checks the Markdown, not the image file, so a missing chart passes | A chart stage after seo-geo, and the gate checking every referenced image exists |
 | Ahrefs access | Ended 31 October 2026 | Reconnect, per `data/ahrefs/README.md` |
-| The Python on a new machine | The scripts need a Python with `requirements.txt` installed. On the author's machine they run because `C:\Python314` has them in the user site-packages and the skills don't use `-I`, which would hide that folder | Install the requirements into whichever `python` comes first on PATH, and check with `python -c "import pandas, matplotlib, docx"` |
-| Pieces older than run files | Pieces 1–3 have no `runs/<piece>-run.md`, so the fact-checker can't check their Dot quotes word for word. It is told to say so plainly, not treat them as checked | Re-run their questions with `dot-runner` if a piece is to be republished |
-| No check that pieces agree with each other | Pieces in one cluster cite each other's numbers, and nothing compares them. Piece B said two of piece A's answers didn't name their date; A's own table says three (31 October 2026, caught by a phone read, fixed in B). A reader opening both would have found it | A cross-piece check: when a piece cites another piece's run, its figure must equal the cited piece's Figures row, compared by script |
-| A number meaning two things, three times in one cluster | B's two fives and two sevens (different groups under one count), then "12 of 12 correct" and "8 of 8 correct", where 3 of 12 and 3 of 8 were correct only under the answer's own stated or a person-decided reading. Our own scores need the same item-by-item discipline rule 18 demands of Dot's answers | `mark_run.py` now prints the split and says never to quote the total alone (1 November 2026); a check that flags a bare "N of M correct" in a piece is not written |
-| Nobody but the author has run it | The core claim about the machine | Section 2, then one full piece |
+| Python on a new machine | The scripts need `requirements.txt` installed in whichever `python` comes first on PATH | Install, then `python -c "import pandas, matplotlib, docx"` |
+| The question bank | 102 questions, not re-ranked with sales-call questions | Re-rank with ten sales-call questions |
+| The incumbent shortlist | Stale (`bank/README.md`) | Re-check the pages that rank |
+| Tier 3 | Agreed for after the pieces | The 18-query citation reading, `bank/surfaces.csv`, `/distribute`, `check_posts.py`, a post queue |
+| Nobody but the author has run it end to end | The core claim about the machine | Section 3's first test, then one full piece |
 
-## Found while writing: a positioning finding for Rick
+## 7. Where the machine stops, and why
 
-Dot's context agent page (https://www.getdot.ai/context-agent), in its top product panel, says: "Merging re-checks accuracy first: Dot answers its 25 questions again and merges at 95% or more." Set against the census of 13 companies' own testing publications (piece B):
+**What runs on one command.** `/piece <slug>` runs research, the truth spec, the Dot run, marking, the outline, the draft, SEO, three blind reviewers, the revise step, the check loop, LinkedIn and export, in the order `scripts/stage_gate.py` allows.
 
-- Five of the 13 re-run their tests on a change, before each deploy, or daily (Anthropic, Uber, Hex, GitHub, Salesforce).
-- One of the 13 states a numeric bar: Anthropic, which "initially used ~90%" as a launch threshold.
-- None of the 13 states a numeric bar that a change must clear before it merges. Dot's page states exactly that.
+**Where it stops, by design: six points.**
 
-So a re-check against a stated threshold on every change, which Dot puts on its product page, is a practice the census found rarely published and never in this form. It is the strongest positioning line in the cluster.
+- The four human decisions: the question, the outline, the title, the publish.
+- The two Dot-UI steps: recording a batch's conditions before a run (mode, environment, context notes, credits before), and reading the credits after it.
 
-Caveats: the panel is an illustration, and the page doesn't describe the process further or say what happens below 95%. The piece quotes it as Dot's stated behaviour, not as something we observed. Rick's sign-off is on the pre-publish list.
+One further check is held for a person too: before a run, someone reviews the truth spec's rival definitions and adds `reviewed_by`.
 
-## Found while writing: Dot's own accuracy claim
+**Why it stops at the Dot UI.** Mode, credits, environment and the active context notes are not observable via MCP (`facts/dot-mcp.md`, observed 31 October 2026). No MCP tool has a parameter or a field for any of them. That is a product limit, not a design choice. If Dot exposed them, those two stops would go.
 
-Found on 31 October 2026 while writing the teardown `how-companies-test-ai-data-analysts`, whose finding is that published accuracy figures can't be compared unless they were measured on the same tasks. Recorded so Dot can decide what, if anything, to change; nothing on Dot's site was changed.
+**What it cannot do.** It cannot decide what the finding is, or whether a title earns a click. Every real improvement in this build came from a human read: B's reframe, both pieces' titles, the ledes. The machine's contribution was catching the errors a human read misses:
 
-- **Dot's home page and its impact page** (https://www.getdot.ai/ and https://www.getdot.ai/impact) carry a section headed "Benchmarked on 450+ financial analysis tasks from Adyen". Its chart sets Dot beside "Google Data Science Agent · ~52% weighted overall (Nov 2025)" and a "Human baseline from DABStep: 62% accuracy with 3+ hrs of work on easy tasks." The section doesn't state Dot's own percentage or which tasks Dot ran.
-- **Dot's DABstep post** (https://www.getdot.ai/blog/from-10-to-90-percent-on-adyens-dabstep) gives the figure: "90% accuracy, reproduced on the public Hugging Face leaderboard", on "The assigned slice … 30 representative tasks drawn from the public DABstep benchmark". Its chart reads "14 versions · 30 tasks each" and "90%: assigned slice peak"; the post doesn't mention a held-out set. The headline's 10% isn't explained in the text, whose nearby figures are "about 30%" and "~15% Original SOTA DABstep paper".
-- **Why it matters:** a heading that reads as 450+ tasks, a Dot figure from 30 tasks, a competitor's figure from the full benchmark, and a human figure from easy tasks only are four different test sets on one chart. That is the comparison the teardown says can't be made. A reader who checks will find it.
-- **What would make the claim hold:** state the slice on the home page ("90% on a 30-task slice of DABstep"), or run Dot on the full public set and publish that figure beside Google's.
-- All three pages were read through WebFetch, which returns a model's reading of the page; check the quotes against the live pages before acting on them.
+- **The date count.** B said two of A's answers didn't name their date. A's own table says three. The figures discipline made the mismatch findable.
+- **ClickHouse's question count.** A proposed rewording said ClickHouse "started with 243 candidate questions". The source chain checked against the page says 501, then 475, then 243, then 204, then 201.
+- **The score split.** "12 of 12 correct" was true. Checked item by item, 3 of the 12 were correct only under the answer's own rival definition.
+- **The Hex quote.** A model's reading of Hex's post had Hex saying its judge "isn't well calibrated" and leans harsh "on purpose". Neither phrase is on the page.
 
-## Recommendations for Dot, and roadmap items not adopted
+**The pitch, plainly.** Not "type a topic, get a piece". Every number checked, every claim sourced, every rule enforced, and the four decisions that need judgement are the four you keep.
 
-From the roadmap update of 31 October 2026, decided by Saurabh.
+## 8. Findings for Rick
 
-- **Byline, a recommendation for Dot.** The roadmap cites evidence that content with a named author is cited about 2.3x more than anonymous content. The pieces carry a reviewed-on date (hard rule 22) but no named author: Rick did not run these tests, and who bylines a piece is Dot's decision. Check 19 forbids a byline nobody approved. If Dot names an author, add the field and drop that sentence from rule 22.
-- **Not adopted: the roadmap's skill names** (`/make-piece-plan`, `make-piece-write.js`, `/gate`). The machine already does the same jobs as `/piece`, `.claude/workflows/piece.js` and `scripts/stage_gate.py`; renaming would cost time and risk breaking references without changing what they do.
-- **Links repeat at every number, by choice (Saurabh, 31 October 2026).** Check 15 (v1.8.6) needs a published number's source linked in the same sentence or table row, so in piece B a company can be linked four or five times, which reads as repetitive on a phone. We chose checkability over tidiness: a reader checking a number finds the source at the number, which is what makes a census more than a summary. The alternative considered was "linked once in the piece, and in the same paragraph as the number".
-- **Process lesson: a standing instruction froze known defects.** Piece B's opening kept three stumbles through two revision rounds because the writer's brief said never to change the opening's first two sentences. That instruction was in Claude's brief to the writer; it was meant to protect approved wording and ended up protecting the defects. When a piece is revised, a "don't change" instruction should name what it preserves and why, and be dropped once that reason has expired.
-- **The call to action, a question for Dot.** Three independent readers of piece B flagged the closing line ("If this excites you, we'd love to hear from you. Get in touch.") as off-voice. It matches the last line of every Rick post we checked (essays and teardowns), so it is house furniture, and it stays (style rule 9, check 13). Whether to keep it is Dot's call.
-- **Method limit: the second fact-check and pasted tables.** On 31 October 2026 Gemini, given piece B's review copy as pasted text, named 12 companies and said the census table was missing; the review copy had all 13 rows. A Markdown table pasted into a long prompt can lose rows or be read as plain text. Give the second fact-check the rendered page, or paste the table separately, and check its row count before trusting what the model says about it.
-- **A future piece: example test questions.** Readers of the teardown expected a bank of test questions they could copy. The census names where published examples are likely (LinkedIn's paper, ClickHouse's open-source test harness); about an hour of reading, with every question checked word for word, would produce them. Kept out of the teardown, which promises a census, not a question bank (Saurabh, 31 October 2026).
-- **FAQ schema kept, not demoted (Saurabh, 31 October 2026).** The roadmap demotes FAQ schema because it shows no measurable lift for pages already visible in AI answers. These pieces aren't visible yet, and an FAQ file costs nothing, so `/seo-geo` still writes one where it is earned. Revisit once a piece shows up in AI answers: then the roadmap's reason applies.
-- **Not adopted: the fact-checker's confirmed-claims list.** `facts/dot-facts.md` already has Confirmed and Observed tables; a second list in the fact-checker's memory would duplicate them. Confirmed product claims go in `facts/dot-facts.md`.
+### The context agent: a positioning line Dot isn't using
 
-## 6. Accounts and tools you need
+Dot's context agent page (https://www.getdot.ai/context-agent), in its top product panel, says: "Merging re-checks accuracy first: Dot answers its 25 questions again and merges at 95% or more." Set against B's census of 13:
 
-Claude Code · Dot (a workspace with the Olist tables or your own data, connected through the `ask_dot` MCP) · Ahrefs (the Getdot project; Rank Tracker already holds 18 keywords; access ended 31 October 2026) · Perplexity and ChatGPT (free plans are enough) · Google Sheets (the tracking sheet) · Python 3.10+ for the scripts.
+- 5 of the 13 re-run their tests on a change, before each deploy, or daily.
+- 1 of the 13 states a numeric bar: Anthropic, which "initially used ~90%" as a launch threshold.
+- None states a bar that a change must clear before it merges. Dot's page states exactly that.
+
+It is the strongest positioning line in the cluster. Caveats: the panel is an illustration, and the page doesn't say what happens below 95%. B quotes it as Dot's stated behaviour, not as something we tested ("We haven't tested that gate here."). **Needs Rick's sign-off before B publishes.**
+
+### Dot's home page accuracy claim
+
+Dot's home and impact pages carry a section headed "Benchmarked on 450+ financial analysis tasks from Adyen". Its chart sets Dot beside Google's Data Science Agent (about 52%, full benchmark) and a human baseline (62%, easy tasks only). Dot's own figure, in its DABstep post, is 90% on "30 representative tasks". Four test sets sit on one chart. That is exactly the comparison B says can't be made, and a reader who checks will find it.
+
+What would make it hold: state the slice ("90% on a 30-task slice of DABstep"), or run the full public set. B concedes the point in its first section ("Dot publishes an accuracy figure too…"); **that concession needs Rick's sign-off.** These pages were read through WebFetch; check the quotes on the live pages before acting.
+
+### The byline
+
+The roadmap cites evidence that a named author is cited about 2.3x more than anonymous content. The pieces carry a reviewed-on date (hard rule 22) but no author, because who bylines a piece is Dot's decision. If Dot names one, add the field and drop that sentence from rule 22.
+
+### The closing line
+
+Three independent readers of B flagged "If this excites you, we'd love to hear from you. Get in touch." as off-voice. It matches the last line of every Rick post we checked, so it stays (style rule 9). Keep or change: Dot's call.
+
+### Assumptions A1–A8
+
+Each is labelled "Assumption" wherever a piece uses it (`facts/dot-facts.md`). A3 is superseded and may not be used. None of the open ones is used in A or B; they were used in the archived trial pieces and will be needed by future pieces on cost or the context agent.
+
+| ID | Assumption | Basis now | Used in | Rick's answer |
+|---|---|---|---|---|
+| A1 | Cost per answer may be published, in dollars as well as credits | Saurabh's answer | Archived piece 3 | |
+| A2 | 1 credit ≈ $1 | The signup page's "$300 in free credits" and the 300 base credits read on 31 October; no Dot page states a price per credit | Archived piece 3; section 2 here | |
+| A3 | Superseded: the 300 credits are 100 at signup plus the rest earned | Contradicted 31 October: 300 base credits, 0 bonus | Nowhere (barred) | — |
+| A4 | A "cheaper than an analyst" comparison may be published if the analyst's cost and source are stated | Saurabh's answer | Not used | |
+| A5 | The context agent stores a definition once, and every chat answer uses it | Facts O3 and O4: eight answers scoped to delivered orders, matching the note | Archived pieces 1 and 2 | |
+| A6 | Environments let a team test a definition change before it reaches everyone | Fact O9 only; never tested | Archived piece 1 | |
+| A7 | The evaluation always re-scores when a question is saved | Fact O2, seen twice | Not used | |
+| A8 | Dot is comfortable publishing a piece where its evaluation passes a 0.52% definition disagreement | Saurabh's answer | Archived piece 1 | |
+
+### Pending: Anthropic's drift sentence
+
+On 1 November the Anthropic post was re-read in a browser. The drift sentence B relies on continues: "…over a month before we treated this as an engineering problem." B gives the drift (about 95% to about 65% in a month) without that clause. Whether B needs the clause, and whether adding it counts as a correction after Decision 3, is with Saurabh.
+
+### Recommendations from the roadmap, and what wasn't adopted
+
+- **Not adopted: the roadmap's skill names** (`/make-piece-plan`, `/gate`). `/piece`, `.claude/workflows/piece.js` and `scripts/stage_gate.py` already do those jobs.
+- **Not adopted: the fact-checker's confirmed-claims list.** `facts/dot-facts.md` already holds Confirmed and Observed tables.
+- **FAQ schema kept.** The roadmap demotes it because it shows no lift for pages already visible in AI answers. These pieces aren't visible yet, and an FAQ file costs nothing.
+- **Links: one per company, at its first mention and in the table** (v1.8.8). The earlier rule linked every number, which read as a wall of links on a phone.
+- **Method limit: pasted tables.** Gemini, given B as pasted text, said the census table was missing. Give a second model the rendered page, or check its row count.
+- **A future piece: example test questions.** Readers of B expected a bank of questions to copy. LinkedIn's paper and ClickHouse's harness are where to look.
+
+## 9. What I'd do differently
+
+- **Fix the title shape before the first headline test.** A and B each took four headline-test rounds. B's titles were judged against the essay shape (4–9 words, no colon) until v1.8.4 tied title shape to format. That rule should have existed on day one.
+- **Give every "don't change" instruction an expiry.** My brief to the writer said never to change B's first two sentences, to protect approved wording. It protected three known stumbles through two rounds instead. An instruction that protects wording must say what it protects and when it lapses.
+- **Apply the evidence tests at scoring, not as an audit.** The model's first evidence scores were too high: 33 of 51 threes came down, and 11 of the original 20 twos failed the same two tests (`bank/README.md`). The tests were right; they came late.
+- **Check numbers across pieces from the start.** B cited A's run and got the count of undated answers wrong (two, not three). Nothing compared the two pieces. Then our own scores, "12 of 12" and "8 of 8", were each true and each misleading. Our numbers needed the same item-by-item rule we hold Dot's answers to.
+- **Never treat a model's reading of a page as a quote.** WebFetch returns a model's reading, not the page. That is how Hex's "on purpose" got into B. Every quote should have been checked in a browser before drafting, as F's were.
+- **Treat a check that can be dodged as a broken check.** The writer got past check 17 by hyphenating "context agent" to "context-agent". It was caught and reverted (v1.8.7), and the check now looks for the claim, not the phrase. Gaming a check is a reportable event.
+
+## 10. Accounts and tools you need
+
+Claude Code · Dot (a workspace with the Olist tables or your own data, connected through the `ask_dot` MCP) · Ahrefs (the Getdot project; Rank Tracker holds 18 keywords; access ended 31 October 2026) · Perplexity and ChatGPT (free plans are enough) · Chrome with Claude in Chrome, for browser re-reads · Python 3.10+ with `requirements.txt`.
