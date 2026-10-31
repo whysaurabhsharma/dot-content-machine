@@ -1,0 +1,5 @@
+stage,event,time,minutes,note
+research,start,2026-10-31T18:01:53+05:30,,logged
+research,end,2026-10-31T18:03:29+05:30,1.6,logged
+truth,start,2026-10-31T18:03:43+05:30,,logged
+truth,end,2026-10-31T18:05:38+05:30,1.9,logged
