@@ -106,5 +106,5 @@ None. On 31 October 2026 every figure this outline wanted was added to `figures/
 
 Decided the same day, under the rule 14 waiver: **no cost per answer** in this piece (hard rule 10 governs how cost is published, not whether every piece gives it), and the chart caption says **"Mode not recorded for publication (rule 14 waived)"** rather than naming the mode. Both are recorded in the run file.
 
-Approved by:
-Date:
+Approved by:Approved by: Saurabh
+Date: 2026-10-31
