@@ -7,7 +7,8 @@
     "'Late' is fixed before the run, as piece 1: the date part of order_delivered_customer_date later than the date part of order_estimated_delivery_date (calendar-day grain). Timestamp-grain rivals (T5b, T6b) also count orders delivered on the estimated day as late. Delivered orders with no delivered customer date count as not late and stay in the denominators.",
     "T3's primary is price plus freight_value on items of delivered orders purchased in 2017 (what customers paid), as section 7 fixes it. Rivals: price only (T3b), all statuses with and without freight (T3c, T3d), delivery year (T3e). The payments table (payment_value) is a further plausible reading but is not loaded in Dot's workspace (only orders and order items are), so it has no row.",
     "T4's primary is every order row purchased in 2017, all statuses. Rivals: delivered only (T4b); canceled and unavailable excluded (T4c).",
-    "Rows with asked: false are computed but not asked. Date filters use string prefixes on the raw CSV text; every value is computed from the raw CSVs. reviewed_by is left for a person to set."
+    "Rows with asked: false are computed but not asked. Date filters use string prefixes on the raw CSV text; every value is computed from the raw CSVs. reviewed_by is left for a person to set.",
+    "Four combined rivals added 31 October 2026 before review and before the run (hard rule 2), on Saurabh's instruction: T2e (freight, delivery year), T3f (price only, delivery year), T5d and T6e (timestamp grain, delivery year). Each pairs two rivals that were already in the spec separately, so an answer combining them can be marked."
   ],
   "csv": {
     "orders": "data/olist/olist_orders_dataset.csv",
@@ -143,6 +144,31 @@
       "asked": false
     },
     {
+      "id": "T2e",
+      "question": "Alternative reading of T2: items plus freight on delivered orders with delivery date in 2017",
+      "metric": "Sum of price plus freight_value on items of delivered orders with delivered customer date in 2017 (rival definition and scope)",
+      "family": "item_price_2017",
+      "table": "items_x_orders",
+      "filter": "order_status == 'delivered' and order_delivered_customer_date.fillna('').str.startswith('2017')",
+      "formula": "(df.price + df.freight_value).sum()",
+      "signals": [
+        "delivery date",
+        "delivered date",
+        "date of delivery",
+        "delivered to the customer in",
+        "including shipping",
+        "includes shipping",
+        "including freight",
+        "includes freight",
+        "plus freight",
+        "plus shipping",
+        "with shipping"
+      ],
+      "unit": "BRL",
+      "grain": "item rows of delivered orders, delivery year 2017",
+      "asked": false
+    },
+    {
       "id": "T3",
       "question": "How much did customers spend in 2017?",
       "metric": "Customer spend: sum of price plus freight_value on items of delivered orders purchased in 2017",
@@ -265,6 +291,30 @@
         "plus freight",
         "plus shipping",
         "with shipping"
+      ],
+      "unit": "BRL",
+      "grain": "item rows of delivered orders, delivery year 2017",
+      "asked": false
+    },
+    {
+      "id": "T3f",
+      "question": "Alternative reading of T3: items only on delivered orders with delivery date in 2017",
+      "metric": "Sum of price on items of delivered orders with delivered customer date in 2017 (rival definition and scope)",
+      "family": "spend_2017",
+      "table": "items_x_orders",
+      "filter": "order_status == 'delivered' and order_delivered_customer_date.fillna('').str.startswith('2017')",
+      "formula": "df.price.sum()",
+      "signals": [
+        "delivery date",
+        "delivered date",
+        "date of delivery",
+        "delivered to the customer in",
+        "excluding shipping",
+        "excludes shipping",
+        "excluding freight",
+        "excludes freight",
+        "without shipping",
+        "without freight"
       ],
       "unit": "BRL",
       "grain": "item rows of delivered orders, delivery year 2017",
@@ -399,6 +449,27 @@
       "asked": false
     },
     {
+      "id": "T5d",
+      "question": "Alternative reading of T5: late at timestamp grain among delivered orders with delivery date in 2017",
+      "metric": "Late delivered orders with delivered customer date in 2017, timestamp grain (rival definition and scope)",
+      "family": "late_2017",
+      "table": "orders",
+      "filter": "order_status == 'delivered' and order_delivered_customer_date.fillna('').str.startswith('2017') and order_delivered_customer_date.fillna('') > order_estimated_delivery_date",
+      "formula": "len(df)",
+      "signals": [
+        "delivery date",
+        "delivered date",
+        "date of delivery",
+        "delivered to the customer in",
+        "timestamp",
+        "on the estimated day",
+        "same day"
+      ],
+      "unit": "orders",
+      "grain": "order rows, delivered, delivery year 2017, delivered timestamp after estimated timestamp",
+      "asked": false
+    },
+    {
       "id": "T6",
       "question": "What percentage of delivered orders were late in 2018?",
       "metric": "Late share of delivered orders purchased in 2018, calendar-day grain",
@@ -479,6 +550,27 @@
       ],
       "unit": "%",
       "grain": "all order rows, purchase year 2018",
+      "asked": false
+    },
+    {
+      "id": "T6e",
+      "question": "Alternative reading of T6: share at timestamp grain among delivered orders with delivery date in 2018",
+      "metric": "Late share of delivered orders with delivered customer date in 2018, timestamp grain (rival definition and scope)",
+      "family": "late_share_2018",
+      "table": "orders",
+      "filter": "order_status == 'delivered' and order_delivered_customer_date.fillna('').str.startswith('2018')",
+      "formula": "100 * (df.order_delivered_customer_date.fillna('') > df.order_estimated_delivery_date).sum() / len(df)",
+      "signals": [
+        "delivery date",
+        "delivered date",
+        "date of delivery",
+        "delivered to the customer in",
+        "timestamp",
+        "on the estimated day",
+        "same day"
+      ],
+      "unit": "%",
+      "grain": "delivered orders, delivery year 2018",
       "asked": false
     },
     {
