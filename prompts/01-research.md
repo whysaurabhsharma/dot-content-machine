@@ -24,7 +24,7 @@ You are researching one buyer question for Dot's blog. Follow CLAUDE.md. Use onl
    - the gap: advice only, or no answer;
    - what only Dot can show, using its own feature or data.
 2. **The words buyers type.** Up to five phrases from the inputs, for the headline. Use only phrases that appear in the inputs.
-3. **The run.** What to run in Dot, on which data, in which mode, and which numbers it must produce. Name the Playbook stage it runs. A question to be asked in more than one fresh chat is listed once per chat, worded identically, each after the first marked "Repeat of T<k>".
+3. **The run, or for a teardown the sources, or for a guide the evidence for each step** (CLAUDE.md, "What this machine makes"). For a teardown: each organisation's primary publication, read in full, with every number copied exactly; never a summary. For a guide: each step and the run or publication behind it, or "untested". For research: what to run in Dot, on which data, in which mode, and which numbers it must produce. Name the Playbook stage it runs. A question to be asked in more than one fresh chat is listed once per chat, worded identically, each after the first marked "Repeat of T<k>".
 4. **Sources rows** for the tracking sheet: source, URL or tool, what it showed, date.
 5. **Stop conditions.** If evidence already exists, or only Dot's data could show it and Dot doesn't have that data, say "not a piece" and why.
 

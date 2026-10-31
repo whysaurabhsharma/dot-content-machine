@@ -53,7 +53,12 @@ Then:
    - **PIECE**: the gap is real and a run in Dot can fill it.
    - **PIECE IF**: a piece only if a named condition holds. State the condition in one line.
    - **NOT A PIECE**: a stop condition applies. Say which.
-7. **Test questions.** The questions the dot-runner will ask Dot in this piece's run, taken from the buyer question and its sub-questions. They are not questions for the reader. Write as many as the piece's evidence needs, not a fixed count. For each:
+7. **Section 7 depends on the piece's format** (`"format"` in `runs/<piece>-piece.json`; research if absent; CLAUDE.md, "What this machine makes").
+   - **Teardown: write `## 7. Sources`.** One entry per organisation that published how it did the thing the question asks about. For each: the organisation; the primary publication's URL, opened and read in full with WebFetch (never Dot's teardown of it, never a summary, never a secondary article); who published it and when; what it says it did, in its own words; every number it gives, copied exactly with its unit and what it counts. If a primary source fails to load, say so and leave that organisation out. State the count of organisations that meet the bar the caller sets, and list the ones that fell short, with one line each on why. Hard rule 4's cited-publication exception governs every finding here.
+   - **Guide: write `## 7. Evidence for each step`.** Each step the guide would give; the run of ours (`runs/<piece>-run.md` and its figures file) or the cited publication that supports it; or "untested" (hard rule 19).
+   - **Research: write `## 7. Test questions`,** as below.
+
+   **Test questions (research).** The questions the dot-runner will ask Dot in this piece's run, taken from the buyer question and its sub-questions. They are not questions for the reader. Write as many as the piece's evidence needs, not a fixed count. For each:
    - the question, worded exactly as it will be asked;
    - the definition it depends on: table, filter, formula;
    - the figure it must produce, so ground truth can mark it: the metric, unit and grain, never a value. No finding is written before its run.

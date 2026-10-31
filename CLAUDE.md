@@ -4,22 +4,31 @@ This file is the single source of every rule. Product statements live in `facts/
 
 ## What this machine makes
 
-Evidence-led pieces for getdot.ai, 900–1,300 words. Each piece is one stage of the AI Data Analyst Playbook, actually run. LinkedIn posts are cut from the pieces, never written separately.
+Evidence-led pieces for getdot.ai, in one of three formats, named in the piece's front matter as `format:` (research if absent):
+
+- **Research:** our own run is the subject. One stage of the AI Data Analyst Playbook, actually run.
+- **Teardown:** what other organisations published about how they did something, gathered into a census and the patterns it shows. No run of ours.
+- **Guide:** steps a reader follows. Every step rests on a run of ours or on a cited publication (hard rule 4), or is labelled untested.
+
+An essay format (one named idea, carried by argument) is not defined yet: our shape rules would fail Rick's essays, which run 440–560 words with no pocket guide, table or "Where Dot fits". Define it when one is written.
+
+LinkedIn posts are cut from the pieces, never written separately.
 
 ## Hard rules
 
 A piece that breaks any one of these does not ship.
 
 1. **Questions come from sales calls first.** Search volume breaks ties; it never picks the topic.
-2. **No finding is written before its run.** Titles come after the run, from the Figures tab only.
-3. **Every number has a Figures row**: value, where it was computed, date.
+2. **No finding is written before its evidence.** A research title comes after the run, from the Figures tab only. A teardown or guide title names what the reader gets; any number in it has a Figures row.
+3. **Every number has a Figures row**: value, where it was computed, date. For a number from a cited publication (rule 4), where it was computed reads `published: <URL>, read <date>`.
 4. **Nothing from the rehearsal (23–24 October), or from another account or dataset, appears in a piece unless it recurred in that piece's own run.** A piece's own run stays valid until its data, definitions or product version change; re-run then. This bars findings, not tools: prompts, scripts and rules may be ported.
+   **One exception, cited publications.** A finding that another organisation published, or that Dot published in a post on getdot.ai, may appear as that publisher's finding, never as ours, only if all four hold: (a) the sentence names who published it; (b) it links the primary publication, opened and read for this piece, not a summary of it (Dot's own teardowns included); (c) every number in it is copied exactly and has a Figures row as rule 3 says; (d) it is not combined in arithmetic with, or offered as confirmation of, a figure from our own runs. The rehearsal, other accounts and unpublished runs stay barred: the exception covers what a reader can open and check, not what we ran and didn't publish.
 5. **Every product claim has evidence in the piece, a yes from Dot, or an "Assumption" label in the text.** Unlabelled and unconfirmed means cut.
 6. **"We" means Dot.** The subject is a team rolling out an AI analyst; Dot is the instrument, not the defendant. Every limitation is paired with what the product does about it, or cut.
 7. **No bracket citations.** Sources are links on the words that need them.
 8. **Human-supplied claims go through the same fact-check as model output.**
-9. **Record the dataset and its licence in Sources** before the first run. For the trial, Dot asked for any realistic dataset, since the point is the method.
-10. **Cost per answer is published as a credits range, with dollars alongside, labelled as an assumption.** The conversion is facts/dot-facts.md A2 (1 credit ≈ $1), and the docs caveat that the same question can take different paths stays in.
+9. **Record the dataset and its licence in Sources** before the first run. For the trial, Dot asked for any realistic dataset, since the point is the method. A piece with no run of its own records the licence of any run it cites.
+10. **When a piece gives a cost per answer, it is published as a credits range, with dollars alongside, labelled as an assumption.** Research only; a teardown or guide that cites another organisation's cost uses rule 4. The conversion is facts/dot-facts.md A2 (1 credit ≈ $1), and the docs caveat that the same question can take different paths stays in.
 
 ### Evidence rules
 
@@ -31,14 +40,15 @@ A piece that breaks any one of these does not ship.
 16. **Count from the source text, never by eye, and recount before a number is used a second time.**
 17. **Every run carries its conditions**: the account, the environment, the mode, and which context notes were active.
 18. **Judge recurrence item by item, not only in total.** Matching totals with changed items is a different finding, and usually a stronger one.
+19. **No remedy the evidence didn't test.** Advice that says doing X fixes Y needs a run of ours, or a cited publication, that shows it. Otherwise cut it, or, in a guide, label the step untested. A limitation is still paired with what the product does (rule 6), from evidence.
 
 ## Style rules
 
-1. 900–1,300 words. Cut a section, not sentences.
+1. Research 900–1,300 words; teardown 1,000–1,600; guide 1,000–1,900. Cut a section, not sentences.
 2. Bold lede with a number and a named thing.
 3. Pocket guide after the lede: five to eight lines that are the whole piece.
 4. H2s are claims. Never questions.
-5. Method in plain words, then one table, then one chart.
+5. By format. Research: method in plain words, then one table, then one chart. Teardown: one census table with a row per publication (five or more), each linking its primary source; no chart required. Guide: one numbered list of five to nine steps, each starting with a verb; no table required. Any chart has alt text and a dated caption.
 6. One "Things to keep in mind" box, two to four caveats, said once.
 7. Named companies and quotes with links. Use the canon: the Playbook, the drift essay, the semantic-layer essays, DABstep.
 8. "Where Dot fits" is the last H2, under 80 words, with a docs link.
@@ -92,19 +102,19 @@ A "no" on any line means the piece isn't done. Who checks each line is in bracke
 5. A pocket guide of five to eight lines. (check_piece.py)
 
 **Structure and style**
-6. 900–1,300 words. (check_piece.py)
+6. The format's word range (style rule 1). (check_piece.py)
 7. Sentences average under 18 words; none over 25. (check_piece.py)
 8. No paragraph over four sentences. (check_piece.py)
 9. Every H2 is a claim, not a question. (check_piece.py)
-10. One table; one chart with alt text and a dated caption. (check_piece.py)
+10. The format's body (style rule 5). (check_piece.py)
 11. One "Things to keep in mind" box with two to four caveats. (check_piece.py)
 12. "Where Dot fits" is last, under 80 words, with a docs link. (check_piece.py)
 13. Ends on an instruction, then the italic CTA. (check_piece.py)
 14. "We" means Dot. (human)
 
 **Evidence**
-15. Every number has a Figures row; check_piece.py and verify_sources.py are clean. (scripts)
-16. Every finding comes from this dataset's run. (human, against the Run Log)
+15. Every number has a Figures row; a published number's source is linked in the piece; check_piece.py and verify_sources.py are clean. (scripts)
+16. Every finding comes from this piece's run, a cited run of ours, or a cited publication meeting rule 4's four conditions; no untested remedy (rule 19). (human, against the Run Log and the sources)
 17. Every product claim is evidenced, confirmed, or labelled "Assumption". (check_piece.py flags unlabelled claims; human confirms)
 18. The dataset and its licence are recorded in Sources. (human)
 19. No brackets, placeholders, or byline nobody approved. (check_piece.py)
@@ -184,3 +194,5 @@ A "no" on any line means the piece isn't done. Who checks each line is in bracke
 **31 October 2026 — v1.6.7.** Style rule 11 and check 24 relaxed, on Saurabh's instruction: an edit after the phone read needs only the changed paragraphs re-read aloud, not the whole piece. The first read is still the whole piece. Origin: `ai-analyst-follow-up-questions` went through several fix rounds in one day, and each edit would otherwise have reset the whole read.
 
 **31 October 2026 — v1.6.8.** Style rule 15 and check 1 allow a claim title. Origin: Saurabh read Dot's blog. Rick's titles are 4–9 words, flat claims, often "Your X", with no colons, no quoted jargon and no how-to promise. Check 1 demanded a promise word that no Rick title has. The search-word test stays a FAIL. A claim title is PARTIAL, and the headline test and the lede's promise (check 2) carry what the promise word did.
+
+**31 October 2026 — v1.7.** Formats: research, teardown, guide. Origin: Saurabh chose A (research, done), B (teardown, "How N Companies Test Their AI Data Analyst", #35/#36) and F (guide, "How to Test an AI Analyst Before Rollout", #35) for three formats and three kinds of evidence. Rule 4 gains a narrow cited-publication exception; rules 2, 3, 9 and 10 and style rules 1 and 5 depend on the format; hard rule 19 writes down a practice applied all session. Our shape was built from the Playbook plus Cafe Bench. Length and table rules now follow each format; the pocket guide, the caveats box, "Where Dot fits" and the CTA stay. Rick's essays use none of these, so no essay format is defined until one is written.

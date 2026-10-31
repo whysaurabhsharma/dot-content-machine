@@ -155,16 +155,26 @@ def superseded_keywords():
 
 
 # ---------- evidence checks shared by pieces and posts (15, 17, 19) ----------
-def check_figures(text, fig_file):
+def check_figures(text, fig_file, body=""):
     name = "Every number has a Figures row"
     if not fig_file or not fig_file.exists():
         return "FAIL", name, "no figures file found"
     with open(fig_file, encoding="utf-8") as f:
-        vals = {norm_number(r["value"]) for r in csv.DictReader(f)}
+        rows = list(csv.DictReader(f))
+    vals = {norm_number(r["value"]) for r in rows}
+    # A number from a cited publication (hard rule 4) must link its source in the piece.
+    published = {}
+    for r in rows:
+        m = re.match(r"published:\s*(\S+?),?\s", (r.get("where_computed") or "") + " ")
+        if m:
+            published.setdefault(norm_number(r["value"]), set()).add(m.group(1))
     found = numbers_in(text)
     missing = sorted({raw for raw, v in found if v not in vals})
-    return ("PASS" if not missing else "FAIL", name,
-            f"{len(found)} numbers checked; not in Figures: {missing if missing else 'none'}. verify_sources.py: run separately")
+    unlinked = sorted({raw for raw, v in found if v in published and not any(u in body for u in published[v])})
+    detail = f"{len(found)} numbers checked; not in Figures: {missing if missing else 'none'}"
+    if published:
+        detail += f"; published but source not linked: {unlinked if unlinked else 'none'}"
+    return ("PASS" if not missing and not unlinked else "FAIL", name, detail + ". verify_sources.py: run separately")
 
 
 def check_assumptions(prose):
@@ -198,6 +208,7 @@ def check_banned(body, prose):
 def run(path):
     text = Path(path).read_text(encoding="utf-8")
     meta, body = parse_front_matter(text)
+    fmt = (meta.get("format") or "research").strip().lower()
     blocks = blocks_of(body)
     prose_kinds = ("para", "olist", "ulist", "italic")
     h2s = [b[3:].strip() for k, b in blocks if k == "h2"]
@@ -278,7 +289,9 @@ def run(path):
 
     # 6-8 length
     n_words = len(words(prose))
-    add(6, "PASS" if 900 <= n_words <= 1300 else "FAIL", "900-1,300 words", f"{n_words} words")
+    lo, hi = {"research": (900, 1300), "teardown": (1000, 1600), "guide": (1000, 1900)}.get(fmt, (0, 0))
+    label6 = "900-1,300 words" if fmt == "research" else (f"{lo:,}-{hi:,} words ({fmt})" if hi else f"unknown format '{fmt}'")
+    add(6, "PASS" if lo <= n_words <= hi else "FAIL", label6, f"{n_words} words")
     avg = sum(lens) / len(lens) if lens else 0
     long = [s[:60] for s, n in zip(sents, lens) if n > 25]
     add(7, "PASS" if avg < 18 and not long else "FAIL", "Sentences average under 18 words; none over 25",
@@ -296,8 +309,22 @@ def run(path):
     alt_ok = bool(img) and bool(re.match(r"!\[\s*[^\]\s][^\]]*\]", img[0][1]))
     cap_ok = bool(img) and img[0][0] + 1 < len(blocks) and blocks[img[0][0] + 1][0] == "italic" \
         and bool(DATE.search(blocks[img[0][0] + 1][1]))
-    add(10, "PASS" if has_table and alt_ok and cap_ok else "FAIL", "One table; one chart with alt text and a dated caption",
-        f"table {has_table}; chart {bool(img)}; alt text {alt_ok}; dated caption {cap_ok}")
+    if fmt == "research":
+        add(10, "PASS" if has_table and alt_ok and cap_ok else "FAIL", "One table; one chart with alt text and a dated caption",
+            f"table {has_table}; chart {bool(img)}; alt text {alt_ok}; dated caption {cap_ok}")
+    else:
+        chart_ok = not img or (alt_ok and cap_ok)  # any chart present must be complete
+        tables = [b for k, b in blocks if k == "table"]
+        census = max((len(tb.splitlines()) - 2 for tb in tables), default=0)
+        linked = max((sum(1 for l in tb.splitlines()[2:] if re.search(r"\]\(https?://", l)) for tb in tables), default=0)
+        steps = next((b for k, b in blocks[first_h2:] if k == "olist"), "")
+        n_steps = len(steps.splitlines()) if steps else 0
+        verbs = bool(steps) and all(not re.match(r"^\d+\.\s+(The|A|An|This|It|We|Our|Your)\b", l) for l in steps.splitlines())
+        ok10 = {"teardown": census >= 5 and linked == census and chart_ok,
+                "guide": 5 <= n_steps <= 9 and verbs and chart_ok}.get(fmt, False)
+        add(10, "PASS" if ok10 else "FAIL", f"Body for format {fmt} (style rule 5)",
+            f"tables {len(tables)}; census rows {census}, linked {linked}; chart {bool(img)}, complete {chart_ok}; "
+            f"steps {n_steps}, verb-first {verbs}")
 
     # 11 caveats
     try:
@@ -348,7 +375,7 @@ def run(path):
             for line in b.splitlines()[2:]:
                 cells = [c.strip() for c in line.strip("|").split("|")]
                 table_text.append(" ".join(cells[1:]))
-    status, name, detail = check_figures(prose + "\n" + "\n".join(table_text), (ROOT / fig_path) if fig_path else None)
+    status, name, detail = check_figures(prose + "\n" + "\n".join(table_text), (ROOT / fig_path) if fig_path else None, body)
     run_file = (ROOT / "runs" / (Path(fig_path).name.removesuffix("-figures.csv") + "-run.md")) if fig_path else None
     run_text = run_file.read_text(encoding="utf-8") if run_file and run_file.exists() else ""
 
@@ -365,7 +392,8 @@ def run(path):
         status, detail = "FAIL", detail + f"; code not verbatim in {run_file.name if run_file else 'run file'}: {not_in_run}"
     add(15, status, name, detail)
 
-    add(16, "HUMAN", "Every finding comes from this dataset's run", "check against the Run Log")
+    add(16, "HUMAN", "Findings from this run, a cited run of ours, or a cited publication (rule 4); no untested remedy (rule 19)",
+        "check against the Run Log and the sources")
     add(17, *check_assumptions(prose))
     add(18, "HUMAN", "Dataset and licence recorded in Sources", "Sources tab")
     add(19, *check_banned(FENCE.sub("", body), prose))

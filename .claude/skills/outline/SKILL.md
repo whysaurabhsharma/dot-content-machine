@@ -42,7 +42,7 @@ You are outlining one piece for Dot's blog. Follow CLAUDE.md and facts/house-str
 3. **The surprising detail**, one short paragraph, with a number.
 4. **Pocket guide**: five to eight numbered lines.
 5. **Three H2s, each a claim.** Under each, the figures IDs that prove it. Pair each limitation with what the product does about it.
-6. **The table and the chart**: what each shows, and the chart's alt text and caption (date and mode, from the run's conditions block).
+6. **The body the format needs** (CLAUDE.md style rules 1 and 5; `format` in the piece's manifest, research if absent). For research, **the table and the chart**: what each shows, and the chart's alt text and caption (date and mode, from the run's conditions block).
 7. **Things to keep in mind**: two to four caveats.
 8. **Where Dot fits**: under 80 words. Use only Observed or Confirmed facts, and Assumptions labelled "Assumption", from facts/dot-facts.md, by ID. Never a Superseded one.
 9. **The instruction** the reader can act on today.

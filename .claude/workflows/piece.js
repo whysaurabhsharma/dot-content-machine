@@ -59,6 +59,14 @@ const STAGES = {
     await agent(`Run exactly: python scripts/timing.py ${slug} research end`, { label: 'timing', phase: 'Stage', effort: 'low' })
     return r
   },
+  figures: () => agent(
+    `Write the Figures file for piece ${slug}, a teardown or guide with no run of its own.\n` +
+    `1. Read runs/${slug}-piece.json (its "format"), section 7 of runs/${slug}-research.md, and hard rules 3 and 4 in CLAUDE.md.\n` +
+    `2. Write figures/${slug}-figures.csv with the header id,value,description,where_computed,date: one row per number the piece may use. ` +
+    'A number from a publication: where_computed is "published: <primary URL>, read <date>", the value copied exactly from section 7. ' +
+    'A number from one of our runs: copy its row from that run\'s figures file and name the file and row id in where_computed. ' +
+    `Use only numbers section 7 records; never one from memory or a summary.\n${REPORT}`,
+    { label: 'figures', phase: 'Stage', schema: RESULT }),
   truth: () => agent(
     `Write the truth spec for piece ${slug}, then compute it.\n` +
     `1. Run: python scripts/timing.py ${slug} truth start\n` +

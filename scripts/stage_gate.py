@@ -5,7 +5,7 @@ Usage:
     python scripts/stage_gate.py <slug>            # report, for a person
     python scripts/stage_gate.py <slug> --json     # the same, for the workflow
     python scripts/stage_gate.py <slug> --no-screenshots   # waive rule 14's screenshots, see below
-    python scripts/stage_gate.py start <slug> --bank <id> [--practice]
+    python scripts/stage_gate.py start <slug> --bank <id> [--format research|teardown|guide] [--practice]
 
 It remembers nothing: every answer comes from files in the repo, so it gives the same
 answer in a new session as in the one that wrote them. Stages are checked in order;
@@ -13,7 +13,9 @@ the first not done is the next one. A stage that needs a person is reported as
 "waiting", with what the person must do; one whose inputs are wrong is "blocked".
 
 `start` writes runs/<slug>-piece.json, the piece's manifest: its bank question
-(Decision 1) and whether it is practice. It refuses unless that question is unwritten
+(Decision 1), its format (research if not given; CLAUDE.md, "What this machine makes")
+and whether it is practice. A teardown or guide has no run of its own: truth, run and
+mark are reported done as "not used by format", and a "figures" stage takes their place. It refuses unless that question is unwritten
 and its evidence score is confirmed by a person, and refuses the rehearsal slug
 without --practice (hard rule 4).
 
@@ -99,14 +101,31 @@ def assess(slug, no_shots=False):
     add("question", "done", f"bank #{manifest['bank_id']}: {row['question'] if row else 'NOT IN BANK'}"
         + (" (practice)" if manifest.get("practice") else ""))
 
+    fmt = manifest.get("format", "research")
+    section7 = {"research": "## 7. Test questions", "teardown": "## 7. Sources",
+                "guide": "## 7. Evidence for each step"}.get(fmt)
+    if section7 is None:
+        add("research", "blocked", f"unknown format '{fmt}' in runs/{slug}-piece.json")
+        return stages
     research = read(f"runs/{slug}-research.md")
-    if not research or "## 7. Test questions" not in research:
-        add("research", "next", f"runs/{slug}-research.md missing or without section 7")
+    if not research or section7 not in research:
+        add("research", "next", f"runs/{slug}-research.md missing or without '{section7}'")
         return stages
     if re.search(r"^\*\*NOT A PIECE", research, re.M):
         add("research", "blocked", "the verdict is NOT A PIECE")
         return stages
     add("research", "done", f"runs/{slug}-research.md")
+
+    if fmt != "research":
+        for s in ("truth", "run", "mark"):
+            add(s, "done", f"not used by format {fmt}")
+        figs = read(f"figures/{slug}-figures.csv") or ""
+        if len([l for l in figs.splitlines()[1:] if l.strip()]) == 0:
+            add("figures", "next", f"figures/{slug}-figures.csv: one row per number the piece will use, each "
+                "'published: <URL>, read <date>' (hard rule 4) or copied from a cited run's figures file")
+            return stages
+        add("figures", "done", f"figures/{slug}-figures.csv")
+        return stages + writing(slug, manifest, no_shots)
 
     spec_text, truth = read(f"specs/{slug}-truth.json"), read(f"figures/{slug}-truth.csv")
     if not spec_text or not truth:
@@ -165,6 +184,18 @@ def assess(slug, no_shots=False):
         add("mark", "next", f"python scripts/mark_run.py {slug} --batch {last_n}")
         return stages
     add("mark", "done", f"{len(last_ids)} rows in figures/{slug}-figures.csv")
+
+    stages.extend(writing(slug, manifest, no_shots))
+    return stages
+
+
+def writing(slug, manifest, no_shots=False):
+    """Outline to publish: the same for every format."""
+    stages = []
+    row = bank_row(manifest["bank_id"])
+
+    def add(name, state, detail):
+        stages.append({"stage": name, "state": state, "detail": detail})
 
     outline = read(f"pieces/{slug}-outline.md")
     if not outline:
@@ -251,6 +282,10 @@ def start(argv):
         return 2
     slug, qid = argv[2], argv[argv.index("--bank") + 1]
     practice = "--practice" in argv
+    fmt = argv[argv.index("--format") + 1] if "--format" in argv else "research"
+    if fmt not in ("research", "teardown", "guide"):
+        print(f"Refused: --format must be research, teardown or guide, not '{fmt}'.")
+        return 1
     if slug == "rehearsal" and not practice:
         print("Refused: the rehearsal's findings can't appear in a piece (hard rule 4). Use --practice.")
         return 1
@@ -270,7 +305,7 @@ def start(argv):
         print(f"Refused: {path} already exists.")
         return 1
     path.write_text(json.dumps({"slug": slug, "bank_id": qid, "question": row["question"],
-                                "practice": practice}, indent=2) + "\n", encoding="utf-8")
+                                "format": fmt, "practice": practice}, indent=2) + "\n", encoding="utf-8")
     print(f"Wrote {path}: Decision 1 recorded for bank #{qid}.")
     return 0
 
