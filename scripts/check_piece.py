@@ -172,23 +172,14 @@ def check_figures(text, fig_file, body=""):
             published.setdefault(norm_number(r["value"]), set()).add(m.group(1))
     found = numbers_in(text)
     missing = sorted({raw for raw, v in found if v not in vals})
-    # v1.8.6: the source is linked in the same sentence, or the same table row, as the number.
-    # The pocket guide (the numbered list before the first H2) is exempt: it restates numbers the body links.
-    unlinked = set()
-    first_h2 = body.find("\n## ")
-    for b_i, block in enumerate(re.split(r"\n\s*\n", body)):
-        start = body.find(block)
-        if re.match(r"^\d+\.\s", block.strip()) and (first_h2 < 0 or start < first_h2):
-            continue
-        units = block.splitlines() if block.lstrip().startswith("|") else re.split(r"(?<=[.!?])\s+(?=[A-Z\[\"])", block)
-        for u in units:
-            for raw, v in numbers_in(clean(u)):
-                if v in published and v not in own and not any(url in u for url in published[v]):
-                    unlinked.add(raw)
-    unlinked = sorted(unlinked)
+    # v1.8.8: the source is linked somewhere in the piece, at the company's first substantive mention
+    # or in its table row, so every claim is one tap from its source without a wall of repeated links.
+    # (v1.8.6 required the same sentence; that repeated a company's link four or five times on a phone.)
+    unlinked = sorted({raw for raw, v in found
+                       if v in published and v not in own and not any(u in body for u in published[v])})
     detail = f"{len(found)} numbers checked; not in Figures: {missing if missing else 'none'}"
     if published:
-        detail += f"; published but source not linked in the same sentence: {unlinked if unlinked else 'none'}"
+        detail += f"; published but source not linked in the piece: {unlinked if unlinked else 'none'}"
     return ("PASS" if not missing and not unlinked else "FAIL", name, detail + ". verify_sources.py: run separately")
 
 

@@ -1,5 +1,15 @@
 # Revisions · how-companies-test-ai-data-analysts
 
+## Round 7: after the third phone read, PASS with fixes (Saurabh, 31 October 2026, on 40d1ee5)
+
+- **ClickHouse arithmetic broken by the round 6 cut: fixed.** "...where no two models agreed, and a legal review removed 3 more." CLK-17 (3) added.
+- **Table:** "Accuracy figure" moved to the second column; three cells shortened ("Human-checked Q&A pairs", "Rubrics: code, LLM or both", "Every config change"). The five strict names render bold (checked in the exported HTML: five `<strong>` company cells).
+- **Links, the middle path:** none in the pocket guide; none inside a list of five or more names; each company linked at its first substantive mention and in its table row. Ten repeat links removed. Check 15 relaxed to match (CLAUDE.md v1.8.8).
+- **Lede:** ends "Start from those five."
+- **Seven-name sentence:** leads with the count. "Seven of the 13 use an LLM judge: LinkedIn, Uber, ClickHouse, Hex, Snowflake, WisdomAI and Grab."
+- **Hex line, checked before accepting: round 6's wording was ours.** Hex's post doesn't contain "calibrated" or "on purpose". It says "we still sometimes struggle to calibrate and align our LLM judges", and frames the harsh bias as a problem it is "constantly and anxiously improving on". Round 6's "leans one way on purpose" was our reading. Replaced with Hex's own words, quoted and linked.
+- **Knock-on:** FAQ answer 2 had joined two sentences that the essay link separates, so it wasn't word for word (since round 4b). Now the drift sentence alone.
+
 ## Round 6: after the second phone read (Saurabh, 31 October 2026)
 
 - **The lede, untouched for two rounds: fixed.** Cause: the writer's brief for rounds 4 and 5 said never to change the lede's first two sentences, which protected its stumbles. Now the three readers' version, with one "and" dropped to keep its second sentence at 25 words.
