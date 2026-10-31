@@ -576,8 +576,12 @@ def run_posts(path):
             f"links in body: {len(body_urls)}; first comment has UTM link: {bool(utm)}")
         last = body[-1].lower() if body else ""
         delivers = bool(re.search(r"\blink\b|\bthe piece\b|\bfirst comment\b", last))
-        add("P5", "PASS" if delivers else "FAIL", "Ends by saying what the link delivers",
-            f"last line: {clean(body[-1])[:60] if body else 'none'}")
+        # v1.8.15: what the link delivers may sit in the first comment, beside the link, so the
+        # post can end on its strongest line. The comment must say it in words before the URL.
+        said = re.sub(r"^\*\*first comment:\*\*\s*", "", comment.strip(), flags=re.I).split("http")[0].strip(" :")
+        in_comment = len(said.split()) >= 4
+        add("P5", "PASS" if delivers or in_comment else "FAIL", "Says what the link delivers (last line or first comment)",
+            f"last line: {clean(body[-1])[:60] if body else 'none'}" + (f"; first comment: {said[:60]}" if in_comment else ""))
         # v1.8.13: a post carries no links (the link is in the first comment, to its piece), so a
         # published number's source is looked for in the piece the post links to.
         piece_md = ROOT / "pieces" / (fig.name[:-len("-figures.csv")] + ".md") if fig else None

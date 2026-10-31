@@ -241,3 +241,9 @@ From the Chrome re-read of the eight remaining sources (runs/test-ai-analyst-bef
 - Rick asked whether naming partners' gaps in public is acceptable (Snowflake is a Dot integration partner): DECISIONS-FOR-DOT.md, item 7.
 
 - **Lift line 2 restored (Saurabh):** LinkedIn's two sentences are back as the engines lifted them; Snowflake's clause joins Uber's sentence instead ("…more than one correct SQL query; Snowflake keeps every one a human evaluator picks."), so the paragraph stays at four sentences.
+
+## Read-alouds, 1 November 2026 (Saurabh): A's closing, B's re-run paragraph PASS; fixes for the rest
+
+- Pocket line 6: a colon before the names ("…or daily: Anthropic, Uber, …"), so "daily" doesn't attach to Anthropic alone.
+- More-than-one-answer paragraph split in two. LinkedIn's two sentences were already separate and word for word as Claude lifted them (restored in 90572a1); the readers' copy was the earlier one. Snowflake now has its own sentence, in its source's words: "Snowflake's human evaluators manually select all the correct SQL queries as acceptable gold queries." (source: "human evaluators manually select all the correct SQL queries to add to our set of acceptable gold queries").
+- Post 2 ends on "A gap in a post isn't a gap in the testing; it's what a reader can't copy." What the link delivers stays in the first comment (style rule 17 and P5 amended, CLAUDE.md v1.8.15).

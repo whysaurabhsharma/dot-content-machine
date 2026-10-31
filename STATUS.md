@@ -18,34 +18,36 @@ Exports: `exports/<slug>/` (a .docx, clean Markdown, Webflow HTML and fields; no
 
 | Item | Waiting on | Who |
 |---|---|---|
-| A | Read aloud A's closing paragraph (a link clause added after Decision 3, not yet read); then Decision 4 | **Saurabh** |
-| B | Rick's sign-off on the context agent quote and on the DABstep concession (and his answer on the home page's 96% / 89%); three census corrections from the browser re-read, applied 1 November (Snowflake's scoring cell, Snowflake missing from "more than one right answer", Ramp's scoring and trigger: see `runs/test-ai-analyst-before-rollout-verification.md`); A live first | **Rick**, then Saurabh, then publishing order |
-| F | Re-check facts O1 and O2 on the current account ("Where Dot fits" rests on them); A and B live first (F links both) | **Saurabh**, then publishing order |
-| Posts | Each goes out after its piece is live, with the link in the first comment | Publishing order |
-| Licence | L1, L2, L4 are decisions to proceed, not resolutions; the Olist label was never verified at source | **Dot** |
-| Assumptions A1–A8, and "does Dot's evaluation hold a pass bar?" | A yes, no or change | **Rick** (HANDOVER.md section 8) |
+| A | Decision 4 (all checks and read-alouds done; PIECE IF confirmed) | **Saurabh** |
+| B | Rick's answers to questions 1, 2 and 7 (context agent quote, DABstep figures, naming partners); then O1 and O2 re-checked (question 3); A live first | **Rick**, then Saurabh, then publishing order |
+| F | Question 3 (O1 and O2, which its "Where Dot fits" rests on); A and B live first (F links both) | **Rick or Saurabh**, then publishing order |
+| Posts | Each goes out after its piece is live, link and UTM in the first comment | Publishing order |
+| Licence | Question 4: L1, L2, L4 are decisions to proceed, not resolutions | **Dot** |
+
+Rick's questions: [DECISIONS-FOR-DOT.md](DECISIONS-FOR-DOT.md), eight, ordered by what blocks publication.
 
 ## 3. Pre-publish sequence
 
+All three pieces are exported as they stand (1 November 2026): A 17 pass, B 18 pass, F 19 pass, 0 fail each. Every piece's human checks are recorded in `reviews/<slug>/human.md`.
+
 **A**
-1. Read aloud A's closing paragraph.
-2. Decision 4: publish A at `/blog/ai-analyst-follow-up-questions`.
-3. `python scripts/bank.py status 43 published --basis "<URL>"`.
+1. Decision 4: publish at `/blog/ai-analyst-follow-up-questions`.
+2. `python scripts/bank.py status 43 published --basis "<URL>"`.
+3. Post A2 (the transcript), link in the first comment.
 
 **B**
-4. Get Rick's two sign-offs (context agent quote; DABstep concession) and his answer on the home page's 96% / 89%. If a full-set run is published, update B's DABstep sentence.
-5. Read aloud the paragraphs the census corrections changed (B: opening, pocket lines 3 and 6, the more-than-one-answer and re-run paragraphs, the table note; both B posts; F step 8).
-6. Re-check O1 and O2 in Dot's UI (B's "Where Dot fits" cites the evaluation).
-7. `python scripts/verify_sources.py pieces/how-companies-test-ai-data-analysts.md`: the link to A must now return 200.
-8. Decision 4: publish B; `bank.py status 36 published`.
+4. Rick answers questions 1, 2 and 7. If any answer changes B, edit, re-read the changed paragraphs aloud, re-export.
+5. Re-check facts O1 and O2 in Dot's UI (question 3).
+6. `python scripts/verify_sources.py pieces/how-companies-test-ai-data-analysts.md`: the link to A must now return 200.
+7. Decision 4: publish B; `bank.py status 36 published`.
+8. Posts B1 (the number) and B3 (the failure taxonomy), spaced apart.
 
 **F**
 9. `verify_sources.py` on F: the links to A and B must return 200.
 10. Decision 4: publish F; `bank.py status 35 published`.
-11. Re-export any piece edited after its export (`/export <slug>`).
+11. Posts F5 (the checklist) and F4 (the contrarian read).
 
-**Posts**
-12. Post in the order above, each after its piece is live; link and UTM in the first comment.
+**Post order across the cluster:** B1, A2, B3, F5, A6, F4. A6 (the build log) can go any time after A is live.
 
 ## 4. Not done, and why
 

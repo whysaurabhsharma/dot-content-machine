@@ -50,7 +50,7 @@ All three: Prosus.
 
 Timing is the gap that recurs. At Dot, we built the census so you can see what each company's post does and doesn't say.
 
-A gap in a post isn't a gap in the testing; it's what a reader can't copy, and the piece shows each one, row by row.
+A gap in a post isn't a gap in the testing; it's what a reader can't copy.
 
 **First comment:** What each of the 13 companies published about testing its AI analyst, and what each left out: https://www.getdot.ai/blog/how-companies-test-ai-data-analysts?utm_source=linkedin&utm_medium=social&utm_campaign=content-machine&utm_content=b-post-b
 
