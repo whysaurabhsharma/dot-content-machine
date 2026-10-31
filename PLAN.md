@@ -1,112 +1,61 @@
 # The three-piece plan
 
-Written 31 October 2026, from Saurabh's decisions that day. Time available: 48 hours. This file is the plan; where each piece actually stands is read from the files by `python scripts/stage_gate.py <slug>`.
+Rewritten 31 October 2026, after Saurabh chose the three pieces (A, B and F below). Where each piece actually stands is read from the files by `python scripts/stage_gate.py <slug>`. A section here that names a piece's slug binds its research (`.claude/agents/researcher.md`, input 5).
 
 ## The cluster
 
-One buyer worry: **can you trust an AI analyst's answer before you rely on it?** Three pieces, one story:
+One buyer worry: **can I trust an AI analyst's answers before I roll it out?** Three formats, three kinds of evidence (CLAUDE.md, "What this machine makes", v1.7):
 
-| # | Piece | Bank | Role in the story | What it proves |
-|---|---|---|---|---|
-| 1 | `ai-analyst-follow-up-questions` | #43 | **The problem** | The same phrase, "delivered in 2017", got two correct answers for two different dates (2,453 and 1,762), and the answer that used delivery date never said so. Only its SQL did. |
-| 2 | `ai-analyst-shows-sql` | #41, "AI analyst shows SQL" (score 10, highest in the bank) | **How to see it** | When an answer's text states the definition it used, and when only the SQL reveals it, counted answer by answer across ambiguous definitions (date, freight, order status, how "late" is measured). |
-| 3 | `ai-analyst-how-much-context` | #47, "how much context does AI analyst need" | **What to write down** | **What the note defined held. The phrase it left open was read two ways, and the term it never defined varied from chat to chat.** Piece 3's own run tests whether writing those two down ("late", and how to read "delivered in <year>") settles them. Either outcome is publishable. |
+| # | Piece | Format | Bank | Evidence | What it gives the reader |
+|---|---|---|---|---|---|
+| A | `ai-analyst-follow-up-questions`, "Your AI Analyst Picked a Date. Only the SQL Said Which." | Research | #43 | Our own run (31 October 2026, 8 answers) | The problem, proved on our data: a right answer to a question you didn't mean, and a six-step test that shows which date was used |
+| B | `how-companies-test-ai-data-analysts`, working title "How N Companies Test Their AI Data Analyst" | Teardown | #36 (#35 is marked drafted by the archived trial) | Other organisations' published evaluation methods, primary sources only (hard rule 4's cited-publication exception) | What others actually do to test their analyst, in one census, and the patterns it shows |
+| F | `test-ai-analyst-before-rollout`, working title "How to Test an AI Analyst Before Rollout" | Guide | #35, the only demand-3 question in the bank | B's census (cited publications) and our runs (A's, and piece 2's archived run) | How to do it: the steps, each backed by a run or a publication, or labelled untested (hard rule 19) |
 
-Six LinkedIn posts, two per piece. Post 1 of 6 is written (piece 1, Post A).
+**How they compound:** B shows what others do; F turns it into steps; A proves the core step on our own data. B and F need no new Dot run, which also keeps the Olist licence question (facts L1) to A and to whatever F cites from our runs.
 
-**Fit to the bank wording.** #47's long form asks "Can I start with ten definitions, or do I need everything?" Piece 3 tests one definition, so it answers the first step of that question, not the whole of it. Say so in the piece.
+## What each piece needs
 
-## What each run needs
+### A, `ai-analyst-follow-up-questions`: done
 
-All runs: workspace aiinterviewagents.com, the two Olist tables (`olist_orders_dataset`, `olist_order_items_dataset`), Balanced mode unless decided otherwise. **Rule 14:** the plan first required all five screenshots for every batch of pieces 2 and 3. **Changed 31 October 2026 (Saurabh): piece 2's batch 1 is waived too**, conditions recorded as text (`runs/ai-analyst-shows-sql-run.md`). Piece 2 may claim nothing about mode, credits, environment or notes. Piece 3's requirement is open: see its section.
+Through the gate. Decision 4 (publish) is open. Licence: decision L1, not a resolution.
 
-### Piece 1: done
+### B, `how-companies-test-ai-data-analysts`: teardown
 
-- Run: batch 1, 31 October 2026, 8 questions in three chats (a five-question chain, two fresh chats). 8 of 8 correct. Conditions recorded by hand (rule 14 waived): no claim about mode, credits, environment or context notes.
-- State: through the gate. Decision 4 (publish) open. The licence decision (facts L1) is recorded as a decision, not a resolution.
+- **Section 7 of the research: a census of organisations that published how they test their AI analyst.** For each: the primary publication, opened and read in full (never Dot's teardown of it, never a summary); who published it and when; the method in their words; every number copied exactly.
+- **The bar for an entry:** a real published evaluation method, meaning what they test against, how they score, and when they run it, not a passing mention of accuracy.
+- **Go or no-go:** five or more organisations meet the bar, or B is not a piece and a different third piece is chosen (Saurabh, 31 October 2026).
+- **Shape (style rules 1 and 5):** 1,000–1,600 words; one census table, one row per publication, each row linking its primary source; pocket guide, "Things to keep in mind", "Where Dot fits", CTA.
+- **Figures:** every number a `published: <URL>, read <date>` row (hard rule 3). None combined with our own figures (rule 4, condition d).
 
-### Piece 2, `ai-analyst-shows-sql`: one batch, done
+### F, `test-ai-analyst-before-rollout`: guide
 
-- **Questions:** about 6, each with rival readings computed **before** the run (`specs/<slug>-truth.json`, `"asked": false` rows):
-  - At least two on **"delivered in <year>"** (for example a count and an item-price total), so piece 3 has date questions to compare.
-  - One on **"how much did customers spend"** (freight in or out).
-  - The rest on order status (all or delivered) and on "late" (calendar day or timestamp).
-  - Piece 1's spec already holds several of these rivals (T2b timestamp grain, T7b with freight, T7c all statuses); reuse their definitions.
-- **Each question asked in at least two fresh chats.** About 12 asks.
-- **What only Dot can show:** each answer's text and SQL. The SQL comes back with every answer through the `ask_dot` MCP (`facts/dot-mcp.md`). The count is per answer: stated in the text, shown only in the SQL, or neither.
-- **Conditions:** recorded by hand, rule 14 waived (31 October 2026). Notes on: the metrics note and the currency note; off: "About aiinterviewagents.com". The metrics note's full text is saved verbatim in the run file.
-- **Result, 31 October 2026:** 12 of 12 correct. Against the metrics note: 10 of 12 followed its purchase-cohort rule; the two that didn't were the same question (item price of orders "delivered in 2017"), in both chats, each stating its delivery-date basis. "Late" (not defined in the note) was read at timestamp grain in one chat and calendar day in the other. Piece 2's run is now context for piece 3, not its "without" batch.
-- Credits: about 4–5, at piece 1's rate of 3.0 for 8 answers.
+- **Section 7 of the research: evidence for each step.** Each step, and the publication from B's census or the run of ours behind it, or "untested".
+- **Our runs it may cite:** A's run, and piece 2's archived run (`runs/ai-analyst-shows-sql-run.md`: 6 questions in two fresh chats each, 12 of 12 correct; the late-delivery question returned 2,878 and 2,453). Piece 2's conditions were recorded by hand with rule 14 waived, so no claim about mode, credits, environment or notes may rest on it.
+- **Shape:** 1,000–1,900 words; five to nine numbered steps, each starting with a verb; pocket guide, caveats, "Where Dot fits", CTA.
+- **Depends on B:** F's steps cite B's census, so B's research comes first.
+- **Bank:** #35 is marked "drafted" by the archived trial piece, so `stage_gate.py start` will refuse it until a person decides its status.
 
-### Piece 3, `ai-analyst-how-much-context`, bank #47: its own before and after batches
+## Not chosen, and why (for the handover)
 
-Redesigned 31 October 2026, after piece 2's run. The metrics note already states the date rule ("Unless explicitly requested otherwise, report a purchase cohort using order_purchase_timestamp"), so piece 3 no longer adds a first definition. It tests whether writing down what the note leaves open settles it.
+| Candidate | Format | Why not |
+|---|---|---|
+| C, "Your Metric Definitions Have Back Doors" | Essay | Its idea overlaps A. Kept as one of the five future topics. |
+| D, "The Definition Is in the SQL" | Essay | Overlaps A ("only the SQL said which"). |
+| E, "What to Write Down Before Your AI Analyst Answers" | Guide | Needs piece 3's two Dot batches; the same run as G. |
+| G, "Does Writing It Down Change the Answer?" | Research | The same run as E, published as findings. |
+| H, "Text-to-SQL Benchmarks Don't Measure Your Questions" | Explainer | Not chosen; overlaps the DABstep post. |
+| Piece 2 as research, "Your AI Analyst Counted Late Orders Two Ways" (#41) | Research | A second test-result piece: one format twice. Archived; its run is kept as evidence for F. |
+| Piece 3 as planned, "how much context" (#47) | Research | Replaced by the format plan; never run. Archived. |
 
-- **What the existing note leaves open (from piece 2's run, read against the note's verbatim text in `runs/ai-analyst-shows-sql-run.md`):**
-  - **The let-out clause.** "Unless explicitly requested otherwise" was applied to "orders delivered in 2017" for item price (delivery date, both chats) but not for the order count (purchase date, both chats).
-  - **"Late".** The note never defines it, or the estimated delivery date. One chat compared timestamps (2,878), the other calendar days (2,453).
-- **Questions:** 4, worded exactly as in piece 2, each in **three** fresh chats per batch (two can't tell a settled reading from variance). 12 asks per batch, 24 in all.
-  1. "How many orders were delivered late in 2017?" (late grain)
-  2. "What percentage of delivered orders were late in 2018?" (late grain)
-  3. "What was the total item price of orders delivered in 2017?" (the let-out)
-  4. "How many orders were delivered in 2017?" (control: followed the note in piece 2)
-- **Truth spec before the run:** each question's rivals (calendar day and timestamp; purchase and delivery date; their combinations), as in piece 2's spec.
-  - **The spec follows the note, not piece 2's spec, on missing delivery dates (decided by Saurabh, 31 October 2026):** delivered orders with no `order_delivered_customer_date` are left out of both the late count and the denominator. Piece 2's spec kept them in the denominators as not late. The spec must record why in its notes: the note under test defines it that way, and the truth has to mark answers against the definition the team wrote down. The difference is display rounding at one decimal (rule 12), as in piece 1 and piece 2.
-- **Batch 1, before:** notes exactly as in piece 2. **Notes screenshot** (Model → Notes); `get_catalog` read recorded.
-- **Between the batches, in this order:**
-  1. Create a **new** note (not an edit of the metrics note, so the before text stays as recorded), **worded exactly as approved by Saurabh, 31 October 2026**:
+## Order
 
-     > **Title:** Olist lateness and "delivered in <year>"
-     >
-     > These rules apply to `uploads.main.olist_orders_dataset` and add to the shared reporting rules; they do not replace them.
-     >
-     > **"Delivered in <year>"** (also "delivered during <year>"): read it as delivered orders (`order_status = 'delivered'`) in the <year> purchase cohort, with the period filter on `order_purchase_timestamp`. This phrase on its own is not an explicit request for delivery dates under the shared reporting rules' "unless explicitly requested otherwise" clause, for any metric: order counts, item price, revenue, shipping revenue, late counts and late shares. Filter the period on `order_delivered_customer_date` only when the question contains the words "delivery date" or "reached the customer". Say in the answer which date the period uses.
-     >
-     > **Late:** a delivered order is late when `CAST(order_delivered_customer_date AS DATE) > CAST(order_estimated_delivery_date AS DATE)`. Compare calendar days, never timestamps: an order delivered on its estimated day is on time, whatever the time. A delivered order with no `order_delivered_customer_date` is neither late nor on time. Leave it out of both the count and the denominator, and say how many were left out. **Late share** = 100.0 × late orders / delivered orders with a delivery date, in the same purchase cohort.
-
-     **What makes it a test, to be preserved:** it closes the let-out with a fixed word list ("delivery date" or "reached the customer"), not a judgement call, and none of the four test questions contains those words.
-
-     **Predictions, stated before the run.** If notes work: item price moves from the delivery-date reading (BRL 5,612,818 in piece 2) to the purchase cohort (BRL 5,962,902.01); "late" settles on calendar day in all three chats; the control stays at 43,428. If they don't, the run records which answers kept the old reading, and that is the finding.
-  2. Take credits before **after** creating it (facts O7: a note made with the context agent can add 20 credits).
-  3. Confirm the note with `get_catalog`; record the result.
-  4. **Notes screenshot** showing the new note on and the others as before.
-- **Batch 2, after:** the same 4 questions, 3 fresh chats each.
-- **Comparison:** item by item and chat by chat (rule 18): does "late" settle on calendar day in all three chats? Does item price follow the purchase cohort? Does the control stay put?
-- **Evidence and claims:** the notes screenshot for both batches; mode, credits and environment recorded by hand (rule 14 waived for those three). So the piece may say which notes were on and what they said, and may not claim mode, credits or environment.
-- **Rule 4:** piece 2's run is the same account and dataset and stays citable as context, but piece 3's finding comes from its own two batches.
-- **Decision point before the note is created (human):** approve the note's text.
-- **Licence:** recorded in advance as L3 in `facts/dot-facts.md` (a decision, not a resolution). Copy the same section into the run file when it is created.
-- Credits: about 14 for 24 asks, at piece 2's rate (7.1 for 12). About 202 remain.
-
-## Which runs feed which
-
-```
-piece 1 run (31 Oct) ── "delivered in <year>" read both ways ───────────────► piece 3's design
-piece 2 run (31 Oct) ── its own findings ────────────────────────────────────► piece 2
-            └────────── what the note leaves open (let-out, "late") ────────► piece 3's design
-piece 3 batch 1 ──────── before: existing notes ────────────────────────────► piece 3
-piece 3 batch 2 ──────── after: plus one note on "late" and the let-out ────► piece 3
-```
-
-Piece 1's run is the same account and dataset, so rule 4 allows piece 2 and 3 to cite it; each piece's own findings still come from its own run.
-
-## Time
-
-About 11 hours of work across the 48 hours, screenshots included:
-
-| Work | Estimate |
-|---|---|
-| Piece 2: research, truth spec, run with screenshots, marking | 1.5 h |
-| Piece 2: outline (Decision 2), draft, reviews, revise | 1.5 h |
-| Piece 2: human checks (headline, lift, second fact-check, phone read) | 1.5–2 h |
-| Piece 3: truth spec, two batches with notes screenshots, the note, catalog checks, marking, comparison | 2.5 h |
-| Piece 3: outline, draft, reviews, revise | 1.5 h |
-| Piece 3: human checks | 1.5–2 h |
-| Five posts (one more for piece 1, two each for pieces 2 and 3) | 45 min |
-| Handover | 1 h |
-
-Order: piece 2's run, then piece 3's run, can happen back to back once piece 2's batch is marked; the writing of both can then proceed in parallel. Batch the human checks for both pieces into one sitting each.
+1. B: Decision 1, research (the census and its count), then go or no-go.
+2. If go: B's figures, outline (Decision 2), draft, reviews, Decision 3.
+3. F: Decision 1 (after #35's status is settled), research citing B, then the same stages.
+4. Five more LinkedIn posts: one for A, two each for B and F.
+5. Handover.
 
 ## Decisions that stay human
 
-The question (Decision 1), the outline (Decision 2), the title and human checks (Decision 3), the publish (Decision 4); plus, for piece 3, the new note's text. The licence question (facts L1) stands for all three pieces.
+The question (Decision 1), the outline (Decision 2), the title and human checks (Decision 3), the publish (Decision 4); B's go or no-go; #35's bank status; a licence decision for F if it cites Olist-derived figures.
