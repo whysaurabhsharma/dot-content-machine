@@ -18,7 +18,7 @@ figures: figures/how-companies-test-ai-data-analysts-figures.csv
 dataset: "None: a census of 13 companies' own publications, each re-opened 31 October 2026. No data analysed and no Dot run (teardown)."
 ---
 
-**We read how 13 companies, including Anthropic, LinkedIn and Uber, test their AI analysts: the internal text-to-SQL and analytics agents their staff ask for numbers. Seven of the 13 companies published an accuracy figure, and no two measured the same thing. By the end, you'll have all 13 in one table, with the five that published enough to copy marked.**
+**We read how 13 companies, including Anthropic, LinkedIn and Uber, test their AI analysts: the internal agents staff use to ask data questions. Seven of the 13 companies published an accuracy figure, and no two measured the same thing. By the end, you'll have all 13 in one table showing what each one measured, with the five that published enough to copy marked.**
 
 **The whole piece in eight lines:**
 
@@ -110,7 +110,7 @@ Each row draws on one company's own publications, read on 31 October 2026. Uber'
 - **Every figure is self-reported.** Each company measures its own system on its own test set, and none says the result was audited. Three of the 13 sell the product they evaluate: Hex, Snowflake and WisdomAI.
 - **The census counts what was published, and isn't exhaustive.** A "Not stated" means the publication doesn't mention the practice. Posts from Pinterest, OpenAI, Netflix, Delivery Hero, Swiggy and Fiverr would not load, so they aren't counted.
 - **Customer testing tools aren't counted.** Databricks, Microsoft and Google publish testing tools for customers; those show how customers should test, not how each company checks its own analyst.
-- **This census of 13 differs from Dot's earlier one.** [Our census of how 14 companies built AI data analysts](https://www.getdot.ai/blog/how-companies-built-ai-data-analysts) counted what they built. This one counts what they published about testing it, so the two lists overlap but differ.
+- **This census of 13 is not Dot's census of 14.** [Our census of how 14 companies built AI data analysts](https://www.getdot.ai/blog/how-companies-built-ai-data-analysts) counted what companies built. This one counts what companies published about testing what they built, so some names appear in both and some in only one.
 
 ## Where Dot fits
 
