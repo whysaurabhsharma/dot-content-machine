@@ -18,6 +18,8 @@ All six LinkedIn posts exist, first lines by Saurabh. Exports are in `exports/<s
 
 **What Rick needs to do:** answer the seven questions in `DECISIONS-FOR-DOT.md`, ordered by what blocks publication. Section 8 has the detail.
 
+**SEO and answer-engine choices, and the LinkedIn adaptation:** section 11. **A five-minute demo script:** `DEMO-SCRIPT.md`.
+
 **Where to start reading:** this file, then `CLAUDE.md`, then `PLAN.md` (the cluster), then any piece in `pieces/` beside its `figures/` file and its `reviews/` folder.
 
 ## 1. The three pieces, and why these three
@@ -294,3 +296,24 @@ Guide F's step 7 says to decide the bar a result must clear before testing (Anth
 ## 10. Accounts and tools you need
 
 Claude Code · Dot (a workspace with the Olist tables or your own data, connected through the `ask_dot` MCP) · Ahrefs (the Getdot project; Rank Tracker holds 18 keywords; access ended 31 October 2026) · Perplexity and ChatGPT (free plans are enough) · Chrome with Claude in Chrome, for browser re-reads · Python 3.10+ with `requirements.txt`.
+
+## 11. SEO and answer-engine choices, and how the research was adapted for LinkedIn
+
+Each choice below was made on this cluster, with the change-log entry that records it.
+
+**Titles carry the claim; the SEO title carries the search words.** Rick's own titles are flat claims ("Your Data Model Is the Prompt"), with no promise word and often no search phrase. Check 1 first failed them. It now marks a claim title PARTIAL and passes it when the SEO title carries the buyers' words and the headline test passes (CLAUDE.md v1.6.8, v1.8.3, v1.8.5), and title shape depends on the format (v1.8.4: a teardown title is 8–13 words, a guide title names what the reader gets). So B is "7 Companies Published Their AI Analysts' Accuracy. No Two Measured the Same Thing." with the SEO title "How 13 Companies Test Their AI Data Analyst" (80% of its target query's words); A's SEO title is "AI Analyst Follow-Up Questions: Check Which Date It Used"; F's title carries its query whole, "How to Test an AI Data Analyst Before Rollout: 8 Steps". Every title passed a three-reader headline test; A and B took four rounds each, F one.
+
+**Answer engines quote passages, so pieces are built in quotable units.** From the roadmap's figure that about 44% of citations come from a page's first third: the question is answered in the first 100 words (hard rule 20), every H2 reads standing alone (hard rule 21), and every outline must carry one quotable line, under 25 words, standing alone and checkable (v1.8, v1.8.2). Check 25 then tests whether a blind lift-tester, reading the draft with nothing else, lifts that line; the line is compared by script so the tester stays blind.
+
+**What the lift tests actually found** (Perplexity and Claude, by hand; records in each piece's `reviews/<slug>/lift-lines.md`):
+- **An engine chose a better line than the one we targeted, in all three pieces.** In A, Perplexity lifted "The risk isn't a wrong number. It is a right number for a date you didn't mean, with nothing in the text to say so.", which wasn't targeted. In B, Claude lifted the Hex line ("Hex's judge accepted the wrong one 35% of the time."). In F, the blind tester lifted the opening's version of the number line, which we then made the quotable line.
+- **From a guide, engines lift the steps, not a sentence.** Neither engine quoted F's quotable line; both carried the eight steps accurately and in order. A guide's citable unit is its instructions. Check 25 should test, for a guide, whether the steps survive compression (recorded in `prompts/06-edit.md`; not built).
+- **Engines credit our claims to the sources we cite.** Perplexity attributed all three of its bullets on F to LinkedIn, including our own steps, and for LinkedIn's figure quoted LinkedIn's page rather than our sentence. Each source is now kept to the step it supports, and our instructions stand in sentences with no source beside them.
+
+**FAQ schema kept, against the roadmap.** The roadmap demotes FAQ schema because it shows no lift for pages already visible in AI answers. These pages aren't visible yet, and the file costs nothing. B and F carry `pieces/<slug>-faq.json`; every answer is copied word for word from the piece, re-checked by script after every edit, so the schema can't drift from the text.
+
+**The cluster de-conflicted, so three pieces stopped competing for one query.** All three had targeted "ai data analyst". Now F, the hub, owns it with "how to evaluate ai data analyst accuracy" and "ai data analyst accuracy"; B owns "ai data analyst test questions" and "text to sql accuracy"; A owns "AI analyst follow-up questions context" and "conversational analytics". A and B link to F from their closing instruction; F links to both from the steps they support.
+
+**Posts drawn from the evidence, not the finished piece.** The six posts were cut from the run files, the census and the figures file: A's transcript post quotes Dot's answer from the run file; A's build log comes from the timing file; B's two posts from the census table and its counts. Two reasons. Every number in a post then traces to a figures row (the post check holds each post to its piece's figures, and finds a published number's source in the piece it links). And a post can carry what the piece cut: the build log's 27 minutes appears nowhere in A. The six use six different structures across the cluster rather than per piece (PLAN.md), because the roadmap's post model assumed every piece is research; a person wrote every first line; the link sits in the first comment with a UTM; and a post may end on its strongest line, with what the link delivers said in that comment (v1.8.15).
+
+**What we couldn't do.** Ahrefs access ended on 31 October 2026, so search data is a frozen snapshot of 27–28 October: 18 buyer queries, 5 with any US volume, 13 "not indexed"; Rank Tracker held the queries but recorded no positions. Demand in the question bank is therefore scored by how many independent sources name a question (`bank/README.md`), not by search volume, and search volume only breaks ties (hard rule 1). No citation reading exists for any of the 18 queries (section 5).
