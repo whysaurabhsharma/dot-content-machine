@@ -18,6 +18,8 @@ figures: figures/test-ai-analyst-before-rollout-figures.csv
 dataset: "No new run. The steps cite two earlier runs of ours on the Olist public e-commerce dataset (orders and order items tables): piece A's run (runs/ai-analyst-follow-up-questions-run.md) and piece 2's archived run (runs/ai-analyst-shows-sql-run.md). Licence CC BY-NC-SA 4.0 (facts A10, an Assumption, unverified at source); publication decision L4, a decision and not a resolution. Census figures come from the publications in piece B's census, re-read 1 November 2026."
 title_approved_by: Saurabh, 2026-11-01
 reviewed_on: 2026-11-01
+author: Saurabh Sharma
+author_approved_by: Dot (Rick), 2026-11-01
 ---
 
 **To test an AI data analyst before rollout, ask real questions with every right answer written down first. Then ask each one twice, in fresh chats, worded identically. In our run on Dot, one question returned 2,878 late orders counting by the exact delivery timestamp, and 2,453 counting by the delivery day. By the end, you'll have eight steps, and the two published bars to set yours against: Anthropic's ~90% and our Playbook's ~80%.**
@@ -66,7 +68,7 @@ A re-run also needs a rule for small swings between runs. [Uber](https://www.ube
 
 [Dot answers data questions for your team.](https://www.getdot.ai/blog/conversational-analytics) In both our runs, every answer came back with its SQL.
 
-[Dot's evaluation](https://docs.getdot.ai/train-dot/evaluation) holds each test question's expected answer, a unit and a tolerance in percent, so steps 2 and 6 live in one place. That was observed on 27 October 2026 and not re-checked since. More in the [AI Data Analyst Playbook](https://www.getdot.ai/blog/ai-data-analyst-playbook).
+[Dot's evaluation](https://docs.getdot.ai/train-dot/evaluation) holds each test question's expected answer, a unit and a tolerance in percent, so steps 2 and 6 live in one place. More in the [AI Data Analyst Playbook](https://www.getdot.ai/blog/ai-data-analyst-playbook).
 
 ---
 

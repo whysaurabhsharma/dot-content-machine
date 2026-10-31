@@ -16,36 +16,34 @@ Exports: `exports/<slug>/` (a .docx, clean Markdown, Webflow HTML and fields; no
 
 ## 2. What each item waits on
 
-Dot's instruction of 1 November: where there is doubt, the piece takes a labelled assumption and a publish note says what to fix. Rick's answers no longer block the pieces.
+Dot answered five of the eight questions on 1 November 2026 (Rick and Théo): the evaluation is current, the Olist licence is fine, the byline is Saurabh Sharma, naming partners is approved, and A1–A8 stays unresolved (none is in the pieces). Nothing blocks publishing.
 
 | Item | Waiting on | Who |
 |---|---|---|
 | A, B, F | Each piece's publish note read and signed ("**Read by:**"), then Decision 4 | **Whoever publishes** |
-| Post B3 (failure taxonomy) | **Held** until Rick answers question 7 (naming partners' gaps) | **Rick** |
-| Other five posts | Their piece live | Publishing order |
-| Licence | Saurabh's decisions to proceed (L1, L2, L4); the question stays Dot's | **Dot** |
+| All six posts | Their piece live (post B3 released from hold) | Publishing order |
 
-| Piece | Publish note | Assumptions it carries |
+| Piece | Publish note | Still labelled in the text |
 |---|---|---|
-| A | [reviews/ai-analyst-follow-up-questions/publish-note.md](reviews/ai-analyst-follow-up-questions/publish-note.md) | None pending |
-| B | [reviews/how-companies-test-ai-data-analysts/publish-note.md](reviews/how-companies-test-ai-data-analysts/publish-note.md) | P-1 context agent quote (untested); P-2 evaluation (observed 27 October, not re-checked) |
-| F | [reviews/test-ai-analyst-before-rollout/publish-note.md](reviews/test-ai-analyst-before-rollout/publish-note.md) | P-2 evaluation |
+| A | [reviews/ai-analyst-follow-up-questions/publish-note.md](reviews/ai-analyst-follow-up-questions/publish-note.md) | Nothing |
+| B | [reviews/how-companies-test-ai-data-analysts/publish-note.md](reviews/how-companies-test-ai-data-analysts/publish-note.md) | P-1, the context agent quote ("Assumption: … we haven't tested it") |
+| F | [reviews/test-ai-analyst-before-rollout/publish-note.md](reviews/test-ai-analyst-before-rollout/publish-note.md) | Nothing |
 
-Rick's questions, which now confirm or reverse assumptions rather than block: [DECISIONS-FOR-DOT.md](DECISIONS-FOR-DOT.md).
+Still open with Dot, none blocking: question 1 (context agent page, labelled in B), question 2 (the DABstep figures; B's sentence is accurate as written), question 5 (a pass bar in Dot's evaluation; F makes no such claim). See [DECISIONS-FOR-DOT.md](DECISIONS-FOR-DOT.md).
 
 ## 3. Pre-publish sequence
 
-All three pieces are exported (1 November 2026), each folder with its PUBLISH-NOTE.md: A 17 pass, B 18 pass, F 19 pass, 0 fail each.
+All three pieces are exported (1 November 2026), each folder with its PUBLISH-NOTE.md and the byline in `webflow-fields.json`: A 17 pass, B 18 pass, F 19 pass, 0 fail each.
 
 **One session, in this order:**
-1. Read A's publish note; fill its "Read by:" line. Publish A at `/blog/ai-analyst-follow-up-questions`.
-2. Read B's publish note; fill "Read by:". Publish B at `/blog/how-companies-test-ai-data-analysts`.
-3. Read F's publish note; fill "Read by:". Publish F at `/blog/test-ai-analyst-before-rollout`.
+1. Read A's publish note; fill its "Read by:" line. Publish A at `/blog/ai-analyst-follow-up-questions`, author Saurabh Sharma.
+2. The same for B, at `/blog/how-companies-test-ai-data-analysts`.
+3. The same for F, at `/blog/test-ai-analyst-before-rollout`.
 4. Run `python scripts/verify_sources.py pieces/<slug>.md` for all three: every cross-link (A to F, B to A and F, F to A and B) must now return 200.
 5. `python scripts/bank.py status 43 published --basis "<URL>"`, then 36, then 35.
-6. Posts, in order, each after its piece is live: B1, A2, F5, A6, F4. **B3 waits for Rick's question 7.**
+6. Posts, in order, each after its piece is live: B1, A2, B3, F5, A6, F4.
 
-**When Rick answers:** apply each publish note's replacement text, re-read the changed paragraph aloud, republish, and move P-1 or P-2 to Confirmed (or retire it) in `facts/dot-facts.md` with a change-log line.
+**When Rick answers question 1:** apply B's publish note's replacement text, re-read that paragraph aloud, republish, and move P-1 to Confirmed (or retire it) in `facts/dot-facts.md`.
 
 ## 4. Not done, and why
 

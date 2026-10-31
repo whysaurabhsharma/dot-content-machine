@@ -495,6 +495,12 @@ def run(path):
     rev_on = meta.get("reviewed_on", "")
     if rev_on:
         dt19 += f"; reviewed_on {rev_on}"
+    # v1.8.17: a named author needs Dot's recorded approval beside it (hard rule 22).
+    author, approved = meta.get("author", ""), meta.get("author_approved_by", "")
+    if author and not approved:
+        st19, dt19 = "FAIL", dt19 + f"; byline '{author}' has no author_approved_by (hard rule 22)"
+    elif author:
+        dt19 += f"; byline {author}, approved by {approved}"
     add(19, st19, nm19, dt19)
 
     # 20 internal links

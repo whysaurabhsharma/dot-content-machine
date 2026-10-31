@@ -6,25 +6,13 @@ Fill the line above with your name and the date once you have read this note. `s
 
 ## What this piece assumes
 
-One passage in "Where Dot fits", the last section, rests on something Dot has not re-confirmed.
+Nothing pending. Its one labelled sentence, on Dot's evaluation, was confirmed by Dot on 1 November 2026, and the label removed.
 
-### The evaluation sentence (labelled "observed … not re-checked since")
+## Confirmed by Dot
 
-As published:
+**The dataset licence: confirmed.** The figures come from the Olist public e-commerce dataset (CC BY-NC-SA 4.0 label). Dot confirmed on 1 November 2026 (Rick and Théo) that it may publish figures from it. Nothing to do.
 
-> Dot's evaluation holds each test question's expected answer, a unit and a tolerance in percent, so steps 2 and 6 live in one place. That was observed on 27 October 2026 and not re-checked since.
-
-Why it is there: this was seen once, on a trial Dot account, on 27 October 2026.
-
-Who answers: Rick, or anyone with a Dot account, by opening an evaluation and looking.
-
-- **If it still works this way:** delete "That was observed on 27 October 2026 and not re-checked since."
-- **If it has changed:** rewrite the first sentence to say what the evaluation now holds; keep "so steps 2 and 6 live in one place" only if both still apply; delete the second sentence.
-- **If evaluation no longer exists:** delete both sentences. The paragraph keeps "More in the AI Data Analyst Playbook." with its link.
-
-## Decided, not assumed
-
-**The dataset licence.** Steps 2 to 6 cite figures from two of our runs on the Olist dataset (CC BY-NC-SA 4.0 label, unverified at source). Saurabh recorded a decision to proceed (L4). If Dot says it may not publish figures from Olist, do not publish.
+**The byline: confirmed.** Author: Saurabh Sharma, approved by Dot (Rick) on 1 November 2026. Set it in the CMS item's author field (it is in `webflow-fields.json` as `author`).
 
 ## Fix after publishing
 

@@ -31,7 +31,7 @@ The piece has one table of all 13: test set, scoring and timing, each row linked
 
 ## Post B · how-companies-test-ai-data-analysts · the failure taxonomy
 
-**Publish note:** HOLD. Do not queue this post. It names, in public, what five companies' published testing posts leave out, Snowflake (a Dot integration partner) among them. Whether Dot is comfortable with that is Rick's call (DECISIONS-FOR-DOT.md, question 7). Post it only after he says yes, and only after piece B is live.
+**Publish note:** Post only after piece B is live. (Was on hold until Dot approved naming partners' gaps in public: approved by Rick and Théo, 1 November 2026, since Dot already publishes comparison pages at getdot.ai/compare.)
 
 **First lines tried:** (Saurabh, 1 November 2026)
 - A company publishes how it tests its AI analyst. You try to copy it, and hit a wall.

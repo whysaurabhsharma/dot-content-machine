@@ -46,7 +46,7 @@ The earlier Claude Project trial's pieces and posts are in `archive/` and are no
 | `scripts/bank.py`, `.claude/skills/bank/` | The monthly entry point: `/bank add`, `/bank rescore`, `/bank top` |
 | `ICP_question_bank_what_Dot_s_buyers_ask__October_2026.pdf` | The source of the question bank |
 | `data/ahrefs/` | The Ahrefs snapshot, 27–28 October 2026: keywords, Search Console, Site Explorer, Rank Tracker. Frozen; access ended 31 October 2026 |
-| `data/` | A note on the Olist dataset (CC BY-NC-SA 4.0) and where to download it. The CSVs are not included |
+| `data/` | A note on the Olist dataset (CC BY-NC-SA 4.0; Dot confirmed on 1 November 2026 that it may publish figures from it) and where to download it. The CSVs are not included |
 | `measure/citations.md` | The monthly AI-citation series: citation markers per domain, Perplexity, from Day 0 |
 | `scripts/check_piece.py` | Runs the 25-check gate on a piece: 15 checks decided alone, 3 with a person, 6 flagged for a human. With `--post`, checks each LinkedIn post in a `posts/` file against stage 7 and checks 15, 17 and 19 |
 | `scripts/verify_sources.py` | Opens every link in a piece |

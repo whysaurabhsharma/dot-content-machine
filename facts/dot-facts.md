@@ -47,6 +47,8 @@ Made by Saurabh Sharma, 27 October 2026, answering the product-claim list. Rick 
 
 ## Pending Dot's confirmation
 
+**1 November 2026:** P-2 confirmed by Rick and moved to Confirmed. P-1 stays pending (question 1). A1–A8: Dot's answer was unclear ("add assumption there"); none of A1–A8 appears in the three pieces, so nothing is blocked; recorded as unresolved.
+
 Added 1 November 2026, under Dot's instruction: where there is doubt, take an assumption, label it in the piece, and write a publish note saying what needs fixing. These differ from A1–A8 in kind, and the piece labels them differently so a reader can tell (CLAUDE.md v1.8.16):
 
 - **Untested ("Assumption: … not tested")**: we don't know whether it is true.
@@ -57,7 +59,6 @@ Each P has a publish note (`reviews/<slug>/publish-note.md`) with the exact repl
 | ID | Assumption | Label kind | Keywords | Pieces | Who confirms |
 |---|---|---|---|---|---|
 | P-1 | Dot's context agent page describes how merging works today: "Merging re-checks accuracy first: Dot answers its 25 questions again and merges at 95% or more." | Untested | merges at 95% or more | B | Rick (DECISIONS-FOR-DOT.md, question 1) |
-| P-2 | Dot's evaluation still holds each test question's expected answer, a unit and a tolerance in percent, as observed on 27 October 2026 (O1). | Observed, not re-checked | a unit and a tolerance in percent | B, F | Rick (question 3), or anyone with a Dot account, by looking |
 
 ## Superseded
 
@@ -71,6 +72,9 @@ Assumptions that a later observation contradicted. Kept as they were stated, wit
 
 | ID | Decision | Who and when |
 |---|---|---|
+| P-2 | Dot's evaluation holds each test question's expected answer, a unit and a tolerance in percent (O1, observed 27 October 2026). The "not re-checked since" label was removed from B and F. | Rick (Dot), 1 November 2026, DECISIONS-FOR-DOT.md question 3 |
+| L-OLIST | Dot may publish figures computed from the Olist dataset (CC BY-NC-SA 4.0 label). L1, L2 and L4 move from "a decision, not a resolution" to confirmed. | Rick and Théo (Dot), 1 November 2026, question 4 |
+| BYLINE | The pieces carry a named author, Saurabh Sharma (hard rule 22, v1.8.17). | Rick (Dot), 1 November 2026, question 6 |
 | D1 | Voice: pieces and posts publish in Rick's voice. "We" means Dot; no "I", because Rick did not run the tests personally. | Saurabh, 28 October 2026, on Rick's direction (was assumption A9) |
 
 ## Decisions that leave a question open
@@ -79,9 +83,9 @@ A decision to proceed, made by a person, where the underlying question stays unr
 
 | ID | Decision | Who and when | What stays open |
 |---|---|---|---|
-| L1 | Publication may proceed for `ai-analyst-follow-up-questions`, whose figures are computed from the Olist dataset. | Saurabh, 31 October 2026 | This is a decision, not a resolution. The CC BY-NC-SA 4.0 label (A10) was never verified at source: the Kaggle page loaded without its licence label. README.md ("Before publishing: re-run piece 1's evaluation in a Dot workspace (the trial ran on Olist, licensed non-commercial)") and HANDOVER.md ("The trial used Olist, licensed non-commercial") both still list it as a blocker. Whether publishing Olist-derived figures on getdot.ai is NonCommercial use is Dot's question as publisher, and Dot has not answered it. The gate does not record this decision. |
-| L2 | Publication may proceed for `ai-analyst-shows-sql`, whose figures are computed from the Olist dataset. | Saurabh, 31 October 2026 | The same as L1: a decision, not a resolution. The CC BY-NC-SA 4.0 label (A10) is still unverified at source; README.md and HANDOVER.md still list it as a blocker; Dot, as publisher, owns the question and has not answered it. The gate does not record this decision. |
+| L1 | Publication may proceed for `ai-analyst-follow-up-questions`, whose figures are computed from the Olist dataset. | Saurabh, 31 October 2026 | This is a decision, not a resolution. The CC BY-NC-SA 4.0 label (A10) was never verified at source: the Kaggle page loaded without its licence label. README.md ("Before publishing: re-run piece 1's evaluation in a Dot workspace (the trial ran on Olist, licensed non-commercial)") and HANDOVER.md ("The trial used Olist, licensed non-commercial") both still list it as a blocker. Whether publishing Olist-derived figures on getdot.ai is NonCommercial use is Dot's question as publisher, and Dot has not answered it. The gate does not record this decision. **Confirmed by Dot (Rick and Théo), 1 November 2026: Dot may publish figures from the Olist dataset (row L-OLIST).** |
+| L2 | Publication may proceed for `ai-analyst-shows-sql`, whose figures are computed from the Olist dataset. | Saurabh, 31 October 2026 | The same as L1: a decision, not a resolution. The CC BY-NC-SA 4.0 label (A10) is still unverified at source; README.md and HANDOVER.md still list it as a blocker; Dot, as publisher, owns the question and has not answered it. The gate does not record this decision. **Confirmed by Dot (Rick and Théo), 1 November 2026: Dot may publish figures from the Olist dataset (row L-OLIST).** |
 | L3 | Publication may proceed for `ai-analyst-how-much-context`, whose figures will be computed from the Olist dataset. | Saurabh, 31 October 2026, before its run | The same as L1. Recorded before the piece's run because all three pieces run on Olist; it covers that piece only as far as it uses Olist. |
-| L4 | Publication may proceed for `test-ai-analyst-before-rollout` (guide F), which cites figures derived from the Olist dataset through our own runs (piece A's run, and piece 2's archived run). | Saurabh, 1 November 2026 | L1 and L2 extended to F, on the same terms: a decision, not a resolution. The CC BY-NC-SA 4.0 label (A10) is still unverified at source, and the licence question stays Dot's to own. |
+| L4 | Publication may proceed for `test-ai-analyst-before-rollout` (guide F), which cites figures derived from the Olist dataset through our own runs (piece A's run, and piece 2's archived run). | Saurabh, 1 November 2026 | L1 and L2 extended to F, on the same terms: a decision, not a resolution. The CC BY-NC-SA 4.0 label (A10) is still unverified at source, and the licence question stays Dot's to own. **Confirmed by Dot (Rick and Théo), 1 November 2026: Dot may publish figures from the Olist dataset (row L-OLIST).** |
 
 **31 October 2026:** the pieces L2 and L3 named were not chosen and are archived. L2 still covers piece 2's run, which the guide `test-ai-analyst-before-rollout` may cite; that guide needs its own decision before it publishes Olist-derived figures. L3 no longer applies to anything.

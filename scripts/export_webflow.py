@@ -92,6 +92,7 @@ def main(argv):
         "note": "Paste-ready files only. No draft was created in Webflow.",
         "name": meta.get("title", ""),
         "slug": slug,
+        "author": meta.get("author", ""),
         "seo_title": meta.get("seo_title", ""),
         "meta_description": meta.get("meta", ""),
         "post_body": "webflow.html",

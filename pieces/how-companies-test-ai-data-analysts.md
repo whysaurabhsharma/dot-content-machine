@@ -17,6 +17,8 @@ figures: figures/how-companies-test-ai-data-analysts-figures.csv
 dataset: "None for the census: 13 companies' own publications, each re-opened 31 October 2026; no dataset analysed and no Dot batch of its own. The Dot section cites piece A's run (runs/ai-analyst-follow-up-questions-run.md): Olist, CC BY-NC-SA 4.0, licence decision L1."
 title_approved_by: Saurabh, 2026-10-31
 reviewed_on: 2026-10-31
+author: Saurabh Sharma
+author_approved_by: Dot (Rick), 2026-11-01
 ---
 
 **We read how 13 companies, including Anthropic, LinkedIn and Uber, test their AI analysts: the internal agents their staff use to ask data questions. Seven of the 13 published an accuracy figure, each measured differently: ClickHouse compared result sets, LinkedIn's experts rated answers, Vercel counted successes without defining them. By the end, you'll have one table of what all 13 measured, and the six that published enough to copy are marked. Start from those six.**
@@ -115,7 +117,7 @@ The six names in bold state their test set, scoring and timing; that makes them 
 
 [Dot answers data questions for your team.](https://www.getdot.ai/blog/conversational-analytics) Dot's [context agent page](https://www.getdot.ai/context-agent) says: "Merging re-checks accuracy first: Dot answers its 25 questions again and merges at 95% or more." Assumption: the page describes how merging works today; we haven't tested it.
 
-In [Dot's evaluation](https://docs.getdot.ai/train-dot/evaluation), each test question carries an expected answer, a unit and a tolerance in percent. That was observed on 27 October 2026 and not re-checked since. More in the [AI Data Analyst Playbook](https://www.getdot.ai/blog/ai-data-analyst-playbook) and [Dot's docs](https://docs.getdot.ai).
+In [Dot's evaluation](https://docs.getdot.ai/train-dot/evaluation), each test question carries an expected answer, a unit and a tolerance in percent. More in the [AI Data Analyst Playbook](https://www.getdot.ai/blog/ai-data-analyst-playbook) and [Dot's docs](https://docs.getdot.ai).
 
 ---
 

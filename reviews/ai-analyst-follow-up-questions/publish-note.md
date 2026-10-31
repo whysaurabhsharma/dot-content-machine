@@ -8,9 +8,11 @@ Fill the line above with your name and the date once you have read this note. `s
 
 Nothing pending. It makes no product claim beyond what its own run showed (every answer came back with its SQL). Its one condition, that the Olist data has the two date columns the test needs, was checked before the run and confirmed by Saurabh on 1 November 2026.
 
-## Decided, not assumed
+## Confirmed by Dot
 
-**The dataset licence.** The figures come from the Olist public e-commerce dataset, labelled CC BY-NC-SA 4.0 (non-commercial) on Kaggle; the label was never verified at source. Saurabh recorded a decision to proceed (L1 in `facts/dot-facts.md`). Whether Dot may publish figures from it is Dot's question. If Dot says no, do not publish; the run must be repeated on data Dot may publish.
+**The dataset licence: confirmed.** The figures come from the Olist public e-commerce dataset (CC BY-NC-SA 4.0 label). Dot confirmed on 1 November 2026 (Rick and Théo) that it may publish figures from it. Nothing to do.
+
+**The byline: confirmed.** Author: Saurabh Sharma, approved by Dot (Rick) on 1 November 2026. Set it in the CMS item's author field (it is in `webflow-fields.json` as `author`).
 
 ## Fix after publishing
 

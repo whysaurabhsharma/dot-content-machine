@@ -94,7 +94,7 @@ The six names in bold state their test set, scoring and timing; that makes them 
 
 ## Where Dot fits
 
-[Dot answers data questions for your team.](https://www.getdot.ai/blog/conversational-analytics) Dot's [context agent page](https://www.getdot.ai/context-agent) says: "Merging re-checks accuracy first: Dot answers its 25 questions again and merges at 95% or more." We haven't tested that gate here.
+[Dot answers data questions for your team.](https://www.getdot.ai/blog/conversational-analytics) Dot's [context agent page](https://www.getdot.ai/context-agent) says: "Merging re-checks accuracy first: Dot answers its 25 questions again and merges at 95% or more." Assumption: the page describes how merging works today; we haven't tested it.
 
 In [Dot's evaluation](https://docs.getdot.ai/train-dot/evaluation), each test question carries an expected answer, a unit and a tolerance in percent. More in the [AI Data Analyst Playbook](https://www.getdot.ai/blog/ai-data-analyst-playbook) and [Dot's docs](https://docs.getdot.ai).
 
