@@ -60,7 +60,7 @@ The bank rows for all three now read `drafted` (`bank/questions.csv`).
 | A (research) | 26.9 | 31 Oct, 12:36–16:36 (4.0 h) | revise 8.1, reviews 5.4, run 5.1 |
 | Piece 2 (archived research) | 25.6 | 31 Oct, 17:00–17:59 | run 10.2, reviews 3.7 |
 | B (teardown) | 47.0 | 31 Oct 18:47 – 1 Nov 00:04 (5.3 h) | revise 13.7, research 10.9, reviews 7.7, figures 6.7 |
-| F (guide, so far) | 9.0 | 1 Nov, 00:08–00:22 | figures 6.1 (backfilled), research 2.9 |
+| F (guide, so far) | 10.5 | 1 Nov, 00:08–00:24 | figures 6.1 (backfilled), research 2.9, outline 1.5 |
 
 **What the logs don't cover, plainly:**
 
@@ -194,12 +194,15 @@ What's missing:
 
 **What runs on one command.** `/piece <slug>` runs research, the truth spec, the Dot run, marking, the outline, the draft, SEO, three blind reviewers, the revise step, the check loop, LinkedIn and export, in the order `scripts/stage_gate.py` allows.
 
-**Where it stops, by design: six points.**
+**Where it stops, by design: seven points.** An honest count; each exists for a reason.
 
-- The four human decisions: the question, the outline, the title, the publish.
-- The two Dot-UI steps: recording a batch's conditions before a run (mode, environment, context notes, credits before), and reading the credits after it.
-
-One further check is held for a person too: before a run, someone reviews the truth spec's rival definitions and adds `reviewed_by`.
+- **The question (Decision 1).** Which buyer question gets a piece is a sales judgement; search volume only breaks ties (hard rule 1).
+- **The rival definitions (truth review).** Before a run, a person reads the truth spec's rival readings and adds `reviewed_by`. The machine can compute both readings; only a person knows which ones a buyer might mean, and they must be in before the run, or a right answer to another reading is marked wrong.
+- **Batch conditions (Dot UI).** Mode, environment, context notes and credits before are recorded in Dot's UI before a run, because MCP can't see them.
+- **Credits after (Dot UI).** The same limit, after the run: no cost per answer without it.
+- **The outline (Decision 2).** What the finding is, and which evidence carries it.
+- **The title and human checks (Decision 3).** Whether a title earns a click, the phone read, the headline test.
+- **The publish (Decision 4).** Publishing is Dot's act, after its sign-offs.
 
 **Why it stops at the Dot UI.** Mode, credits, environment and the active context notes are not observable via MCP (`facts/dot-mcp.md`, observed 31 October 2026). No MCP tool has a parameter or a field for any of them. That is a product limit, not a design choice. If Dot exposed them, those two stops would go.
 
@@ -226,9 +229,14 @@ It is the strongest positioning line in the cluster. Caveats: the panel is an il
 
 ### Dot's home page accuracy claim
 
-Dot's home and impact pages carry a section headed "Benchmarked on 450+ financial analysis tasks from Adyen". Its chart sets Dot beside Google's Data Science Agent (about 52%, full benchmark) and a human baseline (62%, easy tasks only). Dot's own figure, in its DABstep post, is 90% on "30 representative tasks". Four test sets sit on one chart. That is exactly the comparison B says can't be made, and a reader who checks will find it.
+**Read in a browser, 1 November 2026** (Chrome; page text checked by script, the charts read from screenshots saved as `runs/screenshots/getdot-home-benchmark-easy-2026-11-01.jpg` and `-hard-2026-11-01.png`). The section is headed "Benchmarked on 450+ financial analysis tasks from Adyen" and holds two charts:
 
-What would make it hold: state the slice ("90% on a 30-task slice of DABstep"), or run the full public set. B concedes the point in its first section ("Dot publishes an accuracy figure too…"); **that concession needs Rick's sign-off.** These pages were read through WebFetch; check the quotes on the live pages before acting.
+- **"You can train Dot to get better."** A line from 67% to 90% against "time invested" (0h to 8h), with a dashed line at 52% labelled "Google Data Science Agent". Footnote: "Google Data Science Agent · ~52% weighted overall (Nov 2025)."
+- **"Hours of analysis in seconds."** Tabs "Easy 72" and "Hard 378". Easy: Dot 96%, "Humans · easy only" 62%. Hard: Dot 89%, "No human baseline · requires multi-file domain expertise". Footnote: "Human baseline from DABStep: 62% accuracy with 3+ hrs of work on easy tasks."
+
+**What this changes.** The earlier handover (read through WebFetch) named only the 90% figure, from Dot's DABstep post ("30 representative tasks"). The live page also shows 96% on the 72 easy tasks and 89% on the 378 hard ones. 72 plus 378 is 450, so the page implies a run on the full public set, which no Dot post we read documents. Either way, the page sets Dot beside a Google figure that is a weighted overall score and a human figure on easy tasks only: different tasks, scored differently. That is the comparison B says can't be made.
+
+**For Rick:** (1) Is there a full-set run behind 96% and 89%, and is it published? If so, B's sentence "Dot publishes an accuracy figure too … 90% on a 30-task slice" is incomplete and should cite it. (2) B's DABstep concession still needs his sign-off. (3) What would make the page hold: state each figure's task set and scoring beside it, or drop the Google and human comparisons.
 
 ### The byline
 

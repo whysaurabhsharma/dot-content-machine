@@ -1,5 +1,9 @@
 # Revisions · how-companies-test-ai-data-analysts
 
+## Round 9: the drift clause (Saurabh, 1 November 2026, after Decision 3)
+
+- **Anthropic's drift sentence completed.** The browser re-read (runs/test-ai-analyst-before-rollout-verification.md) shows Anthropic's sentence continues "...over a month before we treated this as an engineering problem." B's sentence stopped at "over a month", which let a reader take the drift as ongoing. Now: "...to about 65% over a month. That was before it treated drift as an engineering problem." (Saurabh's wording, split into two sentences because one ran to 26 words and failed check 7.) FAQ answer 2 updated to match, word for word. A change after Decision 3: Saurabh re-reads the paragraph aloud (style rule 11).
+
 ## Round 8: after the partial re-read, PASS with four fixes (Saurabh, 31 October 2026, on 5f94c01)
 
 - **Judge-check paragraph promised two checks and described one (logic gap): fixed.** Hex's check is named as the 2.04% eval above, where its judge took the wrong answer 35% of the time. Hex's words are now reported speech, since quotation marks can't be heard: "Hex writes that it still sometimes struggles to calibrate its LLM judges." Checked against the post's sentence, "we still sometimes struggle to calibrate and align our LLM judges": faithful; "and align" dropped.

@@ -65,7 +65,7 @@ One numbered list of eight steps, each starting with a verb (style rule 5). For 
 4. **Open the SQL behind every answer.** *Ours:* in A, all 8 answers came back with SQL (RA-F16); the text named the date in 5 (RA-F15); for two of the other three, a person read the date from the SQL.
 5. **Test a follow-up chain, then ask its first question again in a fresh chat.** *Ours, one chain:* in A, the chain kept its reading across 4 turns (RA-F04; Q5 returned Q1's 43,428, RA-MR-Q5), and the fresh chat read the phrase another way (691, RA-F12). One chain is evidence the drift can happen, not how often.
 6. **Mark the answers by hand first, and sort each gap**: display rounding or a real disagreement. *Both:* ours, A's two shares, 5.6% and 7.7%, were display rounding of exact values (RA-MR-Q3, RA-MR-Q4). Cited, separate sentences: Hex's LLM judge accepted 2.03% for a right answer of 2.04% 35% of the time (HEX-2, HEX-1, HEX-3); LinkedIn's judge lands within 1 point of the human score 75% of the time (LIN-7, LIN-6). No claim that a judge can replace hand-marking.
-7. **Decide the bar a result must clear before you see the results.** *Cited, one company:* Anthropic "initially used ~90%" (ANT-13), 1 of 13 in the census (C-8). The right bar for your team is **untested**, and the step says so.
+7. **Decide the bar a result must clear before you see the results.** *Cited, one company:* Anthropic "initially used ~90%" (ANT-13), 1 of 13 in the census (C-8). The right bar for your team is **untested**, and the step says so. **Saurabh at approval (1 November 2026):** the step must say plainly that it rests on one company, and the right bar stays labelled untested. The draft gives no threshold of its own: a guide that invents one is the untested remedy hard rule 19 bars.
 8. **Re-run on a schedule, and whenever something it depends on changes**: a definition, a table, a model. *Cited:* Anthropic's drift (ANT-5, ANT-6, with the clause); 5 of 13 re-run (C-6, link B); Uber's ~5% noise (UBR-1) as the reason to set a threshold for "changed". No run of ours re-ran after a change.
 
 No table or chart required for a guide (style rule 5). None proposed.
@@ -105,5 +105,5 @@ Quotable line: Ask each test question twice, in fresh chats: in our run on Dot, 
 
 Freshness: measured 31 October 2026 (piece 2's run, Olist, Dot's product as of that day); re-run at Dot's next product release that touches chat answers or evaluation, and by 1 February 2027 at the latest. Census figures: re-read when any of the five publications is updated.
 
-Approved by:
-Date:
+Approved by: Saurabh
+Date: 2026-11-01

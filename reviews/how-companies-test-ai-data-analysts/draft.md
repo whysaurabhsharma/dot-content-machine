@@ -43,7 +43,7 @@ Anthropic's post doesn't say what kind of grader it uses, so the count leaves it
 
 ## Anthropic's accuracy drifted within a month
 
-Anthropic reports that its offline accuracy drifted from about 95% at launch to about 65% over a month. [Dot's essay on accuracy decay](https://www.getdot.ai/blog/your-ai-analyst-will-be-worse-next-month) starts from that figure. Anthropic's case shows that a test passed at launch can say little about the same agent a month later.
+Anthropic reports that its offline accuracy drifted from about 95% at launch to about 65% over a month. That was before it treated drift as an engineering problem. [Dot's essay on accuracy decay](https://www.getdot.ai/blog/your-ai-analyst-will-be-worse-next-month) starts from that figure. Anthropic's case shows that a test passed at launch can say little about the same agent a month later.
 
 Anthropic, Uber, Hex, GitHub and Salesforce re-run their tests on a change, before each deploy, or daily. Anthropic re-runs the affected evals in CI when a PR touches a dependency. [Uber's Finch](https://www.uber.com/blog/unlocking-financial-insights-with-finch) re-runs historical queries before a prompt or model update deploys. Ramp describes testing but no trigger, so it isn't counted.
 
