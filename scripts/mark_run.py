@@ -5,6 +5,11 @@ Usage:
     python scripts/mark_run.py <piece>
     python scripts/mark_run.py <piece> --map Q1=Q13b --map Q2=Q05
     python scripts/mark_run.py <piece> --batch 2
+    python scripts/mark_run.py <piece> --batch 1 --decide Q6=T2c
+
+--map only matches a question to a truth row; the definition is still read from the
+answer's stated basis. --decide records a person's decision: the answer is marked under
+that row, and its stated basis doesn't override it.
     python scripts/mark_run.py <piece> --run <run.md> --truth <truth.csv> --figures <figures.csv>
 
 Reads runs/<piece>-run.md (format: facts/run-format.md) and figures/<piece>-truth.csv
@@ -178,7 +183,7 @@ def stated_definition(matched, truth, basis, population):
     return fits[0] if len({definition(r) for r in fits}) == 1 else None
 
 
-def mark(entry, truth, mapping):
+def mark(entry, truth, mapping, decided=None):
     """Return (verdict, description, value) for one run entry."""
     f = entry["fields"]
     cls = f.get("classification", "").lower()
@@ -195,7 +200,10 @@ def mark(entry, truth, mapping):
 
     basis, population = stated_basis(f)
     how = ""
-    if entry["id"] in mapping:
+    decided = decided or {}
+    if entry["id"] in decided:
+        matched, how = by_id.get(decided[entry["id"]]), "--decide"
+    elif entry["id"] in mapping:
         matched, how = by_id.get(mapping[entry["id"]]), "--map"
     elif entry["id"] in by_id:
         matched, how = by_id[entry["id"]], "id"
@@ -212,7 +220,10 @@ def mark(entry, truth, mapping):
 
     note = ""
     used = matched
-    if basis is None:
+    if how == "--decide":
+        # A person chose the definition this answer is marked under; the stated basis doesn't override it.
+        note = "; the definition was decided by a person (--decide), not inferred from the stated basis"
+    elif basis is None:
         note = "; the answer stated no basis, so it is compared under the asked definition"
     else:
         fit = stated_definition(matched, truth, basis, population)
@@ -264,6 +275,7 @@ def main(argv):
     truth_path = opt("--truth", f"figures/{piece}-truth.csv")
     figures_path = opt("--figures", f"figures/{piece}-figures.csv")
     mapping = dict(argv[i + 1].split("=", 1) for i, a in enumerate(argv) if a == "--map")
+    decided = dict(argv[i + 1].split("=", 1) for i, a in enumerate(argv) if a == "--decide")
 
     with open(run_path, encoding="utf-8") as fh:
         entries = parse_run(fh.read())
@@ -289,7 +301,7 @@ def main(argv):
     today = dt.date.today().isoformat()
     rows, counts = [], {}
     for entry, row_id in zip(entries, ids):
-        verdict, desc, value = mark(entry, truth, mapping)
+        verdict, desc, value = mark(entry, truth, mapping, decided)
         counts[verdict] = counts.get(verdict, 0) + 1
         rows.append({"id": row_id, "value": value, "description": desc,
                      "where_computed": f"mark_run.py: {run_path} {entry['id']} vs {truth_path}", "date": today})

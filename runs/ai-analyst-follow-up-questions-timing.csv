@@ -5,3 +5,7 @@ truth,start,2026-10-31T12:38:04+05:30,,logged
 truth,end,2026-10-31T12:39:55+05:30,1.9,logged
 run,start,2026-10-31T13:37:38+05:30,,logged
 run,end,2026-10-31T13:42:46+05:30,5.1,logged
+mark,start,2026-10-31T13:49:50+05:30,,logged
+mark,end,2026-10-31T13:49:50+05:30,0.0,logged
+findings,start,2026-10-31T13:50:09+05:30,,logged
+findings,end,2026-10-31T13:50:09+05:30,0.0,logged

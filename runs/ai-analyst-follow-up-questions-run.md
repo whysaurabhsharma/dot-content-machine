@@ -16,7 +16,7 @@ Observed in Dot's UI by a person at about 12:15 IST on 31 October 2026, before t
 - Environment: Production. Recorded by hand; no screenshot (rule 14 waived)
 - Context notes: on: "Olist dataset currency and monetary formatting", "Olist revenue, order value, basket size, cancellation and shipping metrics". Off: "About aiinterviewagents.com". Recorded by hand; no screenshot (rule 14 waived)
 - Credits before: 87.6 of 300 used. Recorded by hand; no screenshot (rule 14 waived)
-- Credits after: not yet recorded. The human reads it in Dot's UI after the batch; no screenshot (rule 14 waived)
+- Credits after: 90.6 of 300 used. Recorded by hand after Q8; no screenshot (rule 14 waived). Batch 1 used 3.0 credits (90.6 − 87.6), measured from the 87.6 baseline. Under the waiver this figure may not appear in the published piece
 - Model: not observable via MCP
 
 ### Q1: How many orders were delivered in 2017?
@@ -405,3 +405,40 @@ FROM cte_delivered_orders_nov_2017 o
 LEFT JOIN cte_items_by_order i
     ON o.order_id = i.order_id
 ```
+
+## Batch 1: observed findings
+
+Recorded 31 October 2026, after `mark_run.py --batch 1 --decide Q6=T2c --decide Q8=T8c`: 8 of 8 correct. Figures rows MR-Q1 to MR-Q8; ground truth `figures/ai-analyst-follow-up-questions-truth.csv`. The findings below rest only on Dot's answers and their SQL; under the rule 14 waiver, nothing about mode, credits, environment or context notes may be claimed from this run.
+
+| Item | Chat | Question as asked | Dot's figure | Marked against |
+|---|---|---|---|---|
+| Q1 | A | How many orders were delivered in 2017? | 43,428 | T1, purchase year: correct (exact) |
+| Q2 | A, follow-up of Q1 | And how many of those were delivered late? | 2,453 | T2: correct (exact) |
+| Q3 | A, follow-up of Q2 | What share of the delivered orders is that? | 5.6% | T3, 5.648%: correct (display rounding) |
+| Q4 | A, follow-up of Q3 | What is that share for 2018? | 7.7% | T4, 7.726%: correct (display rounding) |
+| Q5 | A, follow-up of Q4 | Going back to my first question, how many orders was that? | 43,428 | T5: correct (exact) |
+| Q6 | B, fresh | How many orders delivered in 2017 were delivered later than their estimated delivery date? | 1,762 | T2c, delivery date in 2017: correct, decided by a person |
+| Q7 | C, fresh | What was the total item price of orders delivered in 2017? | BRL 5,612,818 | T7d, delivery date in 2017: correct under stated definition |
+| Q8 | C, follow-up of Q7 | How much of that came in November? | BRL 651,458 | T8c, delivered in November 2017: correct, decided by a person |
+
+**Q6 and Q8 are not errors.** Dot gave a defensible answer to an ambiguous question: "delivered in 2017" can mean purchased in 2017 or delivered to the customer in 2017, and the ambiguity was deliberate (see the spec's notes). A person decided, 31 October 2026, to mark both correct under the delivery-date reading, and to record them as the finding about unstated scope below.
+
+### Finding 1: context memory worked
+
+- Q5 recalled Q1's figure exactly, four turns later: 43,428 at Q1 and 43,428 at Q5, in the same chat.
+- Q7's scope carried into its follow-up: Q7 used the customer delivery date, and Q8 ("How much of that came in November?") answered for orders delivered in November 2017 (T8c), not purchased in November (T8, BRL 987,765).
+
+### Finding 2: context also changed interpretation
+
+The same words, "delivered in 2017", got two different readings depending on whether there was prior context:
+
+- **Inside the chain (chat A):** purchase year. Q1 gave 43,428 (purchased in 2017), and Q2–Q5 kept that scope.
+- **In both fresh chats (B and C):** delivery date. Q6 gave 1,762 late orders delivered in 2017 (the purchase-year count, Q2, is 2,453), and Q7 gave BRL 5,612,818 for orders delivered in 2017 (the purchase-year total is BRL 5,962,902.01).
+
+So Q6, the fresh-chat control for Q2, did not reproduce Q2: not because context was lost, but because without context Dot read the same words differently.
+
+### Finding 3: basis statements were inconsistent
+
+- **Q7 said which date it used:** "This uses the customer delivery date, not the purchase date."
+- **Q6 didn't:** its answer says only "1,762 orders delivered in 2017 arrived after their estimated delivery date", without naming which date "delivered in 2017" refers to. Its figure equals the delivery-date reading (T2c), which is how a person could tell.
+
