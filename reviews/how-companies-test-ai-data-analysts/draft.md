@@ -92,7 +92,7 @@ The five names in bold state their test set, scoring and timing. "(vendor)" mark
 
 ## Where Dot fits
 
-[Dot answers data questions for your team.](https://www.getdot.ai/blog/conversational-analytics) Dot's [context agent page](https://www.getdot.ai/context-agent) says a context change is re-checked before it merges. The page reads: "[Merging re-checks accuracy first: Dot answers its 25 questions again and merges at 95% or more.](https://www.getdot.ai/context-agent)" In this census, only Anthropic published a bar like that.
+[Dot answers data questions for your team.](https://www.getdot.ai/blog/conversational-analytics) Dot's [context agent page](https://www.getdot.ai/context-agent) says a context change is re-checked before it merges. The page reads: "[Merging re-checks accuracy first: Dot answers its 25 questions again and merges at 95% or more.](https://www.getdot.ai/context-agent)" In this census, only Anthropic published a numeric bar, and it applies at launch, not to each change.
 
 In [Dot's evaluation](https://docs.getdot.ai/train-dot/evaluation), each test question carries an expected answer, a unit and a tolerance in percent. More in the [AI Data Analyst Playbook](https://www.getdot.ai/blog/ai-data-analyst-playbook) and [Dot's docs](https://docs.getdot.ai).
 
