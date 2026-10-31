@@ -1,3 +1,5 @@
 stage,event,time,minutes,note
 research,start,2026-11-01T00:08:25+05:30,,logged
 research,end,2026-11-01T00:11:16+05:30,2.9,logged
+figures,start,2026-11-01T00:14:18+05:30,,backfilled: commit e4aff86 time, the last commit before the stage began; the stage was not logged
+figures,end,2026-11-01T00:20:22+05:30,6.1,backfilled: commit 1f08262 time; an upper bound, since the interval also holds reading the roadmap doc for the handover
