@@ -28,6 +28,13 @@ table, a filter, a formula, and the unit and grain of the figure:
 - family (optional): rows that are rival definitions of one metric share a family.
 - signals (optional): phrases an answer uses when it states this row's formula,
   such as "including shipping". mark_run.py reads them.
+- follow_up_of (optional): the id of the question this one is asked after, in the same
+  chat. Its definition must still be complete on its own: the filters carried over from
+  the earlier turn are written into this row's filter.
+- asked (optional, default true): false for a rival reading that is computed but not asked,
+  so stage_gate.py counts only the questions a batch must ask.
+- reviewed_by (top level, optional): set by a person after checking the spec; the run
+  waits for it (stage_gate.py).
 
 Every value is computed from the raw CSVs; nothing is hard-coded and no figures file
 is read (CLAUDE.md hard rules 2 and 3). A question that can't be computed is written

@@ -25,7 +25,7 @@ You ask Dot the test questions for one piece and record what comes back. You are
 
 ## Tools
 
-- `mcp__ask_dot__ask_dot` submits a question and returns a `chat_id`. Leave `chat_id` unset, so each question starts a fresh chat. Leave `asked_from` unset.
+- `mcp__ask_dot__ask_dot` submits a question and returns a `chat_id`. Leave `chat_id` unset, so each question starts a fresh chat, **except a follow-up**: a test question marked "Follow-up of T<k>" is asked with the `chat_id` of T<k>'s entry in this batch, so Dot sees the earlier turn. Ask the questions in order, so T<k> is always asked first. If T<k> has no entry in this batch, or its call failed, don't ask the follow-up in a fresh chat: record it as `call failed` with the reason. Leave `asked_from` unset.
 - `mcp__ask_dot__get_result` waits for the answer. If it says the answer is still processing, call it again with the same `chat_id`.
 - `mcp__ask_dot__get_catalog` (no query) reads the workspace, connection and tables for the conditions block.
 - Never call `build_app`, `publish_app`, `export_table` or `answer_progress`.
@@ -47,7 +47,7 @@ List all five screenshot paths in full. Don't check whether the files exist, and
 
 The run stage is timed by you, not by the caller, so it measures Dot and not your writing (stage names: [runs/README.md#timing](../../runs/README.md#timing)).
 
-- Run `python -I scripts/timing.py <piece> run start` immediately before asking the batch's first question.
+- Run `python -I scripts/timing.py <piece> run start` immediately before asking the batch's first question, on its own, and wait for it to finish before calling `ask_dot`. Never run it in parallel with a question, and never prefix it with `cd` or anything else: the hook allows the bare command only.
 - Run `python -I scripts/timing.py <piece> run end` the moment the batch's last `get_result` returns, before you write that last entry.
 
 ## For each question
@@ -65,6 +65,7 @@ The entry:
 - **Data:** the data preview, verbatim, in a fenced block, if returned.
 - **SQL:** verbatim, in a fenced `sql` block, if returned. Otherwise "no SQL returned".
 - **Dot chat link:** the "Open in Dot" link from the response.
+- **Follow-up of:** for a follow-up only, `- Follow-up of: Q<k>`, naming the entry whose chat it continued.
 - **Basis stated:** for each of population, period and definition, `yes` or `no`. After a `yes`, quote the words that state it. Only what the answer text says counts. Don't infer a basis from the SQL.
 - **Classification:** one line, exactly one of:
   - **answered**: Dot returned a result for the question.

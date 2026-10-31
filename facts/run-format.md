@@ -53,6 +53,7 @@ One H3 per question. The heading is `Q<k>:` followed by the question exactly as 
 |---|---|---|
 | Time | `- Time: <output of date +%Y-%m-%dT%H:%M:%S%z>` | Taken right after the answer returns |
 | Chat | `- Chat: <Dot "Open in Dot" link>` | |
+| Follow-up | `- Follow-up of: Q<k>` | Only for a question asked as a follow-up, in the same chat as entry Q<k>, which must be in the same batch. Its Chat link is then the same as Q<k>'s. Omitted for a fresh chat |
 | Classification | `- Classification: <value>` | One of `answered`, `asked back`, `refused with offer`, `needed an analyst`. `call failed` if the call errored |
 | Basis | Three lines: `- Basis, population: yes` or `no`, then the same for `period` and `definition` | After `yes`, a dash and the words quoted from the answer text. Only the text counts, not the SQL |
 | Answer | `**Answer**` then a fenced `text` block | The full answer text, verbatim, character for character. On a failed call, the error text |

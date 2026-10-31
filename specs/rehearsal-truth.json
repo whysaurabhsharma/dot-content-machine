@@ -87,7 +87,8 @@
         "with shipping"
       ],
       "unit": "BRL",
-      "grain": "item rows of delivered orders"
+      "grain": "item rows of delivered orders",
+      "asked": false
     },
     {
       "id": "T04",
