@@ -1,5 +1,61 @@
 # revisions · ai-analyst-follow-up-questions
 
+## Round 2, 31 October 2026: after the second reader and fact-checker reviews, with revise-notes.md
+
+check_piece.py afterwards: 18 pass, 0 fail, 6 for a human (1,211 words; longest sentence 25 words). Title and title_approved_by untouched.
+
+### revise-notes.md (Saurabh)
+
+1. **691 in the lede.** Done: the lede now says "delivered in 2017" gave late-order counts 691 apart (F12), that the chain read purchase date and a fresh chat delivery date, and that both matched the raw data; the 43,428 repeat moved to the second paragraph. 4 sentences, 56 words, buyer's question kept, ends on the five-step promise.
+2. **No causal claim about chat history.** Done: second paragraph says "In this run, the readings differed between the chain and the fresh chats"; "missed because of reading" is cut; the first caveat says one run can't tell chat history from run-to-run variation. Context notes from the run are not mentioned.
+3. **5.6% / 7.7% and 4.3%.** Done: the piece says Dot excluded the orders with no delivery date (two in 2017, F10; six in 2018, F11), the ground truth kept them, and each share rounds to the same figure both ways. The 4.3% (F09) is now said to be a share of 40,930 orders delivered in 2017 (F08), a different set from the chain's purchase-year orders.
+4. **"Missed" vs "neither answer is wrong".** Done: "Neither answer is wrong" kept; "missed" and "Judge a control item by item, or you will blame the wrong thing" cut. Nothing now says the control failed.
+5. **"A person chose".** Done: the method now says once that a script checked each answer reading only its stated basis, Q6 and Q8 didn't name a date in their text, so a person read each reading from its SQL, which filters on the delivery date. "The SQL settles the question" became "the SQL shows which date each one used"; the table verdicts and caveat now say "reading taken from the SQL by a person". Q8 is included because it was also marked by --decide (MR-Q8).
+6. **"Bigger risk than forgetting".** Done: cut; the line now ends at "...still not say which question it answered."
+7. **Mixed precision and table header.** Done: BRL 5,962,902.01 is now BRL 5,962,902 (F13) and BRL 987,765.37 is now BRL 987,765 (F14), matching Dot's whole-BRL answers. Table header and pocket-guide line 7 say "date filter"; the SQL paragraph says "date filter" too.
+8. **Caption.** Done: "Late orders for "delivered in 2017", asked inside a follow-up chain and in a fresh chat. Olist dataset, Dot, 31 October 2026. The run's mode is not stated." Date kept; no mode, credits or workflow note.
+
+### Reader: three stopping points
+
+- **Stop 1, the lede leads with the dullest result.** Fixed by note 1: the 691 gap leads and is resolved in the same lede.
+- **Stop 2, the finding told three times before the first H2.** Fixed: the second paragraph no longer restates 2,453 vs 1,762 or the purchase/delivery split; it adds the 43,428 memory result instead. The third caveat, which repeated the body's exclusion point, is cut.
+- **Stop 3, "missed" vs "Neither answer is wrong", and the team-note caption.** Fixed by notes 4 and 8.
+- **Claim not believed ("bigger risk ... than forgetting").** Cut (note 6).
+- **"If the SQL settles it, why did a person choose?"** Fixed by note 5.
+- **Promise arrives late (word 56).** "By the end" now begins at word 47 of a 56-word lede.
+
+### Fact-checker
+
+- **2, 5.6% and 7.7% called the raw-data shares.** Fixed (note 3).
+- **3, mixed precision.** Fixed (note 7, F13, F14).
+- **4, 4.3% denominator not said.** Fixed (note 3, F08).
+- **5, "year filter" header with Q8 on a month.** Fixed (note 7).
+- **6, "five-step" has no figures ID.** Stands: structural count of the numbered list, not a finding.
+- **7, caption date has no figures ID.** Stands: style rule 14 requires the date; the run file records batch 1 on 31 October 2026.
+- **8, MR-Q5 description says "recalled".** Fixed before this round in the figures file (now "Q1's query re-run four turns later").
+- **9-12, SQL-based claims VERIFIABLE but SQL not shown.** Stand: the piece names the filtered columns from the run file's SQL; no claim beyond them.
+- **13, context notes "where a team can define" ASSERTED.** Stands: observed in Dot's Model → Notes screen (facts O3), a note setting order eligibility.
+- **14, evaluation questions with expected answer and percent tolerance ASSERTED.** Stands: observed in Dot's evaluation screen (facts O1), linked to the docs.
+- **15, Prove stage description ASSERTED.** Stands: describes the linked Playbook stage.
+- **16, "Before the first question" ASSERTED.** Stands: the truth spec and figures/ai-analyst-follow-up-questions-truth.csv were committed at 12:41 (9a7c65d), before the batch 1 run commit at 13:46 (93d3c49); the --decide matching after the run is now stated separately (note 5).
+- **17, "missed".** Fixed (note 4).
+- **18, history blamed for the different reading.** Fixed (note 2).
+- **19, "bigger risk" ranking.** Fixed (note 6).
+- **20, person chose vs SQL settles.** Fixed (note 5).
+- **21, "Judge a control item by item, or you will blame the wrong thing".** Cut.
+- **22, "real questions rarely arrive alone" unevidenced.** Fixed: now "Buyers ... ask whether an analyst keeps context across follow-up questions."
+- **23, "That repeats the question's own words".** Fixed: "That reuses the question's phrase "delivered in 2017", which is the ambiguous part."
+- **24-27, quotes.** Stand: word for word under their questions.
+- **28, caption wording.** Fixed (note 8).
+
+### Lift-tester
+
+- **"More than forgetting" line generalises and leans on "That".** Fixed: the second sentence is cut; the first stands alone.
+- **"Judge it item by item, or you will blame the wrong thing" has no fact.** Cut.
+- **Other would-not-lift lines ("Only the figure gave the date away", "It recalled", "But"/"So" openers, "The fix is already on the screen", "Two lines of a WHERE clause").** Not in the current piece; nothing to change.
+
+## Round 1
+
 Revised 31 October 2026 after the reader, fact-checker and lift-tester reviews. check_piece.py afterwards: 18 pass, 0 fail, 6 for a human (it had 2 fails before: a 28-word sentence and two five-sentence paragraphs, both fixed).
 
 ## Reader: three stopping points
