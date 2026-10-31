@@ -186,7 +186,7 @@ def check_banned(body, prose):
 
 # ---------- the checks ----------
 def run(path):
-    text = Path(path).read_text()
+    text = Path(path).read_text(encoding="utf-8")
     meta, body = parse_front_matter(text)
     blocks = blocks_of(body)
     prose_kinds = ("para", "olist", "ulist", "italic")

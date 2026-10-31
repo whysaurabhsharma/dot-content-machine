@@ -34,7 +34,7 @@ def check(url, timeout=15):
 
 
 def main(path):
-    text = open(path).read()
+    text = open(path, encoding="utf-8").read()
     urls = sorted(set(re.findall(r"\]\((https?://[^)\s]+)\)", text)))
     if not urls:
         print("No links found.")

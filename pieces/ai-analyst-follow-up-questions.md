@@ -1,6 +1,6 @@
 ---
-title: "Does your AI analyst remember what you asked? We tested Dot: one phrase, two readings"
-title_approved_by: Saurabh, 2026-10-31 (title A, after the failed headline test)
+title: "“Delivered in 2017” has two right answers. Test which one your AI analyst gives you"
+title_approved_by: Saurabh, 2026-10-31 (third title, after two failed headline tests)
 seo_title: "AI Analyst Follow-Up Questions: A Context Test to Copy"
 meta: "Does an AI analyst keep context across follow-up questions? We ran a follow-up chain in Dot on Olist data. Copy the test, and check the SQL's date filter."
 slug: ai-analyst-follow-up-questions-test
@@ -18,7 +18,7 @@ reverse_links:
   - The conversational analytics software post (https://www.getdot.ai/blog/conversational-analytics-software), anchor "AI analyst follow-up questions"
 ---
 
-**Does your AI analyst remember what you asked? We asked [Dot](https://www.getdot.ai/) eight questions on Olist data, and one phrase, "delivered in 2017", gave late-order counts 691 apart. The follow-up chain read it as purchase date and a fresh chat as delivery date, and both matched the raw data. By the end, you'll have a five-step test.**
+**The phrase "delivered in 2017" got two late-order counts from [Dot](https://www.getdot.ai/): 2,453 in a follow-up chain, 1,762 in a fresh chat. Both are correct, and that is the problem: each counted a different date. The chain named purchase date; the fresh chat never named its date. By the end, you'll have a five-step test that shows which you got.**
 
 Dot also kept the thread: asked four turns later to go back to the first question, it returned the same 43,428 orders. In this run, the readings differed between the chain and the fresh chats. Each answer's SQL showed which date it used.
 

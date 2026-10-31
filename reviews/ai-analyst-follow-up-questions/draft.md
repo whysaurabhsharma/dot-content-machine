@@ -1,6 +1,6 @@
-# Does your AI analyst remember what you asked? We tested Dot: one phrase, two readings
+# “Delivered in 2017” has two right answers. Test which one your AI analyst gives you
 
-**Does your AI analyst remember what you asked? We asked [Dot](https://www.getdot.ai/) eight questions on Olist data, and one phrase, "delivered in 2017", gave late-order counts 691 apart. The follow-up chain read it as purchase date and a fresh chat as delivery date, and both matched the raw data. By the end, you'll have a five-step test.**
+**The phrase "delivered in 2017" got two late-order counts from [Dot](https://www.getdot.ai/): 2,453 in a follow-up chain, 1,762 in a fresh chat. Both are correct, and that is the problem: each counted a different date. The chain named purchase date; the fresh chat never named its date. By the end, you'll have a five-step test that shows which you got.**
 
 Dot also kept the thread: asked four turns later to go back to the first question, it returned the same 43,428 orders. In this run, the readings differed between the chain and the fresh chats. Each answer's SQL showed which date it used.
 
