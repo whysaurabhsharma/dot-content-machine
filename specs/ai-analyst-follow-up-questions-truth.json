@@ -6,7 +6,8 @@
     "'Delivered in 2017' is read as order_status = 'delivered' and purchase year 2017, as section 7 defines it. The rival-scope rows (T1b, T2c, T3c, T4c, T7d, T8c) read the year or month from order_delivered_customer_date instead.",
     "'Late' is fixed before the run: the date part of order_delivered_customer_date later than the date part of order_estimated_delivery_date (calendar-day grain). Estimated dates are all at 00:00:00, so the timestamp-grain rivals (T2b, T3b, T4b) also count orders delivered on the estimated day as late. Delivered orders with no delivered customer date count as not late and stay in the denominators.",
     "Context-lost rivals (T2d, T3d, T4d) are what an answer gives if a follow-up drops an earlier filter: the year for T2 and T3, the delivered status for T4.",
-    "T7b and T8b are the with-freight rivals; T7c is the all-statuses rival. Rows with asked: false are computed but not asked. Date filters use string prefixes on the raw CSV text; every value is computed from the raw CSVs."
+    "T7b and T8b are the with-freight rivals; T7c is the all-statuses rival. Rows with asked: false are computed but not asked. Date filters use string prefixes on the raw CSV text; every value is computed from the raw CSVs.",
+    "T1's scope is deliberately ambiguous: \"delivered in 2017\" can mean purchased in 2017 (T1) or delivered to the customer in 2017 (T1b). A buyer would phrase it this way, and whether Dot states which date it used is part of what this piece tests. Decided 31 October 2026 by Saurabh, as for the rehearsal's T09. mark_run.py compares an answer that states the delivery date under T1b, not as wrong."
   ],
   "csv": {
     "orders": "data/olist/olist_orders_dataset.csv",
@@ -28,7 +29,8 @@
         "placed in"
       ],
       "unit": "orders",
-      "grain": "order rows, delivered, purchase year 2017"
+      "grain": "order rows, delivered, purchase year 2017",
+      "note": "Ambiguity intentional: see the spec's notes."
     },
     {
       "id": "T1b",
@@ -475,5 +477,6 @@
       "grain": "item rows of delivered orders, delivery month November 2017",
       "asked": false
     }
-  ]
+  ],
+  "reviewed_by": "Saurabh, 2026-10-31"
 }
