@@ -48,7 +48,7 @@ A piece that breaks any one of these does not ship.
 12. **Quotable lines carry their own subject.** Models lift self-contained claims, not lines that lean on the sentence before.
 13. SEO title contains the query. Meta under 155 characters. Slug four to six words.
 14. Every image has alt text and a caption with the date and energy mode.
-15. **Titles use the words buyers type and say what the reader gets.** Check the words against Search Console queries, Keywords Explorer and the pages that already rank. A clever title nobody searches for fails.
+15. **Titles use the words buyers type and say what the reader gets.** Check the words against Search Console queries, Keywords Explorer and the pages that already rank. A clever title nobody searches for fails. A flat claim that states the finding counts as saying what the reader gets, provided the lede carries the promise (style rule 16) and the headline test passes on that title.
 16. **The first 60 words say what the reader will have by the end.** The problem, the proof, then the promise: a test, a number, a fix.
 17. **A post's first two lines give a reason to click:** the reader's stake, then the promise. The post ends by saying what the link delivers.
 
@@ -85,7 +85,7 @@ Each stage has a prompt in `prompts/`. Four decisions stay human: the question, 
 A "no" on any line means the piece isn't done. Who checks each line is in brackets: script, model, or human.
 
 **Headline and opening**
-1. The title uses the words buyers type and says what the reader gets. (human, against search data)
+1. The title uses the words buyers type and says what the reader gets. (human, against search data; check_piece.py marks a claim title PARTIAL until the headline test passes on it)
 2. The first 60 words say what the reader will have by the end. (human)
 3. The SEO title contains the query; meta under 155 characters; slug of four to six words. (check_piece.py)
 4. A bold lede with a number and a named thing. (check_piece.py)
@@ -182,3 +182,5 @@ A "no" on any line means the piece isn't done. Who checks each line is in bracke
 - **Records that overclaim are corrected too.** The piece said Dot "re-ran the query rather than repeating a stored figure"; identical SQL doesn't show that, and execution is not observable via MCP. The run file's Finding 1 and the truth spec's T5 wording made the same claim and were corrected, though neither is published.
 
 **31 October 2026 — v1.6.7.** Style rule 11 and check 24 relaxed, on Saurabh's instruction: an edit after the phone read needs only the changed paragraphs re-read aloud, not the whole piece. The first read is still the whole piece. Origin: `ai-analyst-follow-up-questions` went through several fix rounds in one day, and each edit would otherwise have reset the whole read.
+
+**31 October 2026 — v1.6.8.** Style rule 15 and check 1 allow a claim title. Origin: Saurabh read Dot's blog. Rick's titles are 4–9 words, flat claims, often "Your X", with no colons, no quoted jargon and no how-to promise. Check 1 demanded a promise word that no Rick title has. The search-word test stays a FAIL. A claim title is PARTIAL, and the headline test and the lede's promise (check 2) carry what the promise word did.

@@ -236,12 +236,18 @@ def run(path):
     # 1 title
     cue = re.search(r"\b(test|checklist|guide|how to|measured|cost|fix|steps|template|tested|compared)\b", title, re.I)
     hit = query_hit(title)
-    if hit >= 0.6 and cue:
+    if hit < 0.6:
+        add(1, "FAIL", "Title uses buyers' words and says what the reader gets",
+            f"query words {hit:.0%} (need 60%); promise word: {'yes' if cue else 'none'}")
+    elif cue:
         add(1, "PASS", "Title uses buyers' words and says what the reader gets",
             f"query words {hit:.0%}; promise word \"{cue.group(0)}\". Human: confirm the three-second test")
     else:
-        add(1, "FAIL", "Title uses buyers' words and says what the reader gets",
-            f"query words {hit:.0%} (need 60%); promise word: {'yes' if cue else 'none'}")
+        # A flat claim can say what the reader gets by stating the finding (style rule 15).
+        # The script can't judge that; the headline test does, and the lede must carry the promise (check 2).
+        add(1, "PARTIAL", "Title uses buyers' words and says what the reader gets",
+            f"query words {hit:.0%}; claim title, no promise word: the headline test must pass on this title, "
+            "and the lede must carry the promise (check 2)")
 
     # 2 opening promise
     opening = clean(next((b for k, b in blocks if k == "para"), ""))

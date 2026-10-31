@@ -7,6 +7,7 @@
 - **Title.** Now "Your AI Analyst Picked a Date. It Didn't Say Which.", matching Dot's blog: short flat claims, often "Your X", no colons or how-to promise. title_approved_by updated by Saurabh's instruction; not headline-tested (human.md).
 - **F04.** Description no longer says "recall": "Turns between Q1 and Q5, which asked for Q1's figure again".
 - **Fresh chats.** "Our run used two fresh chats; the test needs only one" is now "You need one fresh chat. We used two."
+- **Lede, sentence 3 (hard rule 6).** "the fresh chat silently used delivery date" is now "the fresh chat used delivery date without saying so, but its SQL did": the claim title accuses "your AI analyst" and Dot is the first analyst named, so the pairing goes in the lede. Lede 66 words; the promise still falls inside the first 60. check_piece.py afterwards: 17 pass, 0 fail, 1 partial (check 1, claim title, until headline test attempt 4).
 - **SQL.** Q2's block cut; the chain's filter is named inline (`order_purchase_timestamp`). One block remains: Q6's delivery-date line alone, verbatim, since that line is the finding. Check 15 confirms it appears whole in the run file.
 
 ## Round 4: second fact-check
