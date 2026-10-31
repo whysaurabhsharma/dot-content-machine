@@ -54,7 +54,7 @@ Both runs of ours used Olist, a public e-commerce dataset, on 31 October 2026. T
 
 "Delivered in 2017" can mean bought in 2017, or delivered to the customer in 2017. In [our follow-up run](https://www.getdot.ai/blog/ai-analyst-follow-up-questions), Dot read the phrase by purchase date inside a follow-up chain, and by delivery date in a fresh chat. The two late-order counts sat 691 apart, and each matched the raw data for its own date. That gap is separate from the 425-order gap in our repeat-question run, which came from timestamp against calendar day.
 
-Item by item, 5 of the follow-up run's answers matched the reading we had planned, and 3 matched only the delivery-date reading. Holding one expected answer per question, our test would have marked those 3 correct answers wrong. Holding both readings, it marked them correct, then shows a person which reading each answer took.
+Item by item, 5 of the follow-up run's answers matched the reading we had planned, and 3 matched only the delivery-date reading. Holding one expected answer per question, our test would have marked those 3 correct answers wrong. Holding both readings, it marked them correct, then showed a person which reading each answer took.
 
 [LinkedIn's engineering team reports](https://www.linkedin.com/blog/engineering/ai/practical-text-to-sql-for-data-analytics) that about 60% of its benchmark questions have more than one accepted answer. Without those extra answers, [LinkedIn says](https://www.linkedin.com/blog/engineering/ai/practical-text-to-sql-for-data-analytics) it "underreported recall by 10-15%".
 
