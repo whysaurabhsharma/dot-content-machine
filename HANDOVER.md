@@ -172,10 +172,7 @@ What's missing:
 
 | Item | Why it matters | What closes it |
 |---|---|---|
-| F, the guide | The cluster's hub; A and B point to it | Outline (Decision 2), draft, reviews, Decision 3 |
-| Posts 2, 4, 5 and 6 of the cluster's six structures | 3 of 6 exist. Post 4 (F's contrarian read) needs a new angle: F's research found no evidence for "you don't need 50–100 questions" | `/linkedin` per post, first lines by a person |
-| A's existing post | Labelled "the checklist", from the older list of five | Relabel to the cluster table in `PLAN.md` |
-| Decision 4 for A and B | Publishing | The pre-publish lists in `PLAN.md`; A goes live before B (B links to A, which returns 404 until then) |
+| Decision 4 for A, B and F | Publishing | `STATUS.md`, section 3: A, then B, then F; each later piece links the earlier ones, which return 404 until live |
 | Re-check facts O1 and O2 on the current account | Both were observed on the dry-run account on 27 October | Look in Dot's UI and record the date |
 | Browser re-read of B's other eight sources | Five (Anthropic, LinkedIn, Uber, ClickHouse, Hex) were re-read in Chrome on 1 November, quotes checked verbatim (`runs/test-ai-analyst-before-rollout-verification.md`). Snowflake, GitHub, Salesforce, Vercel, Ramp, Prosus, WisdomAI, Grab and Dot's own pages were read only through WebFetch | Re-open each in a browser before B publishes |
 | The Olist licence | The CC BY-NC-SA 4.0 label (A10) was never verified at source. L1, L2 and L4 are decisions to proceed, not resolutions | Dot verifies the licence, or re-runs on its own data |

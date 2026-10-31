@@ -8,13 +8,15 @@ It runs in Claude Code, in this repo. Claude Code reads `CLAUDE.md` automaticall
 
 ## This submission
 
+**Start with [STATUS.md](STATUS.md):** what is delivered, what each item waits on, the pre-publish sequence, and what is not done.
+
 Three pieces, one topic cluster, three formats (research, teardown, guide): can you trust an AI analyst's answers before you roll it out? Six LinkedIn posts, two per piece.
 
 | # | Piece | Posts | State (1 November 2026) |
 |---|---|---|---|
-| A | Research, `ai-analyst-follow-up-questions` (bank #43) | 1 of 2 (Post A, to be relabelled to the cluster's structures) | Through the gate and exported; Decision 4 (publish) open |
+| A | Research, `ai-analyst-follow-up-questions` (bank #43) | 2 of 2 (structures 2 and 6) | Through the gate and exported; Decision 4 (publish) open |
 | B | Teardown, `how-companies-test-ai-data-analysts` (bank #36) | 2 of 2 (structures 1 and 3) | Through Decision 3 and exported; Decision 4 open, with Rick's two sign-offs |
-| F | Guide, `test-ai-analyst-before-rollout` (bank #35), the cluster's hub | 0 of 2 | Outline approved 1 November 2026; draft and reviews running |
+| F | Guide, `test-ai-analyst-before-rollout` (bank #35), the cluster's hub | 2 of 2 (structures 4 and 5) | Through Decision 3 and exported; Decision 4 open |
 
 Where each piece stands is read from the files by `python scripts/stage_gate.py <slug>`, not from this table. What's left and what needs Rick: `HANDOVER.md`.
 
@@ -85,7 +87,7 @@ Then run `claude` in this folder and type `/mcp` to check that `ask_dot` is conn
 ## Where the three pieces stand (1 November 2026)
 
 - **A and B** pass every automated check (18 pass, 0 fail; check 1 is PARTIAL on B's claim title by design). Each has had the three blind reviewers, a second fact-check on other models, the headline test, the lift test and a phone read, recorded in `reviews/<slug>/human.md`.
-- **F** is in drafting; its research, figures and outline are done.
+- **F** is through Decision 3 and exported (19 pass, 0 fail).
 - **Before publishing:** the pre-publish list in `PLAN.md` and HANDOVER.md section 6: Rick's sign-offs, a re-check of facts O1 and O2 on the current account, A live before B. Run scores are quoted item by item, never as a bare total (CLAUDE.md v1.8.10).
 - The earlier pieces 1–3 of 28 October are archived in `archive/` and are not part of this submission.
 
