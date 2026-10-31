@@ -151,6 +151,14 @@ def assess(slug):
             add("figures", "next", f"figures/{slug}-figures.csv: one row per number the piece will use, each "
                 "'published: <URL>, read <date>' (hard rule 4) or copied from a cited run's figures file")
             return stages
+        # v1.8.24: the sources are re-read in a browser, by a person, before figures count as done. A model's
+        # web fetch returns a reading, not the page (the cluster found quotes cut short and reworded that way).
+        ver = read(f"runs/{slug}-verification.md") or ""
+        if not re.search(r"^\*\*Sources re-read in a browser by:\*\*[ \t]*\S", ver, re.M):
+            add("figures", "waiting", f"a person opens every source behind figures/{slug}-figures.csv in a browser, checks "
+                f"each number and quote against the page, and records it in runs/{slug}-verification.md with a line "
+                "'**Sources re-read in a browser by:** <name, date>'")
+            return stages
         add("figures", "done", f"figures/{slug}-figures.csv")
         return stages + writing(slug, manifest)
 

@@ -20,7 +20,7 @@ These three close gaps a cold-start test found on 1 November 2026.
 
 - **What Dot's workspace holds (research pieces only; a teardown or guide needs no Dot workspace, so skip this).** Read `facts/dot-workspace-setup.md`: the tables and context notes the specs assume. Then call `get_catalog` (free, instant) with a query naming the tables your test questions need, and record in Sources what it returned. If a table or note your questions need is missing, say so in the verdict as a PIECE IF condition naming it; never guess at a table.
 - **The bank row.** Read this question's row in `bank/questions.csv`: `gap_basis`, `demand_basis` and `evidence_basis` name the pages already on the topic, Dot's own included. The gap chain must say what Dot's own page on the topic already covers.
-- **The Playbook stage.** Name it from the Playbook itself (https://www.getdot.ai/blog/ai-data-analyst-playbook; Stage 3 is "Prove", the testing stage) and `facts/house-structure-and-links.md`, "Suggested links per piece". Never write "to be confirmed" when either source answers it.
+- **The Playbook stage.** Name it from the Playbook itself (the links table in `facts/house-structure-and-links.md` covers only the first pieces) (https://www.getdot.ai/blog/ai-data-analyst-playbook; Stage 3 is "Prove", the testing stage) and `facts/house-structure-and-links.md`, "Suggested links per piece". Never write "to be confirmed" when either source answers it.
 
 ## Fetch the inputs
 
@@ -51,19 +51,19 @@ Write it all to `runs/<piece>-research.md`, headed with the question, the piece 
    - the gap: advice only, or no answer;
    - what only Dot can show, using its own feature or data.
 2. **The words buyers type.** Up to five phrases from the inputs, for the headline. Use only phrases that appear in the inputs. Give each its volume and difficulty as in input 2.
-3. **The run.** What to run in Dot, on which data, in which mode, and which numbers it must produce. Name the Playbook stage it runs. Name the dataset and its licence (hard rule 9). The mode, credits, environment and context notes are screenshotted in Dot's UI, per `runs/README.md#screenshots`.
+3. **The run** (research only; for a teardown or guide write "No run: the evidence is the cited publications in section 7"). What to run in Dot, on which data, in which mode, and which numbers it must produce. Name the Playbook stage it runs. Name the dataset and its licence (hard rule 9). The mode, credits, environment and context notes are screenshotted in Dot's UI, per `runs/README.md#screenshots`.
 4. **Sources rows** for the tracking sheet: source, URL or tool, what it showed, date. One row per input read and per page fetched.
-5. **Stop conditions.** If evidence already exists, or only Dot's data could show it and Dot doesn't have that data, say "not a piece" and why.
+5. **Stop conditions.** Research: if evidence already exists, or only Dot's data could show it and Dot doesn't have that data, say "not a piece" and why. Teardown: fewer than five organisations whose own publication meets the census bar (CLAUDE.md style rule 5) is not a piece.
 
 Then:
 
 6. **Verdict.** Exactly one of:
-   - **PIECE**: the gap is real and a run in Dot can fill it.
+   - **PIECE**: the gap is real and a run in Dot can fill it (research), or five or more organisations' own publications meet the census bar (teardown), or every step has a run of ours or a cited publication behind it (guide).
    - **PIECE IF**: a piece only if a named condition holds. State the condition in one line.
    - **NOT A PIECE**: a stop condition applies. Say which.
    - **NOT A PIECE, BUT A SURFACE**: the question is real, but its answer belongs somewhere other than Dot's blog: a third-party listicle, a review profile, a community thread or Dot's documentation. Say which surface, and why the pages that win it are of that type (input 4's page types). Write the verdict line starting `**NOT A PIECE, BUT A SURFACE**`.
 7. **Section 7 depends on the piece's format** (`"format"` in `runs/<piece>-piece.json`; research if absent; CLAUDE.md, "What this machine makes").
-   - **Teardown: write `## 7. Sources`.** One entry per organisation that published how it did the thing the question asks about. For each: the organisation; the primary publication's URL, opened and read in full with WebFetch (never Dot's teardown of it, never a summary, never a secondary article); who published it and when; what it says it did, in its own words; every number it gives, copied exactly with its unit and what it counts. If a primary source fails to load, say so and leave that organisation out. State the count of organisations that meet the bar the caller sets, and list the ones that fell short, with one line each on why. Hard rule 4's cited-publication exception governs every finding here.
+   - **Teardown: write `## 7. Sources`.** One entry per organisation that published how it did the thing the question asks about. For each: the organisation; the primary publication's URL, opened and read in full with WebFetch (never Dot's teardown of it, never a summary, never a secondary article); who published it and when; what it says it did, in its own words; every number it gives, copied exactly with its unit and what it counts. If a primary source fails to load (a 403 is common on Medium), say so, list it under "Could not load" with its URL, and leave that organisation out of the count; a person can open it in a browser and add it. State the count of organisations that meet the bar the caller sets, and list the ones that fell short, with one line each on why. Hard rule 4's cited-publication exception governs every finding here.
    - **Guide: write `## 7. Evidence for each step`.** Each step the guide would give; the run of ours (`runs/<piece>-run.md` and its figures file) or the cited publication that supports it; or "untested" (hard rule 19).
    - **Research: write `## 7. Test questions`,** as below.
 

@@ -1,0 +1,13 @@
+{
+  "slug": "test-1",
+  "bank_id": "30",
+  "question": "How do I write down our metric definitions so everyone, including an AI, uses the same ones?",
+  "topic": "metric definitions document template",
+  "format": "teardown",
+  "practice": true,
+  "why": "",
+  "piece_if_cleared": {
+    "by": "cold-start test (practice), not a person's review, 2026-11-01",
+    "basis": "Accepted the census of 5 (3 clear, 2 borderline) as meeting CLAUDE.md style rule 5's teardown floor of five; Airbnb and Pinterest not added (403 to WebFetch, no browser check made). Practice only; a person would decide whether Collibra and Wikimedia meet the bar."
+  }
+}

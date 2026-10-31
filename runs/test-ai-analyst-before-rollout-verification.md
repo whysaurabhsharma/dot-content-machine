@@ -1,5 +1,8 @@
 # Browser re-read of the census sources · test-ai-analyst-before-rollout (and piece B)
 
+**Sources re-read in a browser by:** Claude in Chrome, at Saurabh's instruction, 1 November 2026 (page text checked by script, as recorded below; covers F's five census sources, the Playbook and the drift essay)
+
+
 1 November 2026. Each page opened in Chrome (Claude in Chrome), and every quote in the figures rows checked against the page's own text by script in the page (`document.body.innerText`, whitespace and curly quotes normalised). This is the page's text, not a model's reading of it. It clears F's research condition (hard rule 4b: opened and read for this piece) and B's pre-publish item "re-read in a browser the numbers the draft uses" for these five companies.
 
 | Company | URL as opened (after redirects) | Quotes checked | Result |

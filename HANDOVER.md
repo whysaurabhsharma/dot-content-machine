@@ -24,12 +24,13 @@ All six LinkedIn posts exist, first lines by Saurabh. Exports are in `exports/<s
 
 ## For a newcomer: what you're inheriting
 
-**The honest state, 1 November 2026.** The machine produced the three pieces in this repo, but it has never been run end to end by anyone except its author, and never to a piece that was actually published. It has been run cold twice, both times by a fresh Claude Code session (a subagent) given only the README, never by a person:
+**The honest state, 1 November 2026.** The machine produced the three pieces in this repo, but it has never been run end to end by anyone except its author, and never to a piece that was actually published. It has been run cold three times, each by a fresh Claude Code session (a subagent) given only the README, never by a person:
 
 | Test | How far it got | What it found |
 |---|---|---|
 | 1 (research verdict) | README to a research verdict in about 4 minutes | The first test skipped Decision 1 and the truth spec; the gate had no PIECE IF branch; the researcher guessed the workspace's tables; the docs contradicted each other. **All fixed** (CLAUDE.md v1.8.14, v1.8.21). |
 | 2 (a marked Dot run) | README to a marked Dot run on a practice piece in about 10 minutes; setup 14 of 14, the workspace check 43,428 | The marking script read "2017" as the answer and marked a correct answer wrong, and the gate counted it as done; the gate accepted "not recorded" conditions; two files disagreed about who writes the conditions block. **All fixed** (v1.8.22): a real gap now holds marking for a person. |
+| 3 (the teardown first test) | SETUP.md Part 1 and the first test to "next outline" in about 6 minutes, no Dot and no data; setup 12 of 12 | The gate counted figures done with no browser check; the census bar set no count; the researcher's instructions still spoke only of Dot runs where a teardown reads them; the figures header was undocumented; Medium sources returned 403 with no fallback. **Fixed** (v1.8.24): figures wait on a person's recorded browser check, five or more organisations, a teardown-aware researcher, the header in the test. |
 
 **Still open** (records in `runs/coldstart/`; detail in section 6):
 
@@ -38,7 +39,9 @@ All six LinkedIn posts exist, first lines by Saurabh. Exports are in `exports/<s
 - The researcher skipped two of its newer instructions (the workspace check, naming the Playbook stage) in the second test: instructions changed, behaviour didn't fully follow.
 - `mark_run.py` calls an ambiguous match "no match"; nothing covers a follow-up whose parent asked a clarifying question back; with two numbers of the same unit in one answer it takes the first (a real gap goes to a person, who is the backstop).
 - `--practice` skips the gate's refusals without saying so.
-- Not yet tested at all: a person other than the author running it; a piece through publishing; the monthly measurement loop. The first teardown test (section 3) is new and has not been run cold.
+- `stage_gate.py clear` and the "Sources re-read in a browser by:" line accept any name, so nothing tells a person's sign-off from a model's; the records say who signed, and that is all.
+- A published figure written "10K+", "6.53M" or "10X" can't be copied exactly into a figures row (the value must be a plain number): write the plain number and quote the page's text in the description. Whether check 15 then matches "10K+" in a piece's text is untested.
+- Not yet tested at all: a person other than the author running it; a piece through publishing; the monthly measurement loop. The teardown first test has been run cold once (test 3 above), by a subagent.
 
 **What has held up.** Every number in the published pieces has a figures row and was re-read against its source in a browser. The checks caught real errors repeatedly (a changed number, a missing label, a stale lift, an overclaimed score), and each bug found in the checks themselves is logged with its fix in `CLAUDE.md`'s change log.
 
@@ -104,14 +107,14 @@ In dollars, **assumption A2** (1 credit ≈ $1, not stated on any Dot pricing pa
 
 Follow `SETUP.md`: Part 1 for any piece, Part 2 as well for a research piece. `CLAUDE.md` is the rulebook; Claude Code reads it automatically whenever it starts in this folder.
 
-### First test: a teardown, no Dot needed (about 30 minutes)
+### First test: a teardown, no Dot needed (about 10 minutes of machine time, plus your browser checks)
 
 A teardown works from other organisations' published methods, so it needs only Part 1 of `SETUP.md`: no Dot account, no data. It proves the machine works before you set up anything else. At any point, `python scripts/stage_gate.py test-1` says what comes next.
 
 1. **Decision 1, as practice.** `python scripts/stage_gate.py start test-1 --bank 30 --format teardown --practice`. Bank #30 asks how to write down metric definitions so everyone, AI included, uses the same one; `--practice` marks it as a test that will never be published.
-2. **Research.** `python scripts/timing.py test-1 research start`, then in `claude`: *"Use the researcher agent on bank #30, piece slug test-1. Format teardown. Census bar: the organisation's own publication describes how it writes down or governs its metric definitions."* It reads each organisation's primary publication and writes `runs/test-1-research.md`, section 7 being the census. Then `python scripts/timing.py test-1 research end`.
-3. **Read the verdict.** PIECE, PIECE IF, NOT A PIECE, or NOT A PIECE, BUT A SURFACE. For PIECE IF, check the condition yourself and record it: `python scripts/stage_gate.py clear test-1 --by "<name, date>" --basis "<how it was met>"`.
-4. **Figures.** Copy every number you would use from the census into `figures/test-1-figures.csv`, one row each, its source as `published: <URL>, read <date>`. Open each source in a browser and check the number and any quote against the page itself: the census came through a model's reading of each page, and the first three pieces found quotes cut short or reworded that way.
+2. **Research.** `python scripts/timing.py test-1 research start`, then in `claude`: *"Use the researcher agent on bank #30, piece slug test-1. Format teardown. Census bar: the organisation's own publication describes how it writes down or governs its metric definitions. A teardown needs five or more organisations that meet the bar (CLAUDE.md style rule 5)."* It reads each organisation's primary publication and writes `runs/test-1-research.md`, section 7 being the census. Then `python scripts/timing.py test-1 research end`.
+3. **Read the verdict.** PIECE, PIECE IF, NOT A PIECE, or NOT A PIECE, BUT A SURFACE. For PIECE IF, check the condition yourself (a census of fewer than five organisations that clearly meet the bar is not a piece) and record it: `python scripts/stage_gate.py clear test-1 --by "<name, date>" --basis "<how it was met>"`.
+4. **Figures.** Copy into `figures/test-1-figures.csv` every number in the research's census (section 7): each organisation's figures and each count the census states. The header is `id,value,description,where_computed,date`; `where_computed` reads `published: <URL>, read <date>`; the description quotes the page's exact words. Then open every source in a browser and check each number and quote against the page itself: the census came through a model's reading of each page, and the first three pieces found quotes cut short or reworded that way. Record it in `runs/test-1-verification.md`, one line per source, with a first line `**Sources re-read in a browser by:** <your name, date>`. The gate waits for that line: it is a person's check, not a model's.
 5. **Ask the gate.** `python scripts/stage_gate.py test-1` should now say `next outline`. That is the end of the first test: the machine has taken a question to a sourced census and figures, with no Dot involved. To go on, `/piece test-1` runs the outline and waits for your approval (Decision 2).
 
 ### Second test: a research run (needs SETUP.md Part 2)

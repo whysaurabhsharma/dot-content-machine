@@ -1,5 +1,7 @@
 # Verification of section 7: how-companies-test-ai-data-analysts
 
+**Sources re-read in a browser by:** Claude in Chrome, at Saurabh's instruction, 1 November 2026: all 13 companies' pages, quotes and numbers checked against the page text by script. That record is in `runs/test-ai-analyst-before-rollout-verification.md` (the five strict-bar sources, then B's eight remaining sources and the three census corrections they led to). The 31 October check below was made with WebFetch, a model's reading of each page, and is kept as it was.
+
 Re-read 31 October 2026. Every primary URL for the 13 qualifying entries in `runs/how-companies-test-ai-data-analysts-research.md` section 7 was re-opened with WebFetch, asking for the exact sentence holding each number and quote. All 17 URLs loaded. WebFetch caps a quoted passage at about 125 characters, so long sentences are given as excerpts, marked "(excerpt)". Table cells are given as cells. Figures rows are in `figures/how-companies-test-ai-data-analysts-figures.csv`.
 
 Status: CONFIRMED (same value, unit and meaning on the page), CHANGED (the page says something different; what it says is given), NOT FOUND, UNVERIFIED (page failed to load).
