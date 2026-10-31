@@ -278,6 +278,10 @@ On 1 November the Anthropic post was re-read in a browser. The drift sentence B 
 - **Method limit: pasted tables.** Gemini, given B as pasted text, said the census table was missing. Give a second model the rendered page, or check its row count.
 - **A future piece: example test questions.** Readers of B expected a bank of questions to copy. LinkedIn's paper and ClickHouse's harness are where to look.
 
+### Does Dot's evaluation hold a pass bar?
+
+Guide F's step 7 says to decide the bar a result must clear before testing (Anthropic started at about 90%; Dot's Playbook suggests about 80%). Dot's evaluation was observed holding each question's expected answer, unit and tolerance (fact O1), and re-scoring on save (O2), but nobody observed a pass bar in it. So F's "Where Dot fits" says "steps 2 and 6 live in one place", not 2, 6 and 7 (hard rule 5). **If Dot's evaluation does hold a bar, the sentence gets stronger:** confirm it, and F can add step 7.
+
 ## 9. What I'd do differently
 
 - **Fix the title shape before the first headline test.** A and B each took four headline-test rounds. B's titles were judged against the essay shape (4–9 words, no colon) until v1.8.4 tied title shape to format. That rule should have existed on day one.

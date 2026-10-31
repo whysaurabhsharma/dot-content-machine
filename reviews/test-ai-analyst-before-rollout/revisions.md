@@ -102,3 +102,9 @@ No revise-notes.md existed for this round. The fact-checker reported runs/test-a
 - **Drift:** reported speech, as Saurabh asked, in F, B and both FAQ files: "That was before Anthropic treated it as an engineering problem." ("it" for Anthropic's "this".)
 - **Dot's drift essay opened in Chrome** (rule 4(b)): it opens "Anthropic got their internal data agent to 95% accuracy. One month later it was at 65%.", so "starts from that figure" stands in both pieces. It ends with the CTA line the pieces use.
 - Not re-run after the rewrite: the human lift test (it passed on the earlier text). Check 25 still passes; the quotable line is unchanged in the opening.
+
+## After the rewrite (Saurabh, 1 November 2026)
+
+- Step 3 carries its numbers again: "did not (2,878 and 2,453)". Two mentions in the piece, not four.
+- "It" for Anthropic's "this" kept (Saurabh). "Steps 2 and 6", not 2, 6 and 7, kept; "does Dot's evaluation hold a pass bar?" added to Rick's questions in HANDOVER.md.
+- **Blind lift-tester re-run on the rewritten piece:** check 25 PASS, 100%; the quotable line is its second pick. Its first pick and "one line" is the opening sentence, "To test an AI data analyst before rollout, ask real questions with every right answer written down first." The human lift test in Perplexity and Claude passed on the earlier text and is not yet re-run on this version.
