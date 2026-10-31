@@ -58,3 +58,11 @@ Assumptions that a later observation contradicted. Kept as they were stated, wit
 | ID | Decision | Who and when |
 |---|---|---|
 | D1 | Voice: pieces and posts publish in Rick's voice. "We" means Dot; no "I", because Rick did not run the tests personally. | Saurabh, 28 October 2026, on Rick's direction (was assumption A9) |
+
+## Decisions that leave a question open
+
+A decision to proceed, made by a person, where the underlying question stays unresolved. Not a confirmation from Dot, so not in the Confirmed table. The records that list the question as open stay as they are.
+
+| ID | Decision | Who and when | What stays open |
+|---|---|---|---|
+| L1 | Publication may proceed for `ai-analyst-follow-up-questions`, whose figures are computed from the Olist dataset. | Saurabh, 31 October 2026 | This is a decision, not a resolution. The CC BY-NC-SA 4.0 label (A10) was never verified at source: the Kaggle page loaded without its licence label. README.md ("Before publishing: re-run piece 1's evaluation in a Dot workspace (the trial ran on Olist, licensed non-commercial)") and HANDOVER.md ("The trial used Olist, licensed non-commercial") both still list it as a blocker. Whether publishing Olist-derived figures on getdot.ai is NonCommercial use is Dot's question as publisher, and Dot has not answered it. The gate does not record this decision. |

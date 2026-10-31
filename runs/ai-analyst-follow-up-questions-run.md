@@ -451,3 +451,15 @@ Decided 31 October 2026, at the outline. The waiver didn't stay inside the condi
 
 For the next person: waiving rule 14 costs any claim about mode and cost in the published piece, so decide whether the piece needs them before waiving.
 
+
+## Licence: decision to proceed, not a resolution
+
+**Saurabh decided on 31 October 2026 that publication may proceed.** Recorded in `facts/dot-facts.md` as L1.
+
+This is a decision, not a resolution:
+
+- **The licence label was never verified at source.** The repo records Olist as CC BY-NC-SA 4.0 (facts A10, an Assumption), but the Kaggle page loaded without its licence label.
+- **The repo still lists it as a blocker.** README.md: "Before publishing: re-run piece 1's evaluation in a Dot workspace (the trial ran on Olist, licensed non-commercial)". HANDOVER.md: "The trial used Olist, licensed non-commercial". Neither record was changed.
+- **Dot, as publisher, owns the question.** Whether publishing these figures on getdot.ai is NonCommercial use under the licence has not been answered by Dot.
+
+No gate change: `stage_gate.py` does not check the licence.
