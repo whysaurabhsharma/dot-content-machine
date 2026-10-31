@@ -1,12 +1,15 @@
 # how-companies-test-ai-data-analysts · LinkedIn posts
 
-Structures from PLAN.md's cluster table (structure 1, the number; structure 3, the failure taxonomy), not the skill's older list of five. Drawn from the census (research section 7) and the figures file. Line 1 of each post is left for Saurabh (PLAN.md: a person writes every first line).
+Structures from PLAN.md's cluster table (structure 1, the number; structure 3, the failure taxonomy), not the skill's older list of five. Drawn from the census (research section 7) and the figures file. Line 1 of each post is Saurabh's (PLAN.md: a person writes every first line).
 
 ## Post A · how-companies-test-ai-data-analysts · the number
 
-**First lines tried:** left for Saurabh.
+**First lines tried:** (Saurabh, 1 November 2026)
+- Your AI analyst gives you a number. How do you know it's right before your CFO asks?
+- Before you roll out an AI analyst, you need a test. Most companies won't tell you theirs.
+- If you're testing an AI analyst, you're probably inventing the method yourself. You don't have to. (kept: names the reader's situation and offers relief; opens on getting a method, a different stake from post B)
 
-**Line 1:** _to be written by Saurabh: who this is for and what is at risk for them._
+If you're testing an AI analyst, you're probably inventing the method yourself. You don't have to.
 
 At Dot, we read how 13 companies test their AI analyst. Only 5 published enough to copy.
 
@@ -26,9 +29,12 @@ The piece has one table of all 13: test set, scoring and timing, each row linked
 
 ## Post B · how-companies-test-ai-data-analysts · the failure taxonomy
 
-**First lines tried:** left for Saurabh.
+**First lines tried:** (Saurabh, 1 November 2026)
+- A company publishes how it tests its AI analyst. You try to copy it, and hit a wall.
+- "We test our AI analyst thoroughly" is easy to write. Saying when you run the test is harder.
+- Most published testing methods look complete until you try to follow one. (kept: a claim the reader can disagree with; opens on methods that only look like methods, a different stake from post A)
 
-**Line 1:** _to be written by Saurabh: who this is for and what is at risk for them._
+Most published testing methods look complete until you try to follow one.
 
 Of 13 companies that published how they test their AI analyst, 5 said what they test against, how they score and when they run it. Here is what the rest left out.
 
