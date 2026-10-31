@@ -41,11 +41,11 @@ Figures: MR-Q1, MR-Q7 (43,428); MR-Q2, MR-Q8 (5,612,818, marked against T2d, the
 3. Every answer checked out against figures computed from the raw CSVs, under the definition it stated.
 4. One question split: "delivered late in 2017" gave 2,878 at timestamp grain and 2,453 by calendar day.
 5. "Delivered in 2017" meant purchase year for a count and delivery year for a revenue total.
-6. Almost every answer's text named its reading; once, only the SQL showed the date basis.
+6. 11 of 12 answers' text named its date basis; on the twelfth, only the SQL showed it.
 7. The SQL is the check when the text is silent and the reference when two chats disagree.
 8. Ask your key question twice, fresh, and compare the stated definition and the date filter.
 
-Figures: F01, F03 (line 2); MR-Q1 to MR-Q12 (line 3); MR-Q5, MR-Q11 (line 4); MR-Q1, MR-Q2, MR-Q7, MR-Q8 (line 5); F04, MR-Q4, F06 (line 6). Line 6 reads, with numbers: "11 of 12 answers' text named its date basis; on the twelfth, only the SQL showed it."
+Figures: F01, F03 (line 2); MR-Q1 to MR-Q12 (line 3); MR-Q5, MR-Q11 (line 4); MR-Q1, MR-Q2, MR-Q7, MR-Q8 (line 5); F04, MR-Q4, F06 (line 6).
 
 ## 5. Three H2s
 
@@ -67,7 +67,7 @@ Figures: F01, F03 (line 2); MR-Q1 to MR-Q12 (line 3); MR-Q5, MR-Q11 (line 4); MR
 
 ### H2 3: The SQL earns its place on the one answer whose text left the date out
 
-- Method: for each answer, read whether the text stated population, period and definition, then whether the SQL showed it (run file, "Basis" lines).
+- Method: for each answer, check whether the text names its date basis (the rule in F04's row), then whether the SQL's period filter names a date column (F06).
 - Finding: Q4, "How many orders did we get in 2017?", answered 45,101 (MR-Q4) "including all order statuses", with no date basis in the text. Its SQL filters on `order_purchase_timestamp`. Q10, the same question in a fresh chat, returned 45,101 (MR-Q10) and said "based on purchase date".
 - Limitation: on Q4, a reader who did not open the SQL could not tell which date was used.
 - What the product does: the SQL is returned with every answer, so the date basis is one click away even when the text omits it.
