@@ -118,6 +118,13 @@ def numbers_in(t):
     t = DATE.sub(" ", t)
     t = re.sub(r"\b(?:Stage|Run|run|stage|[Qq]uestions?)\s+\d+", " ", t)
     found = []
+    # v1.8.19: a range's upper end ("10-16%") was skipped, because a number after a hyphen isn't read.
+    # Read both ends of a range explicitly; ranges in the figures file are split the same way.
+    for m in re.finditer(r"(?<![\w/.\-])(\d[\d,]*(?:\.\d+)?)%?\s*[-–]\s*(\d[\d,]*(?:\.\d+)?)%?", t):
+        for raw in m.groups():
+            v = norm_number(raw)
+            if v is not None and not (raw.isdigit() and 1990 <= int(raw) <= 2035):
+                found.append((raw, v))
     for m in re.finditer(r"(?<![\w/.\-])\d[\d,]*(?:\.\d+)?%?", t):
         raw = m.group(0).rstrip(",")
         v = norm_number(raw)
@@ -168,6 +175,10 @@ def check_figures(text, fig_file, body=""):
     with open(fig_file, encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
     vals = {norm_number(r["value"]) for r in rows}
+    for r in rows:  # a range value ("10-15") also vouches for each of its ends
+        for end in re.split(r"\s*[-–]\s*", r["value"] or ""):
+            if norm_number(end) is not None:
+                vals.add(norm_number(end))
     # A number from a cited publication (hard rule 4) must link its source in the piece.
     published = {}
     # a value that also has a row from our own census or runs may be that number, so it isn't held to a link
