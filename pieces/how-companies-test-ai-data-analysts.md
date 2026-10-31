@@ -1,7 +1,7 @@
 ---
 title: "7 Companies Published Their AI Analysts' Accuracy. No Two Measured the Same Thing."
 format: teardown
-seo_title: "How 13 Companies Test Their AI Data Analysts"
+seo_title: "How 13 Companies Test Their AI Data Analyst"
 meta: "13 companies published how they test their AI analyst. Seven gave an accuracy figure; no two measured the same thing. The five most complete methods."
 slug: how-companies-test-ai-data-analysts
 query_data: "how to evaluate ai data analyst accuracy: not indexed (not measured). Related: ai data analyst 700 US, 2.0K global, difficulty 22; text to sql accuracy 10 US, difficulty not measured. Ahrefs, 27–28 October 2026"

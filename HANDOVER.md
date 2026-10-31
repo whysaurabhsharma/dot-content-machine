@@ -190,6 +190,8 @@ What's missing:
 | Tier 3 | Agreed for after the pieces | The 18-query citation reading, `bank/surfaces.csv`, `/distribute`, `check_posts.py`, a post queue |
 | Nobody but the author has run it end to end | The core claim about the machine | Section 3's first test, then one full piece |
 
+**Why the browser step exists: the Anthropic record (1 November 2026).** Three errors were found in how the cluster used Anthropic's post. (1) The drift quote in our figures stopped at "over a month."; the page continues "before we treated this as an engineering problem", so B let a reader take the drift as ongoing. (2) The "three consecutive net-negative iterations" quote was also cut short (not used in a piece). (3) When the missing clause was added, we wrote "drift" where Anthropic wrote "this", and the paraphrase spread to B, F and both FAQ files before Gemini caught it. The first two came from reading the page through a model's fetch, which returns a model's reading, not the text; the third was ours. The Hex quote ("on purpose") was the same kind of fetch error. Open every source in a browser, and check quotes against the page's own text by script (`runs/test-ai-analyst-before-rollout-verification.md` shows how); when adding words from a source, quote them rather than paraphrase.
+
 **A limit of the second fact-check method (1 November 2026, from F).** A model scoring a guide reads hard rule 19's honesty labels ("rests on one company's practice", "no run of ours tested this") as weaknesses, and reports them as defects. They aren't: a step that says what it rests on is the rule working. Don't "fix" them by removing the labels or strengthening the claim; triage each against the evidence, and stand the label.
 
 ## 7. Where the machine stops, and why

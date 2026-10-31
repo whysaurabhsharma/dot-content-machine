@@ -97,9 +97,9 @@ Then the CTA: *If this excites you, we'd love to hear from you. Get in touch.* (
 
 ## 11. Quotable line
 
-Quotable line: Ask each test question twice, in fresh chats: in our run on Dot, one question returned 2,878 and 2,453, each correct under its own definition.
+Quotable line: In our run on Dot, one question asked in two fresh chats returned 2,878 and 2,453, each correct under its own definition.
 
-(Changed after approval by Saurabh, 1 November 2026: "both correct" overclaimed, per the fact-checker; 2,878 is correct only under its own timestamp definition. 24 words.)
+(Changed after approval by Saurabh, 1 November 2026, twice: "both correct" overclaimed, per the fact-checker; then the instruction half was dropped, since it echoed step 3's heading, and the line keeps only the evidence. 21 words.)
 
 (19 words. Numbers RP2-MR-Q5, RP2-MR-Q11; "both correct" rests on each matching a computed definition. Placed in the opening; it carries its own subject.)
 
