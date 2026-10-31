@@ -1,6 +1,6 @@
 # Your AI Analyst Picked a Date. Only the SQL Said Which.
 
-**Asked how many orders "delivered in 2017" were late, [Dot](https://www.getdot.ai/) gave 2,453 after earlier questions in the same chat, and 1,762 in a fresh chat. Both are correct: each matches the raw data for its date. That chat named purchase date. The fresh chat used delivery date without saying so. Only its SQL did. By the end, you'll have a six-step test that shows which date your analyst used.**
+**Asked how many orders "delivered in 2017" were late, [Dot](https://www.getdot.ai/) gave 2,453 after earlier questions in the same chat, and 1,762 in a fresh chat. Both are correct for their own date: that chat named purchase date, and the fresh chat used delivery date without saying so. Only its SQL did. By the end, you'll have a six-step test that shows which date your analyst used.**
 
 We ran this test on [Olist, a public e-commerce dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce), so anyone can recompute it. Late means delivered on a later calendar day than the estimated delivery date. Dot's chain answer to "And how many of those were delivered late?" defined it the same way: "meaning delivery occurred after the estimated delivery day."
 

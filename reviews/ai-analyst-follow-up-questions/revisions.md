@@ -7,6 +7,7 @@
 - **Title.** "Your AI Analyst Picked a Date. Only the SQL Said Which." (the readers' fix).
 - **Lede, sentence 3.** "That chat named purchase date. The fresh chat used delivery date without saying so. Only its SQL did." The readers proposed "The chain named…"; "That chat" is used because the lede's first sentence no longer says "chain".
 - **Lede, sentence 1.** "in a follow-up chain" is now "after earlier questions in the same chat": our term replaced at its first use. Later uses of "chain" stand; the method paragraph defines it ("Chat A was a chain of five questions").
+- **Lede to four sentences (check 8).** The readers' split made six. Saurabh chose version A: "Both are correct for their own date: that chat named purchase date, and the fresh chat used delivery date without saying so. Only its SQL did." It keeps "Only its SQL did." as its own sentence and drops "each matches the raw data"; the next paragraph links the dataset and invites recomputation.
 - **Step count.** Checked: the lede, the meta, the test's H2 and the closing instruction say six; the pocket guide and seo_title give no count; no posts or exports exist yet for this piece.
 
 ## Round 5: house-style title and phone fixes
