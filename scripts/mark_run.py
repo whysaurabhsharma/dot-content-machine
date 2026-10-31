@@ -137,7 +137,11 @@ def stated_definition(matched, truth, basis, population):
     With no evidence in the basis, the matched row stands."""
     family = matched.get("family", "")
     pool = [r for r in truth if r.get("family", "") == family] if family else         [r for r in truth if r["formula"] == matched["formula"]]
-    signalled = [r for r in pool if any(p in basis for p in signals(r))]
+    hits = {r["question_id"]: sum(p in basis for p in signals(r)) for r in pool}
+    best = max(hits.values(), default=0)
+    # The rows whose signal phrases the basis matches most: a basis stating both a scope and a
+    # formula ("purchased in", "including freight") picks the row carrying both, not either one.
+    signalled = [r for r in pool if best and hits[r["question_id"]] == best]
     candidates = signalled or [r for r in pool if r["formula"] == matched["formula"]]
     literals = {l.lower() for r in candidates for l in LITERAL.findall(r["filter"]) if l}
     if not signalled and not population and not any(l in basis for l in literals):

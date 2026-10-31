@@ -1,0 +1,479 @@
+{
+  "piece": "ai-analyst-follow-up-questions",
+  "notes": [
+    "Test questions T1-T8 from runs/ai-analyst-follow-up-questions-research.md section 7, worded exactly as asked, so mark_run.py can match them by text.",
+    "Chat plan: T1-T5 one chat (follow_up_of chains them); T6 a fresh chat; T7 fresh and T8 its follow-up. Each follow-up's filter carries the earlier turns' filters in full.",
+    "'Delivered in 2017' is read as order_status = 'delivered' and purchase year 2017, as section 7 defines it. The rival-scope rows (T1b, T2c, T3c, T4c, T7d, T8c) read the year or month from order_delivered_customer_date instead.",
+    "'Late' is fixed before the run: the date part of order_delivered_customer_date later than the date part of order_estimated_delivery_date (calendar-day grain). Estimated dates are all at 00:00:00, so the timestamp-grain rivals (T2b, T3b, T4b) also count orders delivered on the estimated day as late. Delivered orders with no delivered customer date count as not late and stay in the denominators.",
+    "Context-lost rivals (T2d, T3d, T4d) are what an answer gives if a follow-up drops an earlier filter: the year for T2 and T3, the delivered status for T4.",
+    "T7b and T8b are the with-freight rivals; T7c is the all-statuses rival. Rows with asked: false are computed but not asked. Date filters use string prefixes on the raw CSV text; every value is computed from the raw CSVs."
+  ],
+  "csv": {
+    "orders": "data/olist/olist_orders_dataset.csv",
+    "items": "data/olist/olist_order_items_dataset.csv"
+  },
+  "questions": [
+    {
+      "id": "T1",
+      "question": "How many orders were delivered in 2017?",
+      "metric": "Delivered orders purchased in 2017",
+      "family": "delivered_2017",
+      "table": "orders",
+      "filter": "order_status == 'delivered' and order_purchase_timestamp.str.startswith('2017')",
+      "formula": "len(df)",
+      "signals": [
+        "purchase date",
+        "purchased in",
+        "order date",
+        "placed in"
+      ],
+      "unit": "orders",
+      "grain": "order rows, delivered, purchase year 2017"
+    },
+    {
+      "id": "T1b",
+      "question": "Alternative reading of T1: delivered orders whose customer delivery date is in 2017",
+      "metric": "Delivered orders with delivered customer date in 2017 (rival scope)",
+      "family": "delivered_2017",
+      "table": "orders",
+      "filter": "order_status == 'delivered' and order_delivered_customer_date.fillna('').str.startswith('2017')",
+      "formula": "len(df)",
+      "signals": [
+        "delivery date",
+        "delivered date",
+        "date of delivery",
+        "delivered to the customer in"
+      ],
+      "unit": "orders",
+      "grain": "order rows, delivered, delivery year 2017",
+      "asked": false
+    },
+    {
+      "id": "T2",
+      "question": "And how many of those were delivered late?",
+      "metric": "Late delivered orders purchased in 2017, calendar-day grain",
+      "family": "late_2017",
+      "table": "orders",
+      "filter": "order_status == 'delivered' and order_purchase_timestamp.str.startswith('2017') and order_delivered_customer_date.fillna('').str.slice(0, 10) > order_estimated_delivery_date.str.slice(0, 10)",
+      "formula": "len(df)",
+      "signals": [
+        "purchase date",
+        "purchased in",
+        "order date",
+        "placed in",
+        "calendar day",
+        "by date",
+        "after the estimated date"
+      ],
+      "unit": "orders",
+      "grain": "order rows, delivered, purchase year 2017, delivered date after estimated date",
+      "follow_up_of": "T1"
+    },
+    {
+      "id": "T2b",
+      "question": "Alternative reading of T2: late compared at timestamp grain (delivered on the estimated day counts as late)",
+      "metric": "Late delivered orders purchased in 2017, timestamp grain (rival definition)",
+      "family": "late_2017",
+      "table": "orders",
+      "filter": "order_status == 'delivered' and order_purchase_timestamp.str.startswith('2017') and order_delivered_customer_date.fillna('') > order_estimated_delivery_date",
+      "formula": "len(df)",
+      "signals": [
+        "timestamp",
+        "on the estimated day",
+        "same day",
+        "purchase date",
+        "purchased in",
+        "order date",
+        "placed in"
+      ],
+      "unit": "orders",
+      "grain": "order rows, delivered, purchase year 2017, delivered timestamp after estimated timestamp",
+      "asked": false
+    },
+    {
+      "id": "T2c",
+      "question": "Alternative reading of T2: late among delivered orders with delivery date in 2017",
+      "metric": "Late delivered orders with delivered customer date in 2017, calendar-day grain (rival scope)",
+      "family": "late_2017",
+      "table": "orders",
+      "filter": "order_status == 'delivered' and order_delivered_customer_date.fillna('').str.startswith('2017') and order_delivered_customer_date.fillna('').str.slice(0, 10) > order_estimated_delivery_date.str.slice(0, 10)",
+      "formula": "len(df)",
+      "signals": [
+        "delivery date",
+        "delivered date",
+        "date of delivery",
+        "delivered to the customer in"
+      ],
+      "unit": "orders",
+      "grain": "order rows, delivered, delivery year 2017, delivered date after estimated date",
+      "asked": false
+    },
+    {
+      "id": "T2d",
+      "question": "Alternative reading of T2: late among all delivered orders, year filter dropped",
+      "metric": "Late delivered orders, all years, calendar-day grain (context lost)",
+      "family": "late_2017",
+      "table": "orders",
+      "filter": "order_status == 'delivered' and order_delivered_customer_date.fillna('').str.slice(0, 10) > order_estimated_delivery_date.str.slice(0, 10)",
+      "formula": "len(df)",
+      "signals": [
+        "all years",
+        "all delivered orders",
+        "across all"
+      ],
+      "unit": "orders",
+      "grain": "order rows, delivered, all years, delivered date after estimated date",
+      "asked": false
+    },
+    {
+      "id": "T3",
+      "question": "What share of the delivered orders is that?",
+      "metric": "Late share of delivered orders purchased in 2017, calendar-day grain",
+      "family": "late_share_2017",
+      "table": "orders",
+      "filter": "order_status == 'delivered' and order_purchase_timestamp.str.startswith('2017')",
+      "formula": "100 * (df.order_delivered_customer_date.fillna('').str.slice(0, 10) > df.order_estimated_delivery_date.str.slice(0, 10)).sum() / len(df)",
+      "signals": [
+        "purchase date",
+        "purchased in",
+        "order date",
+        "placed in",
+        "calendar day",
+        "by date",
+        "after the estimated date"
+      ],
+      "unit": "%",
+      "grain": "delivered orders, purchase year 2017",
+      "follow_up_of": "T2"
+    },
+    {
+      "id": "T3b",
+      "question": "Alternative reading of T3: share at timestamp grain",
+      "metric": "Late share of delivered orders purchased in 2017, timestamp grain (rival definition)",
+      "family": "late_share_2017",
+      "table": "orders",
+      "filter": "order_status == 'delivered' and order_purchase_timestamp.str.startswith('2017')",
+      "formula": "100 * (df.order_delivered_customer_date.fillna('') > df.order_estimated_delivery_date).sum() / len(df)",
+      "signals": [
+        "timestamp",
+        "on the estimated day",
+        "same day",
+        "purchase date",
+        "purchased in",
+        "order date",
+        "placed in"
+      ],
+      "unit": "%",
+      "grain": "delivered orders, purchase year 2017",
+      "asked": false
+    },
+    {
+      "id": "T3c",
+      "question": "Alternative reading of T3: share among delivered orders with delivery date in 2017",
+      "metric": "Late share of delivered orders with delivered customer date in 2017, calendar-day grain (rival scope)",
+      "family": "late_share_2017",
+      "table": "orders",
+      "filter": "order_status == 'delivered' and order_delivered_customer_date.fillna('').str.startswith('2017')",
+      "formula": "100 * (df.order_delivered_customer_date.fillna('').str.slice(0, 10) > df.order_estimated_delivery_date.str.slice(0, 10)).sum() / len(df)",
+      "signals": [
+        "delivery date",
+        "delivered date",
+        "date of delivery",
+        "delivered to the customer in"
+      ],
+      "unit": "%",
+      "grain": "delivered orders, delivery year 2017",
+      "asked": false
+    },
+    {
+      "id": "T3d",
+      "question": "Alternative reading of T3: share among all delivered orders, year filter dropped",
+      "metric": "Late share of all delivered orders, all years, calendar-day grain (context lost)",
+      "family": "late_share_2017",
+      "table": "orders",
+      "filter": "order_status == 'delivered'",
+      "formula": "100 * (df.order_delivered_customer_date.fillna('').str.slice(0, 10) > df.order_estimated_delivery_date.str.slice(0, 10)).sum() / len(df)",
+      "signals": [
+        "all years",
+        "all delivered orders",
+        "across all"
+      ],
+      "unit": "%",
+      "grain": "delivered orders, all years",
+      "asked": false
+    },
+    {
+      "id": "T4",
+      "question": "What is that share for 2018?",
+      "metric": "Late share of delivered orders purchased in 2018, calendar-day grain",
+      "family": "late_share_2018",
+      "table": "orders",
+      "filter": "order_status == 'delivered' and order_purchase_timestamp.str.startswith('2018')",
+      "formula": "100 * (df.order_delivered_customer_date.fillna('').str.slice(0, 10) > df.order_estimated_delivery_date.str.slice(0, 10)).sum() / len(df)",
+      "signals": [
+        "purchase date",
+        "purchased in",
+        "order date",
+        "placed in",
+        "calendar day",
+        "by date",
+        "after the estimated date"
+      ],
+      "unit": "%",
+      "grain": "delivered orders, purchase year 2018",
+      "follow_up_of": "T3"
+    },
+    {
+      "id": "T4b",
+      "question": "Alternative reading of T4: share at timestamp grain",
+      "metric": "Late share of delivered orders purchased in 2018, timestamp grain (rival definition)",
+      "family": "late_share_2018",
+      "table": "orders",
+      "filter": "order_status == 'delivered' and order_purchase_timestamp.str.startswith('2018')",
+      "formula": "100 * (df.order_delivered_customer_date.fillna('') > df.order_estimated_delivery_date).sum() / len(df)",
+      "signals": [
+        "timestamp",
+        "on the estimated day",
+        "same day",
+        "purchase date",
+        "purchased in",
+        "order date",
+        "placed in"
+      ],
+      "unit": "%",
+      "grain": "delivered orders, purchase year 2018",
+      "asked": false
+    },
+    {
+      "id": "T4c",
+      "question": "Alternative reading of T4: share among delivered orders with delivery date in 2018",
+      "metric": "Late share of delivered orders with delivered customer date in 2018, calendar-day grain (rival scope)",
+      "family": "late_share_2018",
+      "table": "orders",
+      "filter": "order_status == 'delivered' and order_delivered_customer_date.fillna('').str.startswith('2018')",
+      "formula": "100 * (df.order_delivered_customer_date.fillna('').str.slice(0, 10) > df.order_estimated_delivery_date.str.slice(0, 10)).sum() / len(df)",
+      "signals": [
+        "delivery date",
+        "delivered date",
+        "date of delivery",
+        "delivered to the customer in"
+      ],
+      "unit": "%",
+      "grain": "delivered orders, delivery year 2018",
+      "asked": false
+    },
+    {
+      "id": "T4d",
+      "question": "Alternative reading of T4: share among all 2018 orders, delivered filter dropped",
+      "metric": "Late orders as share of all orders purchased in 2018, calendar-day grain (context lost)",
+      "family": "late_share_2018",
+      "table": "orders",
+      "filter": "order_purchase_timestamp.str.startswith('2018')",
+      "formula": "100 * (df.order_delivered_customer_date.fillna('').str.slice(0, 10) > df.order_estimated_delivery_date.str.slice(0, 10)).sum() / len(df)",
+      "signals": [
+        "all orders",
+        "all 2018 orders",
+        "whatever their status",
+        "purchase date",
+        "purchased in",
+        "order date",
+        "placed in"
+      ],
+      "unit": "%",
+      "grain": "all order rows, purchase year 2018",
+      "asked": false
+    },
+    {
+      "id": "T5",
+      "question": "Going back to my first question, how many orders was that?",
+      "metric": "Delivered orders purchased in 2017 (T1 recalled after four turns)",
+      "family": "delivered_2017",
+      "table": "orders",
+      "filter": "order_status == 'delivered' and order_purchase_timestamp.str.startswith('2017')",
+      "formula": "len(df)",
+      "signals": [
+        "purchase date",
+        "purchased in",
+        "order date",
+        "placed in"
+      ],
+      "unit": "orders",
+      "grain": "order rows, delivered, purchase year 2017",
+      "follow_up_of": "T4"
+    },
+    {
+      "id": "T6",
+      "question": "How many orders delivered in 2017 were delivered later than their estimated delivery date?",
+      "metric": "Late delivered orders purchased in 2017, calendar-day grain (fresh-chat control for T2)",
+      "family": "late_2017",
+      "table": "orders",
+      "filter": "order_status == 'delivered' and order_purchase_timestamp.str.startswith('2017') and order_delivered_customer_date.fillna('').str.slice(0, 10) > order_estimated_delivery_date.str.slice(0, 10)",
+      "formula": "len(df)",
+      "signals": [
+        "purchase date",
+        "purchased in",
+        "order date",
+        "placed in",
+        "calendar day",
+        "by date",
+        "after the estimated date"
+      ],
+      "unit": "orders",
+      "grain": "order rows, delivered, purchase year 2017, delivered date after estimated date"
+    },
+    {
+      "id": "T7",
+      "question": "What was the total item price of orders delivered in 2017?",
+      "metric": "Sum of price on items of delivered orders purchased in 2017, freight excluded",
+      "family": "revenue_2017",
+      "table": "items_x_orders",
+      "filter": "order_status == 'delivered' and order_purchase_timestamp.str.startswith('2017')",
+      "formula": "df.price.sum()",
+      "signals": [
+        "excluding shipping",
+        "excludes shipping",
+        "excluding freight",
+        "excludes freight",
+        "without shipping",
+        "without freight",
+        "purchase date",
+        "purchased in",
+        "order date",
+        "placed in"
+      ],
+      "unit": "BRL",
+      "grain": "item rows of delivered orders, purchase year 2017"
+    },
+    {
+      "id": "T7b",
+      "question": "Alternative reading of T7: items plus freight",
+      "metric": "Sum of price plus freight_value on items of delivered orders purchased in 2017 (rival definition)",
+      "family": "revenue_2017",
+      "table": "items_x_orders",
+      "filter": "order_status == 'delivered' and order_purchase_timestamp.str.startswith('2017')",
+      "formula": "(df.price + df.freight_value).sum()",
+      "signals": [
+        "including shipping",
+        "includes shipping",
+        "including freight",
+        "includes freight",
+        "plus freight",
+        "plus shipping",
+        "with shipping",
+        "purchase date",
+        "purchased in",
+        "order date",
+        "placed in"
+      ],
+      "unit": "BRL",
+      "grain": "item rows of delivered orders, purchase year 2017",
+      "asked": false
+    },
+    {
+      "id": "T7c",
+      "question": "Alternative reading of T7: all orders purchased in 2017, whatever their status",
+      "metric": "Sum of price on items of all orders purchased in 2017 (rival scope)",
+      "family": "revenue_2017",
+      "table": "items_x_orders",
+      "filter": "order_purchase_timestamp.str.startswith('2017')",
+      "formula": "df.price.sum()",
+      "signals": [
+        "all orders",
+        "whatever their status",
+        "all statuses",
+        "purchase date",
+        "purchased in",
+        "order date",
+        "placed in"
+      ],
+      "unit": "BRL",
+      "grain": "item rows of all orders, purchase year 2017",
+      "asked": false
+    },
+    {
+      "id": "T7d",
+      "question": "Alternative reading of T7: delivered orders with delivery date in 2017",
+      "metric": "Sum of price on items of delivered orders with delivered customer date in 2017 (rival scope)",
+      "family": "revenue_2017",
+      "table": "items_x_orders",
+      "filter": "order_status == 'delivered' and order_delivered_customer_date.fillna('').str.startswith('2017')",
+      "formula": "df.price.sum()",
+      "signals": [
+        "delivery date",
+        "delivered date",
+        "date of delivery",
+        "delivered to the customer in"
+      ],
+      "unit": "BRL",
+      "grain": "item rows of delivered orders, delivery year 2017",
+      "asked": false
+    },
+    {
+      "id": "T8",
+      "question": "How much of that came in November?",
+      "metric": "Sum of price on items of delivered orders purchased in November 2017, freight excluded",
+      "family": "revenue_nov_2017",
+      "table": "items_x_orders",
+      "filter": "order_status == 'delivered' and order_purchase_timestamp.str.startswith('2017-11')",
+      "formula": "df.price.sum()",
+      "signals": [
+        "excluding shipping",
+        "excludes shipping",
+        "excluding freight",
+        "excludes freight",
+        "without shipping",
+        "without freight",
+        "purchase date",
+        "purchased in",
+        "order date",
+        "placed in"
+      ],
+      "unit": "BRL",
+      "grain": "item rows of delivered orders, purchase month November 2017",
+      "follow_up_of": "T7"
+    },
+    {
+      "id": "T8b",
+      "question": "Alternative reading of T8: items plus freight",
+      "metric": "Sum of price plus freight_value on items of delivered orders purchased in November 2017 (rival definition)",
+      "family": "revenue_nov_2017",
+      "table": "items_x_orders",
+      "filter": "order_status == 'delivered' and order_purchase_timestamp.str.startswith('2017-11')",
+      "formula": "(df.price + df.freight_value).sum()",
+      "signals": [
+        "including shipping",
+        "includes shipping",
+        "including freight",
+        "includes freight",
+        "plus freight",
+        "plus shipping",
+        "with shipping",
+        "purchase date",
+        "purchased in",
+        "order date",
+        "placed in"
+      ],
+      "unit": "BRL",
+      "grain": "item rows of delivered orders, purchase month November 2017",
+      "asked": false
+    },
+    {
+      "id": "T8c",
+      "question": "Alternative reading of T8: delivered orders with delivery date in November 2017",
+      "metric": "Sum of price on items of delivered orders with delivered customer date in November 2017 (rival scope)",
+      "family": "revenue_nov_2017",
+      "table": "items_x_orders",
+      "filter": "order_status == 'delivered' and order_delivered_customer_date.fillna('').str.startswith('2017-11')",
+      "formula": "df.price.sum()",
+      "signals": [
+        "delivery date",
+        "delivered date",
+        "date of delivery",
+        "delivered to the customer in"
+      ],
+      "unit": "BRL",
+      "grain": "item rows of delivered orders, delivery month November 2017",
+      "asked": false
+    }
+  ]
+}
