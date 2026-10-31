@@ -2,7 +2,7 @@
 """charts.py - one chart per piece, in house colours, with alt text and caption.
 
 Usage:
-    python scripts/charts.py charts/piece-1-band.json
+    python scripts/charts.py charts/ai-analyst-follow-up-questions-late-orders.json
 
 The spec is JSON with "type" ("band" or "ranking"), "out", "title", "alt",
 "caption", and the data. Writes the PNG and a .txt beside it holding the alt

@@ -2,7 +2,7 @@
 """verify_sources.py - open every link in a piece and report what came back.
 
 Usage:
-    python scripts/verify_sources.py pieces/piece-1.md
+    python scripts/verify_sources.py pieces/ai-analyst-follow-up-questions.md
 
 Checks 15 and 20 in CLAUDE.md need every link opened, not assumed. Prints the
 status of each URL and exits 1 if any link fails or the piece has fewer than

@@ -5,7 +5,7 @@
 """ground_truth_from_spec.py - compute every expected value in a spec from the raw CSVs.
 
 Usage:
-    python scripts/ground_truth_from_spec.py specs/piece-1-truth.json
+    python scripts/ground_truth_from_spec.py specs/ai-analyst-follow-up-questions-truth.json
     python scripts/ground_truth_from_spec.py <spec.json> --out figures/<piece>-truth.csv
 
 The spec names the piece, the CSV files and the questions. Each question gives the

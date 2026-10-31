@@ -2,7 +2,7 @@
   "piece": "rehearsal",
   "notes": [
     "Test questions T01-T11 from runs/rehearsal-research.md section 7, worded exactly as asked, so mark_run.py can match them by text.",
-    "Definitions reuse specs/piece-1-truth.json where they match: T01-T03 = Q12, T04 = Q11, T05-T07 = Q13b, T08 = Q13, T09 = Q01, T10 = Q02, T11 = Q08. Values are computed here from the raw CSVs, never copied.",
+    "Definitions reuse archive/specs/piece-1-truth.json where they match: T01-T03 = Q12, T04 = Q11, T05-T07 = Q13b, T08 = Q13, T09 = Q01, T10 = Q02, T11 = Q08. Values are computed here from the raw CSVs, never copied.",
     "T04 and T08 are the competing all-orders definitions. They have their own rows so the gap to T01 and T05 shows as a definition difference, not a mistake.",
     "T09's scope is deliberately unstated in the question. It is given the plainest reading, every order row. What Dot does with an unstated scope is part of what this piece tests; mark_run.py compares an answer that states delivered or canceled under T10 or T11.",
     "T03b is not asked. It is the rival reading of T03 that Dot gave in batch 1 (price plus freight), added 31 October 2026 so an answer stating 'including shipping' is marked under its own definition. 'family' groups rival definitions; 'signals' are the phrases that state a formula."

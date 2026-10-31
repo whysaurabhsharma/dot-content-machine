@@ -6,6 +6,18 @@ It runs in Claude Code, in this repo. Claude Code reads `CLAUDE.md` automaticall
 
 **New here? Read `HANDOVER.md` first.** It gets you from a fresh clone to a connected Claude Code session in ten minutes, and through a 15-minute test run.
 
+## This submission
+
+Three pieces, one topic cluster: can you trust an AI analyst's answer before you rely on it? Six LinkedIn posts, two per piece.
+
+| # | Piece | Posts | State |
+|---|---|---|---|
+| 1 of 3 | `pieces/ai-analyst-follow-up-questions.md` | Post 1 of 6: Post A in `posts/ai-analyst-follow-up-questions-posts.md` | Through the gate; Decision 4 (publish) open |
+| 2 of 3 | not yet chosen | Posts 2–3 | — |
+| 3 of 3 | not yet chosen | Posts 4–6 | — |
+
+The earlier Claude Project trial's pieces and posts are in `archive/` and are not part of this submission.
+
 ## What's here
 
 | Path | What it is |
@@ -35,18 +47,14 @@ It runs in Claude Code, in this repo. Claude Code reads `CLAUDE.md` automaticall
 | `scripts/ground_truth_from_spec.py` | Computes every expected value in a JSON spec from the raw CSVs and writes `figures/<piece>-truth.csv`, with each definition, row count and CSV date. A row that can't be computed carries its reason |
 | `scripts/mark_run.py` | Marks each answer in `runs/<piece>-run.md` against `figures/<piece>-truth.csv`, under the definition the answer stated; gaps under 0.1% are rounding. Appends to `figures/<piece>-figures.csv` and prints "N of M correct" |
 | `scripts/timing.py` | Logs a stage's start and end to `runs/<piece>-timing.csv`, with minutes, for time per piece |
-| `specs/piece-1-truth.json` | Piece 1's 20 evaluation questions, plus delivered-only average order value, as a spec: table, filter, formula, unit, grain |
 | `scripts/charts.py` | One chart per piece from a JSON spec, with alt text and caption |
 | `.claude/agents/reader.md`, `fact-checker.md`, `lift-tester.md` | The three blind reviewers: no CLAUDE.md, a Read allowlist enforced by `scripts/hooks/read_allowlist.py`, a body-only review copy. Start them only with `scripts/run_reviewer.py`; what still reaches them is in `facts/reviewer-blindness.md` |
 | `.claude/workflows/piece.js` | The piece workflow, `/piece <slug>`: runs the stages in the order `stage_gate.py` allows and stops at every human decision. Re-run it after each decision |
 | `scripts/stage_gate.py` | Where a piece stands, read only from files: the checkpoint the workflow starts from. `start <slug> --bank <id>` records Decision 1. It enforces the gates the skills only state in prose |
 | `scripts/run_reviewer.py`, `scripts/review_copy.py` | Start a reviewer in a headless session with no MCP servers, with its fixed sentence; write the body-only copy it reads |
 | `scripts/hooks/only_date.py` | The hook that limits `dot-runner`'s Bash to the `date` command |
-| `pieces/piece-1.md`, `piece-2.md`, `piece-3.md` | The three pieces, in Rick's voice |
-| `figures/piece-N-figures.csv` | Every number in each piece, with where it was computed |
-| `figures/ground-truth.csv` | The 20 evaluation answers recomputed from the raw data on 27 October 2026, by the retired `ground_truth.py` |
-| `charts/` | Each piece's chart, its spec, and its alt text |
-| `posts/` | Six LinkedIn posts: A and B (piece 1), C and D (piece 2), E and F (piece 3) |
+| `pieces/<slug>.md`, `figures/<slug>-figures.csv`, `charts/`, `posts/<slug>-posts.md` | Each piece, its Figures rows, its chart and its posts, named by slug |
+| `archive/` | The earlier trial's pieces, figures, charts and posts: superseded, kept for the record |
 | `tracking/` | A note on the tracking sheet, a Google Sheet sent with this folder as a link: Question bank, Coverage, Sources, Figures, Baseline, Run Log |
 | `guides/Dot-Run-a-Full-Piece.pdf` | Step-by-step guide to one complete piece, written for the earlier Claude Project set-up. The steps hold; where it says to paste into the Project, use the subagent or prompt named below instead |
 | `guides/Dot-Machine-Tester-Guide.pdf` | A 30-minute first test, written for the earlier Claude Project set-up. Superseded by `HANDOVER.md` section 2 |
@@ -60,9 +68,9 @@ The scripts need a Python 3.10+ with the packages in `requirements.txt` (pandas,
 
 If the check prints `ok`, run the scripts with that same `python`:
 
-    python scripts/check_piece.py pieces/piece-1.md
+    python scripts/check_piece.py pieces/ai-analyst-follow-up-questions.md
 
-Expected: `18 pass, 0 fail, 0 partial, 6 for a human`.
+Expected: `17 pass, 0 fail, 1 partial, 6 for a human` (the partial is check 1: a claim title, which the headline test covers).
 
 Then run `claude` in this folder and type `/mcp` to check that `ask_dot` is connected. `HANDOVER.md` section 1 has the set-up.
 

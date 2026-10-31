@@ -2,8 +2,8 @@
 """check_piece.py - run the 24-check gate from CLAUDE.md on one piece.
 
 Usage:
-    python scripts/check_piece.py pieces/piece-1.md
-    python scripts/check_piece.py --post posts/post-A.md
+    python scripts/check_piece.py pieces/ai-analyst-follow-up-questions.md
+    python scripts/check_piece.py --post posts/ai-analyst-follow-up-questions-posts.md
 
 --post checks each post in a posts/ file against stage 7 and style rule 17
 (P1-P6), plus the evidence checks a post shares with its piece: 15 (numbers
