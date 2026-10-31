@@ -18,7 +18,7 @@ figures: figures/how-companies-test-ai-data-analysts-figures.csv
 dataset: "None: a census of 13 companies' own publications, each re-opened 31 October 2026. No data analysed and no Dot run (teardown)."
 ---
 
-**We read how 13 companies, including Anthropic, LinkedIn and Uber, test their AI analysts: the internal agents staff use to ask data questions. Seven of the 13 companies published an accuracy figure, and no two measured the same thing. By the end, you'll have all 13 in one table showing what each one measured, with the five that published enough to copy marked.**
+**We read how 13 companies, including Anthropic, LinkedIn and Uber, test their AI analysts: the internal agents staff use to ask data questions. Seven of the 13 companies published an accuracy figure, and no two measured the same thing. By the end, you'll have all 13 in one table showing what each one measured, with the five that published enough to copy marked as methods to start from.**
 
 **The whole piece in eight lines:**
 
