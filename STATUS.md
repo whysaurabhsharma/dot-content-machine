@@ -56,4 +56,4 @@ Exports: `exports/<slug>/` (a .docx, clean Markdown, Webflow HTML and fields; no
 - **No check that pieces agree with each other**, and none that flags a bare "N of M correct". Both errors were caught by people this time.
 - **No chart stage** in the workflow; a missing chart passes the checker.
 - **The `/linkedin` skill** still lists the older five structures, not the cluster's six.
-- **Nobody but the author has run the machine end to end.** The monthly measurement loop has never run, and nothing is published, so there is no outcome to measure yet.
+- **The machine has been run cold once, to a research verdict** (a fresh session from the README alone, 1 November; gaps in HANDOVER.md section 6), **but never end to end by anyone but the author.** The monthly measurement loop has never run, and nothing is published, so there is no outcome to measure yet.
