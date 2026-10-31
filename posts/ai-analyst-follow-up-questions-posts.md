@@ -9,7 +9,7 @@
 
 If you're rolling out an AI analyst, the risk isn't a wrong number. It's a right number for a date you didn't mean.
 
-We asked Dot how many "delivered in 2017" orders were late. Asked after earlier questions in the same chat, it said 2,453. In a fresh chat, 1,762.
+We asked Dot how many "delivered in 2017" orders were late. After earlier questions in the same chat, it said 2,453. In a fresh chat, 1,762.
 
 Both match the raw Olist data. The first chat used purchase date; the fresh chat used delivery date. They sit 691 orders apart.
 
