@@ -47,3 +47,13 @@ It stopped the reader where it sits, before anything useful. Move the sentence i
 ## 9. Things to keep in mind stays at four caveats
 
 With the 13/14 caveat added (note 5), merge two of the existing four so the box stays at two to four.
+
+## 10. Two more, from Saurabh (31 October 2026)
+
+- **Anthropic's drift reads as Anthropic's finding, not Dot's.** The sentence names Anthropic as the one who measured and published it ("Anthropic reports…" or "In Anthropic's own post…"), links Anthropic's post first, and keeps Dot's essay as a secondary link at most.
+- **Don't bury Hex's 2.03% line.** "Hex's judge accepted the wrong one 35% of the time" is the line a reader would quote to a CFO. Keep it whole, in its own sentence, near the top of the judge section, and don't fold it into a longer sentence.
+
+## Decided by Saurabh, 31 October 2026
+
+All nine notes approved, including 5 (the 13 against 14 line to the caveats), 6 (cut the always-re-scores claim) and 8 (the re-run heading changes). The working title becomes "You Can't Compare AI Analyst Accuracy Numbers": change `title:` in the front matter to it (Decision 3 still comes after the human checks; leave title_approved_by unset).
+
