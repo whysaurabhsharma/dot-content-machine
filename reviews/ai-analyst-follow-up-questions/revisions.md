@@ -1,5 +1,14 @@
 # revisions · ai-analyst-follow-up-questions
 
+## Round 6: headline test attempt 4
+
+31 October 2026. Attempt 4 passed with one fault, found independently by all three readers: the title said "It Didn't Say Which" while the lede said "but its SQL did".
+
+- **Title.** "Your AI Analyst Picked a Date. Only the SQL Said Which." (the readers' fix).
+- **Lede, sentence 3.** "That chat named purchase date. The fresh chat used delivery date without saying so. Only its SQL did." The readers proposed "The chain named…"; "That chat" is used because the lede's first sentence no longer says "chain".
+- **Lede, sentence 1.** "in a follow-up chain" is now "after earlier questions in the same chat": our term replaced at its first use. Later uses of "chain" stand; the method paragraph defines it ("Chat A was a chain of five questions").
+- **Step count.** Checked: the lede, the meta, the test's H2 and the closing instruction say six; the pocket guide and seo_title give no count; no posts or exports exist yet for this piece.
+
 ## Round 5: house-style title and phone fixes
 
 31 October 2026, Saurabh's instructions. check_piece.py afterwards: 17 pass, 1 fail (check 1: no promise word in the title; held for a decision on check 1), 1,182 words.

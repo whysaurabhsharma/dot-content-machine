@@ -1,6 +1,6 @@
 ---
-title: "Your AI Analyst Picked a Date. It Didn't Say Which."
-title_approved_by: Saurabh, 2026-10-31 (fourth title, set to match the house style of Dot's blog; the headline test passed on the third title, not this one)
+title: "Your AI Analyst Picked a Date. Only the SQL Said Which."
+title_approved_by: Saurabh, 2026-10-31 (fifth title: the attempt 4 readers' fix for the title-lede contradiction in the fourth)
 seo_title: "AI Analyst Follow-Up Questions: Check Which Date It Used"
 meta: "“Delivered in 2017” gave Dot two correct late-order counts on Olist data. A six-step test shows which date your analyst used, and where its SQL says so."
 slug: ai-analyst-follow-up-questions-test
@@ -18,7 +18,7 @@ reverse_links:
   - The conversational analytics software post (https://www.getdot.ai/blog/conversational-analytics-software), anchor "AI analyst follow-up questions"
 ---
 
-**Asked how many orders "delivered in 2017" were late, [Dot](https://www.getdot.ai/) gave 2,453 in a follow-up chain and 1,762 in a fresh chat. Both are correct: each matches the raw data for its date. The chain named purchase date; the fresh chat used delivery date without saying so, but its SQL did. By the end, you'll have a six-step test that shows which date your analyst used.**
+**Asked how many orders "delivered in 2017" were late, [Dot](https://www.getdot.ai/) gave 2,453 after earlier questions in the same chat, and 1,762 in a fresh chat. Both are correct: each matches the raw data for its date. That chat named purchase date. The fresh chat used delivery date without saying so. Only its SQL did. By the end, you'll have a six-step test that shows which date your analyst used.**
 
 We ran this test on [Olist, a public e-commerce dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce), so anyone can recompute it. Late means delivered on a later calendar day than the estimated delivery date. Dot's chain answer to "And how many of those were delivered late?" defined it the same way: "meaning delivery occurred after the estimated delivery day."
 
