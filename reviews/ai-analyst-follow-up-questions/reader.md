@@ -2,32 +2,32 @@
 
 Started with: Read reviews/ai-analyst-follow-up-questions/draft.md and give your report.
 
-The file read went through, so here is the review.
+I read only `C:\Users\LENOVO\OneDrive\Documents\1Sauarbh\1Dot\dot-content-machine\dot-content-machine\reviews\ai-analyst-follow-up-questions\draft.md`.
 
 **1. Three places I'd stop reading**
 
-- **Lines 3-7, the opening.** In the first paragraph I get four numbers (43,428, 2,453, 1,762, "four turns") before I know what the problem is. Then lines 5-7 talk about "the fresh chat" and "a second fresh chat" before the post has explained the chain or why there's a fresh chat at all. I have to read the eight-line summary to work out the opening, which is the wrong way round. On a busy day I'd skim to the table and stop there.
-- **Line 59, the chart caption.** "Mode not recorded for publication (rule 14 waived)." This is internal process showing through. To a stranger it reads like the vendor waived its own rule about its own test. Line 80 makes it worse by saying the run conditions were "recorded by hand, without screenshots" and the cost isn't published. At that point I stop treating this as evidence and start treating it as marketing.
-- **Lines 82-90, "Where Dot fits" and the close.** It moves from a useful finding to a feature list ("title, access groups and a Foundational toggle", "percent tolerance") that doesn't connect to the test. Then it ends with "If this excites you, we'd love to hear from you." The actual takeaway on line 88 sits between a product pitch and a sign-off, so it gets lost.
+- **The bold lede (line 3).** It packs four ideas into three sentences: the memory question, the 43,428 match, the two readings, and the test promise. "Four turns after the first, it returned the same 43,428 orders" is the dullest result in the piece, and it comes first. Getting the same answer when you ask the same question again doesn't make me want to keep reading. The real finding is the 691-order gap between the two readings, and the lede never gives that number.
+- **The eight-line summary (lines 7 to 16).** Line 5 has already given me 2,453 vs 1,762 and the purchase vs delivery split. The summary repeats both, and so does the next section. Before the first H2, I've been told the main finding three times. Once I see it a third time I assume the rest is padding, and I leave.
+- **Line 61 and the caption on line 59.** Line 53 says "Neither answer is wrong." Line 61 then says the control "missed because of reading." Did it miss or not? The caption's "Mode not published: it was noted by hand, not screenshotted" reads like a note from the team's workflow that got published. Both made me trust the piece less just when the evidence should have been strongest.
 
 **2. The sentence I'd quote to my CFO**
 
-"The gap is 691 orders, from the same phrase." (line 51)
+> "An AI analyst's answer can be right and still not say which question it answered."
 
-It's short and concrete, and it explains why two dashboards built from the same question can disagree. Line 71 is a close second: "An AI analyst's answer can be right and still not say which question it answered."
+It's short and true. It also explains why two dashboards can disagree without either one being broken.
 
 **3. The claim I don't believe**
 
-"All 8 answers were correct under the reading each one used." (line 39)
+> "In Dot's run on Olist, that was a bigger risk in follow-up questions than forgetting." (line 71)
 
-The grading is too forgiving to support that. Q6 and Q8 are marked "Correct, reading decided by a person". Line 69 admits Q6 "gave no basis to infer" its reading, and line 5 says only the figure gave it away. If an answer can only be marked correct after a person reverse-engineers which question it answered, it hasn't passed. Q7's "correct under its stated definition" is a softer bar too.
+This rests on one run, eight questions and one ambiguous phrase that the authors chose to be ambiguous. That can show the risk exists. It can't rank it above forgetting.
 
-The memory claim is also weaker than the headline suggests. Q5 asks Dot to repeat a number that is still visible four messages up in the same chat, which barely tests memory.
+It also misplaces the problem. The difference was between the chain and a fresh chat, not inside the follow-ups. The chain stayed consistent with itself.
 
-One smaller point: line 79 says Dot noted the excluded orders in both its 2017 and 2018 answers, but line 41 quotes only one of them.
+A smaller doubt about the method: line 63 says "the SQL settles the question." Yet Q6 and Q8 are marked "reading chosen by a person." If the SQL showed the filter, why did a person have to choose?
 
 **4. After the first 60 words, do I know what I'll have by the end?**
 
-Yes. The title ("a context test you can copy") and the end of the lede say I'll get a follow-up test to run on my own data. It does arrive, but it's thin: three sentences on line 88, also summarised in line 18. The test is to build a chain of five follow-ups, re-ask the first question in a fresh chat, and compare the date filter in the SQL. The title promises more than that. There's no template, question set or scoring method to actually copy.
+Barely yes. I'll have a five-step test to check whether an AI analyst keeps context through follow-ups and reads an ambiguous phrase the same way in a fresh chat.
 
-File reviewed: C:\Users\LENOVO\OneDrive\Documents\1Sauarbh\1Dot\dot-content-machine\dot-content-machine\reviews\ai-analyst-follow-up-questions\draft.md
+But "By the end, you'll have a five-step test" only arrives around word 56 of the lede, or about word 72 if you count the title. The title also sets up something else: it reads like a yes/no verdict on memory, not a test I can use myself.

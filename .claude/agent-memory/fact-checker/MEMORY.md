@@ -16,3 +16,9 @@
 2026-10-31 · ai-analyst-follow-up-questions · figures file F06 calls BRL 5,962,902.01 "the chain's purchase-year reading of Q7" but Q7 was in fresh chat C, not the chain
 2026-10-31 · ai-analyst-follow-up-questions · "Memory held exactly" / "recalled 43,428" but Q5's SQL re-runs Q1's query rather than recalling the figure
 2026-10-31 · ai-analyst-follow-up-questions · "Before the first question, we wrote the expected answers" but Q6/Q8 were matched to rival scopes by --decide after the run and Q7 to T7d by its stated definition
+2026-10-31 · ai-analyst-follow-up-questions · "Dot's fresh-chat control missed" contradicts "Neither answer is wrong" and the table's "Correct" verdict for Q6
+2026-10-31 · ai-analyst-follow-up-questions · chart caption reads "Mode not published: it was noted by hand, not screenshotted" but the run file records the chosen caption as "Mode not recorded for publication (rule 14 waived)"
+2026-10-31 · ai-analyst-follow-up-questions · 5.6%/7.7% called "the raw-data shares", but MR-Q3/MR-Q4 expected values (5.64843, 7.725972) use denominators 43,428/52,783 that include the missing-date orders Dot's quoted answers exclude
+2026-10-31 · ai-analyst-follow-up-questions · reading difference attributed to chat history alone, but the run file shows two context notes on during the run, which the waiver bars the piece from disclosing
+2026-10-31 · ai-analyst-follow-up-questions · "a person chose" the reading where the answer didn't state it, while the draft also says the SQL's delivery-date filter showed it
+2026-10-31 · ai-analyst-follow-up-questions · same comparison sets BRL 5,612,818 (whole BRL) against BRL 5,962,902.01 (to the cent)
