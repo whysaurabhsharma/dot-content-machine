@@ -100,7 +100,7 @@ Three are vendors evaluating a product they sell: Hex, Snowflake, WisdomAI (C-3)
 
 ## 7. Things to keep in mind
 
-1. Every figure is an company reporting on its own system, on its own test set. None is audited, and no two are comparable; the piece does not rank them. LinkedIn alone publishes three different accuracy measures (LIN-8, LIN-15, LIN-21).
+1. Every figure is a company reporting on its own system, on its own test set. None is audited, and no two are comparable; the piece does not rank them. LinkedIn alone publishes three different accuracy measures (LIN-8, LIN-15, LIN-21).
 2. The census counts what each company published, not what it does. A missing practice in the table means the publication does not mention it.
 3. The census is not exhaustive. Primary sources only; several known posts (Pinterest, OpenAI, Netflix, Delivery Hero, Swiggy, Fiverr) would not load and are not counted. Databricks, Microsoft and Google publish testing tools for their customers; those are left out, because they describe how customers should test, not how each company checks its own analyst.
 4. Three of the 13 sell the product they evaluate (C-3).
