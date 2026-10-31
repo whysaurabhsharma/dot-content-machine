@@ -2,5 +2,14 @@
   "slug": "ai-analyst-follow-up-questions",
   "bank_id": "43",
   "question": "AI analyst follow-up questions context",
-  "practice": false
+  "practice": false,
+  "waivers": [
+    {
+      "rule": 14,
+      "batch": 1,
+      "by": "Saurabh, 2026-10-31",
+      "stated_in": "runs/ai-analyst-follow-up-questions-run.md, Batch 1: conditions",
+      "cost": "no claim about mode, credits, environment or context notes in the piece"
+    }
+  ]
 }

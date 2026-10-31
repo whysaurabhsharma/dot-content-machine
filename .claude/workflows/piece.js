@@ -8,13 +8,12 @@ export const meta = {
   ],
 }
 
-// Args: the piece slug, as a string ("<slug>" or "<slug> --no-screenshots") or { slug, noScreenshots }.
-// --no-screenshots is passed through to stage_gate.py only when a person gives it; the gate also
-// requires the batch's conditions block to record the waiver (runs/README.md#screenshots).
+// Args: the piece slug, as a string ("<slug>") or { slug }.
+// A rule 14 waiver is not an argument: a person records it once with `stage_gate.py waive`,
+// and the gate reads it from the piece's manifest (runs/README.md#screenshots).
 const argText = typeof args === 'string' ? args.trim() : ''
 const slug = argText ? argText.split(/\s+/)[0] : (args && args.slug)
-const noShots = argText ? /(^|\s)--no-screenshots(\s|$)/.test(argText) : !!(args && args.noScreenshots)
-const GATE_FLAGS = noShots ? ' --no-screenshots' : ''
+const GATE_FLAGS = ''
 if (!slug || !/^[a-z0-9-]+$/.test(slug)) {
   return { stopped: 'no slug', reason: 'Run as /piece <slug>, with a slug of lowercase letters, digits and hyphens.' }
 }

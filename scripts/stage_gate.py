@@ -4,8 +4,8 @@
 Usage:
     python scripts/stage_gate.py <slug>            # report, for a person
     python scripts/stage_gate.py <slug> --json     # the same, for the workflow
-    python scripts/stage_gate.py <slug> --no-screenshots   # waive rule 14's screenshots, see below
     python scripts/stage_gate.py start <slug> --bank <id> [--format research|teardown|guide] [--practice]
+    python scripts/stage_gate.py waive <slug> --rule 14 --batch <n> --by "<name, YYYY-MM-DD>"
 
 It remembers nothing: every answer comes from files in the repo, so it gives the same
 answer in a new session as in the one that wrote them. Stages are checked in order;
@@ -24,9 +24,14 @@ Gates enforced here that the skills only stated in prose:
 - the rehearsal is refused without --practice;
 - draft waits for the outline's "Approved by" and "Date" (Decision 2);
 - a batch waits for its conditions block (rules 14, 15, 17) and, for a piece that isn't
-  practice, for its four screenshot files, unless a person passes --no-screenshots AND the
-  batch's conditions block records the waiver in a line starting "**Rule 14 waived"; marking waits for the credits-after reading
-  and its screenshot file;
+  practice, for its four screenshot files, unless the batch has a recorded rule 14 waiver;
+  marking waits for the credits-after reading and, without a waiver, its screenshot file.
+  A waiver is a recorded state, not a flag: `waive` writes it into the manifest
+  (runs/<slug>-piece.json, "waivers"), and refuses unless the batch's conditions block already
+  states it in a line starting "**Rule 14 waived" (who, and what it costs). The gate reads both,
+  every time, so a waived batch never shows as stuck. (Until 1 November 2026 the waiver was a
+  --no-screenshots flag that had to be passed on every call; without it, a finished piece
+  reported as stuck at its run. That flag is now ignored.)
 - export waits for check_piece.py to report no FAIL, and for Decision 3;
 - linkedin stops when all five opening structures are used;
 - the run waits for the truth spec's "reviewed_by" (rival definitions before the run);
@@ -86,7 +91,13 @@ def recorded(conditions, label):
 WAIVER = re.compile(r"^\*\*Rule 14 waived", re.M)
 
 
-def assess(slug, no_shots=False):
+def waived(manifest, slug, n, cond):
+    """A rule 14 waiver for batch n: recorded in the manifest and stated in the conditions block."""
+    rec = any(w.get("rule") == 14 and int(w.get("batch", -1)) == int(n) for w in manifest.get("waivers", []))
+    return rec and bool(WAIVER.search(cond))
+
+
+def assess(slug):
     stages = []
 
     def add(name, state, detail):
@@ -129,7 +140,7 @@ def assess(slug, no_shots=False):
                 "'published: <URL>, read <date>' (hard rule 4) or copied from a cited run's figures file")
             return stages
         add("figures", "done", f"figures/{slug}-figures.csv")
-        return stages + writing(slug, manifest, no_shots)
+        return stages + writing(slug, manifest)
 
     spec_text, truth = read(f"specs/{slug}-truth.json"), read(f"figures/{slug}-truth.csv")
     if not spec_text or not truth:
@@ -160,12 +171,11 @@ def assess(slug, no_shots=False):
         if missing:
             add("run", "waiting", f"batch {last_n}: a person records {', '.join(missing)} in its conditions block "
                 "(rules 14, 15, 17)")
-        elif shots and no_shots and not WAIVER.search(last_cond):
-            add("run", "waiting", f"batch {last_n}: --no-screenshots was passed, but the conditions block doesn't record "
-                "the waiver. A person adds a line starting '**Rule 14 waived' saying who waived it and what it costs")
-        elif shots and not no_shots:
+        elif shots and not waived(manifest, slug, last_n, last_cond):
             add("run", "waiting", f"batch {last_n}: screenshot files missing in runs/screenshots/: "
-                + ", ".join(f"{slug}-batch-{last_n}-{s}.png" for s in shots) + " (rule 14; a real piece needs all five)")
+                + ", ".join(f"{slug}-batch-{last_n}-{s}.png" for s in shots) + " (rule 14; a real piece needs all five). "
+                f"To waive instead, a person states it in the conditions block ('**Rule 14 waived ...') and runs "
+                f"python scripts/stage_gate.py waive {slug} --rule 14 --batch {last_n} --by \"<name, date>\"")
         else:
             add("run", "next", f"batch {last_n}: dot-runner asks the {len(asked)} questions")
         return stages
@@ -173,8 +183,7 @@ def assess(slug, no_shots=False):
         add("run", "next", f"batch {last_n} has {len(last_ids)} of {len(asked)} entries: dot-runner continues")
         return stages
     after_shot = Path(f"runs/screenshots/{slug}-batch-{last_n}-credits-after.png")
-    waived = no_shots and WAIVER.search(last_cond)
-    if not manifest.get("practice") and not waived and recorded(last_cond, "Credits after") and not after_shot.exists():
+    if not manifest.get("practice") and not waived(manifest, slug, last_n, last_cond) and recorded(last_cond, "Credits after") and not after_shot.exists():
         add("run", "waiting", f"batch {last_n}: screenshot file missing: {after_shot.as_posix()} (rule 15)")
         return stages
     if not recorded(last_cond, "Credits after"):
@@ -189,11 +198,11 @@ def assess(slug, no_shots=False):
         return stages
     add("mark", "done", f"{len(last_ids)} rows in figures/{slug}-figures.csv")
 
-    stages.extend(writing(slug, manifest, no_shots))
+    stages.extend(writing(slug, manifest))
     return stages
 
 
-def writing(slug, manifest, no_shots=False):
+def writing(slug, manifest):
     """Outline to publish: the same for every format."""
     stages = []
     row = bank_row(manifest["bank_id"])
@@ -340,14 +349,53 @@ def start(argv):
     return 0
 
 
+def waive(argv):
+    """Record a person's rule 14 waiver for one batch in the manifest. Refuses unless the run file states it."""
+    def opt(name):
+        return argv[argv.index(name) + 1] if name in argv and argv.index(name) + 1 < len(argv) else None
+    if len(argv) < 3 or not opt("--batch") or not opt("--by") or opt("--rule") != "14":
+        print(__doc__)
+        return 2
+    slug, n, by = argv[2], int(opt("--batch")), opt("--by")
+    path = Path(f"runs/{slug}-piece.json")
+    if not path.exists():
+        print(f"Refused: {path} doesn't exist; Decision 1 first.")
+        return 1
+    manifest = json.loads(path.read_text(encoding="utf-8"))
+    conds = {num: c for num, c, _ in batches(read(f"runs/{slug}-run.md") or "")}
+    if n not in conds:
+        print(f"Refused: runs/{slug}-run.md has no '## Batch {n}: conditions' block.")
+        return 1
+    cond = conds[n]
+    if not WAIVER.search(cond):
+        print(f"Refused: batch {n}'s conditions block doesn't state the waiver. A person adds a line starting "
+              "'**Rule 14 waived' saying who waived it and what it costs, then runs this again.")
+        return 1
+    ws = manifest.setdefault("waivers", [])
+    if any(w.get("rule") == 14 and int(w.get("batch", -1)) == n for w in ws):
+        print(f"Already recorded: rule 14 waiver for batch {n}.")
+        return 0
+    ws.append({"rule": 14, "batch": n, "by": by,
+               "stated_in": f"runs/{slug}-run.md, Batch {n}: conditions",
+               "cost": "no claim about mode, credits, environment or context notes in the piece"})
+    path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    print(f"Wrote {path}: rule 14 waiver for batch {n}, by {by}.")
+    return 0
+
+
 def main(argv):
     if len(argv) >= 2 and argv[1] == "start":
         return start(argv)
+    if len(argv) >= 2 and argv[1] == "waive":
+        return waive(argv)
     if len(argv) < 2:
         print(__doc__)
         return 2
     slug = argv[1]
-    stages = assess(slug, no_shots="--no-screenshots" in argv)
+    if "--no-screenshots" in argv:
+        print("Note: --no-screenshots is ignored. A rule 14 waiver is now recorded once with `waive` "
+              "and read from the manifest.", file=sys.stderr)
+    stages = assess(slug)
     last = stages[-1]
     result = {"slug": slug, "stages": stages, "next": last["stage"], "state": last["state"], "detail": last["detail"]}
     if "--json" in argv:
