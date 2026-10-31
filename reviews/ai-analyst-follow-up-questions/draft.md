@@ -1,4 +1,4 @@
-# Does your AI analyst remember what you asked? Dot did, reading one phrase two ways
+# Does your AI analyst remember what you asked? We tested Dot: one phrase, two readings
 
 **Does your AI analyst remember what you asked? We asked [Dot](https://www.getdot.ai/) eight questions on Olist data; four turns after the first, it returned the same 43,428 orders. "Delivered in 2017" meant purchase date in the chain and delivery date in fresh chats, each matching the raw data for its date. By the end, you'll have a five-step test.**
 

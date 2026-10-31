@@ -68,5 +68,5 @@ The headline test failed (reviews/ai-analyst-follow-up-questions/human.md, attem
 
 - **Lede rewritten** to address the reader, open with the buyer's question, and resolve the gap within 60 words: Dot returned the same 43,428 orders four turns after the first, and "delivered in 2017" meant purchase date in the chain and delivery date in fresh chats, each matching the raw data for its date. Sources: F01, F04, MR-Q1, MR-Q5; MR-Q2 against T2 and MR-Q6 against T2c. 58 words, four sentences.
 - **Second paragraph** now carries the two figures the lede dropped: "The two readings gave 2,453 late orders in the chain and 1,762 in the fresh chat, and that gap is not a memory failure."
-- **Title** changes from "AI analyst follow-up questions: a context test you can copy" to a buyer's question with the result; final wording pending check 1 (it needs a promise word).
+- **Title** changes from "AI analyst follow-up questions: a context test you can copy" to "Does your AI analyst remember what you asked? We tested Dot: one phrase, two readings" (title A, approved by Saurabh): the buyer's question, the finding, and "tested" as the promise check 1 needs.
 

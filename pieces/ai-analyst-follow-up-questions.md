@@ -1,6 +1,6 @@
 ---
-title: "Does your AI analyst remember what you asked? Dot did, reading one phrase two ways"
-title_approved_by: Saurabh, 2026-10-31
+title: "Does your AI analyst remember what you asked? We tested Dot: one phrase, two readings"
+title_approved_by: Saurabh, 2026-10-31 (title A, after the failed headline test)
 seo_title: "AI Analyst Follow-Up Questions: A Context Test to Copy"
 meta: "Does an AI analyst keep context across follow-up questions? We ran a follow-up chain in Dot on Olist data. Copy the test, and check the SQL's date filter."
 slug: ai-analyst-follow-up-questions-test
