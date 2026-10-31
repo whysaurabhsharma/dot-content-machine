@@ -27,4 +27,4 @@ Paste the same prompt and draft into a different model (ChatGPT or Gemini). The 
 
 ## Then
 
-Triage every item: fix it, or write one line on why it stands. Log every fix in the Run Log with its cause. When the same kind of mistake appears in two pieces, add a rule to CLAUDE.md with a dated origin.
+Triage every item: fix it, or write one line on why it stands. Log every fix in `reviews/<slug>/revisions.md` with its cause. When the same kind of mistake appears in two pieces, add a rule to CLAUDE.md with a dated origin.

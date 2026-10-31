@@ -24,7 +24,7 @@ These three close gaps a cold-start test found on 1 November 2026.
 
 ## Fetch the inputs
 
-Read CLAUDE.md first. Then fetch these five inputs yourself. Record each in Sources as you go.
+Read CLAUDE.md first. Then fetch these five inputs yourself. Record each in the Sources rows (section 4) as you go.
 
 1. **Search Console rows** for related queries (impressions, clicks, average position). Read `data/ahrefs/search-console-queries.csv`. Use only rows whose query relates to the question. Copy values as the file shows them; `not measured` stays `not measured`.
 2. **Keywords Explorer rows** for three phrasings of the question. Read `data/ahrefs/keywords.csv` and pick three phrasings a buyer would type. For each, report `volume_us`, `volume_global` and `difficulty` as the file displays them (1.2K, not 1200).
@@ -52,7 +52,7 @@ Write it all to `runs/<piece>-research.md`, headed with the question, the piece 
    - what only Dot can show, using its own feature or data.
 2. **The words buyers type.** Up to five phrases from the inputs, for the headline. Use only phrases that appear in the inputs. Give each its volume and difficulty as in input 2.
 3. **The run** (research only; for a teardown or guide write "No run: the evidence is the cited publications in section 7"). What to run in Dot, on which data, in which mode, and which numbers it must produce. Name the Playbook stage it runs. Name the dataset and its licence (hard rule 9). The mode, credits, environment and context notes are screenshotted in Dot's UI, per `runs/README.md#screenshots`.
-4. **Sources rows** for the tracking sheet: source, URL or tool, what it showed, date. One row per input read and per page fetched.
+4. **Sources rows**, in the research file: source, URL or tool, what it showed, date. One row per input read and per page fetched.
 5. **Stop conditions.** Research: if evidence already exists, or only Dot's data could show it and Dot doesn't have that data, say "not a piece" and why. Teardown: fewer than five organisations whose own publication meets the census bar (CLAUDE.md style rule 5) is not a piece.
 
 Then:

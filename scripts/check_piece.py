@@ -499,7 +499,7 @@ def run(path):
     add(15, status, name, detail)
 
     add(16, "HUMAN", "Findings from this run, a cited run of ours, or a cited publication (rule 4); no untested remedy (rule 19)",
-        "check against the Run Log and the sources")
+        "check against the run file and the sources")
     st17, nm17, dt17 = check_assumptions(prose)
     ent_found, ent_bad = check_entity(prose)
     if ent_bad:
@@ -507,7 +507,7 @@ def run(path):
     elif ent_found:
         dt17 += f"; {len(ent_found)} definition(s) of Dot, all in facts/dot-entity.md's words"
     add(17, st17, nm17, dt17)
-    add(18, "HUMAN", "Dataset and licence recorded in Sources", "Sources tab")
+    add(18, "HUMAN", "Dataset and licence recorded in Sources", "runs/<slug>-research.md section 4, and the dataset: front matter")
     st19, nm19, dt19 = check_banned(FENCE.sub("", body), prose)
     # v1.8.20: the front matter must parse as YAML. Our own parser splits each line at its first
     # colon and so read A's broken "title_approved_by" fine, but Webflow imports and editors use real

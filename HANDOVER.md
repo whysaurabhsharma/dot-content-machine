@@ -4,7 +4,7 @@ Written 28 October 2026 for Rick and Théo. Rewritten 31 October 2026 for Claude
 
 ## 0. In one page
 
-**What this is.** A repo that turns a buyer's question into an evidence-led blog piece for getdot.ai, with every number checked against a file and every rule enforced by a script. It runs in Claude Code. `CLAUDE.md` is the rulebook (v1.8.24, every change dated in its change log).
+**What this is.** A repo that turns a buyer's question into an evidence-led blog piece for getdot.ai, with every number checked against a file and every rule enforced by a script. It runs in Claude Code. `CLAUDE.md` is the rulebook (v1.8.25, every change dated in its change log).
 
 **What was delivered.** One cluster of three pieces on one buyer worry: *can I trust an AI analyst's answers before I roll it out?*
 

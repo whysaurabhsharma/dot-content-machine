@@ -29,7 +29,7 @@ The earlier Claude Project trial's pieces and posts are in `archive/` and are no
 | Path | What it is |
 |---|---|
 | `HANDOVER.md` | Set-up in Claude Code, a first test (a teardown, about 10 minutes of machine time), how to run a full piece, the monthly loop, what's still open |
-| `CLAUDE.md` | Every rule: 23 hard rules, 17 style rules, the seven stages, the 25-check gate, a dated change log (v1.8.24). Claude Code reads it automatically |
+| `CLAUDE.md` | Every rule: 23 hard rules, 17 style rules, the seven stages, the 25-check gate, a dated change log (v1.8.25). Claude Code reads it automatically |
 | `.claude/agents/researcher.md` | Stage 1 RESEARCH as a subagent. Reads the Ahrefs snapshot and the citation series, fetches the top three pages, writes `runs/<piece>-research.md` |
 | `.claude/agents/dot-runner.md` | The evidence run as a subagent. Asks Dot each test question verbatim through `ask_dot` and appends every answer to `runs/<piece>-run.md` |
 | `prompts/01-research.md` … `07-linkedin.md` | The seven stage prompts. 01 runs as the `researcher` subagent; 02, 03 and 07 as the `/outline`, `/draft` and `/linkedin` skills; 04–06 are not yet built |
@@ -137,9 +137,9 @@ A rule 14 waiver (no screenshots) is recorded once: `python scripts/stage_gate.p
 
 | Week | Do |
 |---|---|
-| 1 | Read the Baseline tab: Search Console click-through per piece, the Site Explorer AI-responses panel, Rank Tracker. Add a new dated column; never overwrite. Ask the three Perplexity buyer questions and record them in `measure/citations.md` |
+| 1 | Take the baseline readings: Search Console click-through per piece, the Site Explorer AI-responses panel, Rank Tracker. Save them as new dated files in `data/ahrefs/`; never overwrite. Ask the three Perplexity buyer questions and record them in `measure/citations.md` |
 | 2 | Add new questions from sales calls and from Search Console's non-brand queries to the question bank |
-| 3 | Review the Run Log's fixes. Any mistake seen twice becomes a CLAUDE.md rule with a dated origin, and a check in `check_piece.py` if it can be automated |
+| 3 | Review the logged fixes (`reviews/<slug>/revisions.md`, the run files). Any mistake seen twice becomes a CLAUDE.md rule with a dated origin, and a check in `check_piece.py` if it can be automated |
 | 4 | Re-run past pieces' evaluations to catch drift. Rewrite any title whose click-through is below the site average after 30 days. Pick the next question |
 
 Ahrefs access ended on 31 October 2026. Weeks 1 and 4 need it back; until then, the Ahrefs readings are the frozen snapshot in `data/ahrefs/`. New readings go in new dated files there.

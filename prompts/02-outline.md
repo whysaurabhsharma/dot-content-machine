@@ -1,12 +1,12 @@
 # Stage 2 · OUTLINE
 
-Run after the evidence run, with its numbers already in the Figures tab.
+Run after the evidence run, with its numbers already in `figures/<slug>-figures.csv`.
 
 Runs in this repo as the `/outline` skill (`.claude/skills/outline/SKILL.md`). SEO title, meta, slug and links (items 2 and 11 below) moved to `/seo-geo`.
 
 You are outlining one piece for Dot's blog. Follow CLAUDE.md and facts/house-structure-and-links.md.
 
-**Inputs:** the RESEARCH output · the Figures tab rows for this run (ID, value, where computed, date) · the Run Log rows with the run's conditions.
+**Inputs:** the RESEARCH output · the rows of `figures/<slug>-figures.csv` (ID, value, where computed, date) · the run's conditions blocks in `runs/<slug>-run.md`.
 
 **Return the outline in this order:**
 

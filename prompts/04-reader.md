@@ -19,4 +19,4 @@ Do not rewrite anything.
 
 ## Then
 
-Fix all three stopping points in DRAFT. If the answer to question 4 is "no", rewrite the opening. Log each fix in the Run Log with its cause.
+Fix all three stopping points in DRAFT. If the answer to question 4 is "no", rewrite the opening. Log each fix in `reviews/<slug>/revisions.md` with its cause.
