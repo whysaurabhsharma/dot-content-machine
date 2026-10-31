@@ -4,6 +4,7 @@
 Usage:
     python scripts/mark_run.py <piece>
     python scripts/mark_run.py <piece> --map Q1=Q13b --map Q2=Q05
+    python scripts/mark_run.py <piece> --batch 2
     python scripts/mark_run.py <piece> --run <run.md> --truth <truth.csv> --figures <figures.csv>
 
 Reads runs/<piece>-run.md (format: facts/run-format.md) and figures/<piece>-truth.csv
@@ -63,17 +64,19 @@ def norm(text):
 
 
 def parse_run(text):
-    """Split a run file into entries: id, question, fields, answer text."""
+    """Split a run file into entries: id, question, fields, answer text, batch."""
     entries = []
     heads = list(HEADING.finditer(text))
+    batches = [(m.start(), int(m.group(1))) for m in re.finditer(r"^## Batch (\d+): conditions", text, re.M)]
     for i, h in enumerate(heads):
+        batch = max((n for pos, n in batches if pos < h.start()), default=None)
         end = heads[i + 1].start() if i + 1 < len(heads) else len(text)
         nxt = re.search(r"^## ", text[h.end():end], re.M)
         body = text[h.end():h.end() + nxt.start()] if nxt else text[h.end():end]
         fields = {k.strip().lower(): v.strip() for k, v in FIELD.findall(body)}
         answer = ANSWER.search(body)
         entries.append({"id": h.group(1), "question": h.group(2).strip(),
-                        "fields": fields, "answer": answer.group(1) if answer else None})
+                        "fields": fields, "answer": answer.group(1) if answer else None, "batch": batch})
     return entries
 
 
@@ -220,6 +223,12 @@ def main(argv):
 
     with open(run_path, encoding="utf-8") as fh:
         entries = parse_run(fh.read())
+    if "--batch" in argv:
+        batch = int(opt("--batch", "0"))
+        entries = [e for e in entries if e["batch"] == batch]
+        if not entries:
+            print(f"No entries under '## Batch {batch}: conditions' in {run_path}.")
+            return 1
     with open(truth_path, encoding="utf-8") as fh:
         truth = list(csv.DictReader(fh))
 

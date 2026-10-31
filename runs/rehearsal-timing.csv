@@ -12,3 +12,7 @@ findings,start,,,not logged
 findings,end,,,not logged
 outline,start,2026-10-31T06:20:05+05:30,,logged
 outline,end,2026-10-31T06:21:30+05:30,1.4,logged
+run,start,2026-10-31T06:26:50+05:30,,logged
+run,end,2026-10-31T06:46:28+05:30,19.6,logged
+mark,start,2026-10-31T06:48:44+05:30,,logged
+mark,end,2026-10-31T06:48:44+05:30,0.0,logged

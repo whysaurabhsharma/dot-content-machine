@@ -75,6 +75,8 @@ Limits of the page input:
 
 **PIECE IF: a human screenshots the five conditions per batch (including that the Olist metrics note is on, and toggles it off for a comparison batch if the piece is to claim the note causes the agreement).**
 
+**Contradicted by evidence, 31 October 2026.** Batch 2, with the note off, returned the same figure as batch 1 on every question it answered. The claim that one stored definition causes the agreement is not supported. See runs/rehearsal-run.md, "Batch 2: observed findings".
+
 **Decision, 31 October 2026 (human):** the comparison batch is run. The piece's claim is that one stored definition causes the agreement, so there are two batches: batch 1 with the note on, batch 2 with it off, the same eleven questions (section 3).
 
 ## 7. Test questions
