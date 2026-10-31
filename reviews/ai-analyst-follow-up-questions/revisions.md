@@ -1,5 +1,20 @@
 # revisions · ai-analyst-follow-up-questions
 
+## Round 7: after the phone read
+
+31 October 2026. Saurabh's phone read passed on 52b3158. He also ran three model reads for a second opinion; he took four fixes and declined the rest. check_piece.py afterwards: 17 pass, 0 fail, 1 partial (check 1, claim title); verify_sources.py: 6 links, 0 failed.
+
+### Fixed
+
+- **Accuracy: Q2 did not name its date (all three model reads).** The table was right: Q2, the 2,453 answer, stated no date; only Q1 did, one turn earlier. The run supports that Q2 kept Q1's purchase-date filter (its SQL carries the same filter; its text doesn't restate it). Fixed in three places: the second H2 is now "The first answer named its date; the fresh-chat answer didn't"; the lede says "the first chat named purchase date"; the method paragraph now says Q2, Q6 and Q8 stated no date, Q2 matched the purchase-date reading its chat had named (MR-Q2, matched by question text), and a person read Q6's and Q8's dates from their SQL. The section also gains: "Q2, the 2,453 answer, kept that purchase-date filter without restating it."
+- **Docs placeholder.** "Dot's documentation is at the docs" now links its own address: docs.getdot.ai.
+- **Unclear antecedent.** "that chat named purchase date" is now "the first chat named purchase date".
+- **ID list cut.** "5 of 8, Q1, Q3, Q4, Q5 and Q7" now ends at "5 of 8". The IDs remain in the table and in F15.
+
+### Considered and declined
+
+The model reads also suggested cutting or restructuring the table, the sections and the caveats. Declined by Saurabh: the models read a markdown file, not the rendered page; he read the rendered piece whole, aloud, on a phone, and it worked. The table, the sections and the caveats stay as they are.
+
 ## Round 6: headline test attempt 4
 
 31 October 2026. Attempt 4 passed with one fault, found independently by all three readers: the title said "It Didn't Say Which" while the lede said "but its SQL did".

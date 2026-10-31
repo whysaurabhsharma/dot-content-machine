@@ -1,6 +1,6 @@
 # Your AI Analyst Picked a Date. Only the SQL Said Which.
 
-**Asked how many orders "delivered in 2017" were late, [Dot](https://www.getdot.ai/) gave 2,453 after earlier questions in the same chat, and 1,762 in a fresh chat. Both are correct for their own date: that chat named purchase date, and the fresh chat used delivery date without saying so. Only its SQL did. By the end, you'll have a six-step test that shows which date your analyst used.**
+**Asked how many orders "delivered in 2017" were late, [Dot](https://www.getdot.ai/) gave 2,453 after earlier questions in the same chat, and 1,762 in a fresh chat. Both are correct for their own date: the first chat named purchase date, and the fresh chat used delivery date without saying so. Only its SQL did. By the end, you'll have a six-step test that shows which date your analyst used.**
 
 We ran this test on [Olist, a public e-commerce dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce), so anyone can recompute it. Late means delivered on a later calendar day than the estimated delivery date. Dot's chain answer to "And how many of those were delivered late?" defined it the same way: "meaning delivery occurred after the estimated delivery day."
 
@@ -20,7 +20,7 @@ We ran this as part of the Prove stage of [the Playbook](https://www.getdot.ai/b
 
 The method was three chats. Chat A was a chain of five questions, each leaning on the one before. Chat B asked the chain's second question again, written in full, with no history. Chat C asked about item price, with one follow-up.
 
-Before the first question, we computed the expected answers from the raw Olist CSVs. "Delivered in 2017" was ambiguous on purpose, so we computed both readings: purchased in 2017, and delivered in 2017. After the run, a script checked each answer against the basis it stated. Q6 and Q8 stated no date, so a person read each one's date from its SQL.
+Before the first question, we computed the expected answers from the raw Olist CSVs. "Delivered in 2017" was ambiguous on purpose, so we computed both readings: purchased in 2017, and delivered in 2017. A script then checked each answer against them; Q2, Q6 and Q8 stated no date. Q2 matched the purchase-date reading its chat had named, and a person read Q6's and Q8's dates from their SQL.
 
 | # | Chat | Question as asked | Dot's figure | Date in the SQL's date filter | Answer text named that date | Verdict |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -51,15 +51,17 @@ The fresh reading covered 40,930 orders delivered in 2017, of which 4.3% arrived
 
 Dot's 5.6% for 2017 and 7.7% for 2018, Q3 and Q4 in the table above, were display rounding, not gaps. Dot's answers left out orders with no delivery date. Q3 said "excluding the two orders with missing delivery dates", and Q4 said "excluding six orders with missing delivery dates". The ground truth kept them; with or without them in the denominator, the chain's shares round to 5.6% and 7.7%.
 
-## The chain named its date; the fresh chat didn't
+## The first answer named its date; the fresh-chat answer didn't
 
 The risk isn't a wrong number. It is a right number for a date you didn't mean, with nothing in the text to say so.
 
-Dot made the chain's choice visible at turn one. Asked "How many orders were delivered in 2017?", it answered: "This uses purchase date, not delivery date." The item-price chat was just as clear. Asked "What was the total item price of orders delivered in 2017?", Dot answered: "This uses the customer delivery date, not the purchase date."
+Dot made the chain's choice visible at turn one. Asked "How many orders were delivered in 2017?", it answered: "This uses purchase date, not delivery date." Q2, the 2,453 answer, kept that purchase-date filter without restating it.
+
+The item-price chat was clearer. Asked "What was the total item price of orders delivered in 2017?", Dot answered: "This uses the customer delivery date, not the purchase date."
 
 The fresh-chat late count did not name its date. That was Q6, the chain's second question asked again in full. Dot's answer began: "1,762 orders delivered in 2017 arrived after their estimated delivery date". That reuses the ambiguous phrase, so the sentence alone doesn't say which date.
 
-Where the text was silent, the SQL wasn't. Every answer in this run, 8 of 8, came back with its SQL, and its date filter named the column. Most answers also named their date unprompted: 5 of 8, Q1, Q3, Q4, Q5 and Q7.
+Where the text was silent, the SQL wasn't. Every answer in this run, 8 of 8, came back with its SQL, and its date filter named the column. Most answers also named their date unprompted: 5 of 8.
 
 An AI analyst's answer can be right and still not say which question it answered.
 
@@ -90,7 +92,7 @@ When you run this, a total that matches under a different date filter is still a
 
 ## Where Dot fits
 
-In this test, Dot's text didn't always name its date, but its SQL always did: every answer came back with its query. Five of eight answers also named their date in plain words, and step 5 of the test reads the SQL for the rest. Dot's documentation is at [the docs](https://docs.getdot.ai).
+In this test, Dot's text didn't always name its date, but its SQL always did: every answer came back with its query. Five of eight answers also named their date in plain words, and step 5 of the test reads the SQL for the rest. Dot's documentation is at [docs.getdot.ai](https://docs.getdot.ai).
 
 ---
 
