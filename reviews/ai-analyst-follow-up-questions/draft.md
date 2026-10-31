@@ -1,8 +1,8 @@
 # AI analyst follow-up questions: a context test you can copy
 
-**Buyers ask whether an AI analyst keeps context across follow-up questions. We tested [Dot](https://www.getdot.ai/) on the Olist dataset with a chain of linked questions, then asked one again in a new chat. The phrase "delivered in 2017" gave 2,453 late orders in the chain and 1,762 in the new chat. By the end, you will have a five-step follow-up test to run on your own data.**
+**Buyers ask whether an AI analyst keeps context across follow-up questions. We tested [Dot](https://www.getdot.ai/) on the Olist dataset with a chain of linked questions, then asked one again in a fresh chat. The phrase "delivered in 2017" gave 2,453 late orders in the chain and 1,762 in the fresh chat. By the end, you will have a five-step follow-up test to run on your own data.**
 
-The two numbers are not a memory failure. Inside the chain, Dot read "delivered in 2017" as orders purchased in 2017. In the new chat, Dot read it as orders that reached the customer in 2017. Both readings are defensible, and each answer's SQL showed which one it used.
+The two numbers are not a memory failure. Inside the chain, Dot read "delivered in 2017" as orders purchased in 2017. In the fresh chat, Dot read it as orders that reached the customer in 2017. Both readings are defensible, and each answer's SQL showed which one it used.
 
 **The whole piece in eight lines:**
 
@@ -89,7 +89,7 @@ Score item by item. A matching total with a different filter is a different answ
 
 ## Where Dot fits
 
-Every answer in this test came with its SQL, so the date filter was visible even when the text skipped it. Dot's [context notes](https://www.getdot.ai/context-agent) are where a team can define what "delivered in" means. Assumption: with that note on, a chain and a fresh chat would read the phrase alike; this run didn't test it. Dot's evaluation questions hold an expected answer and a percent tolerance, for step 2's answers; details are in [the docs](https://docs.getdot.ai).
+Every answer in this test came with its SQL, so the date filter was visible even when the text skipped it. Dot's [context notes](https://www.getdot.ai/context-agent) are where a team can define what "delivered in" means. Dot's evaluation questions hold an expected answer and a percent tolerance, for step 2's answers; details are in [the docs](https://docs.getdot.ai).
 
 ---
 
