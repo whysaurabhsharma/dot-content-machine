@@ -19,7 +19,7 @@ import os
 import sys
 
 FIELDS = ["stage", "event", "time", "minutes", "note"]
-STAGES = ("research", "truth", "run", "mark", "findings", "outline", "draft", "seo-geo", "linkedin", "export", "bank", "reviews", "revise", "edit")
+STAGES = ("research", "truth", "run", "mark", "findings", "outline", "draft", "seo-geo", "linkedin", "export", "bank", "reviews", "revise", "edit", "figures")
 
 
 def main(argv):
