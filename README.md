@@ -13,8 +13,10 @@ Three pieces, one topic cluster: can you trust an AI analyst's answer before you
 | # | Piece | Posts | State |
 |---|---|---|---|
 | 1 of 3 | `pieces/ai-analyst-follow-up-questions.md` | Post 1 of 6: Post A in `posts/ai-analyst-follow-up-questions-posts.md` | Through the gate; Decision 4 (publish) open |
-| 2 of 3 | not yet chosen | Posts 2–3 | — |
-| 3 of 3 | not yet chosen | Posts 4–6 | — |
+| 2 of 3 | bank #41, "AI analyst shows SQL" (slug proposed: `ai-analyst-shows-sql`) | Posts 2–3 | Planned |
+| 3 of 3 | bank #47, "how much context does AI analyst need" | Posts 4–6 | Planned; runs after piece 2 |
+
+The plan, what each piece proves and which runs feed which: `PLAN.md`.
 
 The earlier Claude Project trial's pieces and posts are in `archive/` and are not part of this submission.
 
