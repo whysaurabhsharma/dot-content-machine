@@ -24,7 +24,8 @@ It runs in Claude Code, in this repo. Claude Code reads `CLAUDE.md` automaticall
 | `facts/dot-mcp.md` | What the `ask_dot` MCP exposes, observed 31 October 2026, and what it can't show |
 | `facts/run-format.md` | The run-file format that `dot-runner` writes and check 16 and `mark_run.py` read, with a worked example |
 | `facts/house-structure-and-links.md` | The anatomy of a piece; ten internal links verified 28 October 2026 |
-| `bank/questions.csv` | The question bank, from the ICP question bank PDF |
+| `bank/questions.csv` | The question bank, from the ICP question bank PDF, scored on its four factors. **Read `bank/README.md` first**: only 3 of 102 phrases have an Ahrefs row, none has a Search Console row, and none yet comes from a sales call |
+| `scripts/bank.py`, `.claude/skills/bank/` | The monthly entry point: `/bank add`, `/bank rescore`, `/bank top` |
 | `ICP_question_bank_what_Dot_s_buyers_ask__October_2026.pdf` | The source of the question bank |
 | `data/ahrefs/` | The Ahrefs snapshot, 27–28 October 2026: keywords, Search Console, Site Explorer, Rank Tracker. Frozen; access ended 31 October 2026 |
 | `data/` | A note on the Olist dataset (CC BY-NC-SA 4.0) and where to download it. The CSVs are not included |
