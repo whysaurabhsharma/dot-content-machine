@@ -16,7 +16,7 @@ You are researching one buyer question for Dot's blog. Follow CLAUDE.md. Use onl
 
 ## Fetch the inputs
 
-Read CLAUDE.md first. Then fetch these four inputs yourself. Record each in Sources as you go.
+Read CLAUDE.md first. Then fetch these five inputs yourself. Record each in Sources as you go.
 
 1. **Search Console rows** for related queries (impressions, clicks, average position). Read `data/ahrefs/search-console-queries.csv`. Use only rows whose query relates to the question. Copy values as the file shows them; `not measured` stays `not measured`.
 2. **Keywords Explorer rows** for three phrasings of the question. Read `data/ahrefs/keywords.csv` and pick three phrasings a buyer would type. For each, report `volume_us`, `volume_global` and `difficulty` as the file displays them (1.2K, not 1200).
@@ -30,6 +30,7 @@ Read CLAUDE.md first. Then fetch these four inputs yourself. Record each in Sour
    - For each page, record the title, the opening lines, who published it, its date if shown, and whether it is *evidence* (someone ran something and shows the result) or *advice*.
    - If a page fails to load, say so and take the next distinct result. Never describe a page you didn't read.
    - WebSearch is not Google. Say in Sources that the order is WebSearch's, on the date you ran it.
+5. **The plan.** Read `PLAN.md`. If it has a section naming this piece's slug, that section's run needs bind section 7 below: every question, phrasing, repeat and chat it asks for must be among your test questions. Note in Sources that you read it, and which needs it set. If it names neither this slug nor this bank question, write one line saying so and go on.
 
 ## Return, in this order
 
@@ -57,6 +58,7 @@ Then:
    - the definition it depends on: table, filter, formula;
    - the figure it must produce, so ground truth can mark it: the metric, unit and grain, never a value. No finding is written before its run.
    - for a question that must be asked in the same chat as an earlier one (a follow-up test), "Follow-up of T<k>", worded as a person would type it after T<k>'s answer. The dot-runner asks it in T<k>'s chat.
+   - for a question to be asked in more than one fresh chat, one test question per chat, worded identically, each after the first marked "Repeat of T<k>". The dot-runner asks each in its own fresh chat; ground truth gives each its own row.
 
    **Every test question, follow-up turns included, asks for exactly one number.** `mark_run.py` marks one number per answer, so a question whose answer would be a table, a list or a breakdown ("by month", "top five") is reworded to ask for one figure ("which month was highest, and what was its revenue?" asks for one month and its one figure; "break that down by month" is not allowed). Build chains this way from the start.
 

@@ -34,6 +34,7 @@ Follow the runbook in `README.md`: eleven steps, four decisions. The full step-b
 Things to know:
 
 - **READER and the first fact-check run outside this repo**, in a fresh chat with only the draft: READER (`04-reader.md`) and the first fact-check (`05-fact-check.md`). A Claude Code session here loads `CLAUDE.md` automatically, and the reviewer must not know what the writer meant. Use a fresh claude.ai chat, or Claude Code started in an empty folder. The second fact-check runs in a different model (ChatGPT).
+- **The plan binds the run.** If `PLAN.md` has a section naming a piece's slug, the researcher reads it as input 5, and its test questions must meet that section's run needs; `/piece`'s truth stage stops, blocked, if they don't. To steer a future piece, write its section in `PLAN.md`, naming the slug, before Decision 1.
 - **Every number needs a row** in the piece's `figures/` CSV before the checker will pass it. Add rows as you go, not at the end.
 - **Log the run conditions before the first question of every batch.** Take the five screenshots in Dot's UI (`runs/README.md#screenshots`): mode, credits before, environment, context notes, then credits after the batch. `dot-runner` writes the paths into the run file; you record the values in the Run Log. The mode drifted twice during the trial; the screenshot is the fix.
 - **Batches.** `dot-runner` fits about 13–14 questions in one call. Longer runs are split into numbered batches, each with its own five screenshots (`runs/README.md#batches`).

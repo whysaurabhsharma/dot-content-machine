@@ -13,6 +13,7 @@ You are researching one buyer question for Dot's blog. Follow CLAUDE.md. Use onl
 2. Keywords Explorer rows (query, volume, difficulty, or "not indexed"): {paste}
 3. AI answers to the question, pasted in full, with the engine and date: {paste Perplexity / Claude / ChatGPT answers}
 4. The titles and opening lines of the top pages for the main query: {paste}
+5. The plan: the section of `PLAN.md` naming this piece's slug, if there is one: {paste, or "none"}. Its run needs bind item 3 below: every question, phrasing, repeat and chat it asks for must be in the run.
 
 **Return, in this order:**
 
@@ -23,7 +24,7 @@ You are researching one buyer question for Dot's blog. Follow CLAUDE.md. Use onl
    - the gap: advice only, or no answer;
    - what only Dot can show, using its own feature or data.
 2. **The words buyers type.** Up to five phrases from the inputs, for the headline. Use only phrases that appear in the inputs.
-3. **The run.** What to run in Dot, on which data, in which mode, and which numbers it must produce. Name the Playbook stage it runs.
+3. **The run.** What to run in Dot, on which data, in which mode, and which numbers it must produce. Name the Playbook stage it runs. A question to be asked in more than one fresh chat is listed once per chat, worded identically, each after the first marked "Repeat of T<k>".
 4. **Sources rows** for the tracking sheet: source, URL or tool, what it showed, date.
 5. **Stop conditions.** If evidence already exists, or only Dot's data could show it and Dot doesn't have that data, say "not a piece" and why.
 

@@ -53,7 +53,8 @@ const STAGES = {
     const r = await agent(
       `Run Stage 1 RESEARCH. The piece slug is ${slug}. The buyer question is "question" in runs/${slug}-piece.json, ` +
       `and its long form is that bank row's ai_form in bank/questions.csv. Write runs/${slug}-research.md as your ` +
-      `instructions say, and nothing else. ${REPORT}`,
+      `instructions say, and nothing else. Read PLAN.md as input 5 of your instructions: if it has a section for ` +
+      `${slug}, section 7's test questions must meet its run needs. ${REPORT}`,
       { label: 'research', phase: 'Stage', schema: RESULT, agentType: 'researcher' })
     await agent(`Run exactly: python scripts/timing.py ${slug} research end`, { label: 'timing', phase: 'Stage', effort: 'low' })
     return r
@@ -61,10 +62,11 @@ const STAGES = {
   truth: () => agent(
     `Write the truth spec for piece ${slug}, then compute it.\n` +
     `1. Run: python scripts/timing.py ${slug} truth start\n` +
-    `2. Read section 7 of runs/${slug}-research.md, the docstring of scripts/ground_truth_from_spec.py, and specs/rehearsal-truth.json as an example of the format.\n` +
+    `2. Read section 7 of runs/${slug}-research.md, the docstring of scripts/ground_truth_from_spec.py, and specs/rehearsal-truth.json as an example of the format. ` +
+    `If PLAN.md has a section for ${slug}, check that section 7 meets its run needs; if it doesn't, stop and report blocked, naming what is missing.\n` +
     `3. Write specs/${slug}-truth.json: one row per test question, worded exactly as in section 7, with its table, filter, formula, unit, grain, family and signals. ` +
     'Add a row, with "asked": false, for every plausible rival reading of a question (all orders vs delivered, with or without freight), so rival definitions are in before the run. ' +
-    'Mark follow-ups with "follow_up_of". Every row is one number: if a test question would produce a table or list, stop and report blocked, naming it. Never set "reviewed_by": a person sets it.\n' +
+    'Mark follow-ups with "follow_up_of". A "Repeat of T<k>" question gets its own row with the same definition. Every row is one number: if a test question would produce a table or list, stop and report blocked, naming it. Never set "reviewed_by": a person sets it.\n' +
     `4. Run: python scripts/ground_truth_from_spec.py specs/${slug}-truth.json\n` +
     `5. Run: python scripts/timing.py ${slug} truth end\n${REPORT}`,
     { label: 'truth', phase: 'Stage', schema: RESULT }),
