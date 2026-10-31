@@ -16,7 +16,7 @@
       "name": "We tested it and it was fine. Why is it worse three months later?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The reason to re-run is drift. Anthropic's offline accuracy fell from about 95% to about 65% in a month, the case our essay on accuracy decay starts from. A test passed at launch says little about the same agent a month later."
+        "text": "Anthropic reports that its offline accuracy drifted from about 95% at launch to about 65% over a month. Anthropic's case shows that a test passed at launch can say little about the same agent a month later."
       }
     },
     {
