@@ -8,13 +8,13 @@ It runs in Claude Code, in this repo. Claude Code reads `CLAUDE.md` automaticall
 
 ## This submission
 
-Three pieces, one topic cluster: can you trust an AI analyst's answer before you rely on it? Six LinkedIn posts, two per piece.
+Three pieces, one topic cluster, three formats (research, teardown, guide): can you trust an AI analyst's answers before you roll it out? Six LinkedIn posts, two per piece.
 
 | # | Piece | Posts | State |
 |---|---|---|---|
 | 1 of 3 | `pieces/ai-analyst-follow-up-questions.md` | Post 1 of 6: Post A in `posts/ai-analyst-follow-up-questions-posts.md` | Through the gate; Decision 4 (publish) open |
-| 2 of 3 | bank #41, "AI analyst shows SQL" (`ai-analyst-shows-sql`) | Posts 2–3 | Planned |
-| 3 of 3 | bank #47, "how much context does AI analyst need" | Posts 4–6 | Planned; runs after piece 2 |
+| 2 of 3 | Teardown, `how-companies-test-ai-data-analysts` (bank #36) | Posts 2–3 | Research |
+| 3 of 3 | Guide, `test-ai-analyst-before-rollout` (bank #35) | Posts 4–6 | After B |
 
 The plan, what each piece proves and which runs feed which: `PLAN.md`.
 
