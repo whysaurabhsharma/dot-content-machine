@@ -8,7 +8,8 @@
     "Context-lost rivals (T2d, T3d, T4d) are what an answer gives if a follow-up drops an earlier filter: the year for T2 and T3, the delivered status for T4.",
     "T7b and T8b are the with-freight rivals; T7c is the all-statuses rival. Rows with asked: false are computed but not asked. Date filters use string prefixes on the raw CSV text; every value is computed from the raw CSVs.",
     "T1's scope is deliberately ambiguous: \"delivered in 2017\" can mean purchased in 2017 (T1) or delivered to the customer in 2017 (T1b). A buyer would phrase it this way, and whether Dot states which date it used is part of what this piece tests. Decided 31 October 2026 by Saurabh, as for the rehearsal's T09. mark_run.py compares an answer that states the delivery date under T1b, not as wrong.",
-    "Signals edited after review, 31 October 2026, after batch 1 ran: each delivery-date rival (T1b, T2c, T3c, T4c, T7d, T8c) now also carries its asked row's non-scope signal phrases (freight, calendar-day grain), since it differs from that row only in which date it uses. Marking only: no filter, formula or value changed."
+    "Signals edited after review, 31 October 2026, after batch 1 ran: each delivery-date rival (T1b, T2c, T3c, T4c, T7d, T8c) now also carries its asked row's non-scope signal phrases (freight, calendar-day grain), since it differs from that row only in which date it uses. Marking only: no filter, formula or value changed.",
+    "T5's metric reworded 31 October 2026 from \"Delivered orders purchased in 2017 (T1 recalled after four turns)\": Q5 re-ran Q1's query (its SQL is identical), it didn't recall a stored figure. Wording only; no value changed."
   ],
   "csv": {
     "orders": "data/olist/olist_orders_dataset.csv",
@@ -298,7 +299,7 @@
     {
       "id": "T5",
       "question": "Going back to my first question, how many orders was that?",
-      "metric": "Delivered orders purchased in 2017 (T1 recalled after four turns)",
+      "metric": "Delivered orders purchased in 2017 (Q1's query re-run four turns later)",
       "family": "delivered_2017",
       "table": "orders",
       "filter": "order_status == 'delivered' and order_purchase_timestamp.str.startswith('2017')",

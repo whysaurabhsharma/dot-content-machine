@@ -90,6 +90,7 @@ const STAGES = {
     `Revise piece ${slug} after its blind reviews.\n1. Run: python scripts/timing.py ${slug} revise start\n` +
     `2. Read reviews/${slug}/reader.md, fact-checker.md and lift-tester.md, then pieces/${slug}.md, figures/${slug}-figures.csv and runs/${slug}-run.md.\n` +
     `3. Fix all three of the reader's stopping points, and every fact-checker problem, in pieces/${slug}.md. ` +
+    `If reviews/${slug}/revise-notes.md exists, it holds a person's instructions for this round: apply every one, and log each as done or as one line on why it can't be. ` +
     'Use only numbers in the figures file and quotes word for word from the run file. Never set or change title_approved_by.\n' +
     `4. Write reviews/${slug}/revisions.md: one line per point, saying how it was fixed, or one line on why it stands.\n` +
     `5. Run: python scripts/review_copy.py ${slug}\n6. Run: python scripts/timing.py ${slug} revise end\n${REPORT}`,
