@@ -9,3 +9,10 @@
 2026-10-31 · piece-3 · "each mode ran once" but Balanced never ran as a clean batch (9 of 10 in batch 1)
 2026-10-31 · piece-3 · the selector "switched after question 1" is stated as product behaviour with no screenshot or log shown
 2026-10-31 · piece-3 · "a gap of half a credit is larger than that" rules out rounding only, but the conclusion is drawn as if run-to-run variance and batch order were also excluded
+2026-10-31 · ai-analyst-follow-up-questions · "Only the figure gave the date away" and "The answer itself gave no basis to infer it" contradict "Each answer's SQL showed which date it filtered on"
+2026-10-31 · ai-analyst-follow-up-questions · Q6 quote introduced with "Dot answered:" is cut before its second sentence with no ellipsis
+2026-10-31 · ai-analyst-follow-up-questions · "the same words gave 2,453 ... and 1,762" but chain Q2 was "And how many of those were delivered late?", not the Q6 wording
+2026-10-31 · ai-analyst-follow-up-questions · "That is the real risk in follow-up questions" rests on Q6, which was a fresh chat, not a follow-up
+2026-10-31 · ai-analyst-follow-up-questions · figures file F06 calls BRL 5,962,902.01 "the chain's purchase-year reading of Q7" but Q7 was in fresh chat C, not the chain
+2026-10-31 · ai-analyst-follow-up-questions · "Memory held exactly" / "recalled 43,428" but Q5's SQL re-runs Q1's query rather than recalling the figure
+2026-10-31 · ai-analyst-follow-up-questions · "Before the first question, we wrote the expected answers" but Q6/Q8 were matched to rival scopes by --decide after the run and Q7 to T7d by its stated definition

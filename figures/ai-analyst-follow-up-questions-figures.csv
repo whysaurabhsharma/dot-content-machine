@@ -12,8 +12,8 @@ F02,3,"Chats in batch 1 (chain A, fresh chat B, fresh chat C with one follow-up)
 F03,5,"Questions in the follow-up chain (chat A, Q1-Q5)",runs/ai-analyst-follow-up-questions-run.md: entries sharing Q1's chat id,2026-10-31
 F04,4,Turns between Q1 and its recall at Q5,runs/ai-analyst-follow-up-questions-run.md: position of Q5 minus position of Q1,2026-10-31
 F05,8,"Answers correct of 8 (mark_run: 7 correct, 1 correct under stated definition; Q6 and Q8 decided by a person)","figures/ai-analyst-follow-up-questions-figures.csv MR-Q1..MR-Q8, counted by script",2026-10-31
-F06,5962902.01,"Item price, delivered orders purchased in 2017 (the chain's purchase-year reading of Q7), BRL",figures/ai-analyst-follow-up-questions-truth.csv T7 (ground_truth_from_spec.py on the raw CSVs),2026-10-31
-F07,987765.37,"Item price, delivered orders purchased in November 2017 (purchase-year reading of Q8), BRL",figures/ai-analyst-follow-up-questions-truth.csv T8,2026-10-31
+F06,5962902.01,"Item price, delivered orders purchased in 2017: Q7 under the purchase-year reading that chain A used (Q7 itself ran in fresh chat C and used the delivery date), BRL",figures/ai-analyst-follow-up-questions-truth.csv T7 (ground_truth_from_spec.py on the raw CSVs),2026-10-31
+F07,987765.37,"Item price, delivered orders purchased in November 2017: Q8 under the purchase-year reading (Q8 ran in chat C and kept Q7's delivery-date reading), BRL",figures/ai-analyst-follow-up-questions-truth.csv T8,2026-10-31
 F08,40930,Delivered orders with a delivery date in 2017 (the delivery-date reading behind Q6),figures/ai-analyst-follow-up-questions-truth.csv T1b,2026-10-31
 F09,4.3,"Share of those delivered late, delivery-date reading, percent, to one decimal (4.304911 unrounded)",figures/ai-analyst-follow-up-questions-truth.csv T3c,2026-10-31
 F10,2,Delivered orders purchased in 2017 with no delivery date,"data/olist/olist_orders_dataset.csv, counted by script",2026-10-31

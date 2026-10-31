@@ -1,0 +1,26 @@
+{
+  "type": "ranking",
+  "out": "charts/ai-analyst-follow-up-questions-late-orders.png",
+  "size": [
+    7.2,
+    2.4
+  ],
+  "keep_order": true,
+  "title": "Same words, two readings: late orders \"delivered in 2017\"",
+  "subtitle": "One Dot answer inside a follow-up chain, one in a fresh chat. Both match the raw data under the date each used.",
+  "rows": [
+    {
+      "label": "Inside the chain: purchase date",
+      "value": 2453,
+      "accent": true,
+      "value_label": "2,453"
+    },
+    {
+      "label": "Fresh chat: delivery date",
+      "value": 1762,
+      "value_label": "1,762"
+    }
+  ],
+  "alt": "Bar chart of two Dot answers to how many orders delivered in 2017 were late, on the Olist dataset. Inside a follow-up chain, Dot used purchase date and returned 2,453. In a fresh chat, it used delivery date and returned 1,762.",
+  "caption": "Late orders for \"delivered in 2017\", asked inside a follow-up chain and in a fresh chat. Olist dataset, Dot, 31 October 2026. Mode not published: it was noted by hand, not screenshotted."
+}
