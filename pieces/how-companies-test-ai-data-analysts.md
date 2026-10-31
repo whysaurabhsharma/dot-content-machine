@@ -1,5 +1,5 @@
 ---
-title: "Their Accuracy Numbers Don't Compare. Your Questions Do."
+title: "13 Companies Test Their AI Analyst. No Two Measure Accuracy the Same Way."
 format: teardown
 seo_title: "How 13 Companies Test Their AI Data Analyst"
 meta: "13 companies published how they test their AI analyst. Seven gave an accuracy figure; no two measured the same thing. The five methods worth copying."

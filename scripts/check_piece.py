@@ -291,11 +291,16 @@ def run(path):
                 best = max(best, len(qt & set(tokens(t))) / len(qt))
         return best
 
-    # 1 title
+    # 1 title (v1.8.4: a teardown title is 8-13 words; other formats' lengths are judged by a person)
+    n_title = len(title.split())
+    shape_bad = fmt == "teardown" and not 8 <= n_title <= 13
     cue = re.search(r"\b(test|checklist|guide|how to|measured|cost|fix|steps|template|tested|compared)\b", title, re.I)
     hit = query_hit(title)
     seo_hit = query_hit(meta.get("seo_title", ""))
-    if hit < 0.6 and seo_hit >= 0.6 and not cue:
+    if shape_bad:
+        add(1, "FAIL", "Title uses buyers' words and says what the reader gets",
+            f"a teardown title is 8-13 words (style rule 15); this one is {n_title}")
+    elif hit < 0.6 and seo_hit >= 0.6 and not cue:
         # v1.8.3: a claim title may leave the buyers' words to the SEO title, which is what search shows.
         add(1, "PARTIAL", "Title uses buyers' words and says what the reader gets",
             f"claim title, query words {hit:.0%}; the SEO title carries them ({seo_hit:.0%}). "
