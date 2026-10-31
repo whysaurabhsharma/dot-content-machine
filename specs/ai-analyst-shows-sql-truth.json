@@ -1,5 +1,6 @@
 {
   "piece": "ai-analyst-shows-sql",
+  "reviewed_by": "Saurabh, 2026-10-31",
   "notes": [
     "Test questions T1-T12 from runs/ai-analyst-shows-sql-research.md section 7, worded exactly as asked, so mark_run.py can match them by id and text.",
     "Chat plan: every test question is its own fresh chat; there are no follow-ups, so no row has follow_up_of. T7-T12 are Repeats of T1-T6 (same wording, definition and family) asked in new fresh chats; their rivals are the T1-T6 rival rows in the same family.",
