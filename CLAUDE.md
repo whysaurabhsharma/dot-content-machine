@@ -173,3 +173,10 @@ A "no" on any line means the piece isn't done. Who checks each line is in bracke
 - **Check 17.** A piece now fails if it uses a keyword of an assumption that `facts/dot-facts.md` marks superseded, even when the sentence is labelled. Labelling covers an open assumption, not a contradicted one.
 - **Posts.** `check_piece.py --post <file>` runs each post against stage 7 and style rule 17, plus checks 15, 17 and 19 against its piece's figures. On post E as it stood before the fix, it fails 15 (100 and 170 not in Figures) and 17 (superseded keyword).
 
+
+**31 October 2026 — v1.6.6.** From the second fact-check of `ai-analyst-follow-up-questions` (Gemini and ChatGPT). Check 15 widened to code; the link check and the lift test tightened. Origins:
+
+- **Check 15, code blocks.** Both models called the piece's central claims unverifiable because no SQL was shown. Dot's SQL may now appear in a piece as fenced code. `check_piece.py` leaves code out of every prose check: words, sentences, Figures rows and banned words. In return, each code block must appear whole in the piece's run file, word for word, as consecutive lines, or check 15 fails. A first version compared line by line; a test showed a line borrowed from a different query in the same run file passed, so it now compares whole blocks.
+- **verify_sources.py.** A HEAD request answered with 404 now falls back to GET, as 403 and 405 already did. Kaggle answers HEAD with 404 and GET with 200, so the Olist link failed falsely.
+- **Lift test record.** Each piece now keeps `reviews/<slug>/lift-lines.md`: the intended lines before the test, what each tool lifted after it, verbatim. An unintended lift that is better is added to the list. Claude may decline to give three verbatim quotes; record how many each tool gave ([prompts/06-edit.md](prompts/06-edit.md), section 3).
+- **Records that overclaim are corrected too.** The piece said Dot "re-ran the query rather than repeating a stored figure"; identical SQL doesn't show that, and execution is not observable via MCP. The run file's Finding 1 and the truth spec's T5 wording made the same claim and were corrected, though neither is published.

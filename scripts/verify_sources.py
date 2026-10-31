@@ -23,7 +23,8 @@ def check(url, timeout=15):
             with urllib.request.urlopen(req, timeout=timeout) as r:
                 return r.status, r.geturl()
         except urllib.error.HTTPError as e:
-            if method == "HEAD" and e.code in (403, 405):
+            # Some sites refuse or mishandle HEAD; Kaggle answers HEAD with 404 and GET with 200.
+            if method == "HEAD" and e.code in (403, 404, 405):
                 continue
             return e.code, url
         except Exception as e:

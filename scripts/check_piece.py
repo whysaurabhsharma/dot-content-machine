@@ -345,8 +345,16 @@ def run(path):
     status, name, detail = check_figures(prose + "\n" + "\n".join(table_text), (ROOT / fig_path) if fig_path else None)
     run_file = (ROOT / "runs" / (Path(fig_path).name.removesuffix("-figures.csv") + "-run.md")) if fig_path else None
     run_text = run_file.read_text(encoding="utf-8") if run_file and run_file.exists() else ""
-    not_in_run = [l.strip() for k, b in blocks if k == "code"
-                  for l in b.splitlines()[1:-1] if l.strip() and l.strip() not in run_text]
+
+    def as_lines(t):  # line endings and trailing spaces normalised; indentation kept
+        return "\n".join(l.rstrip() for l in t.splitlines())
+    run_norm = "\n" + as_lines(run_text) + "\n"
+    # Each code block must appear in the run file whole, as consecutive full lines:
+    # lines borrowed from different queries in the same run file don't pass.
+    not_in_run = [inner.split("\n")[0].strip() + (" …" if "\n" in inner else "")
+                  for k, b in blocks if k == "code"
+                  for inner in [as_lines("\n".join(b.splitlines()[1:-1])).strip("\n")]
+                  if inner and "\n" + inner + "\n" not in run_norm]
     if not_in_run:
         status, detail = "FAIL", detail + f"; code not verbatim in {run_file.name if run_file else 'run file'}: {not_in_run}"
     add(15, status, name, detail)
