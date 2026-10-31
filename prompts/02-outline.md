@@ -2,7 +2,7 @@
 
 Run after the evidence run, with its numbers already in the Figures tab.
 
-Runs in this repo as a skill or subagent; which one is not yet decided.
+Runs in this repo as the `/outline` skill (`.claude/skills/outline/SKILL.md`). SEO title, meta, slug and links (items 2 and 11 below) moved to `/seo-geo`.
 
 You are outlining one piece for Dot's blog. Follow CLAUDE.md and facts/house-structure-and-links.md.
 

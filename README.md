@@ -14,7 +14,9 @@ It runs in Claude Code, in this repo. Claude Code reads `CLAUDE.md` automaticall
 | `CLAUDE.md` | Every rule: 18 hard rules, 17 style rules, the seven stages, the 24-check gate, a dated change log (v1.6.5). Claude Code reads it automatically |
 | `.claude/agents/researcher.md` | Stage 1 RESEARCH as a subagent. Reads the Ahrefs snapshot and the citation series, fetches the top three pages, writes `runs/<piece>-research.md` |
 | `.claude/agents/dot-runner.md` | The evidence run as a subagent. Asks Dot each test question verbatim through `ask_dot` and appends every answer to `runs/<piece>-run.md` |
-| `prompts/01-research.md` … `07-linkedin.md` | The seven stage prompts. 01 runs as the `researcher` subagent; how the others run in this repo is not yet decided |
+| `prompts/01-research.md` … `07-linkedin.md` | The seven stage prompts. 01 runs as the `researcher` subagent; 02, 03 and 07 as the `/outline`, `/draft` and `/linkedin` skills; 04–06 are not yet built |
+| `.claude/skills/` | The five writing skills: `/outline`, `/draft`, `/seo-geo`, `/linkedin`, `/export`. Each takes the piece slug, times itself with `timing.py`, and is started only by a person or the workflow |
+| `scripts/export_docx.py`, `scripts/export_webflow.py` | `/export`'s scripts: the piece as .docx, clean Markdown, and paste-ready Webflow files. They create no draft in Webflow |
 | `runs/` | Every Dot answer, word for word, one file per piece. The screenshot scheme and batching rules are in `runs/README.md` |
 | `runs/screenshots/` | The five conditions screenshots per batch, taken in Dot's UI |
 | `runs/smoke-test.md` | The 31 October 2026 smoke test of the `ask_dot` MCP |
@@ -106,7 +108,7 @@ One piece, end to end. One owner. Times are estimates from piece 1, which was ru
 | 10 | Chart and posts | `charts.py`; `prompts/07-linkedin.md` for each post, each with a different opening structure | 30 min |
 | 11 | Gate and publish | The 24 checks; Decision 4; Webflow with UTM links; request three reverse links; add the target queries to Rank Tracker | 20 min |
 
-Steps 5, 6 and 10 run their prompt in Claude Code: *"Run prompts/02-outline.md for piece-N."* Whether each becomes a skill or a subagent is not yet decided.
+Steps 5, 6 and 10 run as skills: `/outline <slug>`, then a person fills "Approved by" (Decision 2), then `/draft <slug>` and `/seo-geo <slug>`; `/linkedin <slug>` per post; `/export <slug>` last, which refuses while any check FAILs. The skills haven't yet run on a real piece.
 
 READER and the first fact-check must not run in a Claude Code session in this repo: it loads `CLAUDE.md` automatically, and the reviewer must not know what the writer meant. Use a fresh claude.ai chat, or Claude Code started in an empty folder.
 

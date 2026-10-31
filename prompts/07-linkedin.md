@@ -1,6 +1,6 @@
 # Stage 7 · LINKEDIN
 
-Runs in this repo as a skill or subagent; which one is not yet decided.
+Runs in this repo as the `/linkedin` skill (`.claude/skills/linkedin/SKILL.md`).
 
 Write one LinkedIn post from the piece below. Follow CLAUDE.md style rule 17.
 

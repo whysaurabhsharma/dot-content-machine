@@ -43,6 +43,11 @@ Every step logs its start and end with `scripts/timing.py` to `runs/<piece>-timi
 | `run` | One batch of Dot questions: just before the first question to the moment the last answer returns | The `dot-runner` itself, once per batch. Its writing time after the last answer is not counted |
 | `mark` | `mark_run.py` on the run, including any fix needed before it marks correctly | The person or skill doing it |
 | `findings` | Recording the observed findings in the run file | The person or skill doing it |
+| `outline` | `/outline`: the outline written to `pieces/<slug>-outline.md` | The `/outline` skill |
+| `draft` | `/draft`: the piece written to `pieces/<slug>.md` | The `/draft` skill |
+| `seo-geo` | `/seo-geo`: SEO fields, links and FAQ schema | The `/seo-geo` skill |
+| `linkedin` | `/linkedin`: one post appended to `posts/<slug>-posts.md` | The `/linkedin` skill |
+| `export` | `/export`: the files in `exports/<slug>/` | The `/export` skill |
 
 The `note` column says how each row was made: `logged` (written by `timing.py` at the time), `backfilled` (added later from a timestamp in the record, with its source named), or `not logged` (no evidence; no time is estimated).
 

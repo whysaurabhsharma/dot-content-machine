@@ -1,6 +1,6 @@
 # Stage 3 · DRAFT
 
-Runs in this repo as a skill or subagent; which one is not yet decided.
+Runs in this repo as the `/draft` skill (`.claude/skills/draft/SKILL.md`), which refuses to start until the outline's "Approved by" line is filled.
 
 Write the piece from the approved outline below. Follow CLAUDE.md's style rules exactly.
 

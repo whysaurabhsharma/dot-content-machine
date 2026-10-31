@@ -367,14 +367,36 @@ EMOJI = re.compile("[\U0001F300-\U0001FAFF☀-➿️]")
 LABELLED = re.compile(r"^\*\*[^*]+:\*\*")  # "**First comment:**", "**Image:**"
 
 
+def post_figures(heading, h1, path):
+    """The figures file of a post's piece. Tried in order: "piece N" in the post heading,
+    a slug in the heading (a "·"-separated part naming figures/<slug>-figures.csv),
+    "piece N" in the file's H1, then the slug in the file name (posts/<slug>-posts.md)."""
+    def by_number(t):
+        m = re.search(r"\bpiece (\d+)", t, re.I)
+        return ROOT / "figures" / f"piece-{m.group(1)}-figures.csv" if m else None
+
+    def by_slug(t):
+        for part in re.split(r"[·|]", t.lstrip("# ")):
+            f = ROOT / "figures" / f"{part.strip()}-figures.csv"
+            if part.strip() and f.exists():
+                return f
+        return None
+
+    stem = Path(path).stem
+    from_name = ROOT / "figures" / f"{stem[:-len('-posts')]}-figures.csv" if stem.endswith("-posts") else None
+    for f in (by_number(heading), by_slug(heading), by_number(h1), from_name):
+        if f is not None:
+            return f
+    return None
+
+
 def run_posts(path):
     """Check every post in a posts/ file: CLAUDE.md stage 7 and style rule 17, plus checks 15, 17 and 19.
 
-    A post's figures are its piece's: "piece N" in the post heading, else in the file's H1.
+    A post's figures are its piece's, found by post_figures().
     """
     text = Path(path).read_text(encoding="utf-8")
     h1 = re.search(r"^# .*$", text, re.M)
-    file_piece = re.search(r"\bpiece (\d+)", h1.group(0), re.I) if h1 else None
     heads = list(POST_HEADING.finditer(text))
     headings = [m.start() for m in re.finditer(r"^#{1,2} ", text, re.M)]
     if not heads:
@@ -388,7 +410,7 @@ def run_posts(path):
         body = [p for p in paras if not LABELLED.match(p)]
         body = ["\n".join(re.sub(r"^(\d+\.|-)\s+", "", line) for line in p.splitlines()) for p in body]
         prose = "\n\n".join(clean(p) for p in body)
-        piece = re.search(r"\bpiece (\d+)", h.group(0), re.I) or file_piece
+        fig = post_figures(h.group(0), h1.group(0) if h1 else "", path)
         results = []
 
         def add(n, status, name, detail=""):
@@ -411,7 +433,6 @@ def run_posts(path):
         delivers = bool(re.search(r"\blink\b|\bthe piece\b|\bfirst comment\b", last))
         add("P5", "PASS" if delivers else "FAIL", "Ends by saying what the link delivers",
             f"last line: {clean(body[-1])[:60] if body else 'none'}")
-        fig = ROOT / "figures" / f"piece-{piece.group(1)}-figures.csv" if piece else None
         add(15, *check_figures(prose, fig))
         add(17, *check_assumptions(prose))
         add(19, *check_banned("\n\n".join(body), prose))
