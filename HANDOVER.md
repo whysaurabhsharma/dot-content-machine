@@ -10,19 +10,13 @@ Written 28 October 2026 for Rick and Théo. Rewritten 31 October 2026 for Claude
 
 | Piece | Format | Where it stands |
 |---|---|---|
-| A · `ai-analyst-follow-up-questions` | Research: our own run in Dot | Through the gate and exported. Waits on Decision 4 (publish). 1 post |
-| B · `how-companies-test-ai-data-analysts` | Teardown: a census of 13 companies | Through the gate and exported. Waits on Decision 4. 2 posts |
-| F · `test-ai-analyst-before-rollout` | Guide: the cluster's hub | Research and figures done. Outline next |
+| A · `ai-analyst-follow-up-questions` | Research: our own run in Dot | Through Decision 3 and exported. Waits on Decision 4. 2 posts |
+| B · `how-companies-test-ai-data-analysts` | Teardown: a census of 13 companies | Through Decision 3 and exported. Waits on Rick's sign-offs, three census corrections, then Decision 4. 2 posts |
+| F · `test-ai-analyst-before-rollout` | Guide: the cluster's hub | Through Decision 3 and exported. Waits on A and B going live. 2 posts |
 
-Three of six LinkedIn posts exist. Exports are in `exports/<slug>/` (a .docx and clean Markdown each; the folder is not in git).
+All six LinkedIn posts exist, first lines by Saurabh. Exports are in `exports/<slug>/` (a .docx and clean Markdown each; the folder is not in git). Current state, in two minutes: `STATUS.md`.
 
-**What Rick needs to do** (section 8 has the detail):
-
-1. Sign off two claims in B: the context agent quote, and the DABstep concession.
-2. Answer assumptions A1–A8: yes, no, or change.
-3. Decide the byline and the closing line.
-4. Read the positioning finding and the home page accuracy finding.
-5. Own the Olist licence question (decisions L1, L2, L4).
+**What Rick needs to do:** answer the seven questions in `DECISIONS-FOR-DOT.md`, ordered by what blocks publication. Section 8 has the detail.
 
 **Where to start reading:** this file, then `CLAUDE.md`, then `PLAN.md` (the cluster), then any piece in `pieces/` beside its `figures/` file and its `reviews/` folder.
 
@@ -185,7 +179,8 @@ What's missing:
 | The question bank | 102 questions, not re-ranked with sales-call questions | Re-rank with ten sales-call questions |
 | The incumbent shortlist | Stale (`bank/README.md`) | Re-check the pages that rank |
 | Tier 3 | Agreed for after the pieces | The 18-query citation reading, `bank/surfaces.csv`, `/distribute`, `check_posts.py`, a post queue |
-| Nobody but the author has run it end to end | The core claim about the machine | Section 3's first test, then one full piece |
+| Cold-start gaps (tested once, 1 November 2026) | A fresh session given only the README reached a research verdict on bank #29 (PIECE IF) in about 4 minutes. Full log: `runs/coldstart/COLDSTART-LOG-2026-11-01.md`. Gaps, most serious first: (1) section 3's first test skips Decision 1 and the truth spec, which the gate requires before a run; (2) the gate has no branch for a PIECE IF verdict, and nothing says who records a licence decision for a new piece; (3) the researcher isn't told which tables Dot's workspace holds; (4) the researcher isn't pointed to the bank row's gap basis or to `facts/house-structure-and-links.md` for the Playbook stage, and its test questions had a fresh-chat question worded as a follow-up; (5) the manifest stores the bank's short question, not the buyer's wording; (6) docs contradicted each other (fixed the same day: section numbers, the CLAUDE.md version, this section's state); (7) `stage_gate.py --help` treats --help as a slug; `bank.py top` picks #41 with no rule for choosing another | Fix (1) and (2) first: they let a new user run Dot before the rival definitions exist |
+| Nobody but the author has run it end to end | Tested once cold, to the research verdict (above); never by a person other than the author, never to a published piece | One full piece by Dot's team |
 
 **Why the browser step exists: the Anthropic record (1 November 2026).** Three errors were found in how the cluster used Anthropic's post. (1) The drift quote in our figures stopped at "over a month."; the page continues "before we treated this as an engineering problem", so B let a reader take the drift as ongoing. (2) The "three consecutive net-negative iterations" quote was also cut short (not used in a piece). (3) When the missing clause was added, we wrote "drift" where Anthropic wrote "this", and the paraphrase spread to B, F and both FAQ files before Gemini caught it. The first two came from reading the page through a model's fetch, which returns a model's reading, not the text; the third was ours. The Hex quote ("on purpose") was the same kind of fetch error. Open every source in a browser, and check quotes against the page's own text by script (`runs/test-ai-analyst-before-rollout-verification.md` shows how); when adding words from a source, quote them rather than paraphrase.
 

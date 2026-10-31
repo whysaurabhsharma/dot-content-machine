@@ -29,7 +29,7 @@ The earlier Claude Project trial's pieces and posts are in `archive/` and are no
 | Path | What it is |
 |---|---|
 | `HANDOVER.md` | Set-up in Claude Code, a 15-minute first test, how to run a full piece, the monthly loop, what's still open |
-| `CLAUDE.md` | Every rule: 23 hard rules, 17 style rules, the seven stages, the 25-check gate, a dated change log (v1.6.5). Claude Code reads it automatically |
+| `CLAUDE.md` | Every rule: 23 hard rules, 17 style rules, the seven stages, the 25-check gate, a dated change log (v1.8.13). Claude Code reads it automatically |
 | `.claude/agents/researcher.md` | Stage 1 RESEARCH as a subagent. Reads the Ahrefs snapshot and the citation series, fetches the top three pages, writes `runs/<piece>-research.md` |
 | `.claude/agents/dot-runner.md` | The evidence run as a subagent. Asks Dot each test question verbatim through `ask_dot` and appends every answer to `runs/<piece>-run.md` |
 | `prompts/01-research.md` … `07-linkedin.md` | The seven stage prompts. 01 runs as the `researcher` subagent; 02, 03 and 07 as the `/outline`, `/draft` and `/linkedin` skills; 04–06 are not yet built |
@@ -63,7 +63,7 @@ The earlier Claude Project trial's pieces and posts are in `archive/` and are no
 | `archive/` | The earlier trial's pieces, figures, charts and posts: superseded, kept for the record |
 | `tracking/` | A note on the tracking sheet, a Google Sheet sent with this folder as a link: Question bank, Coverage, Sources, Figures, Baseline, Run Log |
 | `guides/Dot-Run-a-Full-Piece.pdf` | Step-by-step guide to one complete piece, written for the earlier Claude Project set-up. The steps hold; where it says to paste into the Project, use the subagent or prompt named below instead |
-| `guides/Dot-Machine-Tester-Guide.pdf` | A 30-minute first test, written for the earlier Claude Project set-up. Superseded by `HANDOVER.md` section 2 |
+| `guides/Dot-Machine-Tester-Guide.pdf` | A 30-minute first test, written for the earlier Claude Project set-up. Superseded by `HANDOVER.md` section 3 |
 
 ## Quick start
 
@@ -76,7 +76,7 @@ If the check prints `ok`, run the scripts with that same `python`:
 
     python scripts/check_piece.py pieces/ai-analyst-follow-up-questions.md
 
-Expected: `17 pass, 0 fail, 1 partial, 6 for a human` (the partial is check 1: a claim title, which the headline test covers).
+Expected: `17 pass, 0 fail, 1 partial, 7 for a human` (the partial is check 1: a claim title, which the headline test covers).
 
 Then run `claude` in this folder and type `/mcp` to check that `ask_dot` is connected. `HANDOVER.md` section 1 has the set-up.
 
@@ -101,7 +101,8 @@ Then run `claude` in this folder and type `/mcp` to check that `ask_dot` is conn
 - **The ask_dot MCP, 31 October 2026:** connected from Claude Code; one question asked and answered (BRL 137.04, basis stated); what it exposes recorded in `facts/dot-mcp.md`. Mode, credits, model, environment and active context notes are not observable via MCP.
 - **The only_date.py hook** was tested on its own: it allows `date` and `date +FORMAT`, and blocks chained commands, substitutions and other commands.
 - **Since tested (31 October–1 November 2026):** the `researcher` subagent on A, B and F; the `dot-runner` subagent on A's run; full pieces through the gate in Claude Code (A and B); the three blind reviewers through `run_reviewer.py`; time per stage, logged in `runs/<slug>-timing.csv` (costs in HANDOVER.md section 2).
-- **Not yet tested:** a full piece run by anyone other than the author; the monthly loop (never run); any outcome (nothing is published).
+- **Tested once, cold (1 November 2026):** a fresh session given only this README reached a research verdict on bank #29 in about 4 minutes, and logged the gaps it hit (`runs/coldstart/`, HANDOVER.md section 6).
+- **Not yet tested:** a full piece run by a person other than the author; the monthly loop (never run); any outcome (nothing is published).
 
 ---
 
