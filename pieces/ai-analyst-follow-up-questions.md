@@ -3,7 +3,7 @@ title: "Your AI Analyst Picked a Date. Only the SQL Said Which."
 title_approved_by: Saurabh, 2026-10-31 (fifth title: the attempt 4 readers' fix for the title-lede contradiction in the fourth)
 seo_title: "AI Analyst Follow-Up Questions: Check Which Date It Used"
 meta: "“Delivered in 2017” gave Dot two correct late-order counts on Olist data. A six-step test shows which date your analyst used, and where its SQL says so."
-slug: ai-analyst-follow-up-questions-test
+slug: ai-analyst-follow-up-questions
 queries:
   - AI analyst follow-up questions context
   - conversational analytics
