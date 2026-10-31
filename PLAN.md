@@ -51,9 +51,22 @@ Redesigned 31 October 2026, after piece 2's run. The metrics note already states
   3. "What was the total item price of orders delivered in 2017?" (the let-out)
   4. "How many orders were delivered in 2017?" (control: followed the note in piece 2)
 - **Truth spec before the run:** each question's rivals (calendar day and timestamp; purchase and delivery date; their combinations), as in piece 2's spec.
+  - **The spec follows the note, not piece 2's spec, on missing delivery dates (decided by Saurabh, 31 October 2026):** delivered orders with no `order_delivered_customer_date` are left out of both the late count and the denominator. Piece 2's spec kept them in the denominators as not late. The spec must record why in its notes: the note under test defines it that way, and the truth has to mark answers against the definition the team wrote down. The difference is display rounding at one decimal (rule 12), as in piece 1 and piece 2.
 - **Batch 1, before:** notes exactly as in piece 2. **Notes screenshot** (Model → Notes); `get_catalog` read recorded.
 - **Between the batches, in this order:**
-  1. Create a **new** note (not an edit of the metrics note, so the before text stays as recorded). Draft text, for a person to approve: *"Late: an order is late when the date part of order_delivered_customer_date is later than the date part of order_estimated_delivery_date (calendar day). Orders with no delivery date are reported as a gap, not counted as on time or late. 'Delivered in <year>' means delivered orders in that year's purchase cohort, as the shared reporting rules state; use the delivery date only when a question asks when orders reached customers, for example 'by delivery date'."*
+  1. Create a **new** note (not an edit of the metrics note, so the before text stays as recorded), **worded exactly as approved by Saurabh, 31 October 2026**:
+
+     > **Title:** Olist lateness and "delivered in <year>"
+     >
+     > These rules apply to `uploads.main.olist_orders_dataset` and add to the shared reporting rules; they do not replace them.
+     >
+     > **"Delivered in <year>"** (also "delivered during <year>"): read it as delivered orders (`order_status = 'delivered'`) in the <year> purchase cohort, with the period filter on `order_purchase_timestamp`. This phrase on its own is not an explicit request for delivery dates under the shared reporting rules' "unless explicitly requested otherwise" clause, for any metric: order counts, item price, revenue, shipping revenue, late counts and late shares. Filter the period on `order_delivered_customer_date` only when the question contains the words "delivery date" or "reached the customer". Say in the answer which date the period uses.
+     >
+     > **Late:** a delivered order is late when `CAST(order_delivered_customer_date AS DATE) > CAST(order_estimated_delivery_date AS DATE)`. Compare calendar days, never timestamps: an order delivered on its estimated day is on time, whatever the time. A delivered order with no `order_delivered_customer_date` is neither late nor on time. Leave it out of both the count and the denominator, and say how many were left out. **Late share** = 100.0 × late orders / delivered orders with a delivery date, in the same purchase cohort.
+
+     **What makes it a test, to be preserved:** it closes the let-out with a fixed word list ("delivery date" or "reached the customer"), not a judgement call, and none of the four test questions contains those words.
+
+     **Predictions, stated before the run.** If notes work: item price moves from the delivery-date reading (BRL 5,612,818 in piece 2) to the purchase cohort (BRL 5,962,902.01); "late" settles on calendar day in all three chats; the control stays at 43,428. If they don't, the run records which answers kept the old reading, and that is the finding.
   2. Take credits before **after** creating it (facts O7: a note made with the context agent can add 20 credits).
   3. Confirm the note with `get_catalog`; record the result.
   4. **Notes screenshot** showing the new note on and the others as before.

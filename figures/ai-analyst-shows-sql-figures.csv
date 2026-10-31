@@ -11,3 +11,15 @@ MR-Q9,6921535,"Q9 vs T9 (Customer spend: sum of price plus freight_value on item
 MR-Q10,45101,"Q10 vs T10 (Orders purchased in 2017, all statuses (Repeat of T4, fresh chat)), matched by question text: answer 45,101, expected 45101 orders; gap 0.0000% (exact); correct",mark_run.py: runs/ai-analyst-shows-sql-run.md Q10 vs figures/ai-analyst-shows-sql-truth.csv,2026-10-31
 MR-Q11,2453,"Q11 vs T11 (Late delivered orders purchased in 2017, calendar-day grain (Repeat of T5, fresh chat)), matched by question text: answer 2,453, expected 2453 orders; gap 0.0000% (exact); correct",mark_run.py: runs/ai-analyst-shows-sql-run.md Q11 vs figures/ai-analyst-shows-sql-truth.csv,2026-10-31
 MR-Q12,7.7,"Q12 vs T12 (Late share of delivered orders purchased in 2018, calendar-day grain (Repeat of T6, fresh chat)), matched by question text: answer 7.7%, expected 7.725972 %; gap 0.3362% (rounding); correct",mark_run.py: runs/ai-analyst-shows-sql-run.md Q12 vs figures/ai-analyst-shows-sql-truth.csv,2026-10-31
+F01,6,Distinct test questions in batch 1,"runs/ai-analyst-shows-sql-run.md: distinct '### Q' titles, counted by script",2026-10-31
+F02,12,Answers in batch 1 (6 questions x 2 fresh chats),"runs/ai-analyst-shows-sql-run.md: '### Q' entries, counted by script",2026-10-31
+F03,2,Fresh chats per question,runs/ai-analyst-shows-sql-research.md section 7 (Repeat of T<k>); runs/ai-analyst-shows-sql-run.md entries,2026-10-31
+F04,11,Answers whose text named the date basis (all but Q4),runs/ai-analyst-shows-sql-run.md: answer text matched by script against 'purchase date(s)|delivery date(s)|placed in|delivered during calendar|delivered in calendar year'; Q4 had no match,2026-10-31
+F05,12,Answers that came back with their SQL,"runs/ai-analyst-shows-sql-run.md: non-empty SQL block per entry, counted by script",2026-10-31
+F06,12,Answers whose SQL filters the period on a named date column,"runs/ai-analyst-shows-sql-run.md: SQL with order_purchase_timestamp or order_delivered_customer_date in a >= or < bound, counted by script",2026-10-31
+F07,5,"Question pairs (two fresh chats) that returned the same value, of 6",figures/ai-analyst-shows-sql-figures.csv MR-Q1..Q6 vs MR-Q7..Q12; Q5/Q11 differ,2026-10-31
+F08,425,"Gap between the two late counts: 2,878 (Q5) minus 2,453 (Q11)",MR-Q5 minus MR-Q11,2026-10-31
+F09,5962902.01,Item price of delivered orders in the 2017 purchase cohort (the reading Q2 and Q8 did not use),figures/ai-analyst-shows-sql-truth.csv T2,2026-10-31
+F10,40930,Delivered orders with delivery date in 2017 (the reading Q1 and Q7 did not use),figures/ai-analyst-shows-sql-truth.csv T1b,2026-10-31
+F11,2,"Delivered 2017-cohort orders with no delivery date, reported in Q5's and Q11's answers",runs/ai-analyst-shows-sql-run.md: Q5 and Q11 data blocks (unassessable / missing_delivery_dates_count = 2),2026-10-31
+F12,6,"Delivered 2018-cohort orders with no delivery date, reported in Q6's and Q12's answers",runs/ai-analyst-shows-sql-run.md: Q6 and Q12 data blocks (missing timestamps = 6),2026-10-31

@@ -2,13 +2,15 @@
 
 Piece slug: `ai-analyst-shows-sql`. Bank #41. Outlined 31 October 2026, from `runs/ai-analyst-shows-sql-research.md`, `runs/ai-analyst-shows-sql-run.md` (batch 1, Q1 to Q12), `figures/ai-analyst-shows-sql-figures.csv` (MR-Q1 to MR-Q12) and `figures/ai-analyst-shows-sql-truth.csv`.
 
-**Rule 14 waiver.** Batch 1's conditions were recorded by hand at about 17:00 IST, with no screenshots (waived by Saurabh, 31 October 2026). Under that waiver the piece may make no claim about mode, credits, environment or context notes from this run: not the mode, not the cost, not which notes were on, and not that a note caused any reading. This outline therefore carries no mode in the chart caption and no cost per answer. Both conflict with a standing rule (style rule 14, hard rule 10); see Missing figures, items 8 and 9, for the decision a person must make.
+**Rule 14 waiver.** Batch 1's conditions were recorded by hand at about 17:00 IST, with no screenshots (waived by Saurabh, 31 October 2026). Under that waiver the piece may make no claim about mode, credits, environment or context notes from this run: not the mode, not the cost, not which notes were on, and not that a note caused any reading. This outline therefore carries no mode in the chart caption and no cost per answer. Both conflict with a standing rule (style rule 14, hard rule 10); both decided 31 October 2026 (Missing figures).
 
 **Research verdict honoured.** PIECE IF the piece claims only what the run counts and makes no claim about whether teams read SQL. "Almost nobody opens it" (the Playbook) is not used.
 
 **Playbook stage:** Stage 3 · Prove (research section 3; https://www.getdot.ai/blog/ai-data-analyst-playbook).
 
 ## 1. Title candidates
+
+**Working title for the draft, decided by Saurabh on 31 October 2026: "Your AI Analyst Counted Late Orders Two Ways".** House style from Dot's blog (short, flat claim, "Your X", no colon). The SEO title carries the buyer's words ("AI analyst shows SQL"). The candidates below stay open for Decision 3, after the reviews.
 
 Buyer phrases from research section 2 only: "AI analyst shows SQL" (bank row 41, volume not measured), "ai data analyst" (700 US, 2.0K global), "text to sql accuracy" (10 US).
 
@@ -18,13 +20,13 @@ Buyer phrases from research section 2 only: "AI analyst shows SQL" (bank row 41,
 
 Reason for 1: it carries the bank phrase inside the one measured phrase ("ai data analyst"), promises a check, and its proof is the run's real finding (MR-Q5 against MR-Q11), not the answers that matched.
 
-Title 2 has no number from the run. Title 3's phrase has almost no volume (10 US), and "two" is a design count (Missing figures, item 1).
+Title 2 has no number from the run. Title 3's phrase has almost no volume (10 US).
 
 ## 2. The opening (57 words)
 
 > **Ask an AI data analyst "How many orders were delivered late in 2017?" in two fresh chats, and you can get 2,878 and 2,453. That happened in Dot, on the Olist dataset. Both were correct, by different clocks. Each answer said which. By the end, you will have a test for whether your analyst shows its definition.**
 
-Figures: MR-Q5 (2,878, timestamp grain, correct under its stated definition, T5b); MR-Q11 (2,453, calendar-day grain, T11). "Two fresh chats" is a design count (Missing figures, item 1).
+Figures: MR-Q5 (2,878, timestamp grain, correct under its stated definition, T5b); MR-Q11 (2,453, calendar-day grain, T11); F03 (two fresh chats).
 
 ## 3. The surprising detail
 
@@ -43,7 +45,7 @@ Figures: MR-Q1, MR-Q7 (43,428); MR-Q2, MR-Q8 (5,612,818, marked against T2d, the
 7. The SQL is the check when the text is silent and the reference when two chats disagree.
 8. Ask your key question twice, fresh, and compare the stated definition and the date filter.
 
-Figures: MR-Q1 to MR-Q12 (line 3); MR-Q5, MR-Q11 (line 4); MR-Q1, MR-Q2, MR-Q7, MR-Q8 (line 5); MR-Q4, MR-Q10 (line 6). "Six", "two fresh chats" and "almost every" / "once" are design counts or unrowed tallies (Missing figures, items 1 and 2). If those rows are not added, line 2 becomes "We asked Dot ambiguous questions on the Olist dataset, each repeated in a fresh chat" and line 6 becomes "Most answers' text named its reading; on one, only the SQL showed the date basis".
+Figures: F01, F03 (line 2); MR-Q1 to MR-Q12 (line 3); MR-Q5, MR-Q11 (line 4); MR-Q1, MR-Q2, MR-Q7, MR-Q8 (line 5); F04, MR-Q4, F06 (line 6). Line 6 reads, with numbers: "11 of 12 answers' text named its date basis; on the twelfth, only the SQL showed it."
 
 ## 5. Three H2s
 
@@ -53,7 +55,7 @@ Figures: MR-Q1 to MR-Q12 (line 3); MR-Q5, MR-Q11 (line 4); MR-Q1, MR-Q2, MR-Q7, 
 - Finding: Q5, 2,878 (MR-Q5): "delivery occurred after the estimated delivery timestamp". Q11, 2,453 (MR-Q11): "they arrived after the estimated delivery day". Q11's SQL compares `CAST(... AS DATE)`; Q5's compares raw timestamps. Same words, different grain, both correct under their stated definitions.
 - Limitation: two fresh chats chose different grains for "late".
 - What the product does: the answer text named the grain both times, and the SQL showed the comparison line by line. A reader comparing the two sentences sees the difference without opening the SQL.
-- What to do: pick one grain for "late" and write it down where the analyst reads it (see Where Dot fits, A5, labelled Assumption). Say nothing about which note, if any, was active in this run (rule 14 waiver).
+- What to do: pick one grain for "late" before you ask. No claim that writing it down fixes the split: this run didn't test that (piece 3 does). Say nothing about which note, if any, was active in this run (rule 14 waiver).
 
 ### H2 2: "Delivered in 2017" meant purchase year for a count and delivery year for a revenue total
 
@@ -61,7 +63,7 @@ Figures: MR-Q1 to MR-Q12 (line 3); MR-Q5, MR-Q11 (line 4); MR-Q1, MR-Q2, MR-Q7, 
 - Finding: Q1 and Q7, 43,428 (MR-Q1, MR-Q7), purchase year, both chats. Q2 and Q8, BRL 5,612,818 (MR-Q2, MR-Q8), delivery year, both chats. Recurrence held item by item inside each question; the reading flipped between questions.
 - Limitation: the phrase is ambiguous, and Dot did not resolve it the same way across question types.
 - What the product does: every one of the four answers stated its date basis in the text ("This uses purchase date, not delivery date"; "This uses delivery date, not purchase date"), and each SQL filters on the matching column (`order_purchase_timestamp` or `order_delivered_customer_date`).
-- Missing for contrast: the purchase-year item price (BRL 5,962,902.01, truth T2) and the delivery-year order count (40,930, truth T1b). Neither has a Figures row (Missing figures, items 4 and 5).
+- Contrast: the purchase-year item price, BRL 5,962,902 (F09), and the delivery-year count, 40,930 (F10): the readings each answer did not use.
 
 ### H2 3: The SQL earns its place on the one answer whose text left the date out
 
@@ -69,7 +71,7 @@ Figures: MR-Q1 to MR-Q12 (line 3); MR-Q5, MR-Q11 (line 4); MR-Q1, MR-Q2, MR-Q7, 
 - Finding: Q4, "How many orders did we get in 2017?", answered 45,101 (MR-Q4) "including all order statuses", with no date basis in the text. Its SQL filters on `order_purchase_timestamp`. Q10, the same question in a fresh chat, returned 45,101 (MR-Q10) and said "based on purchase date".
 - Limitation: on Q4, a reader who did not open the SQL could not tell which date was used.
 - What the product does: the SQL is returned with every answer, so the date basis is one click away even when the text omits it.
-- Counts of "stated in text" versus "SQL only" (the research's core number) have no Figures row yet (Missing figures, item 2). The H2 is written as "one answer" against Q4 by name until they do.
+- Counts: the text named its date basis in 11 of 12 answers (F04); every answer came back with SQL (F05: 12) whose period filter names a date column (F06: 12). Counted by script from the answer text, with the rule written in F04's row.
 - No claim about whether anyone on a team reads the SQL (research verdict).
 
 ## 6. The table and the chart
@@ -79,7 +81,7 @@ Figures: MR-Q1 to MR-Q12 (line 3); MR-Q5, MR-Q11 (line 4); MR-Q1, MR-Q2, MR-Q7, 
 **Chart: one question, two fresh chats.** Two bars: 2,878 (Q5, timestamp grain) and 2,453 (Q11, calendar day), each labelled with the answer's own wording for "late".
 
 - Alt text: "Bar chart. Asked 'How many orders were delivered late in 2017?' in two fresh chats, Dot returned 2,878 orders at timestamp grain and 2,453 by calendar day, on the Olist dataset."
-- Caption: "Dot's answers to the same question in two fresh chats, Olist dataset, 31 October 2026." No mode: rule 14 was waived for this piece (Missing figures, item 8).
+- Caption: "Dot's answers to the same question in two fresh chats, Olist dataset, 31 October 2026." No mode: rule 14 was waived for this piece.
 
 Figures: MR-Q5, MR-Q11.
 
@@ -90,11 +92,11 @@ Figures: MR-Q5, MR-Q11.
 3. The 2018 late share matched to display rounding: 7.7% in both chats against a reference of 7.725972% (MR-Q6, MR-Q12). The SQL left orders with missing dates out of the denominator; the reference did not. Rounding, not a disagreement (rule 12).
 4. Whether a team reads the SQL was not measured.
 
-## 8. Where Dot fits (draft wording, 62 words)
+## 8. Where Dot fits (draft wording, 43 words)
 
-> Every answer in this run came back with its SQL, and the answer text named its reading in most of them. Dot stores definitions as context notes with a title and a description (O3). Assumption: the context agent stores a definition once, and every chat answer uses it (A5). Writing "late" down once is the fix this run points to. Docs: https://docs.getdot.ai
+> In this run, every Dot answer came back with its SQL, 12 of 12, and the text named its date basis in 11. Where the text didn't, the SQL's period filter did. Dot's documentation is at https://docs.getdot.ai
 
-Facts used: O3 (Observed); A5 (Assumption, labelled). The SQL-with-every-answer claim is evidenced in the piece by the run (twelve answers, each with SQL in the run file). No Superseded fact (A3) used. No mode, credits, environment or note state from this run. "Most of them" stands in for a count with no Figures row (Missing figures, item 2).
+Evidence: F04, F05, F06, from the run file. No Assumption used: A5 is not used (untested here; piece 3 tests whether writing a definition down settles a reading). No mode, credits, environment or note state from this run (rule 14 waiver).
 
 ## 9. The instruction
 
@@ -104,18 +106,15 @@ Then the CTA: *If this excites you, we'd love to hear from you. Get in touch.*
 
 ## 10. Missing figures
 
-Numbers the outline wanted that `figures/ai-analyst-shows-sql-figures.csv` does not have. None are used above as numbers; each is either reworded or flagged.
+Resolved 31 October 2026: every figure this outline wanted now has a row in `figures/ai-analyst-shows-sql-figures.csv`, counted by script from the run file and the truth file (rule 16):
 
-1. **Design counts**: 6 questions, 12 asks, 2 fresh chats per question. From the research's test plan and the run file (Q1 to Q12). Needs a row (source: run file) before the opening, pocket guide or table may say "six" or "two".
-2. **Text-versus-SQL tallies** (the research's core number): per the run file's Basis lines, population stated in 12 of 12 answers, period in 12 of 12, definition in 11 of 12 (Q4 the exception). Must be recounted from the run text (rule 16) and added as rows before "almost every", "most" or "one" become numbers.
-3. **Pairs that agreed**: 5 of 6 question pairs returned the same value; Q5/Q11 did not. Needs a row.
-4. **Purchase-year item price, BRL 5,962,902.01** (truth T2; also in Q3's text as merchandise). Wanted as the contrast in H2 2.
-5. **Delivery-year delivered count, 40,930** (truth T1b; also in Q2's data). Wanted as the contrast in H2 2.
-6. **The gap between the late counts, 425** (2,878 minus 2,453). Not computed in the figures file.
-7. **Orders with missing dates**: 2 (Q5, Q11, 2017) and 6 (Q6, Q12, 2018). In the answers; no rows.
-8. **Chart caption mode.** Style rule 14 asks for the date and the mode; the rule 14 waiver bars any mode claim. A person decides: caption without a mode (as above), or a rule change.
-9. **Cost per answer, credits range with dollars (hard rule 10).** Barred by the rule 14 waiver; credits after batch 1 not yet recorded. A person decides whether the piece runs without it.
-10. **Licence decision.** L1 (publication may proceed on Olist-derived figures) names `ai-analyst-follow-up-questions` only. This piece needs its own decision recorded before publishing (hard rule 9, A10).
+- F01–F03: design counts (6 questions, 12 answers, 2 fresh chats per question).
+- F04: 11 answers named their date basis in the text; F05: 12 came back with SQL; F06: 12 SQL filters name the date column.
+- F07: 5 of 6 pairs agreed; F08: the 425 gap.
+- F09, F10: the readings not used (BRL 5,962,902.01; 40,930).
+- F11, F12: orders with no delivery date reported by Dot (2 in 2017; 6 in 2018).
+
+Decided the same day, under the rule 14 waiver, as for piece 1: **no cost per answer** (credits after are recorded, 7.1 for the batch, but the waiver bars publishing them), and the chart caption gives the date and **no mode**. **Licence:** recorded as L2 in `facts/dot-facts.md`, a decision, not a resolution.
 
 Approved by:
 Date:
