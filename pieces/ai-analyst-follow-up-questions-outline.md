@@ -16,7 +16,7 @@ Buyer phrases used are from research section 2 only: "AI analyst follow-up quest
 
 Reason for 1: it carries the bank's own phrasing, promises the reader a test, and its proof is the run's real finding (MR-Q2 against MR-Q6), not the clean recall.
 
-Title 2's "four turns" is a design count with no Figures row (Missing figures, item 2). Title 3 has no number from the run.
+Title 2's "four turns" now has a Figures row (F04). Title 3 has no number from the run.
 
 ## 2. The opening (59 words)
 
