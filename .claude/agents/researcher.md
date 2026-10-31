@@ -58,6 +58,8 @@ Then:
    - the figure it must produce, so ground truth can mark it: the metric, unit and grain, never a value. No finding is written before its run.
    - for a question that must be asked in the same chat as an earlier one (a follow-up test), "Follow-up of T<k>", worded as a person would type it after T<k>'s answer. The dot-runner asks it in T<k>'s chat.
 
+   **Every test question, follow-up turns included, asks for exactly one number.** `mark_run.py` marks one number per answer, so a question whose answer would be a table, a list or a breakdown ("by month", "top five") is reworded to ask for one figure ("which month was highest, and what was its revenue?" asks for one month and its one figure; "break that down by month" is not allowed). Build chains this way from the start.
+
    RESEARCH names the figure and never its value (hard rule 2): the value is computed later from the raw CSVs by `scripts/ground_truth_from_spec.py`.
 8. **Sources as CSV.** The rows from section 4 again, as a fenced `csv` block with this header:
 
