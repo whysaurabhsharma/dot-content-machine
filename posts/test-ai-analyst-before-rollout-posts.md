@@ -4,9 +4,12 @@ Structures from PLAN.md's cluster table: structure 5, the checklist (Post A); st
 
 ## Post A · test-ai-analyst-before-rollout · the checklist (cluster structure 5)
 
-**First lines tried:** left for Saurabh.
+**First lines tried:** (Saurabh, 1 November 2026)
+- Most advice on testing an AI analyst stops at 'build a golden set'. Here's what the companies that published theirs actually do.
+- Eight steps, each with the evidence behind it.
+- Nobody can tell you what accuracy score is good enough. Thirteen companies published how they test anyway. (kept)
 
-**Line 1:** _to be written by Saurabh: who this is for and what is at risk for them._
+Nobody can tell you what accuracy score is good enough. Thirteen companies published how they test anyway.
 
 Eight steps to test an AI data analyst before rollout, each with its evidence:
 
@@ -29,9 +32,12 @@ The piece gives the evidence behind each step: a run of ours on Dot, or companie
 
 **Source:** F's step 2 and its second section: our follow-up run (RA-OTHER, RA-F01) and LinkedIn (LIN-3, LIN-4). Angle chosen by Saurabh, 1 November 2026: "One expected answer per question marks right answers wrong."
 
-**First lines tried:** left for Saurabh.
+**First lines tried:** (Saurabh, 1 November 2026)
+- If your test holds one right answer per question, it will mark correct answers wrong. Ours would have.
+- The standard advice on testing AI analysts is wrong, and our own run proves it.
+- Your golden set is marking correct answers wrong. (kept)
 
-**Line 1:** _to be written by Saurabh: who this is for and what is at risk for them._
+Your golden set is marking correct answers wrong.
 
 The standard advice for testing an AI analyst: build a golden set, one right answer per question.
 

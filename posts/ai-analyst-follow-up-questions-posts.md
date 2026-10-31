@@ -34,9 +34,13 @@ The piece has all six steps and the SQL line that showed the date.
 
 **Source:** `runs/ai-analyst-follow-up-questions-run.md`, Q2 and Q6. Dot's answer is quoted word for word; the run file shows a space before its comma and full stop (the export's spacing), removed here.
 
-**First lines tried:** left for Saurabh.
+**First lines tried:** (Saurabh, 1 November 2026)
+- Your AI analyst gives you a number and a definition. It can still be answering a different question than the one you asked.
+- A right answer to the wrong question still looks like a right answer.
+- Saurabh's line as given: "We asked the same question twice. Got two different numbers. Both were right." Not set: in A's run the second ask was the late-orders question reworded in full in a fresh chat, not the same question (the step 5 correction).
+- We asked Dot how many 2017 orders were late, twice. Got two different numbers. Both were right. (kept: Saurabh's line, with "the same question" made true to the run)
 
-**Line 1:** _to be written by Saurabh: who this is for and what is at risk for them._
+We asked Dot how many 2017 orders were late, twice. Got two different numbers. Both were right.
 
 We asked Dot a follow-up in one chat, "And how many of those were delivered late?" Its answer, word for word:
 
@@ -58,9 +62,13 @@ The piece shows the SQL line that settled it, and a six-step test for your own t
 
 **Source:** `runs/ai-analyst-follow-up-questions-timing.csv` (figures TIM-1, TIM-2). No credits figure: the screenshot rule was waived for A's run.
 
-**First lines tried:** left for Saurabh.
+**First lines tried:** (Saurabh, 1 November 2026)
+- We timed every stage of writing one evidence-led piece. The machine took 27 minutes. That isn't the interesting number.
+- Twenty-seven minutes of machine time. Four headline tests. One of those numbers matters.
+- Saurabh's line as given: "The machine took 27 minutes to write the piece. I took two days." Not set: D1 bars "I" in posts, and "two days" has no figures row (A ran from 12:36 to 16:36 on 31 October, first export).
+- The machine took 27 minutes to write the piece. The whole piece took four hours. (kept: 27 is TIM-3, four is TIM-4)
 
-**Line 1:** _to be written by Saurabh: who this is for and what is at risk for them._
+The machine took 27 minutes to write the piece. The whole piece took four hours.
 
 We ran a content piece through a machine that logs every stage. Asking Dot the 8 test questions took 5.1 minutes.
 

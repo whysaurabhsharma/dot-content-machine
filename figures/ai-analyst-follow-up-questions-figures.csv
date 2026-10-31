@@ -25,3 +25,5 @@ F15,5,"Answers whose own text named the date that set their scope (Q1, Q3, Q4, Q
 F16,8,"Answers that came back with their SQL, of 8","runs/ai-analyst-follow-up-questions-run.md: entries with an SQL block, counted by script",2026-10-31
 TIM-1,5.1,logged minutes of the run stage (dot-runner asking the 8 questions),"runs/ai-analyst-follow-up-questions-timing.csv, run start 13:37:38 to end 13:42:46",2026-11-01
 TIM-2,26.9,"logged machine minutes for the whole piece, research to export, summed by script; a person's time is not logged","runs/ai-analyst-follow-up-questions-timing.csv, sum of the minutes column",2026-11-01
+TIM-3,27,"TIM-2 (26.9 logged machine minutes) rounded to whole minutes, for a post's first line","TIM-2, rounded",2026-11-01
+TIM-4,4,"hours from the start of research (31 October 2026, 12:36) to the end of the first export (16:36), wall clock, people's time included","runs/ai-analyst-follow-up-questions-timing.csv, research start to first export end",2026-11-01
