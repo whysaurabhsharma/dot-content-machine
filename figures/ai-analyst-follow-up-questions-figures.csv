@@ -21,3 +21,5 @@ F11,6,Delivered orders purchased in 2018 with no delivery date,"data/olist/olist
 F12,691,Gap between the two readings of late orders delivered in 2017: chain (Q2) minus fresh chat (Q6),"MR-Q2 minus MR-Q6, by script",2026-10-31
 F13,5962902,"F06 to whole BRL, to match the precision of Dot's answers (5,962,902.01 unrounded)","F06 rounded to 0 decimals, by script",2026-10-31
 F14,987765,"F07 to whole BRL, to match the precision of Dot's answers (987,765.37 unrounded)","F07 rounded to 0 decimals, by script",2026-10-31
+F15,5,"Answers whose own text named the date that set their scope (Q1, Q3, Q4, Q5, Q7), of 8","runs/ai-analyst-follow-up-questions-run.md answer text, classified by script: names 'purchased in', 'purchase date' or 'customer delivery date'",2026-10-31
+F16,8,"Answers that came back with their SQL, of 8","runs/ai-analyst-follow-up-questions-run.md: entries with an SQL block, counted by script",2026-10-31

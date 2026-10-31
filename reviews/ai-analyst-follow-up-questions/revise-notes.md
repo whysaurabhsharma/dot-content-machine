@@ -1,14 +1,40 @@
-# Revise notes · ai-analyst-follow-up-questions
+# Revise notes · ai-analyst-follow-up-questions · round 3
 
-A person's instructions for the revise round after the second reader and fact-checker reviews. Saurabh, 31 October 2026. Apply every one, and log each in revisions.md as done, or one line on why it can't be.
+A person's instructions, Saurabh, 31 October 2026, after the headline test passed on attempt 3. (Round 2's notes are in git history and logged in revisions.md.) Apply every one, and log each in revisions.md under "Round 3" as done, or one line on why it can't be.
 
-1. **Put the 691 in the lede** (F12: 2,453 in the chain minus 1,762 in the fresh chat). A repeated answer to a repeated question (43,428 at Q1 and Q5) is the dullest result and must not lead.
-2. **No causal claim about chat history.** Write "in this run, the readings differed between the chain and the fresh chats", not that the history caused it. The same context notes were on throughout, so they can't explain the difference, but one run can't rule out run-to-run variation either. Don't mention the notes (the rule 14 waiver bars it).
-3. **5.6% and 7.7%:** say plainly that Dot excluded the orders with no delivery date (two in 2017, F10; six in 2018, F11) and the ground truth didn't, and that the shares round the same. **4.3%:** say plainly that its denominator (40,930 orders by delivery date, F08) is a different set from the chain's.
-4. **Resolve "missed" against "neither answer is wrong".** Neither answer is wrong: both match the raw data for the date each used. Remove "missed" and anything else that says the control failed.
-5. **Explain "a person chose" properly:** mark_run.py reads only an answer's stated basis; Q6's text didn't name its date; so a person read the reading from Q6's SQL, whose year filter is on the delivery date. Say that once, instead of two claims side by side.
-6. **Cut the "bigger risk than forgetting" ranking.** One run can't rank two risks.
-7. **Fix the mixed precision** (BRL 5,612,818 beside BRL 5,962,902.01: use the same precision for both, with a figures row for any new rounding) **and the "year filter" table header** (Q8 filters on a month: say "date filter").
-8. **Rewrite the caption so it doesn't read like a team note.** It still gives the date (style rule 14) and must not name the mode or the credits (rule 14 waiver). For example: "… Olist dataset, Dot, 31 October 2026. The run's mode is not stated."
+## 1. Restructure: visible-vs-hidden is the spine
 
-Constraints that still hold: the title is Decision 3 and stays as approved; the lede stays within 60 words and four sentences, ends on what the reader will have, and keeps the buyer's question; every number needs a row in figures/ai-analyst-follow-up-questions-figures.csv, so if a fix needs a number that has no row, stop and report blocked rather than inventing one.
+The finding is ambiguity, not memory: one phrase has two valid readings, both correct, and the risk is whether the answer tells you which one it used.
+
+- **H2 1, first:** both late-order counts were correct, each for a different date. 2,453 by purchase date (MR-Q2), 1,762 by delivery date (MR-Q6); each matches the raw data for its date; each answer's SQL shows its date filter.
+- **H2 2, the spine:** the chain named its date, the fresh chat didn't. Q1 named purchase date ("This uses purchase date, not delivery date."); Q6 never named its date (the hidden risk); Q7 named the delivery date ("This uses the customer delivery date, not the purchase date.", the visible version). Where the text is silent, the SQL shows the date.
+- **H2 3, memory, demoted and short:** asked four turns later to go back to the first question, Dot re-ran the first query and returned 43,428 again; Q8 kept Q7's delivery-date scope. A few sentences, no more.
+- **The test gains a step:** "Check whether the answer names its date. If it doesn't, read the date filter in its SQL." Keep the test's step count in step with the lede's "five-step" claim, or change both together.
+- **Pocket guide:** reorder to match (two readings and both correct; visible vs hidden; memory; the test). Five to eight lines.
+- **SEO fields:** `seo_title` and `meta` follow the new frame; no "context test", and the meta doesn't open with a memory question. `seo_title` must still contain the piece's query for check 3; meta under 155 characters. Leave `slug` as it is.
+
+## 2. Lede fixes, from the readers
+
+The lede stays within 60 words and four sentences, ends with "By the end, you'll have…", and keeps 2,453, 1,762 and the named-vs-unnamed contrast. If a fix doesn't fit, put it in the paragraph right after the lede and log where it went.
+
+- "Both are correct": say how we know (each matches the raw data for the date it used).
+- Say the fresh chat used delivery date without saying so; don't leave the reader guessing which date.
+- Define "late" as delivered after the estimated delivery date: in the piece, if not the lede.
+- Name the data once as a public e-commerce dataset (Olist).
+- Replace "which you got" with "which date your analyst used".
+
+## 3. Hard rule 6: pair the limitation with what Dot does, using only what the run supports
+
+The limitation: in a fresh chat, Dot didn't state which date it used (Q6). Pair it with what this run actually shows:
+
+- **Every answer came back with its SQL (F16: 8 of 8), and the SQL shows the date filter even where the text is silent.**
+- **Most answers named their date unprompted (F15: 5 of 8: Q1, Q3, Q4, Q5, Q7).**
+
+Do **not** claim that a context note, an evaluation, or any other feature would prevent or catch it: none of that was tested in this run (and the A5-style claim was cut at the outline). No new remedy.
+
+## Still holding
+
+- The title is Decision 3, approved: “Delivered in 2017” has two right answers. Test which one your AI analyst gives you. Don't change it.
+- The rule 14 waiver: no claim about mode, credits, environment or context notes from this run.
+- Every number needs a row in figures/ai-analyst-follow-up-questions-figures.csv. If a fix needs a number with no row, stop and report blocked.
+- If the chart caption or alt text changes, say so, so charts/ai-analyst-follow-up-questions-late-orders.json can be synced.
