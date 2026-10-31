@@ -36,7 +36,7 @@ Figures: ANT-5 (~95%), ANT-6 (~65%), ANT-7 (~90%). Quote verbatim from the page 
 3. Real questions often have more than one right answer: LinkedIn found about 60% of its benchmark questions did.
 4. 7 of the 13 score answers with an LLM judge, and the published judges miss things.
 5. Hex's judge accepted a 0.01-point wrong answer 35% of the time.
-6. 5 of the 13 re-run their tests on every change or daily, because accuracy drifts.
+6. Anthropic, Uber, Hex, GitHub and Salesforce re-run their tests on every change or daily, because accuracy drifts.
 7. Only Anthropic publishes a number an analyst must clear before launch: about 90% per domain.
 8. Start with your own team's real questions and the answers you would accept, then re-run them on every change.
 
@@ -63,7 +63,9 @@ Each H2 reads standing alone (hard rule 21): it names the census and its count, 
 - Figures: LIN-6 (1), LIN-7 (75%); HEX-1 (2.04%), HEX-2 (2.03%), HEX-3 (35%); CLK-13 (84.9%).
 - What is done about it (from the publications): LinkedIn investigates where judge and humans disagree, and keeps the quarterly expert review (LIN-5). Hex: "We are biased towards being overly harsh" (verbatim; quote names its context, the LLM judge, rule 13). Anthropic has "the grader judge the agent's query rather than its number" (verification, method notes; no figure). Dot's side: Dot's evaluation scores a number against a tolerance and shows a verdict such as "0.52% off expected" (facts O1). That is a deterministic check, not an LLM judge; the draft says only what O1 says.
 
-### H2 3: Five of 13 companies re-run their tests on every change or daily, because accuracy drifts
+### H2 3: Accuracy drifts, so the careful companies re-run their tests on every change
+
+- **Two different fives (Saurabh, 31 October 2026).** The title's five are the strict-bar companies (C-2: Anthropic, LinkedIn, Uber, ClickHouse, Hex). The companies that re-run on every change or daily are a different five (C-6: Anthropic, Uber, Hex, GitHub, Salesforce). In this section, name the five; never write "five" for them, and never put the two groups' counts side by side.
 
 - Method: when they run. Anthropic re-runs affected evals in CI when a PR touches a dependency. Uber re-runs Finch's historical queries before a prompt or model update deploys. Hex runs eval sets daily. GitHub evaluates every change before it ships. Salesforce runs automated regression testing on knowledge-base changes.
 - Figures: C-6 (5). Uber QueryGPT alone and Ramp are not counted (no trigger stated); say so in one clause if the census table shows them.
@@ -92,9 +94,9 @@ Numbers per row, one each, all from the figures file: Anthropic ANT-2 (above 95%
 
 Three are vendors evaluating a product they sell: Hex, Snowflake, WisdomAI (C-3). Mark them in the table (a note or a symbol) rather than in a separate column.
 
-**The chart (optional; recommended).** A horizontal bar chart: of the 13, how many do each practice. Bars: real questions or expert-checked answers 8 (C-4); LLM judge 7 (C-5); re-run on every change or daily 5 (C-6); more than one right answer acknowledged 3 (C-7); numeric launch gate 1 (C-8). Axis to 13 (C-1).
+**The chart (optional; recommended).** A horizontal bar chart: of the 13, how many do each practice. Bars: real questions or expert-checked answers 8 (C-4); LLM judge 7 (C-5); re-run on every change or daily 5 (C-6), its bar labelled with the five names, not the count alone; more than one right answer acknowledged 3 (C-7); numeric launch gate 1 (C-8). Axis to 13 (C-1).
 
-- Alt text: "Bar chart of 13 companies' published AI analyst tests: 8 use real questions or expert-checked answers, 7 an LLM judge, 5 re-run on every change or daily, 3 allow more than one right answer, 1 publishes a launch gate."
+- Alt text: "Bar chart of 13 companies' published AI analyst tests: 8 use real questions or expert-checked answers, 7 an LLM judge, 5 (Anthropic, Uber, Hex, GitHub and Salesforce) re-run on every change or daily, 3 allow more than one right answer, 1 publishes a launch gate."
 - Caption: *Census of 13 companies' own publications, read 31 October 2026.*
 - No mode line: style rule 14's mode requirement is research-only since v1.8.1 (Saurabh, 31 October 2026).
 
@@ -138,5 +140,5 @@ Quotable line: Thirteen companies published how they check their AI analyst's an
 
 Freshness: census measured 31 October 2026 (C-1 to C-8, every source re-opened that day); re-measure in April 2027, or sooner if any of the 13 publishes a new evaluation post. The sources are public, so it is re-measurable. The buyer-phrase volumes behind the titles are not re-measurable, source closed: the Ahrefs snapshot of 27–28 October 2026, whose access ended 31 October 2026.
 
-Approved by:
-Date:
+Approved by: Saurabh
+Date: 2026-10-31
