@@ -425,7 +425,7 @@ Recorded 31 October 2026, after `mark_run.py --batch 1 --decide Q6=T2c --decide 
 
 ### Finding 1: context memory worked
 
-- Q5 recalled Q1's figure exactly, four turns later: 43,428 at Q1 and 43,428 at Q5, in the same chat.
+- Q5 resolved "my first question" correctly, four turns later, and returned the same figure: 43,428 at Q1 and 43,428 at Q5, in the same chat. It re-ran Q1's query rather than recalling a stored figure (Q5's SQL is Q1's query again). Reworded 31 October 2026 after the reader review: the earlier wording, "recalled Q1's figure exactly", claimed more than happened.
 - Q7's scope carried into its follow-up: Q7 used the customer delivery date, and Q8 ("How much of that came in November?") answered for orders delivered in November 2017 (T8c), not purchased in November (T8, BRL 987,765).
 
 ### Finding 2: context also changed interpretation

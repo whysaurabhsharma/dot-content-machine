@@ -106,7 +106,7 @@ Score item by item. A matching total with a different filter is a different answ
 
 ## Where Dot fits
 
-Every answer in this test came with its SQL, so the date filter was visible even when the text skipped it. Dot's [context notes](https://www.getdot.ai/context-agent) are where a team can define what "delivered in" means. Assumption: with that note on, a chain and a fresh chat would read the phrase alike; this run didn't test it. Dot's evaluation questions hold an expected answer and a percent tolerance, for step 2's answers; details are in [the docs](https://docs.getdot.ai).
+Every answer in this test came with its SQL, so the date filter was visible even when the text skipped it. Dot's [context notes](https://www.getdot.ai/context-agent) are where a team can define what "delivered in" means. Dot's evaluation questions hold an expected answer and a percent tolerance, for step 2's answers; details are in [the docs](https://docs.getdot.ai).
 
 ---
 
