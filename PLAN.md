@@ -10,7 +10,7 @@ One buyer worry: **can you trust an AI analyst's answer before you rely on it?**
 |---|---|---|---|---|
 | 1 | `ai-analyst-follow-up-questions` | #43 | **The problem** | The same phrase, "delivered in 2017", got two correct answers for two different dates (2,453 and 1,762), and the answer that used delivery date never said so. Only its SQL did. |
 | 2 | `ai-analyst-shows-sql` | #41, "AI analyst shows SQL" (score 10, highest in the bank) | **How to see it** | When an answer's text states the definition it used, and when only the SQL reveals it, counted answer by answer across ambiguous definitions (date, freight, order status, how "late" is measured). |
-| 3 | `ai-analyst-how-much-context` (proposed) | #47, "how much context does AI analyst need" | **What to write down** | **What the note defined held. The phrase it left open was read two ways, and the term it never defined varied from chat to chat.** Piece 3's own run tests whether writing those two down ("late", and how to read "delivered in <year>") settles them. Either outcome is publishable. |
+| 3 | `ai-analyst-how-much-context` | #47, "how much context does AI analyst need" | **What to write down** | **What the note defined held. The phrase it left open was read two ways, and the term it never defined varied from chat to chat.** Piece 3's own run tests whether writing those two down ("late", and how to read "delivered in <year>") settles them. Either outcome is publishable. |
 
 Six LinkedIn posts, two per piece. Post 1 of 6 is written (piece 1, Post A).
 
@@ -38,7 +38,7 @@ All runs: workspace aiinterviewagents.com, the two Olist tables (`olist_orders_d
 - **Result, 31 October 2026:** 12 of 12 correct. Against the metrics note: 10 of 12 followed its purchase-cohort rule; the two that didn't were the same question (item price of orders "delivered in 2017"), in both chats, each stating its delivery-date basis. "Late" (not defined in the note) was read at timestamp grain in one chat and calendar day in the other. Piece 2's run is now context for piece 3, not its "without" batch.
 - Credits: about 4–5, at piece 1's rate of 3.0 for 8 answers.
 
-### Piece 3, `ai-analyst-how-much-context` (proposed), bank #47: its own before and after batches
+### Piece 3, `ai-analyst-how-much-context`, bank #47: its own before and after batches
 
 Redesigned 31 October 2026, after piece 2's run. The metrics note already states the date rule ("Unless explicitly requested otherwise, report a purchase cohort using order_purchase_timestamp"), so piece 3 no longer adds a first definition. It tests whether writing down what the note leaves open settles it.
 
@@ -62,6 +62,7 @@ Redesigned 31 October 2026, after piece 2's run. The metrics note already states
 - **Evidence and claims:** the notes screenshot for both batches; mode, credits and environment recorded by hand (rule 14 waived for those three). So the piece may say which notes were on and what they said, and may not claim mode, credits or environment.
 - **Rule 4:** piece 2's run is the same account and dataset and stays citable as context, but piece 3's finding comes from its own two batches.
 - **Decision point before the note is created (human):** approve the note's text.
+- **Licence:** recorded in advance as L3 in `facts/dot-facts.md` (a decision, not a resolution). Copy the same section into the run file when it is created.
 - Credits: about 14 for 24 asks, at piece 2's rate (7.1 for 12). About 202 remain.
 
 ## Which runs feed which

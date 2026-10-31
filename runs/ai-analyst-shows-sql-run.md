@@ -741,3 +741,7 @@ SELECT
     END AS late_rate_all_delivered_PERCENT
 FROM cte_delivered_cohort
 ```
+
+## Licence: decision to proceed, not a resolution
+
+**Saurabh decided on 31 October 2026 that publication may proceed**, on the same terms as piece 1. Recorded in `facts/dot-facts.md` as L2. This is a decision, not a resolution: the CC BY-NC-SA 4.0 label was never verified at source; README.md and HANDOVER.md still list it as a blocker, and neither was changed; Dot, as publisher, owns the question and has not answered it. No gate change: `stage_gate.py` does not check the licence.
