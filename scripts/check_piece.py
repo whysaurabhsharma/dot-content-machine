@@ -164,16 +164,31 @@ def check_figures(text, fig_file, body=""):
     vals = {norm_number(r["value"]) for r in rows}
     # A number from a cited publication (hard rule 4) must link its source in the piece.
     published = {}
+    # a value that also has a row from our own census or runs may be that number, so it isn't held to a link
+    own = {norm_number(r["value"]) for r in rows if not (r.get("where_computed") or "").startswith("published:")}
     for r in rows:
         m = re.match(r"published:\s*(\S+?),?\s", (r.get("where_computed") or "") + " ")
         if m:
             published.setdefault(norm_number(r["value"]), set()).add(m.group(1))
     found = numbers_in(text)
     missing = sorted({raw for raw, v in found if v not in vals})
-    unlinked = sorted({raw for raw, v in found if v in published and not any(u in body for u in published[v])})
+    # v1.8.6: the source is linked in the same sentence, or the same table row, as the number.
+    # The pocket guide (the numbered list before the first H2) is exempt: it restates numbers the body links.
+    unlinked = set()
+    first_h2 = body.find("\n## ")
+    for b_i, block in enumerate(re.split(r"\n\s*\n", body)):
+        start = body.find(block)
+        if re.match(r"^\d+\.\s", block.strip()) and (first_h2 < 0 or start < first_h2):
+            continue
+        units = block.splitlines() if block.lstrip().startswith("|") else re.split(r"(?<=[.!?])\s+(?=[A-Z\[\"])", block)
+        for u in units:
+            for raw, v in numbers_in(clean(u)):
+                if v in published and v not in own and not any(url in u for url in published[v]):
+                    unlinked.add(raw)
+    unlinked = sorted(unlinked)
     detail = f"{len(found)} numbers checked; not in Figures: {missing if missing else 'none'}"
     if published:
-        detail += f"; published but source not linked: {unlinked if unlinked else 'none'}"
+        detail += f"; published but source not linked in the same sentence: {unlinked if unlinked else 'none'}"
     return ("PASS" if not missing and not unlinked else "FAIL", name, detail + ". verify_sources.py: run separately")
 
 

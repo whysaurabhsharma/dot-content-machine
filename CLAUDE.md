@@ -221,3 +221,5 @@ A "no" on any line means the piece isn't done. Who checks each line is in bracke
 
 **31 October 2026 — v1.8.5.** Check 1's v1.8.3 allowance (a claim title may leave the search words to the SEO title) no longer requires the title to lack a promise word. Origin: B's narrowed title "7 Companies Published Their AI Analysts' Accuracy. No Two Measured the Same Thing." contains "Measured", which the checker reads as a promise word, so the allowance didn't apply and the title failed although its SEO title carries the search words.
 
+**31 October 2026 — v1.8.6.** Check 15: a published number's source is linked in the same sentence, or the same table row, as the number, not just somewhere in the piece. The pocket guide is exempt, since it restates numbers the body links; a value that also has a row from our own census or runs isn't held to a link. Origin: piece B's second fact-check found five company quotes linked elsewhere in the piece; the stricter check then found ten sentences more, and one number (Dot's census of 14) with no Figures row of its own, passing only because another row shared its value.
+

@@ -1,5 +1,18 @@
 # Revisions · how-companies-test-ai-data-analysts
 
+## Round 4: second fact-check, ChatGPT and Gemini (Saurabh, 31 October 2026)
+
+Triage from Saurabh's summary of both reports; the full replies were not pasted.
+
+- **"The table is missing" (Gemini): stands as wrong.** The review copy had all 13 rows; both blind reviewers quoted the table. Most likely the paste lost it. Recorded in HANDOVER.md as a method limit.
+- **8 entries in "One number", 7 in the text (ChatGPT): fixed.** The column is now "Accuracy figure"; Uber's ~5% run-to-run note moved to its "Runs when" cell, and its figure cell reads "None published".
+- **"DABstep is the one kind of test where figures can be compared" (both): fixed.** Now: the figure doesn't compare with the others either; figures compare only from the same tasks, scored the same way, on systems set up the same way. Rick's sign-off stays on the pre-publish list.
+- **Everything about other companies marked ASSERTED (ChatGPT): a category error.** A teardown reports what each company published and links it. One caveat now says so; no line-by-line change.
+- **Quotes not linked at the quote (both): fixed.** LinkedIn, Hex, ClickHouse, Anthropic and Uber quotes each link their source at the quote. The stricter check 15 (v1.8.6) then found ten more sentences, now linked at the number, and a missing row for Dot's census of 14 (DOT-3).
+- **"Only one of the 13 publishes a number to clear before launch" (Gemini): fixed.** The census recorded when each company runs its tests but didn't search the 13 for a launch bar specifically. Now: "Anthropic's is the only publication of the 13 in which we found a number to clear before launch."
+- **"It shows the method is runnable … a rule for a match" (ChatGPT): fixed.** Now says the method can be run, though not all by script: for two answers that didn't name their date, a person decided which reading each matched.
+
+
 ## Round 3: after the blind reviews of the reframed draft (31 October 2026)
 
 revise-notes.md (round 3) applied in full. Title and title_approved_by untouched. check_piece.py after revision: 18 pass, 0 fail, 1 partial (check 1, the title: for the headline test), 6 for a human; 1,442 words (teardown cap 1,600). No run file exists for this teardown; the Dot lines rest on piece A's run and figures, the company quotes on the verification file.
