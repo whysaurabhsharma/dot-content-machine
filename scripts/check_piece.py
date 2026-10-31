@@ -241,7 +241,11 @@ def check_lift(slug):
     lift = ROOT / "reviews" / slug / "lift-tester.md"
     if not lift.exists():
         return "HUMAN", name, f"reviews/{slug}/lift-tester.md not written yet. Quotable line: \"{line}\""
-    lifted = re.findall(r"[\"“]([^\"”]{15,})[\"”]", lift.read_text(encoding="utf-8"))
+    # Pair quote marks line by line, then keep quotes of 15+ characters. One regex over the whole file
+    # with the length floor inside it fell out of step after a short quote ("how to") and missed a
+    # verbatim lift on the next line (F, 1 November 2026).
+    lifted = [q for ln in lift.read_text(encoding="utf-8").splitlines()
+              for q in re.findall(r"[\"“]([^\"”]+)[\"”]", ln) if len(q) >= 15]
     words = lambda s: set(re.findall(r"[a-z0-9]+", s.lower())) - STOP
     nums = lambda s: set(re.findall(r"\d[\d,.]*", s)) | set(w.lower() for w in re.findall(NUMBER_WORDS, s, re.I))
     target_w, target_n = words(line), nums(line)
@@ -253,6 +257,13 @@ def check_lift(slug):
         if score > best_score:
             best, best_score = l, score
     ok = best_score >= 0.5
+    # The lifted line must still be in the piece: a lift-tester report older than a revision can
+    # quote a sentence the piece no longer has (F, 1 November 2026: "both correct" was revised out).
+    piece = ROOT / "pieces" / f"{slug}.md"
+    norm = lambda s: re.sub(r"\s+", " ", re.sub(r"\[([^\]]+)\]\([^)]+\)", r"", s)).replace("**", "").strip(" .")
+    if ok and piece.exists() and norm(best) not in norm(piece.read_text(encoding="utf-8")):
+        return ("FAIL", name, f"best lifted match {best_score:.0%}, but that line is no longer in the piece: "
+                f"\"{best[:70]}\". Re-run the lift-tester on the current draft")
     return ("PASS" if ok else "FAIL", name,
             f"quotable line: \"{line}\"; best lifted match {best_score:.0%}" + (f": \"{best[:70]}\"" if best else ": none with its number"))
 
