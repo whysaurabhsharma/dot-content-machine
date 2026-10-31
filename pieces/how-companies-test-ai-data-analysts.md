@@ -1,7 +1,7 @@
 ---
-title: "13 Companies Test Their AI Analyst. No Two Measure Accuracy the Same Way."
+title: "7 Companies Published Their AI Analysts' Accuracy. No Two Measured the Same Thing."
 format: teardown
-seo_title: "How 13 Companies Test Their AI Data Analyst"
+seo_title: "How 13 Companies Test Their AI Data Analysts"
 meta: "13 companies published how they test their AI analyst. Seven gave an accuracy figure; no two measured the same thing. The five methods worth copying."
 slug: how-companies-test-ai-data-analysts
 query_data: "how to evaluate ai data analyst accuracy: not indexed (not measured). Related: ai data analyst 700 US, 2.0K global, difficulty 22; text to sql accuracy 10 US, difficulty not measured. Ahrefs, 27–28 October 2026"
@@ -18,7 +18,7 @@ figures: figures/how-companies-test-ai-data-analysts-figures.csv
 dataset: "None: a census of 13 companies' own publications, each re-opened 31 October 2026. No data analysed and no Dot run (teardown)."
 ---
 
-**We read how 13 companies, including Anthropic, LinkedIn and Uber, test their AI analysts: the internal agents staff use to ask data questions. Seven of the 13 companies published an accuracy figure, and no two measured the same thing. By the end, you'll have one table of what all 13 measured, with the five that published enough to copy marked. Those five are the methods to start from.**
+**We read how 13 companies, including Anthropic, LinkedIn and Uber, test their AI analysts: the internal agents staff use to ask data questions. Seven of the 13 published an accuracy figure, each measured differently: ClickHouse compared result sets, LinkedIn's experts rated answers, and Vercel counted undefined successes. By the end, you'll have one table of what all 13 measured, with the five that published enough to copy marked. Those five are the methods to start from.**
 
 **The whole piece in eight lines:**
 

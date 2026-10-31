@@ -1,6 +1,6 @@
-# Their Accuracy Numbers Don't Compare. Your Questions Do.
+# 7 Companies Published Their AI Analysts' Accuracy. No Two Measured the Same Thing.
 
-**We read how 13 companies, including Anthropic, LinkedIn and Uber, test their AI analysts: the internal agents staff use to ask data questions. Seven of the 13 companies published an accuracy figure, and no two measured the same thing. By the end, you'll have one table of what all 13 measured, with the five that published enough to copy marked. Those five are the methods to start from.**
+**We read how 13 companies, including Anthropic, LinkedIn and Uber, test their AI analysts: the internal agents staff use to ask data questions. Seven of the 13 published an accuracy figure, each measured differently: ClickHouse compared result sets, LinkedIn's experts rated answers, and Vercel counted undefined successes. By the end, you'll have one table of what all 13 measured, with the five that published enough to copy marked. Those five are the methods to start from.**
 
 **The whole piece in eight lines:**
 

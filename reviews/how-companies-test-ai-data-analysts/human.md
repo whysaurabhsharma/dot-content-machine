@@ -2,7 +2,12 @@
 
 Tick each only after doing it, with a note of what happened. stage_gate.py reads these four lines.
 
-- [ ] headline test
+- [x] headline test: **PASSED, attempt 4, 31 October 2026 (Saurabh).** Three fresh readers, shown the title "13 Companies Test Their AI Analyst. No Two Measure Accuracy the Same Way.", the opening and the SEO title "How 13 Companies Test Their AI Data Analyst". All three answered correctly who it is for, what they get and why to trust it, and all three said the title and the opening promise the same thing, for the first time in four attempts.
+  - **One precision fault, found independently by all three and fixed the same day:** the title claimed no two of 13 measure accuracy the same way, but the evidence covers the 7 that published an accuracy figure. Checked against the census: the 7 each measured their own system on their own test set, so the claim holds for them; the other 6 published no accuracy measurement, and three of those don't state how they score, so the census can't show they differ. The title is narrowed to the readers' proposal, "7 Companies Published Their AI Analysts' Accuracy. No Two Measured the Same Thing." ("Analysts'" for grammar), not shown to a further panel. SEO title now "How 13 Companies Test Their AI Data Analysts".
+  - **Also from this round:** the opening's second sentence now shows the difference instead of restating the title: "ClickHouse compared result sets, LinkedIn's experts rated answers, and Vercel counted undefined successes" (all three from the census table).
+  - Attempt 3: **FAILED.** "Their Accuracy Numbers Don't Compare. Your Questions Do." A contrarian, essay-shaped title on a teardown: it named no concrete thing and promised a way out the guide is meant to give.
+  - Attempt 2: **FAILED.** "You Can't Compare AI Analyst Accuracy Numbers." Named a problem with no reason to read on; the SEO title promised example questions the page doesn't have.
+  - Attempt 1: **FAILED.** "13 Companies Test Their AI Analyst. 5 Show How." Reported an inventory, not a finding.
 - [ ] lift test in Perplexity and Claude
 - [ ] second fact-check on a different model
 - [ ] read aloud on a phone

@@ -219,3 +219,5 @@ A "no" on any line means the piece isn't done. Who checks each line is in bracke
 
 **31 October 2026 — v1.8.4.** Style rule 15: title shape depends on the format, and check 1 holds a teardown title to 8–13 words. Origin: piece B's titles were judged against the essay shape (4–9 words, no colon), which produced three failed headline tests' worth of argument. Dot's own teardown titles are longer, number-led and often use a colon; its essays are short claims. A rule that treats both the same keeps producing the argument (Saurabh). B's title is now "13 Companies Test Their AI Analyst. No Two Measure Accuracy the Same Way.", and its SEO title nearly repeats it, as Rick's 14-company post does.
 
+**31 October 2026 — v1.8.5.** Check 1's v1.8.3 allowance (a claim title may leave the search words to the SEO title) no longer requires the title to lack a promise word. Origin: B's narrowed title "7 Companies Published Their AI Analysts' Accuracy. No Two Measured the Same Thing." contains "Measured", which the checker reads as a promise word, so the allowance didn't apply and the title failed although its SEO title carries the search words.
+

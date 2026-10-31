@@ -300,7 +300,7 @@ def run(path):
     if shape_bad:
         add(1, "FAIL", "Title uses buyers' words and says what the reader gets",
             f"a teardown title is 8-13 words (style rule 15); this one is {n_title}")
-    elif hit < 0.6 and seo_hit >= 0.6 and not cue:
+    elif hit < 0.6 and seo_hit >= 0.6:
         # v1.8.3: a claim title may leave the buyers' words to the SEO title, which is what search shows.
         add(1, "PARTIAL", "Title uses buyers' words and says what the reader gets",
             f"claim title, query words {hit:.0%}; the SEO title carries them ({seo_hit:.0%}). "
