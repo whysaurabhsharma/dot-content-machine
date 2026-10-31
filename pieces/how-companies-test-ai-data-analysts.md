@@ -11,7 +11,6 @@ reverse_links:
   - The conversational analytics software post (https://www.getdot.ai/blog/conversational-analytics-software), anchor "test an AI analyst before rollout"
 queries:
   - ai data analyst test questions
-  - ai data analyst
   - text to sql accuracy
 playbook_url: https://www.getdot.ai/blog/ai-data-analyst-playbook
 figures: figures/how-companies-test-ai-data-analysts-figures.csv
@@ -118,6 +117,6 @@ In [Dot's evaluation](https://docs.getdot.ai/train-dot/evaluation), each test qu
 
 ---
 
-Write down real questions your team asked last month, with every answer you would accept for each. Run them against your AI analyst before rollout, then again on a schedule or when something it depends on changes.
+Write down real questions your team asked last month, with every answer you would accept for each. Run them against your AI analyst [before rollout](https://www.getdot.ai/blog/test-ai-analyst-before-rollout), then again on a schedule or when something it depends on changes.
 
 *If this excites you, we'd love to hear from you. Get in touch.*

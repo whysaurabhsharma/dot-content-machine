@@ -216,3 +216,7 @@ Also from the reader: the 84.9% claim is now ClickHouse's own sentence quoted wh
 ## Knock-on
 
 - pieces/how-companies-test-ai-data-analysts-faq.json: two answers updated so they stay word for word with the changed sentences.
+
+## Round (cluster), 1 November 2026
+
+- After Decision 3: the closing instruction links the hub guide F (link only), and "ai data analyst" moved out of this piece's queries to F, so the three pieces target distinct queries (Saurabh's cluster check). Re-read aloud the changed paragraph.

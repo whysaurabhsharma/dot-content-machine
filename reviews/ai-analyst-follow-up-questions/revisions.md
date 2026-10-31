@@ -225,3 +225,7 @@ The headline test failed (reviews/ai-analyst-follow-up-questions/human.md, attem
 - **Second paragraph** now carries the two figures the lede dropped: "The two readings gave 2,453 late orders in the chain and 1,762 in the fresh chat, and that gap is not a memory failure."
 - **Title** changes from "AI analyst follow-up questions: a context test you can copy" to "Does your AI analyst remember what you asked? We tested Dot: one phrase, two readings" (title A, approved by Saurabh): the buyer's question, the finding, and "tested" as the promise check 1 needs.
 
+
+## Round (cluster), 1 November 2026
+
+- After Decision 3: the closing instruction links the hub guide F (link only, plus the clause "then the rest of the pre-rollout test"), and "ai data analyst" moved out of this piece's queries to F, so the three pieces target distinct queries (Saurabh's cluster check). Re-read aloud the changed paragraph.

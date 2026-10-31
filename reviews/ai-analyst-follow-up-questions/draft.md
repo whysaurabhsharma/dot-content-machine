@@ -96,6 +96,6 @@ In this test, Dot's text didn't always name its date, but its SQL always did: ev
 
 ---
 
-Run the six steps this week, on one phrase your team argues about. Before you trust either number, check which date each answer used.
+Run the six steps this week, on one phrase your team argues about, then the rest of the [pre-rollout test](https://www.getdot.ai/blog/test-ai-analyst-before-rollout). Before you trust either number, check which date each answer used.
 
 *If this excites you, we'd love to hear from you. Get in touch.*
