@@ -1,0 +1,39 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "_source": "Answers copied word for word from pieces/how-companies-test-ai-data-analysts.md; questions are bank/questions.csv ai_form, rows bank #35, bank #39, bank #40, bank #92",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I test whether an AI data analyst gives correct answers before rolling it out?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Write down real questions your team asked last month, with every answer you would accept for each. Run them against your AI analyst before rollout, and again after every change."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "We tested it and it was fine. Why is it worse three months later?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The reason to re-run is drift. Anthropic's month-long slide in offline accuracy is the published case. A test passed at launch says little about the same agent a month later."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I keep measuring accuracy after launch, not just at evaluation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Anthropic, Uber, Hex, GitHub and Salesforce re-run their tests on a change, before each deploy, or daily."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I run accuracy checks automatically when definitions change?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Anthropic re-runs the affected evals in CI when a PR touches a dependency."
+      }
+    }
+  ]
+}

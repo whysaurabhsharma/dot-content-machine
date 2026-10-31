@@ -27,3 +27,12 @@
 2026-10-31 · ai-analyst-shows-sql · 2018 late-share bullet calls the gap "display rounding, not a disagreement" while the same bullet says Dot and the reference used different denominators
 2026-10-31 · ai-analyst-shows-sql · "Each answer named its clock in plain words" but the calendar-day 2018 answers (Q6, Q12) said "estimated delivery date", not "day"
 2026-10-31 · ai-analyst-shows-sql · "Each question recurred item by item across its two chats" but only totals and order counts are shown, with no item-level comparison
+2026-10-31 · how-companies-test-ai-data-analysts · Uber is marked Strict with test set and scoring from QueryGPT and timing from Finch, while the body says the QueryGPT post gives no trigger
+2026-10-31 · how-companies-test-ai-data-analysts · table says Anthropic runs "On every change, in CI" but the body says only affected evals re-run when a PR touches a dependency
+2026-10-31 · how-companies-test-ai-data-analysts · summary line gives Anthropic's bar as a current "about 90% per domain" but the body quotes "initially used ~90%"
+2026-10-31 · how-companies-test-ai-data-analysts · the 8 (C-4) are called "real questions with known answers" but include WisdomAI's public LiveSQLBench subset and GitHub, whose question source isn't stated
+2026-10-31 · how-companies-test-ai-data-analysts · "The published LLM judges miss things, and the companies say so" rests on 2 of the 7 judges (LinkedIn, Hex)
+2026-10-31 · how-companies-test-ai-data-analysts · "Each row is one company's own publication" but the LinkedIn row cites a blog and an arXiv paper, and Uber's row mixes QueryGPT and Finch
+2026-10-31 · how-companies-test-ai-data-analysts · LinkedIn's "Runs when" is filled with its 3-monthly benchmark review, which is when answers are added, not when the test runs
+2026-10-31 · how-companies-test-ai-data-analysts · Dot test set "has the same shape" but holds one expected answer per question while the piece asks for every accepted answer
+2026-10-31 · how-companies-test-ai-data-analysts · the drift is attributed to "the data model moving while the agent's skills stood still" but the quoted sentence states no cause
