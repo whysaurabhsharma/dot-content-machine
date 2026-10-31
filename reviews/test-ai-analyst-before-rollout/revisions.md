@@ -108,3 +108,16 @@ No revise-notes.md existed for this round. The fact-checker reported runs/test-a
 - Step 3 carries its numbers again: "did not (2,878 and 2,453)". Two mentions in the piece, not four.
 - "It" for Anthropic's "this" kept (Saurabh). "Steps 2 and 6", not 2, 6 and 7, kept; "does Dot's evaluation hold a pass bar?" added to Rick's questions in HANDOVER.md.
 - **Blind lift-tester re-run on the rewritten piece:** check 25 PASS, 100%; the quotable line is its second pick. Its first pick and "one line" is the opening sentence, "To test an AI data analyst before rollout, ask real questions with every right answer written down first." The human lift test in Perplexity and Claude passed on the earlier text and is not yet re-run on this version.
+
+## After the phone read PASS (Saurabh, 1 November 2026, on 61dda1a)
+
+1. **Step 1's example contradicted the step:** LinkedIn's questions were written by experts on request. Now Uber, B's wording: "took real questions from QueryGPT's logs and verified the golden SQL by hand" (checked in Chrome: "We identified a set of real questions from the QueryGPT logs, and manually verified the correct intent, schemas required to answer the question, and the golden SQL."). LinkedIn's example fits step 2's point, but the next section already carries LinkedIn's 60% and 10-15% for that point, so the 130 sentence is cut rather than moved.
+2. **"or none yet" cut** from the intro: no step carries that tag.
+3. **H2:** "Eight steps, each with its evidence".
+4. **Step 6:** the instruction is two bold sentences; the tag is "Evidence: our run; Hex's eval."; 7 of 13 moved into the body as context.
+5. **Lede:** "Anthropic's ~90% and our Playbook's ~80%".
+6. **Step 4:** "three answers didn't name their date", so steps 2 and 4 no longer both run on 5-and-3.
+7. **"A buyer can mean"** became "Your team can mean".
+8. **Step 5:** "Asked in full, in a fresh chat, about late orders…".
+- **Step 8's schedule:** Dot's essay, opened in Chrome, says "twenty minutes a week with one named owner" and ends the routine with "Then re-run your test questions and see whether the number moved." Cited as Dot's stated position (ESS-1); the tag says so. It is guidance, not a tested result.
+- **Decision 3:** title_approved_by Saurabh, 2026-11-01; reviewed_on 2026-11-01. The CTA question is settled (Rick's essay ends with the same line) and stays recorded in HANDOVER.md only.
