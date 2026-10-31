@@ -11,7 +11,7 @@ It runs in Claude Code, in this repo. Claude Code reads `CLAUDE.md` automaticall
 | Path | What it is |
 |---|---|
 | `HANDOVER.md` | Set-up in Claude Code, a 15-minute first test, how to run a full piece, the monthly loop, what's still open |
-| `CLAUDE.md` | Every rule: 18 hard rules, 17 style rules, the seven stages, the 24-check gate, a dated change log (v1.6.4). Claude Code reads it automatically |
+| `CLAUDE.md` | Every rule: 18 hard rules, 17 style rules, the seven stages, the 24-check gate, a dated change log (v1.6.5). Claude Code reads it automatically |
 | `.claude/agents/researcher.md` | Stage 1 RESEARCH as a subagent. Reads the Ahrefs snapshot and the citation series, fetches the top three pages, writes `runs/<piece>-research.md` |
 | `.claude/agents/dot-runner.md` | The evidence run as a subagent. Asks Dot each test question verbatim through `ask_dot` and appends every answer to `runs/<piece>-run.md` |
 | `prompts/01-research.md` … `07-linkedin.md` | The seven stage prompts. 01 runs as the `researcher` subagent; how the others run in this repo is not yet decided |
@@ -27,7 +27,7 @@ It runs in Claude Code, in this repo. Claude Code reads `CLAUDE.md` automaticall
 | `data/ahrefs/` | The Ahrefs snapshot, 27–28 October 2026: keywords, Search Console, Site Explorer, Rank Tracker. Frozen; access ended 31 October 2026 |
 | `data/` | A note on the Olist dataset (CC BY-NC-SA 4.0) and where to download it. The CSVs are not included |
 | `measure/citations.md` | The monthly AI-citation series: citation markers per domain, Perplexity, from Day 0 |
-| `scripts/check_piece.py` | Runs the 24-check gate on a piece: 15 checks decided alone, 3 with a person, 6 flagged for a human |
+| `scripts/check_piece.py` | Runs the 24-check gate on a piece: 15 checks decided alone, 3 with a person, 6 flagged for a human. With `--post`, checks each LinkedIn post in a `posts/` file against stage 7 and checks 15, 17 and 19 |
 | `scripts/verify_sources.py` | Opens every link in a piece |
 | `scripts/ground_truth_from_spec.py` | Computes every expected value in a JSON spec from the raw CSVs and writes `figures/<piece>-truth.csv`, with each definition, row count and CSV date. A row that can't be computed carries its reason |
 | `scripts/mark_run.py` | Marks each answer in `runs/<piece>-run.md` against `figures/<piece>-truth.csv`, under the definition the answer stated; gaps under 0.1% are rounding. Appends to `figures/<piece>-figures.csv` and prints "N of M correct" |

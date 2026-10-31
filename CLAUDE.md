@@ -167,3 +167,9 @@ A "no" on any line means the piece isn't done. Who checks each line is in bracke
 **31 October 2026 — v1.6.3.** Header updated: the Claude Project is gone, and CLAUDE.md is now read automatically by Claude Code from the repo. The re-paste step is removed; a rule change is an edit here plus a change-log line. Earlier entries that mention the Project are left as written, since they record what happened then.
 
 **31 October 2026 — v1.6.4.** Created [facts/run-format.md](facts/run-format.md): the run-file format that `dot-runner` writes and that check 16 and `scripts/mark_run.py` both read. Its worked example is the real question and answer from check 1 of the smoke test (`runs/smoke-test.md`). Question numbers run continuously across batches. A change to the format is made there first, with a line here.
+
+**31 October 2026 — v1.6.5.** Check 17 tightened; posts checked. Origin: the A3 correction. Facts O7 read 300 base credits on 31 October, superseding the 100 recorded on 27 October, and A3 ("100 at signup plus the rest earned") was superseded. Piece 3 and post E still said "100 credits covers about 170 answers", and both passed every check because each sentence was labelled "Assumption"; only a hand search found them.
+
+- **Check 17.** A piece now fails if it uses a keyword of an assumption that `facts/dot-facts.md` marks superseded, even when the sentence is labelled. Labelling covers an open assumption, not a contradicted one.
+- **Posts.** `check_piece.py --post <file>` runs each post against stage 7 and style rule 17, plus checks 15, 17 and 19 against its piece's figures. On post E as it stood before the fix, it fails 15 (100 and 170 not in Figures) and 17 (superseded keyword).
+

@@ -3,6 +3,12 @@
 
 Usage:
     python scripts/check_piece.py pieces/piece-1.md
+    python scripts/check_piece.py --post posts/post-A.md
+
+--post checks each post in a posts/ file against stage 7 and style rule 17
+(P1-P6), plus the evidence checks a post shares with its piece: 15 (numbers
+against the piece's figures file), 17 (assumptions, superseded ones included)
+and 19 (brackets, placeholders, banned words).
 
 The piece is markdown with front matter (title, seo_title, meta, slug, queries,
 playbook_url, figures, reverse_links). Each check prints PASS, FAIL, PARTIAL or
@@ -136,6 +142,46 @@ def assumption_keywords():
 def superseded_keywords():
     """Keywords of assumptions a later observation contradicted. Using one fails check 17, labelled or not."""
     return section_keywords("## Superseded", 5)
+
+
+# ---------- evidence checks shared by pieces and posts (15, 17, 19) ----------
+def check_figures(text, fig_file):
+    name = "Every number has a Figures row"
+    if not fig_file or not fig_file.exists():
+        return "FAIL", name, "no figures file found"
+    with open(fig_file, encoding="utf-8") as f:
+        vals = {norm_number(r["value"]) for r in csv.DictReader(f)}
+    found = numbers_in(text)
+    missing = sorted({raw for raw, v in found if v not in vals})
+    return ("PASS" if not missing else "FAIL", name,
+            f"{len(found)} numbers checked; not in Figures: {missing if missing else 'none'}. verify_sources.py: run separately")
+
+
+def check_assumptions(prose):
+    unlabelled = []
+    for aid, kw in assumption_keywords():
+        for s in sentences(prose):
+            if kw in s.lower() and "assumption" not in s.lower():
+                unlabelled.append(f"{aid} \"{kw}\": {s[:50]}")
+    superseded = []
+    for aid, kw in superseded_keywords():
+        for s in sentences(prose):
+            if kw in s.lower():
+                superseded.append(f"{aid} \"{kw}\": {s[:50]}")
+    labelled = len(re.findall(r"\bAssumption\b", prose))
+    return ("PASS" if not unlabelled and not superseded else "FAIL",
+            "Product claims evidenced, confirmed or labelled \"Assumption\"",
+            f"{labelled} labelled" + (f"; unlabelled: {unlabelled}" if unlabelled else "; none unlabelled")
+            + (f"; rests on a superseded assumption: {superseded}" if superseded else "; none superseded"))
+
+
+def check_banned(body, prose):
+    bad_brackets = re.findall(r"\[[^\]]+\](?!\()", body)
+    placeholders = re.findall(r"\b(?:TODO|TBD|TK|XXX+|lorem ipsum)\b|\[UNVERIFIED", body)
+    banned = [w for w in BANNED if re.search(rf"\b{re.escape(w)}\b", prose, re.I)]
+    ok = not bad_brackets and not placeholders and not banned
+    return ("PASS" if ok else "FAIL", "No brackets, placeholders or banned words",
+            f"brackets {bad_brackets or 'none'}; placeholders {placeholders or 'none'}; banned {banned or 'none'}")
 
 
 # ---------- the checks ----------
@@ -280,51 +326,18 @@ def run(path):
 
     # 15 figures
     fig_path = meta.get("figures", "")
-    fig_file = (ROOT / fig_path) if fig_path else None
-    if not fig_file or not fig_file.exists():
-        add(15, "FAIL", "Every number has a Figures row", "no figures file in front matter")
-    else:
-        with open(fig_file) as f:
-            vals = {norm_number(r["value"]) for r in csv.DictReader(f)}
-        table_text = []
-        for k, b in blocks:
-            if k == "table":
-                for line in b.splitlines()[2:]:
-                    cells = [c.strip() for c in line.strip("|").split("|")]
-                    table_text.append(" ".join(cells[1:]))
-        found = numbers_in(prose + "\n" + "\n".join(table_text))
-        missing = sorted({raw for raw, v in found if v not in vals})
-        add(15, "PASS" if not missing else "FAIL", "Every number has a Figures row",
-            f"{len(found)} numbers checked; not in Figures: {missing if missing else 'none'}. verify_sources.py: run separately")
+    table_text = []
+    for k, b in blocks:
+        if k == "table":
+            for line in b.splitlines()[2:]:
+                cells = [c.strip() for c in line.strip("|").split("|")]
+                table_text.append(" ".join(cells[1:]))
+    add(15, *check_figures(prose + "\n" + "\n".join(table_text), (ROOT / fig_path) if fig_path else None))
 
     add(16, "HUMAN", "Every finding comes from this dataset's run", "check against the Run Log")
-
-    # 17 assumptions labelled
-    unlabelled = []
-    for aid, kw in assumption_keywords():
-        for s in sentences(prose):
-            if kw in s.lower() and "assumption" not in s.lower():
-                unlabelled.append(f"{aid} \"{kw}\": {s[:50]}")
-    superseded = []
-    for aid, kw in superseded_keywords():
-        for s in sentences(prose):
-            if kw in s.lower():
-                superseded.append(f"{aid} \"{kw}\": {s[:50]}")
-    labelled = len(re.findall(r"\bAssumption\b", prose))
-    add(17, "PASS" if not unlabelled and not superseded else "FAIL",
-        "Product claims evidenced, confirmed or labelled \"Assumption\"",
-        f"{labelled} labelled" + (f"; unlabelled: {unlabelled}" if unlabelled else "; none unlabelled")
-        + (f"; rests on a superseded assumption: {superseded}" if superseded else "; none superseded"))
-
+    add(17, *check_assumptions(prose))
     add(18, "HUMAN", "Dataset and licence recorded in Sources", "Sources tab")
-
-    # 19 placeholders and banned words
-    bad_brackets = re.findall(r"\[[^\]]+\](?!\()", body)
-    placeholders = re.findall(r"\b(?:TODO|TBD|TK|XXX+|lorem ipsum)\b|\[UNVERIFIED", body)
-    banned = [w for w in BANNED if re.search(rf"\b{re.escape(w)}\b", prose, re.I)]
-    ok19 = not bad_brackets and not placeholders and not banned
-    add(19, "PASS" if ok19 else "FAIL", "No brackets, placeholders or banned words",
-        f"brackets {bad_brackets or 'none'}; placeholders {placeholders or 'none'}; banned {banned or 'none'}")
+    add(19, *check_banned(body, prose))
 
     # 20 internal links
     urls = re.findall(r"\]\((https?://[^)\s]+)\)", body)
@@ -348,7 +361,76 @@ def run(path):
     return 1 if counts["FAIL"] else 0
 
 
+# ---------- posts ----------
+POST_HEADING = re.compile(r"^#{1,2} (Post \w+)\b(.*)$", re.M)
+EMOJI = re.compile("[\U0001F300-\U0001FAFF☀-➿️]")
+LABELLED = re.compile(r"^\*\*[^*]+:\*\*")  # "**First comment:**", "**Image:**"
+
+
+def run_posts(path):
+    """Check every post in a posts/ file: CLAUDE.md stage 7 and style rule 17, plus checks 15, 17 and 19.
+
+    A post's figures are its piece's: "piece N" in the post heading, else in the file's H1.
+    """
+    text = Path(path).read_text(encoding="utf-8")
+    h1 = re.search(r"^# .*$", text, re.M)
+    file_piece = re.search(r"\bpiece (\d+)", h1.group(0), re.I) if h1 else None
+    heads = list(POST_HEADING.finditer(text))
+    headings = [m.start() for m in re.finditer(r"^#{1,2} ", text, re.M)]
+    if not heads:
+        print(f"\ncheck_piece.py --post  {path}\n\nNo post headings found (\"# Post X\" or \"## Post X\").\n")
+        return 1
+    failed = 0
+    for i, h in enumerate(heads):
+        end = next((s for s in headings if s > h.start()), len(text))  # a post ends at the next heading
+        paras = [p.strip() for p in re.split(r"\n\s*\n", text[h.end():end]) if p.strip()]
+        labelled = [p for p in paras if LABELLED.match(p)]
+        body = [p for p in paras if not LABELLED.match(p)]
+        body = ["\n".join(re.sub(r"^(\d+\.|-)\s+", "", line) for line in p.splitlines()) for p in body]
+        prose = "\n\n".join(clean(p) for p in body)
+        piece = re.search(r"\bpiece (\d+)", h.group(0), re.I) or file_piece
+        results = []
+
+        def add(n, status, name, detail=""):
+            results.append((n, status, name, detail))
+
+        n_words = len(words(prose))
+        add("P1", "PASS" if n_words < 150 else "FAIL", "Under 150 words", f"{n_words} words")
+        early = numbers_in("\n\n".join(clean(p) for p in body[:3]))
+        add("P2", "PASS" if early else "FAIL", "A number within the first three lines",
+            f"first number: {early[0][0] if early else 'none'}")
+        tags, emoji = re.findall(r"(?<![\w&])#\w+", prose), EMOJI.findall(prose)
+        add("P3", "PASS" if not tags and not emoji else "FAIL", "No hashtags, no emoji",
+            f"hashtags {tags or 'none'}; emoji {emoji or 'none'}")
+        body_urls = re.findall(r"https?://\S+", "\n".join(body))
+        comment = next((p for p in labelled if p.lower().startswith("**first comment:**")), "")
+        utm = re.search(r"https?://\S+utm_source=", comment)
+        add("P4", "PASS" if utm and not body_urls else "FAIL", "Link only in the first comment, with a UTM",
+            f"links in body: {len(body_urls)}; first comment has UTM link: {bool(utm)}")
+        last = body[-1].lower() if body else ""
+        delivers = bool(re.search(r"\blink\b|\bthe piece\b|\bfirst comment\b", last))
+        add("P5", "PASS" if delivers else "FAIL", "Ends by saying what the link delivers",
+            f"last line: {clean(body[-1])[:60] if body else 'none'}")
+        fig = ROOT / "figures" / f"piece-{piece.group(1)}-figures.csv" if piece else None
+        add(15, *check_figures(prose, fig))
+        add(17, *check_assumptions(prose))
+        add(19, *check_banned("\n\n".join(body), prose))
+        add("P6", "HUMAN", "Three first lines tried; the most specific kept", "prompts/07-linkedin.md")
+
+        print(f"\ncheck_piece.py --post  {path}  -  {h.group(1)}"
+              f"  (figures: {fig.relative_to(ROOT).as_posix() if fig else 'piece not named'})\n")
+        for n, st, name, detail in results:
+            print(f"{n:>3}  {st:<7} {name}\n              {detail}")
+        counts = {s: sum(1 for r in results if r[1] == s) for s in ("PASS", "FAIL", "HUMAN")}
+        print(f"\n{counts['PASS']} pass, {counts['FAIL']} fail, {counts['HUMAN']} for a human")
+        failed += bool(counts["FAIL"])
+    print(f"\n{len(heads) - failed} of {len(heads)} posts with no FAIL\n")
+    return 1 if failed else 0
+
+
 if __name__ == "__main__":
+    if len(sys.argv) == 3 and sys.argv[1] == "--post":
+        sys.exit(run_posts(sys.argv[2]))
     if len(sys.argv) != 2:
         print(__doc__)
         sys.exit(2)
