@@ -20,7 +20,7 @@ reverse_links:
 
 **Asked how many orders "delivered in 2017" were late, [Dot](https://www.getdot.ai/) gave 2,453 in a follow-up chain and 1,762 in a fresh chat. Both are correct: each matches the raw data for its date. The chain named purchase date; the fresh chat silently used delivery date. By the end, you'll have a six-step test that shows which date your analyst used.**
 
-We ran this test on Olist, a public e-commerce dataset. Late means delivered after the estimated delivery date. Dot's chain answer to "And how many of those were delivered late?" defined it the same way: "meaning delivery occurred after the estimated delivery day."
+We ran this test on [Olist, a public e-commerce dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce), so anyone can recompute it. Late means delivered on a later calendar day than the estimated delivery date. Dot's chain answer to "And how many of those were delivered late?" defined it the same way: "meaning delivery occurred after the estimated delivery day."
 
 **The whole piece in seven lines:**
 
@@ -29,7 +29,7 @@ We ran this test on Olist, a public e-commerce dataset. Late means delivered aft
 3. Both counts match the raw Olist data for the date each used; they sit 691 orders apart.
 4. Dot's first chain answer named purchase date, while the fresh-chat count never named its date.
 5. Every Dot answer came back with its SQL, and the SQL's date filter showed the date even where the text was silent.
-6. Asked four turns later to go back to the first question, Dot re-ran the first query and returned 43,428 again.
+6. Asked four turns later to go back to the first question, Dot returned 43,428 again, with the same SQL as its first answer.
 7. The test: run a chain, re-ask one question cold, check whether each answer names its date, and read its SQL if not.
 
 ## Both late-order counts were correct, each for a different date
@@ -59,11 +59,25 @@ Neither answer is wrong. "Delivered in 2017" can mean orders bought in 2017 that
 
 *Late orders for "delivered in 2017", asked inside a follow-up chain and in a fresh chat. Olist dataset, Dot, 31 October 2026. The run's mode is not stated.*
 
-Each answer's SQL shows its date filter. In the chain, the filter sat on `order_purchase_timestamp`, the purchase date. In both fresh chats, it sat on `order_delivered_customer_date`, the delivery date.
+Each answer's SQL shows its date filter. Here is Q2's, word for word. Asked about "those", it kept Q1's filter on the purchase date.
 
-The fresh reading covered 40,930 orders delivered in 2017, of which 4.3% arrived late. The chain's 5.6% was a share of a different set: orders purchased in 2017. The item-price chat read the phrase by delivery date too: BRL 5,612,818, against BRL 5,962,902 by purchase year.
+```sql
+WHERE order_status = 'delivered'
+  AND order_purchase_timestamp >= TIMESTAMP '2017-01-01 00:00:00'
+  AND order_purchase_timestamp < TIMESTAMP '2018-01-01 00:00:00'
+```
 
-Dot's 5.6% and 7.7% were display rounding, not gaps. Dot excluded the orders with no delivery date, two in 2017 and six in 2018; the ground truth kept them. Both ways, each share rounds to the same one-decimal figure.
+And here is Q6's, from the fresh chat, filtering on the delivery date.
+
+```sql
+WHERE order_status = 'delivered'
+  AND order_delivered_customer_date >= TIMESTAMP '2017-01-01 00:00:00'
+  AND order_delivered_customer_date < TIMESTAMP '2018-01-01 00:00:00'
+```
+
+The fresh reading covered 40,930 orders delivered in 2017, of which 4.3% arrived late. The chain's 5.6% was a share of a different set: 43,428 orders purchased in 2017 and delivered. The item-price chat read the phrase by delivery date too: BRL 5,612,818, against BRL 5,962,902 by purchase year.
+
+Dot's 5.6% for 2017 and 7.7% for 2018, Q3 and Q4 in the table above, were display rounding, not gaps. Dot's answers left out orders with no delivery date. Q3 said "excluding the two orders with missing delivery dates", and Q4 said "excluding six orders with missing delivery dates". The ground truth kept them; with or without them in the denominator, the chain's shares round to 5.6% and 7.7%.
 
 ## The chain named its date; the fresh chat didn't
 
@@ -77,9 +91,9 @@ Where the text was silent, the SQL wasn't. Every answer in this run, 8 of 8, cam
 
 An AI analyst's answer can be right and still not say which question it answered.
 
-## Dot re-ran the first question four turns later
+## Dot returned the first answer's figure and SQL four turns later
 
-Asked four turns later to go back to the first question, Dot returned 43,428 again. Its SQL repeated the first query's purchase-date filter, so Dot re-ran the query rather than repeating a stored figure.
+Asked four turns later to go back to the first question, Dot returned 43,428 again. Its SQL was the same as its first answer's, purchase-date filter included.
 
 Scope held in the item-price chat too. Asked "How much of that came in November?", Dot returned BRL 651,458, with its SQL still filtering on the delivery date. The purchase-month reading would have been BRL 987,765.
 
@@ -92,11 +106,13 @@ Scope held in the item-price chat too. Asked "How much of that came in November?
 5. Check whether the answer names its date. If it doesn't, read the date filter in its SQL.
 6. Mark each answer against the reading it used, item by item.
 
-A matching total with a different filter is a different answer.
+Our run used two fresh chats; the test needs only one.
+
+When you run this, a total that matches under a different date filter is still a different answer.
 
 ## Things to keep in mind
 
-- **One run, one dataset, eight questions.** One run can't say whether chat history or run-to-run variation produced the different readings. Assumption: the same question can take a different path on another day, so a re-run can differ.
+- **One run, one dataset, eight questions.** One run can't say why the fresh chat read the phrase differently: chat history, a default, or run-to-run variation. Assumption: the same question can take a different path on another day, so a re-run can differ.
 - **"Delivered in 2017" was ambiguous on purpose.** The fresh late count and the November follow-up were marked correct under the delivery-date reading, which a person took from their SQL. Neither is an error.
 - **This run's settings were noted by hand, without screenshots.** So this piece doesn't publish the run's mode or [cost](https://www.getdot.ai/pricing).
 

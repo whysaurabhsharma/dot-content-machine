@@ -1,5 +1,36 @@
 # revisions · ai-analyst-follow-up-questions
 
+## Round 4: second fact-check
+
+31 October 2026. Gemini and ChatGPT, each given the round 3 draft only (prompts/05-fact-check.md, pass 2). Triage approved by Saurabh: 10 fixed, 11 stand. check_piece.py afterwards: 18 pass, 0 fail, 6 for a human (1,187 words). Title, title_approved_by, chart caption and alt text untouched.
+
+### Fixed
+
+- **F1. SQL not reproduced (both).** Q2's and Q6's date filters added inline, word for word from the run file; check 15 now fails any code line not verbatim in the run file (scripts/check_piece.py).
+- **F2. "A matching total with a different filter is a different answer" (both).** Not something this run produced; relabelled as an instruction for the reader's own test: "When you run this, a total that matches under a different date filter is still a different answer." Lift record updated.
+- **F3. "Re-ran rather than repeating a stored figure" (both).** Cut: identical SQL doesn't prove re-execution, and execution is not observable via MCP. Pocket guide line 6, the memory H2 and its paragraph now say Dot returned 43,428 again with the same SQL; the run file's Finding 1 corrected, dated.
+- **F4. Missing delivery dates asserted (both).** Now quoted from Dot's Q3 and Q4 answers.
+- **F5. "Both ways, each share rounds…" ambiguous (ChatGPT).** Now: "with or without them in the denominator, the chain's shares round to 5.6% and 7.7%."
+- **F6. One fresh chat in the test, two in the run (ChatGPT).** Added: "Our run used two fresh chats; the test needs only one."
+- **F7. 43,428 against 40,930 unexplained (ChatGPT).** The chain's set is now named: 43,428 orders purchased in 2017 and delivered.
+- **F8. Cause not isolated (ChatGPT; Gemini similar).** Caveat now: "One run can't say why the fresh chat read the phrase differently: chat history, a default, or run-to-run variation."
+- **F9. "Both are correct" reported, not demonstrated (ChatGPT, central).** "Olist, a public e-commerce dataset" now links to the Kaggle page recorded in data/README.md, "so anyone can recompute it".
+- **F10. "day" vs "date" (ChatGPT).** Not a misquote: Q2's answer says "day", and the SQL compares calendar days. The definition now reads "delivered on a later calendar day than the estimated delivery date".
+
+### Stand
+
+- **S1.** Arithmetic confirmed by both; nothing to fix.
+- **S2. 7.7% (both).** A chain step, not a finding; the sentence now points to the table: "Q3 and Q4 in the table above". Numerator and denominator stay in the run file.
+- **S3. SQL with every answer, 8 of 8.** Observed for all eight in the run file; two are now shown.
+- **S4. Q8's delivery-date scope.** In the run file's Q8 SQL; the excerpt is kept to the spine pair.
+- **S5. Lede attributes a cause (Gemini).** It describes; F8's caveat says the cause isn't known.
+- **S6. Quotes unauthenticated (both).** Chats are in a private workspace; every quote is verbatim from the run file and names its question.
+- **S7. Quotes "read blunt" (Gemini).** Dot's exact words.
+- **S8. 5 of 8 not auditable (ChatGPT).** The table carries it answer by answer; full texts in the run file.
+- **S9. BRL differences unstated (ChatGPT).** Not used by the piece.
+- **S10. Docs link (ChatGPT).** The piece claims nothing about the docs' contents.
+- **S11. User questions presented as questions (ChatGPT).** Confirmed correct.
+
 ## Round 3
 
 31 October 2026, from revise-notes.md round 3 (Saurabh). check_piece.py afterwards: 18 pass, 0 fail, 6 for a human (1,116 words; lede 60 words). Title and title_approved_by untouched. Chart caption and alt text unchanged.

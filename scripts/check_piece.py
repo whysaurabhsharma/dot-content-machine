@@ -56,13 +56,23 @@ def clean(t):
     return t.strip()
 
 
+# Fenced code is quoted output (Dot's SQL), not the writer's prose: kept whole, left out
+# of every prose check, and required verbatim from the piece's run file (check 15).
+FENCE = re.compile(r"^```[^\n]*\n.*?^```[ \t]*$", re.M | re.S)
+CODE = "\u0000code\u0000"
+
+
 def blocks_of(body):
     out = []
+    codes = FENCE.findall(body)
+    body = FENCE.sub("\n\n" + CODE + "\n\n", body)
     for raw in re.split(r"\n\s*\n", body.strip()):
         b = raw.strip()
         if not b:
             continue
-        if b.startswith("## "):
+        if b == CODE:
+            kind, b = "code", codes.pop(0)
+        elif b.startswith("## "):
             kind = "h2"
         elif b.startswith("|"):
             kind = "table"
@@ -332,12 +342,19 @@ def run(path):
             for line in b.splitlines()[2:]:
                 cells = [c.strip() for c in line.strip("|").split("|")]
                 table_text.append(" ".join(cells[1:]))
-    add(15, *check_figures(prose + "\n" + "\n".join(table_text), (ROOT / fig_path) if fig_path else None))
+    status, name, detail = check_figures(prose + "\n" + "\n".join(table_text), (ROOT / fig_path) if fig_path else None)
+    run_file = (ROOT / "runs" / (Path(fig_path).name.removesuffix("-figures.csv") + "-run.md")) if fig_path else None
+    run_text = run_file.read_text(encoding="utf-8") if run_file and run_file.exists() else ""
+    not_in_run = [l.strip() for k, b in blocks if k == "code"
+                  for l in b.splitlines()[1:-1] if l.strip() and l.strip() not in run_text]
+    if not_in_run:
+        status, detail = "FAIL", detail + f"; code not verbatim in {run_file.name if run_file else 'run file'}: {not_in_run}"
+    add(15, status, name, detail)
 
     add(16, "HUMAN", "Every finding comes from this dataset's run", "check against the Run Log")
     add(17, *check_assumptions(prose))
     add(18, "HUMAN", "Dataset and licence recorded in Sources", "Sources tab")
-    add(19, *check_banned(body, prose))
+    add(19, *check_banned(FENCE.sub("", body), prose))
 
     # 20 internal links
     urls = re.findall(r"\]\((https?://[^)\s]+)\)", body)

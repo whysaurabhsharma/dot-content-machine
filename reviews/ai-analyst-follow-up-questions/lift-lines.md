@@ -7,7 +7,7 @@ The lines this piece intends answer engines to quote, and what the lift test act
 Set 31 October 2026, before the lift test, by proposal; Saurabh ran the test against them.
 
 1. "An AI analyst's answer can be right and still not say which question it answered."
-2. "A matching total with a different filter is a different answer."
+2. "A matching total with a different filter is a different answer." **Changed 31 October 2026, after the second fact-check.** Gemini and ChatGPT both flagged it: this run produced no matching totals under different filters (the late counts were 2,453 and 1,762), so it read as a finding it wasn't. Relabelled as an instruction for the reader's own test: "When you run this, a total that matches under a different date filter is still a different answer." Cost of the fix: Perplexity lifted the old line verbatim in the lift test, and that line no longer exists in the piece. The new wording has not been lift-tested.
 3. "Every answer in this run, 8 of 8, came back with its SQL, and its date filter named the column."
 
 Added 31 October 2026, after the lift test:
