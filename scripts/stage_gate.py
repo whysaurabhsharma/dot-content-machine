@@ -216,8 +216,12 @@ def writing(slug, manifest, no_shots=False):
             sentence = re.sub(r"\s*\((?:figures?|ID|IDs?)[^)]*\)\s*$", "", q.group(1).strip(), flags=re.I)
             n_words = len(re.findall(r"\S+", re.sub(r"[*\"“”]", "", sentence)))
             number_word = r"\b(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|hundred|thousand|million|half)\b"
-            if not (re.search(r"\d", sentence) or re.search(number_word, sentence, re.I)):
-                problems.append("the quotable line has no number")
+            id_part = re.search(r"\(ID:?\s*([^)]*)\)", q.group(1))
+            ids = re.findall(r"[A-Z]{1,4}-?\d+", id_part.group(1)) if id_part else []
+            fig_ids = set(re.findall(r"^([^,\n]+),", read(f"figures/{slug}-figures.csv") or "", re.M))
+            supported = bool(ids) and all(i in fig_ids for i in ids)
+            if not (re.search(r"\d", sentence) or re.search(number_word, sentence, re.I) or supported):
+                problems.append("the quotable line has no number and no (ID: ...) of a figure in the figures file that supports it")
             if n_words >= 25:
                 problems.append(f"the quotable line is {n_words} words (under 25)")
         if not fresh:
