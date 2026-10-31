@@ -24,6 +24,8 @@ Compare the quoted lines with the three you intended to be quoted. Rewrite until
 
 **Record the lines in `reviews/<slug>/lift-lines.md`** (example: `reviews/ai-analyst-follow-up-questions/lift-lines.md`). Before the test, write the three intended lines under "Intended". After it, add a table of what each tool lifted, verbatim, marked intended or not, and the verdict. A line an engine lifts without being targeted is the strongest evidence a line is liftable: if it is better than an intended line, add it to the list, with that note.
 
+**A guide is different (1 November 2026, from F).** In F's lift test neither engine quoted the quotable line; both lifted the steps, accurately and in order. A guide's citable unit is its instructions, not a sentence. For a guide, make the intended lift lines the steps themselves, and judge the test by whether the steps survive compression, in order. Check 25 still tests one quotable line; the right change for next time is to test, for a guide, how many step instructions a summary reproduces. Not changed yet.
+
 **Known limit of the method (31 October 2026):** Claude may decline to give three verbatim quotes, citing its own limits on verbatim reproduction, and paraphrase the rest. Record how many quotes each tool actually gave; a tool that gave fewer than three hasn't failed the piece, but its partial result counts for less.
 
 **Decision 3 (human):** pick the title from the three candidates.
