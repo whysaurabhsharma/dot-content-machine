@@ -1,8 +1,9 @@
 # ai-analyst-follow-up-questions · LinkedIn posts
 
-## Post A · ai-analyst-follow-up-questions · the checklist
+## Retired · ai-analyst-follow-up-questions · the checklist (was Post A)
 
-**Relabelled:** 1 November 2026, to the cluster table (PLAN.md, "LinkedIn: six posts, six structures"). This post's shape is the checklist, structure 5, which the table gives to F. A's two posts in the table are structure 2 (Post B below) and structure 6 (Post C below). So this is a seventh post, outside the six: keep it as an extra, or retire it (Saurabh's call). It is not rewritten.
+**Retired:** 1 November 2026 (Saurabh). Written on 31 October, before the cluster's six posts were settled, and superseded by them: its shape, the checklist, is structure 5, which the cluster table gives to F. Kept here as a record; not for posting. The heading no longer starts "Post", so the post checker skips it.
+
 
 **First lines tried:**
 - Before you trust an AI analyst's follow-up answers, check which date it used.

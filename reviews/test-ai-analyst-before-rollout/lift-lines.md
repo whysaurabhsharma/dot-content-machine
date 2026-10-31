@@ -26,7 +26,7 @@ Replaced 1 November 2026: line 1 is now **"In our run on Dot, one question retur
 
 ## Lift test re-run on the rewritten piece, 1 November 2026 (Saurabh): PASS
 
-Run on 61dda1a (the Evidence-tag rewrite, before the eight small fixes at Decision 3: Perplexity's "about 90% and about 80%" is that version's opening).
+Run on 61dda1a (the Evidence-tag rewrite, before the eight small fixes at Decision 3: Perplexity's "about 90% and about 80%" is that version's opening). **So it covers the rewrite, not the final wording: the text as exported after Decision 3 has not been lift-tested.**
 
 | Tool | Lifted |
 |---|---|
