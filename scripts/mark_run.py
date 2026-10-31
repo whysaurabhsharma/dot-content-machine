@@ -56,7 +56,7 @@ NUMBER = re.compile(r"(?<![\w.,])[-+]?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?%?")
 DATE_PART = re.compile(r"\d{4}-\d{2}|\d{2}:\d{2}")
 MONTHS = r"(?:January|February|March|April|May|June|July|August|September|October|November|December)"
 YEAR_IN_DATE = re.compile(MONTHS + r"\s+(\d{4})")
-LITERAL = re.compile(r"'([^']*)'")
+LITERAL = re.compile(r"'([^']*)'")  # empty strings (from fillna('')) are skipped where used: they match any basis
 
 
 def norm(text):
@@ -119,7 +119,7 @@ def fitting_rows(candidates, basis, population):
     An unfiltered row fits only if the answer stated no population, or one that
     says "all". A stated population the truth rows can't express fits nothing.
     """
-    literals = {r["question_id"]: {l.lower() for l in LITERAL.findall(r["filter"])} for r in candidates}
+    literals = {r["question_id"]: {l.lower() for l in LITERAL.findall(r["filter"]) if l} for r in candidates}
     present = {l for ls in literals.values() for l in ls if l in basis}
     fits = [r for r in candidates if literals[r["question_id"]] == present]
     if fits and not present and population and "all" not in population.split():
@@ -139,7 +139,7 @@ def stated_definition(matched, truth, basis, population):
     pool = [r for r in truth if r.get("family", "") == family] if family else         [r for r in truth if r["formula"] == matched["formula"]]
     signalled = [r for r in pool if any(p in basis for p in signals(r))]
     candidates = signalled or [r for r in pool if r["formula"] == matched["formula"]]
-    literals = {l.lower() for r in candidates for l in LITERAL.findall(r["filter"])}
+    literals = {l.lower() for r in candidates for l in LITERAL.findall(r["filter"]) if l}
     if not signalled and not population and not any(l in basis for l in literals):
         return matched
     fits = fitting_rows(candidates, basis, population)
