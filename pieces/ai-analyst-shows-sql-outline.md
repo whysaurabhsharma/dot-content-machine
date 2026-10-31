@@ -100,7 +100,7 @@ Evidence: F04, F05, F06, from the run file. No Assumption used: A5 is not used (
 
 ## 9. The instruction
 
-Ask your AI analyst "How many orders were delivered late last year?" in two fresh chats today. If the numbers differ, read each answer's definition sentence, then the date filter in its SQL, and write the definition you want down.
+Ask your AI analyst "How many orders were delivered late last year?" in two fresh chats today. If the numbers differ, read each answer's definition sentence, then the date filter in its SQL.
 
 Then the CTA: *If this excites you, we'd love to hear from you. Get in touch.*
 
@@ -116,5 +116,5 @@ Resolved 31 October 2026: every figure this outline wanted now has a row in `fig
 
 Decided the same day, under the rule 14 waiver, as for piece 1: **no cost per answer** (credits after are recorded, 7.1 for the batch, but the waiver bars publishing them), and the chart caption gives the date and **no mode**. **Licence:** recorded as L2 in `facts/dot-facts.md`, a decision, not a resolution.
 
-Approved by:
-Date:
+Approved by: Saurabh
+Date: 2026-10-31
