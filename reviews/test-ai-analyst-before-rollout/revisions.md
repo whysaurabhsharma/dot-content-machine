@@ -63,3 +63,9 @@ No revise-notes.md existed for this round. The fact-checker reported runs/test-a
 - **Check 25 still FAILs** against the existing lift-tester report, which predates this round. Also, **the approved outline's quotable line says "both correct"**, which the fact-check found overclaims for 2,878. The piece now says "each correct under its own definition". The outline is approved and not edited here; a person should decide whether to amend its quotable line to match before the lift test is re-run.
 - **Rule 4 question, not resolved here:** the repeat-question run is piece 2's archived run, which is unpublished; hard rule 4 bars unpublished runs outside the piece's own run. Saurabh approved the outline with it (Decision 2) and L4 covers its licence, but the rule 4 point itself is not recorded as decided.
 - check_piece.py: 18 pass, 1 fail (check 25, above), 6 for a human. Style rule 11: the changed paragraphs (most of the body) need reading aloud.
+
+## After revise: two decisions (Saurabh, 1 November 2026)
+
+- **Piece 2's archived run may be cited.** Hard rule 4 amended (CLAUDE.md v1.8.12): a run of ours, on the same account and dataset, may be cited by a later piece; its run file is the evidence.
+- **Quotable line changed after approval:** "both correct" became "each correct under its own definition" (24 words), as the fact-checker asked. Lift-tester re-run on the current draft: check 25 PASS, 100% match. check_piece: 19 pass, 0 fail.
+- **Headline test capped at two rounds** (Saurabh): if round 2 fails, ship the better title and record that it was capped for time.
