@@ -96,6 +96,32 @@ def first_number(answer):
     return None, None
 
 
+def displayed(value, token, expected):
+    """Display rounding (hard rule 12): the answer equals the expected value rounded to the
+    decimals the answer shows, e.g. 5.6% for 5.648%, or BRL 13,221,498 for 13221498.11."""
+    shown = token.rstrip("%").replace(",", "")
+    decimals = len(shown.split(".")[1]) if "." in shown else 0
+    return round(expected, decimals) == round(value, decimals)
+
+
+def said(phrase, basis):
+    """A signal phrase counts only where it isn't negated ("not the purchase date")."""
+    return any(not re.search(r"\bnot (the |a |an )?$", basis[max(0, m.start() - 8):m.start()])
+               for m in re.finditer(re.escape(phrase), basis))
+
+
+def rival_equal(value, token, row, truth):
+    """Another reading of the same metric (same family) whose value the answer equals, if any."""
+    family = row.get("family", "")
+    for r in truth:
+        if r is row or r["error"] or not family or r.get("family", "") != family:
+            continue
+        v = float(r["value"])
+        if (v and abs(value - v) / abs(v) * 100 < ROUNDING_PCT) or displayed(value, token, v):
+            return r
+    return None
+
+
 def stated_basis(fields):
     """The answer's Basis quotes, lower-cased: (all parts joined, population alone).
 
@@ -137,7 +163,7 @@ def stated_definition(matched, truth, basis, population):
     With no evidence in the basis, the matched row stands."""
     family = matched.get("family", "")
     pool = [r for r in truth if r.get("family", "") == family] if family else         [r for r in truth if r["formula"] == matched["formula"]]
-    hits = {r["question_id"]: sum(p in basis for p in signals(r)) for r in pool}
+    hits = {r["question_id"]: sum(said(p, basis) for p in signals(r)) for r in pool}
     best = max(hits.values(), default=0)
     # The rows whose signal phrases the basis matches most: a basis stating both a scope and a
     # formula ("purchased in", "including freight") picks the row carrying both, not either one.
@@ -191,6 +217,12 @@ def mark(entry, truth, mapping):
     else:
         fit = stated_definition(matched, truth, basis, population)
         if fit is None:
+            twin = rival_equal(value, token, matched, truth)
+            if twin:
+                return ("matches rival",
+                        f"Answer gave {token}, under a stated basis ('{basis}') that matches no truth row by its words; "
+                        f"the figure equals {twin['question_id']} ({twin['metric']}: {twin['value']}); a person decides",
+                        value)
             return ("different definition",
                     f"Answer gave {token}, under a stated basis ('{basis}') that matches no truth row; not marked wrong",
                     value)
@@ -201,8 +233,16 @@ def mark(entry, truth, mapping):
 
     expected = float(used["value"])
     gap = abs(value - expected) / abs(expected) * 100 if expected else abs(value)
-    kind = "exact" if gap == 0 else "rounding" if gap < ROUNDING_PCT else "real"
+    kind = "exact" if gap == 0 else "rounding" if gap < ROUNDING_PCT or displayed(value, token, expected) else "real"
     verdict = "correct" if kind != "real" else "real gap"
+    if kind == "real":
+        # A value that equals another reading of the same metric is not a mistake: the answer
+        # used that reading without saying so clearly enough to match. A person judges it.
+        twin = rival_equal(value, token, used, truth)
+        if twin:
+            verdict = "matches rival"
+            note += (f"; the figure equals {twin['question_id']} ({twin['metric']}: {twin['value']}), "
+                     "a different reading the stated basis didn't name clearly; a person decides")
     if used is not matched and verdict == "correct":
         verdict = "correct under stated definition"
     desc = (f"{entry['id']} vs {used['question_id']} ({used['metric']}), matched by {how}: answer {token}, expected {used['value']} "
