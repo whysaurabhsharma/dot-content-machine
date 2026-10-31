@@ -227,8 +227,24 @@ def status(argv):
     return 0
 
 
+def note(argv):
+    """note <id> --text "...": append a dated note to a row's source column, e.g. a partial overlap."""
+    if len(argv) < 3 or "--text" not in argv:
+        print('usage: bank.py note <id> --text "<note>"')
+        return 2
+    rows = load()
+    row = next((r for r in rows if r["id"] == argv[2]), None)
+    if row is None:
+        print(f"No question {argv[2]}")
+        return 1
+    row["source"] = f"{row['source']}; note {TODAY}: {argv[argv.index('--text') + 1]}"
+    save(rows)
+    print(f"{argv[2]} noted")
+    return 0
+
+
 COMMANDS = {"rescore": rescore, "set": set_score, "confirm": confirm, "shortlist": shortlist,
-            "add": add, "top": top, "status": status}
+            "add": add, "top": top, "status": status, "note": note}
 
 if __name__ == "__main__":
     if len(sys.argv) < 2 or sys.argv[1] not in COMMANDS:

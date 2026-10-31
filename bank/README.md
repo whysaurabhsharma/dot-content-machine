@@ -36,7 +36,9 @@ Run with the `/bank` skill (`.claude/skills/bank/SKILL.md`), which calls `script
 
 **Evidence 3s were tested against facts and data.** The first `/bank rescore` proposed evidence 3 for 51 questions. A 3 now needs two tests passed: the feature it relies on is Observed in `facts/` (not an Assumption), and Dot's two Olist tables hold the data the test needs. **18 of the 51 survive**: 2 confirmed by a person (#43, #35) and 16 still model-unconfirmed. 33 came down: 3 set by a person (#29 to 2, #30 and #34 to 1) and 30 by the tests, each with the failed test in its basis. Features that failed: lineage, Auto-Review, Git sync, row-level security, audit logs, usage limits, downvotes and feedback, CI evaluations, environment behaviour, embedding, alerts, Deep Analysis, scheduled reports. Data that failed: Snowflake, Databricks, Looker, dbt, a semantic layer, a BI tool, more than one source, personal data, a second user, and data that changes over time.
 
-**Already covered by an existing piece:** #35 is marked `drafted` (piece 1). #1 "reduce ad hoc data requests" is piece 2's query, and #61 "cost per question AI analytics" matches piece 3's; both still read `unwritten`, pending a person's decision.
+**Already covered by an existing piece:** #35 (piece 1), #1 (piece 2) and #61 (piece 3) are marked `drafted`, with the piece named in each row's source column. #36, #37 (piece 1), #60 and #66 (piece 3) overlap an existing piece in part; they stay `unwritten`, and the overlap is noted in their source column.
+
+**Evidence scores are confirmed one at a time,** when a question is picked, not in bulk. `bank.py top` refuses to recommend a question while an unconfirmed one ranks above it.
 
 
 `bank.py rescore` scored demand for all 102 questions: 62 score 1, 34 score 2, 6 score 3, and 15 are flagged for a person to check for a vendor page. Gap and evidence are proposed for all 94 unwritten questions, and incumbent for a shortlist of 17 (15, plus a tie kept whole). `top` recommends nothing until a person confirms evidence scores.
