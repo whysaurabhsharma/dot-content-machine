@@ -1,5 +1,28 @@
 # Revisions · how-companies-test-ai-data-analysts
 
+## Round 5: after the phone read (Saurabh, 31 October 2026)
+
+1. **Table:** five columns (Company · Tests against · Scores with · Runs when · Accuracy figure); Published and Bar dropped; the five that state test set, scoring and timing in bold; "(vendor)" on Hex, Snowflake, WisdomAI; cells about six words; every row keeps its source link, LinkedIn's 53% still links the arXiv paper. Uber's ~5% note now lives only in the body (it was already there); Prosus's inclusion reason moved to the table's intro. Intro rewritten: bold, "(vendor)", "Not stated"; "strict" and "bar" no longer used for the five.
+2. **Length:** cut from repeats (list below).
+3. **"A person":** gone. The Dot section says once "we read their dates from their SQL"; pocket guide line 8 now reads "Our earlier run on Dot used the method's core: every answer computed before asking."
+4. **Eight of 13:** all eight named where the count is given.
+5. **Front matter and Dot section:** `dataset:` now says the census used no dataset and no Dot batch of its own, and that the Dot section cites piece A's run (Olist, CC BY-NC-SA 4.0, L1). The Dot section opens: "This section reports the run from our earlier piece on follow-up questions, not a new run."
+6. **H2s:** "The seven accuracy figures can't be compared" · "Eight of 13 test against real questions" · "More than half score answers with an LLM judge" · "Anthropic's accuracy drifted within a month" · "The method runs on Dot" · "All 13, side by side".
+7. **Where Dot fits:** rebuilt around the context-agent page's verbatim line (DOT-4, DOT-5) and "only Anthropic published a bar like that"; the "Exact match" verdict and the 27 October re-scoring sentence cut. The link text is "context-agent page" (hyphenated) because check 17 matches facts A5's keyword "context agent" in any sentence; the claim is evidenced by the quoted page, and no "Assumption" label was asked for.
+8. **CTA:** kept as it was.
+
+Cut for length (1,596 → 1,353 words, check_piece.py):
+
+- Anthropic's figures: the "Its other figures sit at other stages…" sentence; the first section now gives above 95% and about 99% once, the drift paragraph 95% to 65%, the launch paragraph 90% and 100%.
+- Re-run companies: the per-company Hex, GitHub and Salesforce sentences (the table's "Runs when" column carries them); the list now appears once in the body, as the pocket guide's sentence, followed by Anthropic's and Uber's detail.
+- The second "a person decided which reading each matched" sentence in the Dot section, and "so a person read it from their SQL before marking them" reduced to "so we read their dates from their SQL".
+- The paragraph describing each judge (LinkedIn rubric, Uber similarity, ClickHouse jury, Hex rubrics): repeated the table's "Scores with" column.
+- Snowflake's 150-question sentence and ClickHouse's "201 questions" in the test-set paragraph (both in the table; 201 also in the 39-of-243 paragraph).
+- "Each figure comes from its own test set, scored its own way" (pocket guide line 2 says it) and "The five companies that published enough to copy say…" (lede and table intro say it).
+- "That says nothing about how Anthropic grades"; "LinkedIn investigates where its judge and its human reviewers disagree".
+- Caveats tightened: the "Not stated" definition (table intro has it), the vendor list (the table marks them), "They may describe how those companies test; the census can't say", the customer-tools and census-of-14 caveats shortened.
+- Table intro: Uber's "draws on two, QueryGPT and Finch".
+
 ## Round 4b: the rest of the second fact-check (Saurabh's list of nine)
 
 1. **Anthropic's five figures unreconciled (ChatGPT): fixed.** One sentence after the launch bar places the others: above 95% with skills, about 99% in some domains, about 65% after a month without upkeep.
