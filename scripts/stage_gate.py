@@ -4,6 +4,7 @@
 Usage:
     python scripts/stage_gate.py <slug>            # report, for a person
     python scripts/stage_gate.py <slug> --json     # the same, for the workflow
+    python scripts/stage_gate.py <slug> --no-screenshots   # waive rule 14's screenshots, see below
     python scripts/stage_gate.py start <slug> --bank <id> [--practice]
 
 It remembers nothing: every answer comes from files in the repo, so it gives the same
@@ -21,7 +22,8 @@ Gates enforced here that the skills only stated in prose:
 - the rehearsal is refused without --practice;
 - draft waits for the outline's "Approved by" and "Date" (Decision 2);
 - a batch waits for its conditions block (rules 14, 15, 17) and, for a piece that isn't
-  practice, for its four screenshot files; marking waits for the credits-after reading
+  practice, for its four screenshot files, unless a person passes --no-screenshots AND the
+  batch's conditions block records the waiver in a line starting "**Rule 14 waived"; marking waits for the credits-after reading
   and its screenshot file;
 - export waits for check_piece.py to report no FAIL, and for Decision 3;
 - linkedin stops when all five opening structures are used;
@@ -79,7 +81,10 @@ def recorded(conditions, label):
     return bool(m) and not re.search(r"not yet recorded|^\s*$", m.group(1))
 
 
-def assess(slug):
+WAIVER = re.compile(r"^\*\*Rule 14 waived", re.M)
+
+
+def assess(slug, no_shots=False):
     stages = []
 
     def add(name, state, detail):
@@ -132,7 +137,10 @@ def assess(slug):
         if missing:
             add("run", "waiting", f"batch {last_n}: a person records {', '.join(missing)} in its conditions block "
                 "(rules 14, 15, 17)")
-        elif shots:
+        elif shots and no_shots and not WAIVER.search(last_cond):
+            add("run", "waiting", f"batch {last_n}: --no-screenshots was passed, but the conditions block doesn't record "
+                "the waiver. A person adds a line starting '**Rule 14 waived' saying who waived it and what it costs")
+        elif shots and not no_shots:
             add("run", "waiting", f"batch {last_n}: screenshot files missing in runs/screenshots/: "
                 + ", ".join(f"{slug}-batch-{last_n}-{s}.png" for s in shots) + " (rule 14; a real piece needs all five)")
         else:
@@ -142,7 +150,8 @@ def assess(slug):
         add("run", "next", f"batch {last_n} has {len(last_ids)} of {len(asked)} entries: dot-runner continues")
         return stages
     after_shot = Path(f"runs/screenshots/{slug}-batch-{last_n}-credits-after.png")
-    if not manifest.get("practice") and recorded(last_cond, "Credits after") and not after_shot.exists():
+    waived = no_shots and WAIVER.search(last_cond)
+    if not manifest.get("practice") and not waived and recorded(last_cond, "Credits after") and not after_shot.exists():
         add("run", "waiting", f"batch {last_n}: screenshot file missing: {after_shot.as_posix()} (rule 15)")
         return stages
     if not recorded(last_cond, "Credits after"):
@@ -273,7 +282,7 @@ def main(argv):
         print(__doc__)
         return 2
     slug = argv[1]
-    stages = assess(slug)
+    stages = assess(slug, no_shots="--no-screenshots" in argv)
     last = stages[-1]
     result = {"slug": slug, "stages": stages, "next": last["stage"], "state": last["state"], "detail": last["detail"]}
     if "--json" in argv:

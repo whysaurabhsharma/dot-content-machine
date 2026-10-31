@@ -8,8 +8,13 @@ export const meta = {
   ],
 }
 
-// Args: the piece slug, as a string or { slug }.
-const slug = typeof args === 'string' ? args.trim() : (args && args.slug)
+// Args: the piece slug, as a string ("<slug>" or "<slug> --no-screenshots") or { slug, noScreenshots }.
+// --no-screenshots is passed through to stage_gate.py only when a person gives it; the gate also
+// requires the batch's conditions block to record the waiver (runs/README.md#screenshots).
+const argText = typeof args === 'string' ? args.trim() : ''
+const slug = argText ? argText.split(/\s+/)[0] : (args && args.slug)
+const noShots = argText ? /(^|\s)--no-screenshots(\s|$)/.test(argText) : !!(args && args.noScreenshots)
+const GATE_FLAGS = noShots ? ' --no-screenshots' : ''
 if (!slug || !/^[a-z0-9-]+$/.test(slug)) {
   return { stopped: 'no slug', reason: 'Run as /piece <slug>, with a slug of lowercase letters, digits and hyphens.' }
 }
@@ -31,7 +36,7 @@ const REPORT = 'Reply with status ok if the stage finished, fail if it went wron
 
 // The checkpoint. The workflow never decides where to start or what comes next: this does.
 const gate = (i) => agent(
-  `Run exactly this command from the repo root, and nothing else: python scripts/stage_gate.py ${slug} --json\n` +
+  `Run exactly this command from the repo root, and nothing else: python scripts/stage_gate.py ${slug} --json${GATE_FLAGS}\n` +
   'It exits 3 when a person is needed and 4 when blocked; that is expected, not an error. ' +
   'Copy the top-level "next", "state" and "detail" fields from its JSON output exactly. Change no file.',
   { label: `gate ${i}`, phase: 'Gate', schema: GATE, effort: 'low' })

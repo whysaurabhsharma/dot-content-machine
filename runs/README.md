@@ -22,6 +22,8 @@ Every run file references the path of each screenshot it depends on, next to the
 
 A rehearsal may record a batch's conditions as text, by hand, instead of screenshots, and must say so in its conditions block. A piece intended for publication must have all five screenshots for every batch.
 
+**Waiving the screenshots for a real piece.** A person may run `python scripts/stage_gate.py <slug> --no-screenshots` (and `/piece <slug> --no-screenshots`), but the gate also requires the batch's conditions block to record the waiver in a line starting `**Rule 14 waived`, saying who waived it. **The cost: no claim about mode, credits, environment or context notes may appear in that piece**; only claims resting on Dot's answers and their SQL are supported. First used for `ai-analyst-follow-up-questions`, batch 1, 31 October 2026.
+
 Screenshots show the account holder's name and email. That is fine for internal evidence. A screenshot used in a published piece must have personal details removed first.
 
 ## Batches
