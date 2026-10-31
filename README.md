@@ -38,6 +38,7 @@ It runs in Claude Code, in this repo. Claude Code reads `CLAUDE.md` automaticall
 | `specs/piece-1-truth.json` | Piece 1's 20 evaluation questions, plus delivered-only average order value, as a spec: table, filter, formula, unit, grain |
 | `scripts/charts.py` | One chart per piece from a JSON spec, with alt text and caption |
 | `.claude/agents/reader.md`, `fact-checker.md`, `lift-tester.md` | The three blind reviewers: no CLAUDE.md, a Read allowlist enforced by `scripts/hooks/read_allowlist.py`, a body-only review copy. Start them only with `scripts/run_reviewer.py`; what still reaches them is in `facts/reviewer-blindness.md` |
+| `.claude/workflows/piece.js` | The piece workflow, `/piece <slug>`: runs the stages in the order `stage_gate.py` allows and stops at every human decision. Re-run it after each decision |
 | `scripts/stage_gate.py` | Where a piece stands, read only from files: the checkpoint the workflow starts from. `start <slug> --bank <id>` records Decision 1. It enforces the gates the skills only state in prose |
 | `scripts/run_reviewer.py`, `scripts/review_copy.py` | Start a reviewer in a headless session with no MCP servers, with its fixed sentence; write the body-only copy it reads |
 | `scripts/hooks/only_date.py` | The hook that limits `dot-runner`'s Bash to the `date` command |
@@ -144,3 +145,11 @@ Add these in Ahrefs Rank Tracker, US and Germany:
 - ai data analyst pricing
 - conversational analytics
 - self service analytics tools
+
+## Running a piece with the workflow
+
+1. **Decision 1.** Pick the question with `/bank top`, confirm its evidence score, then record it: `python scripts/stage_gate.py start <slug> --bank <id>`.
+2. **Run `/piece <slug>`.** It starts every run from `stage_gate.py` and runs only the stage the gate names, then asks the gate again. The first run of a saved workflow asks you to approve it.
+3. **It stops** when the gate says a person is needed or something is blocked, when a stage fails, when a stage runs and the gate's answer doesn't change, or after two `check_piece` fix rounds that leave a FAIL. It reports where and why.
+4. **Do what it names** (check the truth spec and add `reviewed_by`; record a batch's conditions or credits in Dot's UI; approve the outline; set the title and tick the human checks; publish), then run `/piece <slug>` again. Where a piece stands is read from the files every time, so this works in any session.
+

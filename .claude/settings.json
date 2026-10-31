@@ -24,7 +24,27 @@
       "Bash(python scripts/bank.py *)",
       "Bash(python -I scripts/bank.py *)",
       "PowerShell(python scripts/bank.py *)",
-      "PowerShell(python -I scripts/bank.py *)"
+      "PowerShell(python -I scripts/bank.py *)",
+      "Bash(python scripts/stage_gate.py *)",
+      "Bash(python -I scripts/stage_gate.py *)",
+      "PowerShell(python scripts/stage_gate.py *)",
+      "PowerShell(python -I scripts/stage_gate.py *)",
+      "Bash(python scripts/mark_run.py *)",
+      "Bash(python -I scripts/mark_run.py *)",
+      "PowerShell(python scripts/mark_run.py *)",
+      "PowerShell(python -I scripts/mark_run.py *)",
+      "Bash(python scripts/ground_truth_from_spec.py *)",
+      "Bash(python -I scripts/ground_truth_from_spec.py *)",
+      "PowerShell(python scripts/ground_truth_from_spec.py *)",
+      "PowerShell(python -I scripts/ground_truth_from_spec.py *)",
+      "Bash(python scripts/review_copy.py *)",
+      "Bash(python -I scripts/review_copy.py *)",
+      "PowerShell(python scripts/review_copy.py *)",
+      "PowerShell(python -I scripts/review_copy.py *)",
+      "Bash(python scripts/run_reviewer.py *)",
+      "Bash(python -I scripts/run_reviewer.py *)",
+      "PowerShell(python scripts/run_reviewer.py *)",
+      "PowerShell(python -I scripts/run_reviewer.py *)"
     ]
   }
 }

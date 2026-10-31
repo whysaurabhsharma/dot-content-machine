@@ -24,7 +24,9 @@ Gates enforced here that the skills only stated in prose:
   its credits-after reading;
 - export waits for check_piece.py to report no FAIL, and for Decision 3;
 - linkedin stops when all five opening structures are used;
-- the run waits for the truth spec's "reviewed_by" (rival definitions before the run).
+- the run waits for the truth spec's "reviewed_by" (rival definitions before the run);
+- after the reviews, the writer must log every fix, or why a point stands, in
+  reviews/<slug>/revisions.md, newer than the reviews.
 """
 import csv
 import json
@@ -172,6 +174,14 @@ def assess(slug):
         add("reviews", "next", f"python scripts/run_reviewer.py <reviewer> {slug} for: {', '.join(missing)}")
         return stages
     add("reviews", "done", "reader, fact-checker, lift-tester")
+
+    log = Path(f"reviews/{slug}/revisions.md")
+    newest_review = max(Path(f"reviews/{slug}/{r}.md").stat().st_mtime for r in ("reader", "fact-checker", "lift-tester"))
+    if not log.exists() or log.stat().st_mtime < newest_review:
+        add("revise", "next", f"the writer fixes the reader's three stopping points and every fact-checker problem, "
+            f"and logs each fix, or one line on why it stands, in {log}")
+        return stages
+    add("revise", "done", str(log))
 
     fails = check_piece([f"pieces/{slug}.md"])
     if fails:

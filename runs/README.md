@@ -48,6 +48,9 @@ Every step logs its start and end with `scripts/timing.py` to `runs/<piece>-timi
 | `seo-geo` | `/seo-geo`: SEO fields, links and FAQ schema | The `/seo-geo` skill |
 | `linkedin` | `/linkedin`: one post appended to `posts/<slug>-posts.md` | The `/linkedin` skill |
 | `export` | `/export`: the files in `exports/<slug>/` | The `/export` skill |
+| `reviews` | The three blind reviewers, through `run_reviewer.py` | The piece workflow |
+| `revise` | Fixing the reader's stopping points and the fact-checker's problems, logged in `reviews/<slug>/revisions.md` | The piece workflow |
+| `edit` | Fixing `check_piece.py` FAILs: at most two rounds, then a person | The piece workflow |
 | `bank` | `/bank`: adding, re-scoring or picking from the question bank. Logged with the piece name `bank`, so it goes to `runs/bank-timing.csv` | The `/bank` skill |
 
 The `note` column says how each row was made: `logged` (written by `timing.py` at the time), `backfilled` (added later from a timestamp in the record, with its source named), or `not logged` (no evidence; no time is estimated).

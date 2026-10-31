@@ -1,12 +1,13 @@
 ---
 name: linkedin
-description: Stage 7 LINKEDIN. Appends one post cut from the piece to posts/<slug>-posts.md, using an opening structure not yet used for that piece, then checks it. Never posts to LinkedIn. Started only by a person or the workflow.
-disable-model-invocation: true
+description: Stage 7 LINKEDIN. Appends one post cut from the piece to posts/<slug>-posts.md, using an opening structure not yet used for that piece, then checks it. Never posts to LinkedIn. Started by a person or by the piece workflow, in the order stage_gate.py allows.
 argument-hint: <piece-slug>
 allowed-tools: Read, Edit, Write, Glob, Grep, Bash(python scripts/timing.py:*), Bash(python -I scripts/timing.py:*), Bash(python scripts/check_piece.py:*), Bash(python -I scripts/check_piece.py:*)
 ---
 
 # Stage 7 · LINKEDIN
+
+**Why this skill has no `disable-model-invocation` flag (removed 31 October 2026).** It had the flag so that only a person could start a stage. A workflow's agents count as the model, so the flag also stopped `.claude/workflows/piece.js` from running this stage, and told its agents not to follow this file by any other route. The protection moved rather than vanished: `scripts/stage_gate.py` now enforces it. It refuses a stage out of order, never redoes a finished stage, and holds every decision gate (the question, the outline approval, the title and human checks, publishing) until a person has recorded it in the files. The workflow starts every run from the gate and obeys it.
 
 Source: `prompts/07-linkedin.md`.
 

@@ -1,12 +1,13 @@
 ---
 name: outline
-description: Stage 2 OUTLINE. Writes pieces/<slug>-outline.md from the piece's research, run and figures, for a person to approve (Decision 2). Started only by a person or the workflow.
-disable-model-invocation: true
+description: Stage 2 OUTLINE. Writes pieces/<slug>-outline.md from the piece's research, run and figures, for a person to approve (Decision 2). Started by a person or by the piece workflow, in the order stage_gate.py allows.
 argument-hint: <piece-slug> [--practice]
 allowed-tools: Read, Write, Glob, Grep, Bash(python scripts/timing.py:*), Bash(python -I scripts/timing.py:*)
 ---
 
 # Stage 2 · OUTLINE
+
+**Why this skill has no `disable-model-invocation` flag (removed 31 October 2026).** It had the flag so that only a person could start a stage. A workflow's agents count as the model, so the flag also stopped `.claude/workflows/piece.js` from running this stage, and told its agents not to follow this file by any other route. The protection moved rather than vanished: `scripts/stage_gate.py` now enforces it. It refuses a stage out of order, never redoes a finished stage, and holds every decision gate (the question, the outline approval, the title and human checks, publishing) until a person has recorded it in the files. The workflow starts every run from the gate and obeys it.
 
 Source: `prompts/02-outline.md`. Run after the evidence run, with its numbers already in the figures file.
 

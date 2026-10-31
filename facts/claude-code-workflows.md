@@ -19,3 +19,14 @@ Observed 31 October 2026, Claude Code 2.1.314, in this repo. Each finding names 
 > "Skill probe-gated cannot be used with Skill tool due to disable-model-invocation. Ask the user to run /probe-gated themselves — it cannot be invoked via the Skill tool. Do not replicate this skill's workflow by other means — it is reserved for explicit user invocation."
 
 So a workflow can't run `/outline`, `/draft`, `/seo-geo`, `/linkedin`, `/export` or `/bank` while they carry the flag, and its agents must not follow those skills' instructions by another route either.
+
+## What was done about it, 31 October 2026
+
+The flag was removed from the five writing skills (`/outline`, `/draft`, `/seo-geo`, `/linkedin`, `/export`) so `.claude/workflows/piece.js` can run them; each SKILL.md says why. `/bank` keeps it. The protection moved to `scripts/stage_gate.py`, which enforces stage order, no-redo and every decision gate from the files.
+
+## The piece workflow, tested 31 October 2026
+
+- Run for real on `rehearsal`, which has no manifest: one gate agent, then a stop at `question` / `waiting`, with no stage started.
+- Its loop, copied with a scripted gate and no-op stages: a FAIL that never clears stops after exactly two edit rounds; a FAIL cleared in round 2 moves on to the title decision; a stage that runs without changing the gate's answer stops as "no progress"; a failing stage stops at once.
+- Not yet run end to end on a real piece.
+

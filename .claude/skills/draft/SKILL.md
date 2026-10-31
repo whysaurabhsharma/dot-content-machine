@@ -1,12 +1,13 @@
 ---
 name: draft
-description: Stage 3 DRAFT. Writes pieces/<slug>.md from the approved outline, against CLAUDE.md's style rules. Refuses unless the outline's "Approved by" line is filled. Started only by a person or the workflow.
-disable-model-invocation: true
+description: Stage 3 DRAFT. Writes pieces/<slug>.md from the approved outline, against CLAUDE.md's style rules. Refuses unless the outline's "Approved by" line is filled. Started by a person or by the piece workflow, in the order stage_gate.py allows.
 argument-hint: <piece-slug>
 allowed-tools: Read, Write, Glob, Grep, Bash(python scripts/timing.py:*), Bash(python -I scripts/timing.py:*), Bash(python scripts/check_piece.py:*), Bash(python -I scripts/check_piece.py:*)
 ---
 
 # Stage 3 · DRAFT
+
+**Why this skill has no `disable-model-invocation` flag (removed 31 October 2026).** It had the flag so that only a person could start a stage. A workflow's agents count as the model, so the flag also stopped `.claude/workflows/piece.js` from running this stage, and told its agents not to follow this file by any other route. The protection moved rather than vanished: `scripts/stage_gate.py` now enforces it. It refuses a stage out of order, never redoes a finished stage, and holds every decision gate (the question, the outline approval, the title and human checks, publishing) until a person has recorded it in the files. The workflow starts every run from the gate and obeys it.
 
 Source: `prompts/03-draft.md`.
 
