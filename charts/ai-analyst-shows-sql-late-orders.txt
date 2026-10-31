@@ -1,0 +1,5 @@
+ALT:
+Bar chart. Asked 'How many orders were delivered late in 2017?' in two fresh chats, Dot returned 2,878 orders at timestamp grain and 2,453 by calendar day, on the Olist dataset.
+
+CAPTION:
+Dot's answers to the same question in two fresh chats, Olist dataset, 31 October 2026.

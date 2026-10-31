@@ -1,0 +1,14 @@
+{
+  "type": "ranking",
+  "out": "charts/ai-analyst-shows-sql-late-orders.png",
+  "size": [7.2, 2.4],
+  "keep_order": true,
+  "title": "Same question, two fresh chats: late orders in 2017",
+  "subtitle": "Both match the raw data under the definition of \"late\" each answer stated.",
+  "rows": [
+    {"label": "Chat A: delivery timestamp after estimated", "value": 2878, "accent": true, "value_label": "2,878"},
+    {"label": "Chat B: delivery day after estimated day", "value": 2453, "value_label": "2,453"}
+  ],
+  "alt": "Bar chart. Asked 'How many orders were delivered late in 2017?' in two fresh chats, Dot returned 2,878 orders at timestamp grain and 2,453 by calendar day, on the Olist dataset.",
+  "caption": "Dot's answers to the same question in two fresh chats, Olist dataset, 31 October 2026."
+}

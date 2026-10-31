@@ -22,3 +22,8 @@
 2026-10-31 · ai-analyst-follow-up-questions · reading difference attributed to chat history alone, but the run file shows two context notes on during the run, which the waiver bars the piece from disclosing
 2026-10-31 · ai-analyst-follow-up-questions · "a person chose" the reading where the answer didn't state it, while the draft also says the SQL's delivery-date filter showed it
 2026-10-31 · ai-analyst-follow-up-questions · same comparison sets BRL 5,612,818 (whole BRL) against BRL 5,962,902.01 (to the cent)
+2026-10-31 · ai-analyst-shows-sql · "Every answer checked out ... under the definition it stated" but Q4 chat A stated no date basis, and the draft says so itself
+2026-10-31 · ai-analyst-shows-sql · "six questions ... each with two honest readings" and "we computed every rival reading" but the figures file holds rival values only for the Q1, Q2 and Q5 wordings
+2026-10-31 · ai-analyst-shows-sql · 2018 late-share bullet calls the gap "display rounding, not a disagreement" while the same bullet says Dot and the reference used different denominators
+2026-10-31 · ai-analyst-shows-sql · "Each answer named its clock in plain words" but the calendar-day 2018 answers (Q6, Q12) said "estimated delivery date", not "day"
+2026-10-31 · ai-analyst-shows-sql · "Each question recurred item by item across its two chats" but only totals and order counts are shown, with no item-level comparison
