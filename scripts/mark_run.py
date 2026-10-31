@@ -85,6 +85,46 @@ def parse_run(text):
     return entries
 
 
+def number_candidates(answer):
+    """Every number in the answer that isn't part of a date, a month-year, or a bare year.
+    [(value, token, start)]. A bare year is a four-digit integer from 1990 to 2035 written
+    without a thousands comma ("in 2017"); it is never the figure a test question asks for."""
+    skip = set()
+    for m in DATE_PART.finditer(answer):
+        skip.update(range(m.start(), m.end()))
+    for m in YEAR_IN_DATE.finditer(answer):
+        skip.update(range(m.start(1), m.end(1)))
+    out = []
+    for m in NUMBER.finditer(answer):
+        token = m.group(0)
+        if m.start() in skip or (re.fullmatch(r"\d{4}", token) and 1990 <= int(token) <= 2035):
+            continue
+        value = float(token.rstrip("%").replace(",", ""))
+        out.append(((int(value) if value.is_integer() else value), token, m.start()))
+    return out
+
+
+def pick_number(answer, unit):
+    """The answer's figure for a truth row of this unit (v1.8.22). Chosen by the unit, which is
+    known before the answer is read, never by closeness to the expected value (that would hide a
+    wrong answer). Currency: a number written next to BRL or R$. Percent: a number with %.
+    Otherwise: a number without %. Falls back to the first candidate. Returns (value, token, others)."""
+    cands = number_candidates(answer)
+    if not cands:
+        return None, None, []
+    u = (unit or "").lower()
+    if "brl" in u or "r$" in u:
+        fit = [c for c in cands if re.search(r"(BRL|R\$)\s*$", answer[max(0, c[2] - 6):c[2]])
+               or re.match(r"\s*(BRL|R\$)", answer[c[2] + len(c[1]):c[2] + len(c[1]) + 6])]
+    elif "%" in u or "percent" in u:
+        fit = [c for c in cands if c[1].endswith("%")]
+    else:
+        fit = [c for c in cands if not c[1].endswith("%")]
+    chosen = (fit or cands)[0]
+    others = [c[1] for c in cands if c is not chosen]
+    return chosen[0], chosen[1], others
+
+
 def first_number(answer):
     """First number in the answer that isn't part of a date. Returns (value, text) or (None, None)."""
     skip = set()
@@ -217,6 +257,8 @@ def mark(entry, truth, mapping, decided=None):
         matched, how = fits[0], "definition only"
     if matched["error"]:
         return "not marked", f"Truth row {matched['question_id']} failed: {matched['error']}", value
+    # Re-pick the figure now the expected unit is known (v1.8.22): "in 2017, with BRL 987,765" is 987,765.
+    value, token, others = pick_number(entry["answer"], matched.get("unit", ""))
 
     note = ""
     used = matched
@@ -256,6 +298,8 @@ def mark(entry, truth, mapping, decided=None):
                      "a different reading the stated basis didn't name clearly; a person decides")
     if used is not matched and verdict == "correct":
         verdict = "correct under stated definition"
+    if others:
+        note += f"; other numbers in the answer: {', '.join(others)}"
     desc = (f"{entry['id']} vs {used['question_id']} ({used['metric']}), matched by {how}: answer {token}, expected {used['value']} "
             f"{used['unit']}; gap {gap:.4f}% ({kind}); {verdict}{note}")
     return verdict, desc, value

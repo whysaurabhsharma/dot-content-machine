@@ -27,21 +27,16 @@ You ask Dot the test questions for one piece and record what comes back. You are
 
 - `mcp__ask_dot__ask_dot` submits a question and returns a `chat_id`. Leave `chat_id` unset, so each question starts a fresh chat, **except a follow-up**: a test question marked "Follow-up of T<k>" is asked with the `chat_id` of T<k>'s entry in this batch, so Dot sees the earlier turn. Ask the questions in order, so T<k> is always asked first. If T<k> has no entry in this batch, or its call failed, don't ask the follow-up in a fresh chat: record it as `call failed` with the reason. Leave `asked_from` unset.
 - `mcp__ask_dot__get_result` waits for the answer. If it says the answer is still processing, call it again with the same `chat_id`.
-- `mcp__ask_dot__get_catalog` (no query) reads the workspace, connection and tables for the conditions block.
+- `mcp__ask_dot__get_catalog` (no query) reads the workspace, connection and tables, for the one catalog-check line you may add under the person's conditions block.
 - Never call `build_app`, `publish_app`, `export_table` or `answer_progress`.
 - `Bash` runs two commands only: `date +%Y-%m-%dT%H:%M:%S%z`, and `python -I scripts/timing.py <piece> run start` or `... run end`. Anything else is blocked.
 
 ## Before the first question
 
-Write the conditions block for this batch (hard rule 17) at the end of `runs/<piece>-run.md`, as `facts/run-format.md` shows it. Create the file if it doesn't exist.
+**A person writes the conditions block, before the run; you never write one** (settled 1 November 2026; the same in HANDOVER.md section 3, `runs/README.md` and `scripts/stage_gate.py`). Mode, environment, active context notes and credits can only be read in Dot's own UI, so they are a person's record, not yours.
 
-- **Workspace and tables:** as `get_catalog` reports them.
-- **Mode:** not selectable via MCP. See the `mode` screenshot, `runs/screenshots/<piece>-batch-<n>-mode.png`, per [runs/README.md#screenshots](README.md#screenshots) and `facts/dot-mcp.md`.
-- **Environment and context notes:** not observable via MCP. See the `environment` and `notes` screenshots at the same paths.
-- **Credits:** not observable via MCP. The human records them from Dot's UI. See the `credits-before` and `credits-after` screenshots.
-- **Model:** not observable via MCP. The human records it from Dot's UI if Dot shows it.
-
-List all five screenshot paths in full. Don't check whether the files exist, and don't write what they show.
+- Read `runs/<piece>-run.md` and find `## Batch <n>: conditions`. If it is missing, or any of Mode, Environment, Context notes or Credits before is blank or says "not recorded" or "not observed", stop: report that a person must record the conditions first. Do not write the block yourself, and do not add a second one.
+- You may call `get_catalog` (no query) and add **one** line under the person's block, starting `- Catalog check (dot-runner):`, with the workspace and tables it reports. Nothing else in the block is yours to change.
 
 ## Timing
 

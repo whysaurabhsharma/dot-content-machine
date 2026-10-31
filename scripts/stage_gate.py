@@ -86,7 +86,9 @@ def batches(run_text):
 
 def recorded(conditions, label):
     m = re.search(rf"^- {label}: (.*)$", conditions, re.M)
-    return bool(m) and not re.search(r"not yet recorded|^\s*$", m.group(1))
+    # v1.8.22: "not recorded" and "not observed" are refused like a blank (the second cold-start
+    # test wrote "not observable via MCP; not recorded" for every condition and the gate moved on).
+    return bool(m) and not re.search(r"not yet recorded|not recorded|not observed|^\s*$", m.group(1), re.I)
 
 
 WAIVER = re.compile(r"^\*\*Rule 14 waived", re.M)
@@ -206,7 +208,19 @@ def assess(slug):
     if not set(last_ids) <= marked:
         add("mark", "next", f"python scripts/mark_run.py {slug} --batch {last_n}")
         return stages
-    add("mark", "done", f"{len(last_ids)} rows in figures/{slug}-figures.csv")
+    # v1.8.22: a real gap, or a rival match the script hands to a person, holds marking until a
+    # person decides: re-mark that answer with --decide, or record the review in the run file.
+    held = [qid for qid in last_ids
+            if re.search(rf"^MR-{qid},[^\n]*(real gap|a person decides)", figures, re.M)]
+    review = re.search(rf"^\*\*Batch {last_n} marking reviewed by:\*\*[ \t]*\S", run_text, re.M)
+    if held and not review:
+        add("mark", "waiting", f"batch {last_n}: {', '.join('MR-' + q for q in held)} need a person: a real gap or a "
+            f"rival reading. Read each answer and its SQL; re-mark with mark_run.py --decide <Q>=<truth id> (remove "
+            f"the old rows first), or record the decision in runs/{slug}-run.md as "
+            f"'**Batch {last_n} marking reviewed by:** <name, date>: <what was decided>'")
+        return stages
+    add("mark", "done", f"{len(last_ids)} rows in figures/{slug}-figures.csv"
+        + (f"; {len(held)} reviewed by a person" if held else ""))
 
     stages.extend(writing(slug, manifest))
     return stages
