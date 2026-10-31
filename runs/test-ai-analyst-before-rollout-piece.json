@@ -3,5 +3,9 @@
   "bank_id": "35",
   "question": "how to evaluate AI data analyst accuracy",
   "format": "guide",
-  "practice": false
+  "practice": false,
+  "piece_if_cleared": {
+    "by": "Saurabh, 2026-11-01",
+    "basis": "Both conditions met: the five census sources re-opened and read in Chrome for this piece on 1 November (runs/test-ai-analyst-before-rollout-verification.md); L1 and L2 extended to F as decision L4 (facts/dot-facts.md)."
+  }
 }

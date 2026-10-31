@@ -121,3 +121,8 @@ No revise-notes.md existed for this round. The fact-checker reported runs/test-a
 8. **Step 5:** "Asked in full, in a fresh chat, about late orders…".
 - **Step 8's schedule:** Dot's essay, opened in Chrome, says "twenty minutes a week with one named owner" and ends the routine with "Then re-run your test questions and see whether the number moved." Cited as Dot's stated position (ESS-1); the tag says so. It is guidance, not a tested result.
 - **Decision 3:** title_approved_by Saurabh, 2026-11-01; reviewed_on 2026-11-01. The CTA question is settled (Rick's essay ends with the same line) and stays recorded in HANDOVER.md only.
+
+## Census corrections and step 3 (Saurabh, 1 November 2026)
+
+- Step 8: "5 re-run" became 6 (C-6, Ramp added after B's browser re-read); its tag likewise.
+- Step 3's tag now cites GitHub, whose test harness runs "Qubot N times per case" (read in Chrome). Chosen over Salesforce's "if you ask a question 10 times, you might get 8 correct answers and 2 wrong", which is a hypothetical, not a practice. GitHub's line has no number, so no figures row.

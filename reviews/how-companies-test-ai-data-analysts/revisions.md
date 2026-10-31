@@ -224,3 +224,10 @@ Also from the reader: the 84.9% claim is now ClickHouse's own sentence quoted wh
 ## Drift sentence in Anthropic's words (1 November 2026)
 
 - Round 9's "That was before it treated drift as an engineering problem" paraphrased Anthropic ("drift" for its "this"). F's second fact-check flagged the same paraphrase. Now quoted: drifted "from ~95% at launch to ~65% over a month before we treated this as an engineering problem." FAQ answer updated word for word. Saurabh's pending read-aloud of this paragraph covers the new wording.
+
+## Census corrections after the browser re-read (Saurabh, 1 November 2026)
+
+From the Chrome re-read of the eight remaining sources (runs/test-ai-analyst-before-rollout-verification.md). Every number matched; three method findings, all applied:
+- **Snowflake's scoring cell:** "LLM judge" became "Human-selected gold queries, column match". The linked post set LLM judges aside. Snowflake still counts among the 7 that use a judge: its second post tests its own product (Cortex Analyst) with an LLM judge on public BIRD subsets, the same footing on which WisdomAI counts. C-5 stays 7.
+- **More than one right answer: 3 became 4** (C-7), Snowflake added ("One question can have multiple correct answers"), and the four now named.
+- **Ramp added to the strict bar and the re-run group: 5 became 6** for both (C-2, C-6). Ramp's post states its scoring (assertions on the final answer and intermediate steps) and a trigger ("update context, run tests, and confirm improvements"); excluding it while counting Salesforce on similar wording applied our own criterion inconsistently. The two sixes are different groups (strict: Anthropic, LinkedIn, Uber, ClickHouse, Hex, Ramp; re-run: Anthropic, Uber, Hex, GitHub, Salesforce, Ramp); B names the re-run group without a count, as before. Changed: meta, opening, pocket lines 3 and 6, the re-run paragraph (the "isn't counted" sentence replaced by Ramp's own words), the table note and Ramp's row (now bold, after Hex), FAQ answer 3, both posts (post 2's taxonomy loses "Both: Ramp"; Vercel now stands alone there). Needs reading aloud.

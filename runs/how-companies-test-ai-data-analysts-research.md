@@ -123,6 +123,7 @@ Entries 1-5 also met the strict bar. Entries 6-13 meet the wider bar only.
 - Numbers: 5 queries; 80% vs 100% success (old vs new architecture). Not counted from the second post (https://vercel.com/blog/testing-if-bash-is-all-you-need, 22 January 2026), which is not an evaluation of d0.
 
 **10. Ramp (Ramp Research)** (strict: no; wider: a, c partly)
+- **Corrected 1 November 2026 (browser re-read): strict: yes.** The post states scoring ("asserts not only on the final answer but also the intermediate steps, including expected tool calls, table references, and query shape") and a trigger ("update context, run tests, and confirm improvements"). The WebFetch reading above missed both.
 - URL: https://engineering.ramp.com/post/meet-ramp-research
 - Publisher and date: Ramp engineering blog; the page as read shows no author or date.
 - Published: domain experts wrote end-to-end tests; a Python mini-framework in the dbt project checks final answer, expected tool calls, table references and query shape. No scoring method, schedule or test-set size. Usage numbers (1,800+ questions answered) are not evaluation results.

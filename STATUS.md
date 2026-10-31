@@ -19,7 +19,7 @@ Exports: `exports/<slug>/` (a .docx, clean Markdown, Webflow HTML and fields; no
 | Item | Waiting on | Who |
 |---|---|---|
 | A | Read aloud A's closing paragraph (a link clause added after Decision 3, not yet read); then Decision 4 | **Saurabh** |
-| B | Rick's sign-off on the context agent quote and on the DABstep concession (and his answer on the home page's 96% / 89%); three census corrections found by the browser re-read (Snowflake's scoring cell, Snowflake missing from "more than one right answer", Ramp's scoring and trigger: see `runs/test-ai-analyst-before-rollout-verification.md`); A live first | **Rick**, then Saurabh, then publishing order |
+| B | Rick's sign-off on the context agent quote and on the DABstep concession (and his answer on the home page's 96% / 89%); three census corrections from the browser re-read, applied 1 November (Snowflake's scoring cell, Snowflake missing from "more than one right answer", Ramp's scoring and trigger: see `runs/test-ai-analyst-before-rollout-verification.md`); A live first | **Rick**, then Saurabh, then publishing order |
 | F | Re-check facts O1 and O2 on the current account ("Where Dot fits" rests on them); A and B live first (F links both) | **Saurabh**, then publishing order |
 | Posts | Each goes out after its piece is live, with the link in the first comment | Publishing order |
 | Licence | L1, L2, L4 are decisions to proceed, not resolutions; the Olist label was never verified at source | **Dot** |
@@ -34,7 +34,7 @@ Exports: `exports/<slug>/` (a .docx, clean Markdown, Webflow HTML and fields; no
 
 **B**
 4. Get Rick's two sign-offs (context agent quote; DABstep concession) and his answer on the home page's 96% / 89%. If a full-set run is published, update B's DABstep sentence.
-5. Decide the three census corrections from the browser re-read of B's eight remaining sources (done 1 November; every number matched; three method findings). Ramp's could change B's five to six.
+5. Read aloud the paragraphs the census corrections changed (B: opening, pocket lines 3 and 6, the more-than-one-answer and re-run paragraphs, the table note; both B posts; F step 8).
 6. Re-check O1 and O2 in Dot's UI (B's "Where Dot fits" cites the evaluation).
 7. `python scripts/verify_sources.py pieces/how-companies-test-ai-data-analysts.md`: the link to A must now return 200.
 8. Decision 4: publish B; `bank.py status 36 published`.
@@ -56,4 +56,5 @@ Exports: `exports/<slug>/` (a .docx, clean Markdown, Webflow HTML and fields; no
 - **No check that pieces agree with each other**, and none that flags a bare "N of M correct". Both errors were caught by people this time.
 - **No chart stage** in the workflow; a missing chart passes the checker.
 - **The `/linkedin` skill** still lists the older five structures, not the cluster's six.
+- **Cold-start gaps 1 and 2: fixed 1 November.** The handover's first test now follows the gate (Decision 1, research, PIECE IF check, truth spec reviewed, then the run). The gate has a PIECE IF branch: it waits until a person records how the condition was met (`stage_gate.py clear`). F's condition is recorded as Saurabh's (L4 and the browser re-read); A's was recorded from the files for Saurabh to confirm. Gaps 3 to 7 stay open (HANDOVER.md section 6).
 - **The machine has been run cold once, to a research verdict** (a fresh session from the README alone, 1 November; gaps in HANDOVER.md section 6), **but never end to end by anyone but the author.** The monthly measurement loop has never run, and nothing is published, so there is no outcome to measure yet.

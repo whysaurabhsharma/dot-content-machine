@@ -89,13 +89,17 @@ In dollars, **assumption A2** (1 credit ≈ $1, not stated on any Dot pricing pa
 5. Check the rules loaded: ask *"What are the four human decisions?"* It should answer: the question, the outline, the title, the publish.
 6. Check the agents loaded: type `/agents`. You should see `researcher`, `dot-runner`, `reader`, `fact-checker` and `lift-tester`.
 
-### A 15-minute first test
+### A 30-minute first test
 
-1. **Research.** *"Use the researcher agent on this question, piece slug test-1: '…'"* It writes `runs/test-1-research.md`: the gap chain, the verdict, and the test questions.
-2. **Read the verdict:** PIECE, PIECE IF, NOT A PIECE, or NOT A PIECE, BUT A SURFACE.
-3. **Screenshots in Dot's own UI** for batch 1, named as in `runs/README.md#screenshots`. Mode, credits, environment and context notes can't be seen through the MCP.
-4. **Run.** *"Use the dot-runner agent on test-1, batch 1, first question only."* It asks Dot word for word and appends the answer to `runs/test-1-run.md`.
-5. **Check the entry** against `facts/run-format.md`.
+It follows the gate's order. At any point, `python scripts/stage_gate.py test-1` says what comes next. (Rewritten 1 November 2026: the earlier version skipped Decision 1 and the truth spec, which the gate requires before a run; a cold-start test found it.)
+
+1. **Decision 1.** Pick a question (`/bank top`, or any unwritten row; say why if not the top one), then record it: `python scripts/stage_gate.py start test-1 --bank <id> --format research`.
+2. **Research.** *"Use the researcher agent on bank #<id>, piece slug test-1."* Tell it which tables Dot's workspace holds (Dot's `get_catalog` lists them); otherwise it has to guess. It writes `runs/test-1-research.md`.
+3. **Read the verdict:** PIECE, PIECE IF, NOT A PIECE, or NOT A PIECE, BUT A SURFACE. For **PIECE IF**, check the condition yourself, then record it: `python scripts/stage_gate.py clear test-1 --by "<name, date>" --basis "<how it was met>"`. The gate waits until you do.
+4. **Truth spec.** Write `specs/test-1-truth.json` from the research's test questions, including every rival reading of an ambiguous phrase, then `python scripts/ground_truth_from_spec.py specs/test-1-truth.json`. A person reads the rival definitions and adds `"reviewed_by": "<name, date>"`. No run starts before this.
+5. **Batch conditions in Dot's own UI:** mode, environment, context notes, credits before, as `## Batch 1: conditions` in `runs/test-1-run.md`, with the screenshots named as in `runs/README.md#screenshots`. Mode, credits, environment and context notes can't be seen through the MCP.
+6. **Run.** *"Use the dot-runner agent on test-1, batch 1, first question only."* It asks Dot word for word and appends the answer to `runs/test-1-run.md`.
+7. **Check the entry** against `facts/run-format.md`.
 
 ### A full piece, on one command
 
@@ -168,7 +172,7 @@ What's missing:
 |---|---|---|
 | Decision 4 for A, B and F | Publishing | `STATUS.md`, section 3: A, then B, then F; each later piece links the earlier ones, which return 404 until live |
 | Re-check facts O1 and O2 on the current account | Both were observed on the dry-run account on 27 October | Look in Dot's UI and record the date |
-| Census corrections from B's re-read (done 1 November: all eight sources re-opened, every number matched) | Five (Anthropic, LinkedIn, Uber, ClickHouse, Hex) were re-read in Chrome on 1 November, quotes checked verbatim (`runs/test-ai-analyst-before-rollout-verification.md`). Snowflake, GitHub, Salesforce, Vercel, Ramp, Prosus, WisdomAI, Grab and Dot's own pages were read only through WebFetch | Re-open each in a browser before B publishes |
+| Census corrections from B's re-read (done 1 November: all eight sources re-opened, every number matched; three corrections applied the same day: Snowflake's scoring cell, Snowflake added to "more than one right answer" (3 to 4), Ramp added to the strict bar and the re-run count (5 to 6)) | Five (Anthropic, LinkedIn, Uber, ClickHouse, Hex) were re-read in Chrome on 1 November, quotes checked verbatim (`runs/test-ai-analyst-before-rollout-verification.md`). Snowflake, GitHub, Salesforce, Vercel, Ramp, Prosus, WisdomAI, Grab and Dot's own pages were read only through WebFetch | Re-open each in a browser before B publishes |
 | The Olist licence | The CC BY-NC-SA 4.0 label (A10) was never verified at source. L1, L2 and L4 are decisions to proceed, not resolutions | Dot verifies the licence, or re-runs on its own data |
 | Assumptions A1–A8 | Each needs Dot's yes, no or change | Section 8 |
 | A number meaning two things, three times in one cluster | B's two fives and two sevens (different groups under one count), then "12 of 12 correct" and "8 of 8 correct", where 3 of 12 and 3 of 8 were correct only under the answer's own stated or a person-decided reading. Our own scores need the same item-by-item discipline rule 18 demands of Dot's answers | `mark_run.py` now prints the split (1 November 2026). A check that flags a bare "N of M correct" in a piece is not written |
@@ -179,7 +183,7 @@ What's missing:
 | The question bank | 102 questions, not re-ranked with sales-call questions | Re-rank with ten sales-call questions |
 | The incumbent shortlist | Stale (`bank/README.md`) | Re-check the pages that rank |
 | Tier 3 | Agreed for after the pieces | The 18-query citation reading, `bank/surfaces.csv`, `/distribute`, `check_posts.py`, a post queue |
-| Cold-start gaps (tested once, 1 November 2026) | A fresh session given only the README reached a research verdict on bank #29 (PIECE IF) in about 4 minutes. Full log: `runs/coldstart/COLDSTART-LOG-2026-11-01.md`. Gaps, most serious first: (1) section 3's first test skips Decision 1 and the truth spec, which the gate requires before a run; (2) the gate has no branch for a PIECE IF verdict, and nothing says who records a licence decision for a new piece; (3) the researcher isn't told which tables Dot's workspace holds; (4) the researcher isn't pointed to the bank row's gap basis or to `facts/house-structure-and-links.md` for the Playbook stage, and its test questions had a fresh-chat question worded as a follow-up; (5) the manifest stores the bank's short question, not the buyer's wording; (6) docs contradicted each other (fixed the same day: section numbers, the CLAUDE.md version, this section's state); (7) `stage_gate.py --help` treats --help as a slug; `bank.py top` picks #41 with no rule for choosing another | Fix (1) and (2) first: they let a new user run Dot before the rival definitions exist |
+| Cold-start gaps (tested once, 1 November 2026) | A fresh session given only the README reached a research verdict on bank #29 (PIECE IF) in about 4 minutes. Full log: `runs/coldstart/COLDSTART-LOG-2026-11-01.md`. Gaps, most serious first: (1) section 3's first test skips Decision 1 and the truth spec, which the gate requires before a run; (2) the gate has no branch for a PIECE IF verdict, and nothing says who records a licence decision for a new piece; (3) the researcher isn't told which tables Dot's workspace holds; (4) the researcher isn't pointed to the bank row's gap basis or to `facts/house-structure-and-links.md` for the Playbook stage, and its test questions had a fresh-chat question worded as a follow-up; (5) the manifest stores the bank's short question, not the buyer's wording; (6) docs contradicted each other (fixed the same day: section numbers, the CLAUDE.md version, this section's state); (7) `stage_gate.py --help` treats --help as a slug; `bank.py top` picks #41 with no rule for choosing another | (1) and (2) fixed 1 November (CLAUDE.md v1.8.14): the first test follows the gate, and the gate waits on a recorded PIECE IF check. (3) to (7) open |
 | Nobody but the author has run it end to end | Tested once cold, to the research verdict (above); never by a person other than the author, never to a published piece | One full piece by Dot's team |
 
 **Why the browser step exists: the Anthropic record (1 November 2026).** Three errors were found in how the cluster used Anthropic's post. (1) The drift quote in our figures stopped at "over a month."; the page continues "before we treated this as an engineering problem", so B let a reader take the drift as ongoing. (2) The "three consecutive net-negative iterations" quote was also cut short (not used in a piece). (3) When the missing clause was added, we wrote "drift" where Anthropic wrote "this", and the paraphrase spread to B, F and both FAQ files before Gemini caught it. The first two came from reading the page through a model's fetch, which returns a model's reading, not the text; the third was ours. The Hex quote ("on purpose") was the same kind of fetch error. Open every source in a browser, and check quotes against the page's own text by script (`runs/test-ai-analyst-before-rollout-verification.md` shows how); when adding words from a source, quote them rather than paraphrase.
@@ -221,7 +225,7 @@ What's missing:
 
 Dot's context agent page (https://www.getdot.ai/context-agent), in its top product panel, says: "Merging re-checks accuracy first: Dot answers its 25 questions again and merges at 95% or more." Set against B's census of 13:
 
-- 5 of the 13 re-run their tests on a change, before each deploy, or daily.
+- 6 of the 13 re-run their tests on a change, before each deploy, or daily (5 until Ramp was added on 1 November).
 - 1 of the 13 states a numeric bar: Anthropic, which "initially used ~90%" as a launch threshold.
 - None states a bar that a change must clear before it merges. Dot's page states exactly that.
 

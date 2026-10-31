@@ -11,5 +11,9 @@
       "stated_in": "runs/ai-analyst-follow-up-questions-run.md, Batch 1: conditions",
       "cost": "no claim about mode, credits, environment or context notes in the piece"
     }
-  ]
+  ],
+  "piece_if_cleared": {
+    "by": "recorded from the files by Claude, 2026-11-01; for Saurabh to confirm",
+    "basis": "The condition was met before the run: figures/ai-analyst-follow-up-questions-truth.csv computes the late rows from order_delivered_customer_date and order_estimated_delivery_date, read from the raw Olist CSVs on 31 October."
+  }
 }

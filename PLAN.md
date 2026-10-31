@@ -70,7 +70,7 @@ A deliberate change from the roadmap update (31 October 2026). Its post model dr
 |---|---|---|---|
 | 1 | The number | B | 13 organisations clear the wider bar, 5 the strict one (figures C-1, C-2) |
 | 2 | The transcript | A | A verbatim Dot answer from `runs/ai-analyst-follow-up-questions-run.md` |
-| 3 | The failure taxonomy | B | The 8 that don't clear the strict bar, and what each is missing |
+| 3 | The failure taxonomy | B | The 7 that don't clear the strict bar (8 until Ramp was added, 1 November), and what each is missing |
 | 4 | The contrarian read | F | You don't need 50–100 test questions (only if F's evidence supports it) |
 | 5 | The checklist | F | The guide's own steps |
 | 6 | The build log | A | `runs/ai-analyst-follow-up-questions-timing.csv` and what the run took (no credits figure: rule 14 was waived for A's run) |

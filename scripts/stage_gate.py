@@ -6,6 +6,7 @@ Usage:
     python scripts/stage_gate.py <slug> --json     # the same, for the workflow
     python scripts/stage_gate.py start <slug> --bank <id> [--format research|teardown|guide] [--practice]
     python scripts/stage_gate.py waive <slug> --rule 14 --batch <n> --by "<name, YYYY-MM-DD>"
+    python scripts/stage_gate.py clear <slug> --by "<name, YYYY-MM-DD>" --basis "<how a PIECE IF condition was met>"
 
 It remembers nothing: every answer comes from files in the repo, so it gives the same
 answer in a new session as in the one that wrote them. Stages are checked in order;
@@ -129,7 +130,16 @@ def assess(slug):
     if re.search(r"^\*\*NOT A PIECE", research, re.M):
         add("research", "blocked", "the verdict is NOT A PIECE")
         return stages
-    add("research", "done", f"runs/{slug}-research.md")
+    # PIECE IF (1 November 2026, from the cold-start test): the condition is a person's to check, and the
+    # check is recorded in the manifest, so the gate can see it. Until then the piece waits at research.
+    m_if = re.search(r"^\*\*PIECE IF\*\*\s*(.*)$", research, re.M)
+    if m_if and not manifest.get("piece_if_cleared"):
+        add("research", "waiting", "the verdict is PIECE IF: " + m_if.group(1).strip()[:200]
+            + f" A person checks the condition, then runs python scripts/stage_gate.py clear {slug} "
+            "--by \"<name, date>\" --basis \"<how it was met>\"")
+        return stages
+    add("research", "done", f"runs/{slug}-research.md"
+        + (f" (PIECE IF cleared by {manifest['piece_if_cleared']['by']})" if m_if else ""))
 
     if fmt != "research":
         for s in ("truth", "run", "mark"):
@@ -383,7 +393,35 @@ def waive(argv):
     return 0
 
 
+def clear(argv):
+    """Record that a person checked a PIECE IF verdict's condition, and how it was met."""
+    def opt(name):
+        return argv[argv.index(name) + 1] if name in argv and argv.index(name) + 1 < len(argv) else None
+    if len(argv) < 3 or not opt("--by") or not opt("--basis"):
+        print(__doc__)
+        return 2
+    slug = argv[2]
+    path = Path(f"runs/{slug}-piece.json")
+    research = read(f"runs/{slug}-research.md") or ""
+    if not path.exists():
+        print(f"Refused: {path} doesn't exist; Decision 1 first.")
+        return 1
+    if not re.search(r"^\*\*PIECE IF\*\*", research, re.M):
+        print(f"Refused: runs/{slug}-research.md has no PIECE IF verdict to clear.")
+        return 1
+    manifest = json.loads(path.read_text(encoding="utf-8"))
+    manifest["piece_if_cleared"] = {"by": opt("--by"), "basis": opt("--basis")}
+    path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    print(f"Wrote {path}: PIECE IF condition cleared by {opt('--by')}.")
+    return 0
+
+
 def main(argv):
+    if len(argv) >= 2 and argv[1] in ("--help", "-h", "help"):
+        print(__doc__)
+        return 0
+    if len(argv) >= 2 and argv[1] == "clear":
+        return clear(argv)
     if len(argv) >= 2 and argv[1] == "start":
         return start(argv)
     if len(argv) >= 2 and argv[1] == "waive":

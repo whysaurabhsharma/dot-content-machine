@@ -1,15 +1,15 @@
 # 7 Companies Published Their AI Analysts' Accuracy. No Two Measured the Same Thing.
 
-**We read how 13 companies, including Anthropic, LinkedIn and Uber, test their AI analysts: the internal agents their staff use to ask data questions. Seven of the 13 published an accuracy figure, each measured differently: ClickHouse compared result sets, LinkedIn's experts rated answers, Vercel counted successes without defining them. By the end, you'll have one table of what all 13 measured, and the five that published enough to copy are marked. Start from those five.**
+**We read how 13 companies, including Anthropic, LinkedIn and Uber, test their AI analysts: the internal agents their staff use to ask data questions. Seven of the 13 published an accuracy figure, each measured differently: ClickHouse compared result sets, LinkedIn's experts rated answers, Vercel counted successes without defining them. By the end, you'll have one table of what all 13 measured, and the six that published enough to copy are marked. Start from those six.**
 
 **The whole piece in eight lines:**
 
 1. Of 13 companies that published how they test their AI analyst, 7 published an accuracy figure.
 2. Each figure came from its own test set, scored its own way.
-3. Five companies published enough to copy: what they test against, how they score and when they run it.
+3. Six companies published enough to copy: what they test against, how they score and when they run it.
 4. Of the 13, 8 build their test set from real questions or ground-truth answers.
 5. A real question can have more than one right answer. About 60% of LinkedIn's benchmark questions do.
-6. Anthropic, Uber, Hex, GitHub and Salesforce re-run their tests on a change, before each deploy, or daily.
+6. Anthropic, Uber, Hex, GitHub, Salesforce and Ramp re-run their tests on a change, before each deploy, or daily.
 7. Only Anthropic's publication sets a bar to clear before launch: about 90%, at first.
 8. Our earlier run on Dot used the method's core: every expected answer computed before asking.
 
@@ -29,7 +29,7 @@ Eight of the 13 build their [AI analyst](https://www.getdot.ai/blog/conversation
 
 [LinkedIn](https://www.linkedin.com/blog/engineering/ai/practical-text-to-sql-for-data-analytics) asked domain experts in 10 product areas for over 130 questions, each with a ground-truth query. [Uber](https://www.uber.com/blog/query-gpt) took real questions from QueryGPT's logs and verified the golden SQL by hand. [ClickHouse](https://clickhouse.com/blog/agentic-analytics-benchmark-data-agent-mnist) built its set from its internal agent's production traffic.
 
-Three of the 13 companies deal in print with questions that have more than one right answer. About 60% of LinkedIn's benchmark questions have more than one accepted answer. Without those extra answers, LinkedIn "underreported recall by 10-15%". Uber notes that a question can have more than one correct SQL query.
+Four of the 13 companies deal in print with questions that have more than one right answer: LinkedIn, Uber, ClickHouse and Snowflake. About 60% of LinkedIn's benchmark questions have more than one accepted answer. Without those extra answers, LinkedIn "underreported recall by 10-15%". Uber notes that a question can have more than one correct SQL query.
 
 ClickHouse narrowed 501 candidate questions to 243. Its model panel then dropped 39 where no two models agreed, and a legal review removed 3 more, leaving 201. LinkedIn's remedy is a calendar: experts review its benchmark every 3 months and add accepted answers.
 
@@ -45,9 +45,9 @@ Anthropic's post doesn't say what kind of grader it uses, so the count leaves it
 
 Anthropic reports that its offline accuracy drifted from about 95% at launch to about 65% over a month. That was before Anthropic treated it as an engineering problem. [Dot's essay on accuracy decay](https://www.getdot.ai/blog/your-ai-analyst-will-be-worse-next-month) starts from that figure. Anthropic's case shows that a test passed at launch can say little about the same agent a month later.
 
-Anthropic, Uber, Hex, GitHub and Salesforce re-run their tests on a change, before each deploy, or daily. Anthropic re-runs the affected evals in CI when a PR touches a dependency. [Uber's Finch](https://www.uber.com/blog/unlocking-financial-insights-with-finch) re-runs historical queries before a prompt or model update deploys. Ramp describes testing but no trigger, so it isn't counted.
+Anthropic, Uber, Hex, GitHub, Salesforce and Ramp re-run their tests on a change, before each deploy, or daily. Anthropic re-runs the affected evals in CI when a PR touches a dependency. [Uber's Finch](https://www.uber.com/blog/unlocking-financial-insights-with-finch) re-runs historical queries before a prompt or model update deploys. [Ramp](https://engineering.ramp.com/post/meet-ramp-research) runs its tests when its context changes: "update context, run tests, and confirm improvements".
 
-This group isn't the same as the five full methods in the table below. GitHub and Salesforce re-run on a change but don't say how they score. LinkedIn and ClickHouse publish a full method but don't re-run on every change.
+This group isn't the same as the six full methods in the table below. GitHub and Salesforce re-run on a change but don't say how they score. LinkedIn and ClickHouse publish a full method but don't re-run on every change.
 
 Re-runs vary on their own, which makes a small drop hard to read. Uber does "not over-index decisions based on ~5% run-to-run changes in most metrics".
 
@@ -65,7 +65,7 @@ That is the census's more-than-one-right-answer problem, found in a run of our o
 
 A company entered this census when its own publication named a method, described a test set, or gave its own accuracy figure. Prosus entered on a named method: its agent asks people to clarify and says when it can't find an answer. Each row draws on the company's own publications, read on 31 October 2026.
 
-The five names in bold state their test set, scoring and timing; that makes them the most complete descriptions, not proof of better testing. "(vendor)" marks a company that sells what it evaluates. "Not stated" means the publication doesn't say.
+The six names in bold state their test set, scoring and timing; that makes them the most complete descriptions, not proof of better testing. "(vendor)" marks a company that sells what it evaluates. "Not stated" means the publication doesn't say.
 
 | Company | Accuracy figure | Tests against | Scores with | Runs when |
 |---|---|---|---|---|
@@ -74,11 +74,11 @@ The five names in bold state their test set, scoring and timing; that makes them
 | **[Uber](https://www.uber.com/blog/query-gpt)** | None published | Logged questions, hand-checked golden SQL | LLM similarity plus table overlap | Over time; before Finch updates deploy |
 | **[ClickHouse](https://clickhouse.com/blog/agentic-analytics-benchmark-data-agent-mnist)** | 76.6% for the top model | 201 production questions | LLM jury, majority vote | Once per model round |
 | **[Hex](https://hex.tech/blog/evaluate-data-agents/)** (vendor) | None published | A synthetic company with ground truths | Rubrics: code, LLM or both | Daily |
-| [Snowflake](https://www.snowflake.com/en/engineering-blog/cortex-analyst-text-to-sql-accuracy-bi/) (vendor) | 51% for GPT-4o, internal set | 150 questions, human-selected gold queries | LLM judge | Not stated |
+| **[Ramp](https://engineering.ramp.com/post/meet-ramp-research)** | None published | Experts' end-to-end tests | Assertions on answer and steps | When its context changes |
+| [Snowflake](https://www.snowflake.com/en/engineering-blog/cortex-analyst-text-to-sql-accuracy-bi/) (vendor) | 51% for GPT-4o, internal set | 150 questions, human-selected gold queries | Human-selected gold queries, column match | Not stated |
 | [GitHub](https://github.blog/ai-and-ml/github-copilot/how-we-built-an-internal-data-analytics-agent/) | None published | Known answers and ground-truth SQL | Not stated | Every config change |
 | [Salesforce](https://www.salesforce.com/blog/text-to-sql-agent/) | ~50% at launch, method not stated | Not stated | Not stated | On knowledge-base changes |
 | [Vercel](https://vercel.com/blog/we-removed-80-percent-of-our-agents-tools) | 80% to 100% success | 5 representative queries | Success, not defined | Not stated |
-| [Ramp](https://engineering.ramp.com/post/meet-ramp-research) | None published | Experts' end-to-end tests | Not stated | Not stated |
 | [Prosus](https://www.prosus.com/news-insights/2024/democratising-data-analysis-with-toqan) | None published | Not stated | Not stated | Not stated |
 | [WisdomAI](https://www.wisdom.ai/blog/how-wisdom-gets-text-to-sql-right) (vendor) | 20% to 85% across learning phases | Public LiveSQLBench subset | Heuristics plus LLM judge | Not stated |
 | [Grab](https://engineering.grab.com/grab-bench-evaluating-ai) | None published | Canaries and hidden cases | LLM judges for SQL | Not stated |
