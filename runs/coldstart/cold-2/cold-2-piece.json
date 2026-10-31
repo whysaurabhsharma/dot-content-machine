@@ -1,0 +1,13 @@
+{
+  "slug": "cold-2",
+  "bank_id": "42",
+  "question": "What does a good AI analyst do when the question is ambiguous, like 'best month'?",
+  "topic": "ambiguous business questions AI",
+  "format": "research",
+  "practice": true,
+  "why": "",
+  "piece_if_cleared": {
+    "by": "cold-start test (practice), not a person's review, 2026-11-01",
+    "basis": "Forward condition, not checkable before the run. get_catalog (03:22) lists the metrics note as a definition, so it exists; whether it is ON is not observable via MCP. The run's conditions block records this, and any finding is stated as Dot's behaviour with that note present."
+  }
+}
