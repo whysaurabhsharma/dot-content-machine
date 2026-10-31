@@ -21,6 +21,12 @@ INLINE = re.compile(r"\*\*(.+?)\*\*|(?<![\w*])\*(?!\s)(.+?)\*(?!\w)|\[([^\]]+)\]
 
 
 # ---------- parsing, shared with export_webflow.py ----------
+def unquote(s):
+    """Strip one matching pair of surrounding double quotes, not a quote that ends a value
+    ('anchor "x"' kept its closing quote stripped until 1 November 2026)."""
+    return s[1:-1] if len(s) >= 2 and s[0] == s[-1] == '"' else s
+
+
 def front_matter(text):
     """(meta, body). Lists in the front matter become Python lists."""
     if not text.startswith("---"):
@@ -29,10 +35,10 @@ def front_matter(text):
     meta, key = {}, None
     for line in fm.strip().splitlines():
         if re.match(r"^\s+-\s+", line) and key:
-            meta.setdefault(key, []).append(line.split("-", 1)[1].strip().strip('"'))
+            meta.setdefault(key, []).append(unquote(line.split("-", 1)[1].strip()))
         elif ":" in line:
             key, val = line.split(":", 1)
-            key, val = key.strip(), val.strip().strip('"')
+            key, val = key.strip(), unquote(val.strip())
             meta[key] = val if val else []
     return meta, body
 

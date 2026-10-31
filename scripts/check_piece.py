@@ -33,6 +33,12 @@ DATE = re.compile(rf"\b\d{{1,2}} (?:{MONTHS})(?: \d{{4}})?\b|\b(?:{MONTHS}) \d{{
 
 
 # ---------- parsing ----------
+def unquote(s):
+    """Strip one matching pair of surrounding double quotes, not a quote that ends a value
+    ('anchor "x"' kept its closing quote stripped until 1 November 2026)."""
+    return s[1:-1] if len(s) >= 2 and s[0] == s[-1] == '"' else s
+
+
 def parse_front_matter(text):
     if not text.startswith("---"):
         return {}, text
@@ -40,10 +46,10 @@ def parse_front_matter(text):
     meta, key = {}, None
     for line in fm.strip().splitlines():
         if re.match(r"^\s+-\s+", line) and key:
-            meta.setdefault(key, []).append(line.split("-", 1)[1].strip().strip('"'))
+            meta.setdefault(key, []).append(unquote(line.split("-", 1)[1].strip()))
         elif ":" in line:
             key, val = line.split(":", 1)
-            key, val = key.strip(), val.strip().strip('"')
+            key, val = key.strip(), unquote(val.strip())
             meta[key] = val if val else []
     return meta, body
 
@@ -503,6 +509,16 @@ def run(path):
     add(17, st17, nm17, dt17)
     add(18, "HUMAN", "Dataset and licence recorded in Sources", "Sources tab")
     st19, nm19, dt19 = check_banned(FENCE.sub("", body), prose)
+    # v1.8.20: the front matter must parse as YAML. Our own parser splits each line at its first
+    # colon and so read A's broken "title_approved_by" fine, but Webflow imports and editors use real
+    # YAML; an unparseable front matter breaks an import, not a sentence, so no reader would catch it.
+    try:
+        import yaml
+        yaml.safe_load(text.split("---", 2)[1]) if text.startswith("---") else None
+    except ImportError:
+        st19, dt19 = "FAIL", dt19 + "; PyYAML not installed, so the front matter can't be checked (pip install pyyaml)"
+    except Exception as e:
+        st19, dt19 = "FAIL", dt19 + f"; front matter is not valid YAML: {str(e).splitlines()[0]} (quote any value containing a colon, #, or a leading quote)"
     rev_on = meta.get("reviewed_on", "")
     if rev_on:
         dt19 += f"; reviewed_on {rev_on}"

@@ -14,7 +14,7 @@ queries:
   - text to sql accuracy
 playbook_url: https://www.getdot.ai/blog/ai-data-analyst-playbook
 figures: figures/how-companies-test-ai-data-analysts-figures.csv
-dataset: "None for the census: 13 companies' own publications, each re-opened 31 October 2026; no dataset analysed and no Dot batch of its own. The Dot section cites piece A's run (runs/ai-analyst-follow-up-questions-run.md): Olist, CC BY-NC-SA 4.0, licence decision L1."
+dataset: "None for the census: 13 companies' own publications, each re-opened 31 October 2026; no dataset analysed and no Dot batch of its own. The Dot section cites piece A's run (runs/ai-analyst-follow-up-questions-run.md): Olist, CC BY-NC-SA 4.0; Dot confirmed on 1 November 2026 that it may publish figures from it (facts L-OLIST)."
 title_approved_by: Saurabh, 2026-10-31
 reviewed_on: 2026-10-31
 author: Saurabh Sharma

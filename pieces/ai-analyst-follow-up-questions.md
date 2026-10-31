@@ -1,6 +1,6 @@
 ---
 title: "Your AI Analyst Picked a Date. Only the SQL Said Which."
-title_approved_by: Saurabh, 2026-10-31 (fifth title: the attempt 4 readers' fix for the title-lede contradiction in the fourth)
+title_approved_by: "Saurabh, 2026-10-31 (fifth title: the attempt 4 readers' fix for the title-lede contradiction in the fourth)"
 reviewed_on: 2026-10-31
 author: Saurabh Sharma
 author_approved_by: Dot (Rick), 2026-11-01
@@ -12,7 +12,7 @@ queries:
   - conversational analytics
 playbook_url: https://www.getdot.ai/blog/ai-data-analyst-playbook
 figures: figures/ai-analyst-follow-up-questions-figures.csv
-dataset: Olist public dataset (orders and order items tables), CC BY-NC-SA 4.0 (facts A10, an Assumption)
+dataset: "Olist public dataset (orders and order items tables), CC BY-NC-SA 4.0. Dot confirmed on 1 November 2026 that it may publish figures from it (facts L-OLIST)."
 query_data: "AI analyst follow-up questions context: not measured (not in keywords.csv). Related: conversational analytics 1.2K US, difficulty 15; ai data analyst 700 US, difficulty 22. Ahrefs, 27–28 October 2026"
 reverse_links:
   - The Playbook's Stage 3 · Prove card (https://www.getdot.ai/blog/ai-data-analyst-playbook), anchor "test follow-up questions"

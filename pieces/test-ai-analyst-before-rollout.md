@@ -15,7 +15,7 @@ queries:
   - ai data analyst accuracy
 playbook_url: https://www.getdot.ai/blog/ai-data-analyst-playbook
 figures: figures/test-ai-analyst-before-rollout-figures.csv
-dataset: "No new run. The steps cite two earlier runs of ours on the Olist public e-commerce dataset (orders and order items tables): piece A's run (runs/ai-analyst-follow-up-questions-run.md) and piece 2's archived run (runs/ai-analyst-shows-sql-run.md). Licence CC BY-NC-SA 4.0 (facts A10, an Assumption, unverified at source); publication decision L4, a decision and not a resolution. Census figures come from the publications in piece B's census, re-read 1 November 2026."
+dataset: "No new run. The steps cite two earlier runs of ours on the Olist public e-commerce dataset (orders and order items tables): piece A's run (runs/ai-analyst-follow-up-questions-run.md) and piece 2's archived run (runs/ai-analyst-shows-sql-run.md). Licence CC BY-NC-SA 4.0; Dot confirmed on 1 November 2026 that it may publish figures from it (facts L-OLIST)."
 title_approved_by: Saurabh, 2026-11-01
 reviewed_on: 2026-11-01
 author: Saurabh Sharma
