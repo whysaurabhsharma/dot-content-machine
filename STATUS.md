@@ -10,7 +10,7 @@
 | **B**, teardown: `how-companies-test-ai-data-analysts` | "7 Companies Published Their AI Analysts' Accuracy. No Two Measured the Same Thing." A census of 13 companies' published testing methods. 18 pass, 0 fail. Exported |
 | **F**, guide (the hub): `test-ai-analyst-before-rollout` | "How to Test an AI Data Analyst Before Rollout: 8 Steps", each step tagged with its evidence. 19 pass, 0 fail. Exported |
 | **Six LinkedIn posts** | Two per piece, six different structures, first lines by Saurabh. All pass the post checks. Order: B1, A2, B3, F5, A6, F4 (the cluster numbers in `PLAN.md`) |
-| **The machine** | `/piece <slug>` runs research to export in Claude Code, stopping at seven points a person owns; 25-check gate (`check_piece.py`); rulebook `CLAUDE.md` v1.8.13 |
+| **The machine** | `/piece <slug>` runs research to export in Claude Code, stopping at seven points a person owns; 25-check gate (`check_piece.py`); rulebook `CLAUDE.md` v1.8.24 |
 
 Exports: `exports/<slug>/` (a .docx, clean Markdown, Webflow HTML and fields; not in git).
 
@@ -54,5 +54,5 @@ All three pieces are exported (1 November 2026), each folder with its PUBLISH-NO
 - **No check that pieces agree with each other**, and none that flags a bare "N of M correct". Both errors were caught by people this time.
 - **No chart stage** in the workflow; a missing chart passes the checker.
 - **The `/linkedin` skill** still lists the older five structures, not the cluster's six.
-- **Cold-start gaps 1 and 2: fixed 1 November.** The handover's first test now follows the gate (Decision 1, research, PIECE IF check, truth spec reviewed, then the run). The gate has a PIECE IF branch: it waits until a person records how the condition was met (`stage_gate.py clear`). F's condition is recorded as Saurabh's (L4 and the browser re-read); A's was recorded from the files for Saurabh to confirm. Gaps 3 to 7 stay open (HANDOVER.md section 6).
-- **The machine has been run cold once, to a research verdict** (a fresh session from the README alone, 1 November; gaps in HANDOVER.md section 6), **but never end to end by anyone but the author.** The monthly measurement loop has never run, and nothing is published, so there is no outcome to measure yet.
+- **Cold-start gaps 1 and 2: fixed 1 November.** The handover's first test now follows the gate (Decision 1, research, PIECE IF check, truth spec reviewed, then the run). The gate has a PIECE IF branch: it waits until a person records how the condition was met (`stage_gate.py clear`). F's condition is recorded as Saurabh's (L4 and the browser re-read); A's was recorded from the files for Saurabh to confirm. Gaps 3 to 7 were fixed the same day (CLAUDE.md v1.8.21).
+- **The machine has been run cold three times** (fresh sessions from the README alone, 1 November: a research verdict, a marked Dot run, the teardown first test; what was fixed and what is open in HANDOVER.md, "For a newcomer"), **but never end to end by anyone but the author.** The monthly measurement loop has never run, and nothing is published, so there is no outcome to measure yet.

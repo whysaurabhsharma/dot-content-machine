@@ -28,8 +28,8 @@ The earlier Claude Project trial's pieces and posts are in `archive/` and are no
 
 | Path | What it is |
 |---|---|
-| `HANDOVER.md` | Set-up in Claude Code, a 15-minute first test, how to run a full piece, the monthly loop, what's still open |
-| `CLAUDE.md` | Every rule: 23 hard rules, 17 style rules, the seven stages, the 25-check gate, a dated change log (v1.8.13). Claude Code reads it automatically |
+| `HANDOVER.md` | Set-up in Claude Code, a first test (a teardown, about 10 minutes of machine time), how to run a full piece, the monthly loop, what's still open |
+| `CLAUDE.md` | Every rule: 23 hard rules, 17 style rules, the seven stages, the 25-check gate, a dated change log (v1.8.24). Claude Code reads it automatically |
 | `.claude/agents/researcher.md` | Stage 1 RESEARCH as a subagent. Reads the Ahrefs snapshot and the citation series, fetches the top three pages, writes `runs/<piece>-research.md` |
 | `.claude/agents/dot-runner.md` | The evidence run as a subagent. Asks Dot each test question verbatim through `ask_dot` and appends every answer to `runs/<piece>-run.md` |
 | `prompts/01-research.md` … `07-linkedin.md` | The seven stage prompts. 01 runs as the `researcher` subagent; 02, 03 and 07 as the `/outline`, `/draft` and `/linkedin` skills; 04–06 are not yet built |
@@ -51,7 +51,7 @@ The earlier Claude Project trial's pieces and posts are in `archive/` and are no
 | `scripts/check_piece.py` | Runs the 25-check gate on a piece: 15 checks decided alone, 3 with a person, 6 flagged for a human. With `--post`, checks each LinkedIn post in a `posts/` file against stage 7 and checks 15, 17 and 19 |
 | `scripts/verify_sources.py` | Opens every link in a piece |
 | `scripts/ground_truth_from_spec.py` | Computes every expected value in a JSON spec from the raw CSVs and writes `figures/<piece>-truth.csv`, with each definition, row count and CSV date. A row that can't be computed carries its reason |
-| `scripts/mark_run.py` | Marks each answer in `runs/<piece>-run.md` against `figures/<piece>-truth.csv`, under the definition the answer stated; gaps under 0.1% are rounding. Appends to `figures/<piece>-figures.csv` and prints "N of M correct" |
+| `scripts/mark_run.py` | Marks each answer in `runs/<piece>-run.md` against `figures/<piece>-truth.csv`, under the definition the answer stated; gaps under 0.1% are rounding. Appends to `figures/<piece>-figures.csv` and prints how many were correct under the definition asked and how many only under another reading, never a bare total (CLAUDE.md v1.8.10) |
 | `scripts/timing.py` | Logs a stage's start and end to `runs/<piece>-timing.csv`, with minutes, for time per piece |
 | `scripts/charts.py` | One chart per piece from a JSON spec, with alt text and caption |
 | `.claude/agents/reader.md`, `fact-checker.md`, `lift-tester.md` | The three blind reviewers: no CLAUDE.md, a Read allowlist enforced by `scripts/hooks/read_allowlist.py`, a body-only review copy. Start them only with `scripts/run_reviewer.py`; what still reaches them is in `facts/reviewer-blindness.md` |
@@ -61,9 +61,6 @@ The earlier Claude Project trial's pieces and posts are in `archive/` and are no
 | `scripts/hooks/only_date.py` | The hook that limits `dot-runner`'s Bash to the `date` command |
 | `pieces/<slug>.md`, `figures/<slug>-figures.csv`, `charts/`, `posts/<slug>-posts.md` | Each piece, its Figures rows, its chart and its posts, named by slug |
 | `archive/` | The earlier trial's pieces, figures, charts and posts: superseded, kept for the record |
-| `tracking/` | A note on the tracking sheet, a Google Sheet sent with this folder as a link: Question bank, Coverage, Sources, Figures, Baseline, Run Log |
-| `guides/Dot-Run-a-Full-Piece.pdf` | Step-by-step guide to one complete piece, written for the earlier Claude Project set-up. The steps hold; where it says to paste into the Project, use the subagent or prompt named below instead |
-| `guides/Dot-Machine-Tester-Guide.pdf` | A 30-minute first test, written for the earlier Claude Project set-up. Superseded by `HANDOVER.md` section 3 |
 
 ## Quick start
 
@@ -86,8 +83,9 @@ Then run `claude` in this folder and type `/mcp` to check that `ask_dot` is conn
 
 ## Where the three pieces stand (1 November 2026)
 
-- **A and B** pass every automated check (18 pass, 0 fail; check 1 is PARTIAL on B's claim title by design). Each has had the three blind reviewers, a second fact-check on other models, the headline test, the lift test and a phone read, recorded in `reviews/<slug>/human.md`.
-- **F** is through Decision 3 and exported (19 pass, 0 fail).
+- **What `check_piece.py` prints (1 November 2026):** A, 17 pass, 0 fail, 1 partial, 7 for a human; B, 18 pass, 0 fail, 1 partial, 6 for a human; F, 19 pass, 0 fail, 0 partial, 6 for a human. A's and B's partial is check 1, a claim title, by design (the headline test covers it). A's extra human check is 25: its outline predates the quotable line.
+- **A and B** have each had the three blind reviewers, a second fact-check on other models, the headline test, the lift test and a phone read, recorded in `reviews/<slug>/human.md`.
+- **F** is through Decision 3 and exported.
 - **Before publishing:** the pre-publish list in `PLAN.md` and HANDOVER.md section 6: Rick's sign-offs, a re-check of facts O1 and O2 on the current account, A live before B. Run scores are quoted item by item, never as a bare total (CLAUDE.md v1.8.10).
 - The earlier pieces 1–3 of 28 October are archived in `archive/` and are not part of this submission.
 
@@ -101,7 +99,7 @@ Then run `claude` in this folder and type `/mcp` to check that `ask_dot` is conn
 - **The ask_dot MCP, 31 October 2026:** connected from Claude Code; one question asked and answered (BRL 137.04, basis stated); what it exposes recorded in `facts/dot-mcp.md`. Mode, credits, model, environment and active context notes are not observable via MCP.
 - **The only_date.py hook** was tested on its own: it allows `date` and `date +FORMAT`, and blocks chained commands, substitutions and other commands.
 - **Since tested (31 October–1 November 2026):** the `researcher` subagent on A, B and F; the `dot-runner` subagent on A's run; full pieces through the gate in Claude Code (A and B); the three blind reviewers through `run_reviewer.py`; time per stage, logged in `runs/<slug>-timing.csv` (costs in HANDOVER.md section 2).
-- **Tested once, cold (1 November 2026):** a fresh session given only this README reached a research verdict on bank #29 in about 4 minutes, and logged the gaps it hit (`runs/coldstart/`, HANDOVER.md section 6).
+- **Tested cold three times (1 November 2026),** each by a fresh Claude Code session given only the README, never by a person: to a research verdict (about 4 minutes), to a marked Dot run on a practice piece (about 10 minutes), and the teardown first test to "next outline" (about 6 minutes). Each logged the gaps it hit (`runs/coldstart/`; what was fixed and what is open: HANDOVER.md, "For a newcomer").
 - **Not yet tested:** a full piece run by a person other than the author; the monthly loop (never run); any outcome (nothing is published).
 
 ---

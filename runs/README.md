@@ -26,6 +26,8 @@ A rehearsal may record a batch's conditions as text, by hand, instead of screens
 
 Screenshots show the account holder's name and email. That is fine for internal evidence. A screenshot used in a published piece must have personal details removed first.
 
+**Considered and kept, 1 November 2026 (Saurabh).** The three `rehearsal-batch-1-*` screenshots show Saurabh's email, a Dot chat ID, the credit balance and the workspace name. They were reviewed before the repo was shared and kept uncropped: they are rule 17 evidence, `runs/rehearsal-run.md` links one of them, and nothing they show is new to Dot. The same images are in git history (deleted as `preview*.webp` in cf5594e); the repo is private and the history was not rewritten.
+
 ## Batches
 
 `dot-runner` has a limit of 60 turns, and each question takes about four. So a run is split into batches.

@@ -28,5 +28,5 @@ The flag was removed from the five writing skills (`/outline`, `/draft`, `/seo-g
 
 - Run for real on `rehearsal`, which has no manifest: one gate agent, then a stop at `question` / `waiting`, with no stage started.
 - Its loop, copied with a scripted gate and no-op stages: a FAIL that never clears stops after exactly two edit rounds; a FAIL cleared in round 2 moves on to the title decision; a stage that runs without changing the gate's answer stops as "no progress"; a failing stage stops at once.
-- Not yet run end to end on a real piece.
+- **Since run on real pieces (31 October–1 November 2026).** All three pieces (A, B, F) were taken through the stages in the order `stage_gate.py` allows, to export. `/piece` itself ran F's draft, SEO, blind reviews and revision (commit c2bee14), stopping at the human decisions as designed; its edit agent found the check 25 bug and stopped rather than change the piece (CLAUDE.md v1.8.11). By design no single `/piece` call goes from research to export: it stops at every decision a person owns.
 
