@@ -86,13 +86,13 @@ The five names in bold state their test set, scoring and timing. "(vendor)" mark
 ## Things to keep in mind
 
 - **Every figure is self-reported.** Each company measures its own system on its own test set, and none says the result was audited. We read each publication but checked nothing beyond it.
-- **The census counts what was published, and isn't exhaustive.** Posts from Pinterest, OpenAI, Netflix, Delivery Hero, Swiggy and Fiverr would not load, so 13 is a floor, not a full count.
+- **The census counts what was published, and isn't exhaustive.** Posts from Pinterest, OpenAI, Netflix, Delivery Hero, Swiggy and Fiverr would not load. They may describe how those companies test; the census can't say, so 13 is a floor, not a full count.
 - **Customer testing tools aren't counted.** Databricks, Microsoft and Google publish tools for customers to test with, not how they check their own analyst.
 - **This census of 13 is not Dot's census of 14.** [Our census of how 14 companies built AI data analysts](https://www.getdot.ai/blog/how-companies-built-ai-data-analysts) counted what companies built; this one counts what they published about testing it.
 
 ## Where Dot fits
 
-[Dot answers data questions for your team.](https://www.getdot.ai/blog/conversational-analytics) Dot's [context-agent page](https://www.getdot.ai/context-agent) says a context change is re-checked before it merges. The page reads: "[Merging re-checks accuracy first: Dot answers its 25 questions again and merges at 95% or more.](https://www.getdot.ai/context-agent)" In this census, only Anthropic published a bar like that.
+[Dot answers data questions for your team.](https://www.getdot.ai/blog/conversational-analytics) Dot's [context agent page](https://www.getdot.ai/context-agent) says a context change is re-checked before it merges. The page reads: "[Merging re-checks accuracy first: Dot answers its 25 questions again and merges at 95% or more.](https://www.getdot.ai/context-agent)" In this census, only Anthropic published a bar like that.
 
 In [Dot's evaluation](https://docs.getdot.ai/train-dot/evaluation), each test question carries an expected answer, a unit and a tolerance in percent. More in the [AI Data Analyst Playbook](https://www.getdot.ai/blog/ai-data-analyst-playbook) and [Dot's docs](https://docs.getdot.ai).
 

@@ -39,7 +39,7 @@ Made by Saurabh Sharma, 27 October 2026, answering the product-claim list. Rick 
 | A1 | Cost per answer may be published, in dollars as well as credits. | Saurabh's answer | — | 1 |
 | A2 | 1 credit ≈ $1. | O8's "$300 in free credits" together with O7's 31 October 2026 reading: 300 base credits included, 0 bonus credits earned. Basis corrected 31 October 2026; it cited A3 until then. No Dot page states a price per credit. | per credit | — |
 | A4 | A "cheaper than an analyst" comparison may be published if the analyst's cost and its source are stated in the text. | Saurabh's answer: assume, and say so | cheaper than an analyst, analyst cost | 2 |
-| A5 | The context agent stores a definition once, and every chat answer uses it. | O3 and O4: eight answers scoped themselves to delivered orders, matching the note | context agent | 4 |
+| A5 | The context agent stores a definition once, and every chat answer uses it. | O3 and O4: eight answers scoped themselves to delivered orders, matching the note | stores a definition once, every chat answer uses it, every answer uses it | 4 |
 | A6 | Environments let a team test a definition change before it reaches everyone. | O9 only; the behaviour was not tested | environments let | 5 |
 | A7 | The evaluation always re-scores when a question is saved. | O2, seen twice; Saurabh: yes | always re-scores | 6 |
 | A8 | Dot is comfortable publishing a piece where its evaluation passes a 0.52% definition disagreement. | Saurabh's answer: assume | — | 7 |

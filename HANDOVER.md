@@ -69,6 +69,18 @@ Ahrefs access ended on 31 October 2026, so weeks 1 and 4 can't read Ahrefs until
 | Pieces older than run files | Pieces 1–3 have no `runs/<piece>-run.md`, so the fact-checker can't check their Dot quotes word for word. It is told to say so plainly, not treat them as checked | Re-run their questions with `dot-runner` if a piece is to be republished |
 | Nobody but the author has run it | The core claim about the machine | Section 2, then one full piece |
 
+## Found while writing: a positioning finding for Rick
+
+Dot's context agent page (https://www.getdot.ai/context-agent), in its top product panel, says: "Merging re-checks accuracy first: Dot answers its 25 questions again and merges at 95% or more." Set against the census of 13 companies' own testing publications (piece B):
+
+- Five of the 13 re-run their tests on a change, before each deploy, or daily (Anthropic, Uber, Hex, GitHub, Salesforce).
+- One of the 13 states a numeric bar: Anthropic, which "initially used ~90%" as a launch threshold.
+- None of the 13 states a numeric bar that a change must clear before it merges. Dot's page states exactly that.
+
+So a re-check against a stated threshold on every change, which Dot puts on its product page, is a practice the census found rarely published and never in this form. It is the strongest positioning line in the cluster.
+
+Caveats: the panel is an illustration, and the page doesn't describe the process further or say what happens below 95%. The piece quotes it as Dot's stated behaviour, not as something we observed. Rick's sign-off is on the pre-publish list.
+
 ## Found while writing: Dot's own accuracy claim
 
 Found on 31 October 2026 while writing the teardown `how-companies-test-ai-data-analysts`, whose finding is that published accuracy figures can't be compared unless they were measured on the same tasks. Recorded so Dot can decide what, if anything, to change; nothing on Dot's site was changed.
@@ -85,6 +97,7 @@ From the roadmap update of 31 October 2026, decided by Saurabh.
 
 - **Byline, a recommendation for Dot.** The roadmap cites evidence that content with a named author is cited about 2.3x more than anonymous content. The pieces carry a reviewed-on date (hard rule 22) but no named author: Rick did not run these tests, and who bylines a piece is Dot's decision. Check 19 forbids a byline nobody approved. If Dot names an author, add the field and drop that sentence from rule 22.
 - **Not adopted: the roadmap's skill names** (`/make-piece-plan`, `make-piece-write.js`, `/gate`). The machine already does the same jobs as `/piece`, `.claude/workflows/piece.js` and `scripts/stage_gate.py`; renaming would cost time and risk breaking references without changing what they do.
+- **The call to action, a question for Dot.** Three independent readers of piece B flagged the closing line ("If this excites you, we'd love to hear from you. Get in touch.") as off-voice. It matches the last line of every Rick post we checked (essays and teardowns), so it is house furniture, and it stays (style rule 9, check 13). Whether to keep it is Dot's call.
 - **Method limit: the second fact-check and pasted tables.** On 31 October 2026 Gemini, given piece B's review copy as pasted text, named 12 companies and said the census table was missing; the review copy had all 13 rows. A Markdown table pasted into a long prompt can lose rows or be read as plain text. Give the second fact-check the rendered page, or paste the table separately, and check its row count before trusting what the model says about it.
 - **A future piece: example test questions.** Readers of the teardown expected a bank of test questions they could copy. The census names where published examples are likely (LinkedIn's paper, ClickHouse's open-source test harness); about an hour of reading, with every question checked word for word, would produce them. Kept out of the teardown, which promises a census, not a question bank (Saurabh, 31 October 2026).
 - **FAQ schema kept, not demoted (Saurabh, 31 October 2026).** The roadmap demotes FAQ schema because it shows no measurable lift for pages already visible in AI answers. These pieces aren't visible yet, and an FAQ file costs nothing, so `/seo-geo` still writes one where it is earned. Revisit once a piece shows up in AI answers: then the roadmap's reason applies.
