@@ -33,8 +33,8 @@ Each factor has a `_basis` column (what the score rests on) and a `_by` column (
 Counted by script:
 
 - **Threes: 33 of 51 came down.** 30 failed the two tests; a person lowered 3 more (#29, #30, #34).
-- **Twos: 11 of the 20 original twos fail the same tests.** #4 was set to 1. The other 10 (#7, #10, #22, #63, #84, #85, #86, #89, #90, #96) are recorded as failing but not yet changed. A 2 passes only when the customer proof it names is published and linkable (an impact page, public docs).
-- **The 30 threes the tests lowered were set to 2, which is itself too high.** Their reasons name no customer proof, so by the same test they belong at 1. Not yet changed.
+- **Twos: 11 of the 20 original twos fail the same tests.** #4 was set to 1. The other 10 (#7, #10, #22, #63, #84, #85, #86, #89, #90, #96) were then set to 1 too. A 2 passes only when the customer proof it names is published and linkable (an impact page, public docs).
+- **The 30 threes the tests lowered were set to 2, which is itself too high.** Their reasons name no customer proof, so by the same test they belong at 1, and were set to 1 on 31 October 2026, each with the reason in its basis.
 
 **The two tests, for anyone re-scoring:** (1) is the feature Observed in `facts/dot-facts.md` or `facts/dot-mcp.md`? An Assumption doesn't count. (2) Does the data or proof the score rests on actually exist and is it ours, or published and citable? Fail either, and the score comes down. The `/bank` skill states test (1) and the data half of test (2); the published-proof half applies to every 2.
 
