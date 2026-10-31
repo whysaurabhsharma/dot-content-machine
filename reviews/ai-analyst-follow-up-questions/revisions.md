@@ -1,5 +1,38 @@
 # revisions · ai-analyst-follow-up-questions
 
+## Round 3
+
+31 October 2026, from revise-notes.md round 3 (Saurabh). check_piece.py afterwards: 18 pass, 0 fail, 6 for a human (1,116 words; lede 60 words). Title and title_approved_by untouched. Chart caption and alt text unchanged.
+
+### 1. Restructure: visible-vs-hidden is the spine
+
+- **H2 1 first.** Done: "Both late-order counts were correct, each for a different date" opens the body: method, table, 2,453 by purchase date (MR-Q2) and 1,762 by delivery date (MR-Q6), each matching the raw data for its date, the chart, and the SQL's date-filter columns; 691 (F12), 40,930 (F08), 4.3% (F09) and the rounding note stay here.
+- **H2 2, the spine.** Done: "The chain named its date; the fresh chat didn't". Q1's quote ("This uses purchase date, not delivery date."), Q6's unnamed date (quote under Q6, named as Q6), Q7's quote as the visible version, each under its question; then "Where the text was silent, the SQL wasn't."
+- **H2 3, memory, demoted.** Done: "Dot re-ran the first question four turns later", two short paragraphs: Q5 returned 43,428 again by re-running the query; Q8 kept Q7's delivery-date scope (BRL 651,458 against 987,765, F14).
+- **The test gains a step.** Done: step 5 is now "Check whether the answer names its date. If it doesn't, read the date filter in its SQL." The test is six steps; the lede, the test's H2 and the closing instruction all say six.
+- **Pocket guide.** Done: seven lines in the new order: two readings, both correct (with 691); named vs unnamed date and the SQL; memory; the test.
+- **SEO fields.** Done: seo_title "AI Analyst Follow-Up Questions: Check Which Date It Used" (56 characters, query words 83%); meta opens with the two correct counts, not a memory question, and has no "context test" (152 characters). Slug unchanged.
+
+### 2. Lede fixes
+
+- **"Both are correct": how we know.** Done in the lede: "Both are correct: each matches the raw data for its date."
+- **The fresh chat's date.** Done in the lede: "the fresh chat silently used delivery date."
+- **Define "late".** Done in the paragraph after the lede: "Late means delivered after the estimated delivery date", with Q2's own definition quoted under its question.
+- **Name the data as a public e-commerce dataset (Olist).** Done in the paragraph after the lede, because the lede was already at 60 words: "We ran this test on Olist, a public e-commerce dataset."
+- **"which you got".** Done: the lede now ends "a six-step test that shows which date your analyst used." 60 words, four sentences; 2,453, 1,762 and the named-vs-unnamed contrast kept.
+
+### 3. Hard rule 6: limitation paired with what the run supports
+
+- Done: in H2 2, Q6's unnamed date is followed by "Every answer in this run, 8 of 8, came back with its SQL" (F16) and "Most answers also named their date unprompted: 5 of 8, Q1, Q3, Q4, Q5 and Q7" (F15). "Where Dot fits" now says the same and nothing more.
+- No remedy claimed: the context-notes and evaluation-questions lines are cut from "Where Dot fits" (the context-agent link with them), so no feature is said to prevent or catch the unnamed date. Internal links: 5, the Playbook included.
+
+### Still holding
+
+- **Title.** Unchanged, with title_approved_by.
+- **Rule 14 waiver.** Nothing on mode, credits, environment or context notes; the caveat on hand-noted settings and the caption's "The run's mode is not stated" stay.
+- **Numbers.** Every number has a figures row (check 15: none missing); no new figure was needed.
+- **Chart.** Caption and alt text unchanged; charts/ai-analyst-follow-up-questions-late-orders.json needs no sync.
+
 ## Round 2, 31 October 2026: after the second reader and fact-checker reviews, with revise-notes.md
 
 check_piece.py afterwards: 18 pass, 0 fail, 6 for a human (1,211 words; longest sentence 25 words). Title and title_approved_by untouched.
