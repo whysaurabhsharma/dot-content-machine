@@ -29,7 +29,7 @@ Eight of the 13 build their [AI analyst](https://www.getdot.ai/blog/conversation
 
 [LinkedIn](https://www.linkedin.com/blog/engineering/ai/practical-text-to-sql-for-data-analytics) asked domain experts in 10 product areas for over 130 questions, each with a ground-truth query. [Uber](https://www.uber.com/blog/query-gpt) took real questions from QueryGPT's logs and verified the golden SQL by hand. [ClickHouse](https://clickhouse.com/blog/agentic-analytics-benchmark-data-agent-mnist) built its set from its internal agent's production traffic.
 
-Four of the 13 companies deal in print with questions that have more than one right answer: LinkedIn, Uber, ClickHouse and Snowflake. About 60% of LinkedIn's benchmark questions have more than one accepted answer; without them, LinkedIn "underreported recall by 10-15%". Uber notes that a question can have more than one correct SQL query. Snowflake keeps every correct query a human evaluator picks as a gold answer.
+Four of the 13 companies deal in print with questions that have more than one right answer: LinkedIn, Uber, ClickHouse and Snowflake. About 60% of LinkedIn's benchmark questions have more than one accepted answer. Without those extra answers, LinkedIn "underreported recall by 10-15%". Uber notes that a question can have more than one correct SQL query; Snowflake keeps every one a human evaluator picks.
 
 ClickHouse narrowed 501 candidate questions to 243. Its model panel then dropped 39 where no two models agreed, and a legal review removed 3 more, leaving 201. LinkedIn's remedy is a calendar: experts review its benchmark every 3 months and add accepted answers.
 
