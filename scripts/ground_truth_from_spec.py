@@ -25,6 +25,9 @@ table, a filter, a formula, and the unit and grain of the figure:
 - table: a key of "csv", or "items_x_orders" (items left-joined to orders on order_id).
 - filter: a pandas query string (python engine), or "" for every row.
 - formula: one expression over df, the filtered table, with pd available.
+- family (optional): rows that are rival definitions of one metric share a family.
+- signals (optional): phrases an answer uses when it states this row's formula,
+  such as "including shipping". mark_run.py reads them.
 
 Every value is computed from the raw CSVs; nothing is hard-coded and no figures file
 is read (CLAUDE.md hard rules 2 and 3). A question that can't be computed is written
@@ -38,8 +41,8 @@ import sys
 
 import pandas as pd
 
-FIELDS = ["question_id", "question", "metric", "table", "filter", "formula", "value",
-          "unit", "grain", "row_count", "csv_files", "computed_on", "error"]
+FIELDS = ["question_id", "question", "metric", "family", "table", "filter", "formula", "signals",
+          "value", "unit", "grain", "row_count", "csv_files", "computed_on", "error"]
 
 
 def load_tables(csv_paths):
@@ -86,7 +89,8 @@ def main(argv):
 
     rows, failed = [], 0
     for q in spec["questions"]:
-        row = {k: q.get(k, "") for k in ("question", "metric", "table", "filter", "formula", "unit", "grain")}
+        row = {k: q.get(k, "") for k in ("question", "metric", "family", "table", "filter", "formula", "unit", "grain")}
+        row["signals"] = "; ".join(q.get("signals", []))
         row.update(question_id=q["id"], csv_files=csv_files, computed_on=today,
                    value="", row_count="", error="")
         try:

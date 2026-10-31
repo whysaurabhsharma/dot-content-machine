@@ -21,11 +21,15 @@ Several truth rows sharing one definition is expected (three teams asking the sa
 metric in different words) and is never treated as ambiguous.
 
 Definitions. The answer is marked under the definition it stated, not the one we
-assumed. The candidates are the truth rows with the same formula as the matched row
-(for example, average order value over all orders, and over delivered orders). Each
-candidate's filter literals ('delivered', '2017') are looked for in the answer's
-Basis quotes. The candidate whose literals are exactly the ones the answer stated
-is the definition it used. If that's not the matched row, the row says so. A stated
+assumed. The candidates are the truth rows in the matched row's family (rival
+definitions of one metric), or, with no family, the rows with the same formula.
+Formula first: if the Basis quotes contain a candidate's signal phrases ("including
+shipping"), only signalled rows stay candidates; otherwise only rows with the matched
+row's formula do. Then filter: each candidate's filter literals ('delivered', '2017')
+are looked for in the Basis quotes. The candidate whose literals are exactly the ones the answer stated
+is the definition it used. If that's not the matched row, the row says so. An
+answer that states no scope, no filter literal and no signal phrase keeps the
+definition its question asked for: absence of evidence never reassigns it. A stated
 population that no candidate expresses ("shipped orders only") matches no row: the
 answer is reported as a different definition, never marked wrong.
 
@@ -84,7 +88,8 @@ def first_number(answer):
         if m.start() in skip:
             continue
         token = m.group(0)
-        return float(token.rstrip("%").replace(",", "")), token
+        value = float(token.rstrip("%").replace(",", ""))
+        return (int(value) if value.is_integer() else value), token
     return None, None
 
 
@@ -119,10 +124,21 @@ def fitting_rows(candidates, basis, population):
     return fits
 
 
+def signals(row):
+    return [p.strip().lower() for p in row.get("signals", "").split(";") if p.strip()]
+
+
 def stated_definition(matched, truth, basis, population):
     """The truth row for the definition the answer stated: the matched row if it
-    fits, otherwise the one definition that does. Rows sharing a definition count once."""
-    candidates = [r for r in truth if r["formula"] == matched["formula"]]
+    fits, otherwise the one definition that does. Rows sharing a definition count once.
+    With no evidence in the basis, the matched row stands."""
+    family = matched.get("family", "")
+    pool = [r for r in truth if r.get("family", "") == family] if family else         [r for r in truth if r["formula"] == matched["formula"]]
+    signalled = [r for r in pool if any(p in basis for p in signals(r))]
+    candidates = signalled or [r for r in pool if r["formula"] == matched["formula"]]
+    literals = {l.lower() for r in candidates for l in LITERAL.findall(r["filter"])}
+    if not signalled and not population and not any(l in basis for l in literals):
+        return matched
     fits = fitting_rows(candidates, basis, population)
     if matched in fits:
         return matched

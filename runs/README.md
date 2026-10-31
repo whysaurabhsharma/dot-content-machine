@@ -20,6 +20,8 @@ Mode, credits, environment and active context notes are not observable via MCP (
 
 Every run file references the path of each screenshot it depends on, next to the batch it belongs to. A batch without its five paths has no recorded conditions.
 
+A rehearsal may record a batch's conditions as text, by hand, instead of screenshots, and must say so in its conditions block. A piece intended for publication must have all five screenshots for every batch.
+
 ## Batches
 
 `dot-runner` has a limit of 60 turns, and each question takes about four. So a run is split into batches.
