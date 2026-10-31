@@ -1,6 +1,6 @@
 # Status · Dot content machine
 
-1 November 2026. Where the submission stands, in two minutes. Detail and reasons: `HANDOVER.md`. Where each piece stands is always read from the files: `python scripts/stage_gate.py <slug>`.
+1 November 2026. Where the submission stands, in two minutes. Rick's questions, in the order they block publication: [DECISIONS-FOR-DOT.md](DECISIONS-FOR-DOT.md). Detail and reasons: `HANDOVER.md`. Where each piece stands is always read from the files: `python scripts/stage_gate.py <slug>`.
 
 ## 1. Delivered
 
@@ -19,7 +19,7 @@ Exports: `exports/<slug>/` (a .docx, clean Markdown, Webflow HTML and fields; no
 | Item | Waiting on | Who |
 |---|---|---|
 | A | Read aloud A's closing paragraph (a link clause added after Decision 3, not yet read); then Decision 4 | **Saurabh** |
-| B | Rick's sign-off on the context agent quote and on the DABstep concession (and his answer on the home page's 96% / 89%); browser re-read of the eight sources not yet re-opened; A live first | **Rick**, then Saurabh, then publishing order |
+| B | Rick's sign-off on the context agent quote and on the DABstep concession (and his answer on the home page's 96% / 89%); three census corrections found by the browser re-read (Snowflake's scoring cell, Snowflake missing from "more than one right answer", Ramp's scoring and trigger: see `runs/test-ai-analyst-before-rollout-verification.md`); A live first | **Rick**, then Saurabh, then publishing order |
 | F | Re-check facts O1 and O2 on the current account ("Where Dot fits" rests on them); A and B live first (F links both) | **Saurabh**, then publishing order |
 | Posts | Each goes out after its piece is live, with the link in the first comment | Publishing order |
 | Licence | L1, L2, L4 are decisions to proceed, not resolutions; the Olist label was never verified at source | **Dot** |
@@ -34,7 +34,7 @@ Exports: `exports/<slug>/` (a .docx, clean Markdown, Webflow HTML and fields; no
 
 **B**
 4. Get Rick's two sign-offs (context agent quote; DABstep concession) and his answer on the home page's 96% / 89%. If a full-set run is published, update B's DABstep sentence.
-5. Re-open in a browser the eight sources not yet re-read (Snowflake, GitHub, Salesforce, Vercel, Ramp, Prosus, WisdomAI, Grab) and check B's numbers and quotes against each page.
+5. Decide the three census corrections from the browser re-read of B's eight remaining sources (done 1 November; every number matched; three method findings). Ramp's could change B's five to six.
 6. Re-check O1 and O2 in Dot's UI (B's "Where Dot fits" cites the evaluation).
 7. `python scripts/verify_sources.py pieces/how-companies-test-ai-data-analysts.md`: the link to A must now return 200.
 8. Decision 4: publish B; `bank.py status 36 published`.

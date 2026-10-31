@@ -174,7 +174,7 @@ What's missing:
 |---|---|---|
 | Decision 4 for A, B and F | Publishing | `STATUS.md`, section 3: A, then B, then F; each later piece links the earlier ones, which return 404 until live |
 | Re-check facts O1 and O2 on the current account | Both were observed on the dry-run account on 27 October | Look in Dot's UI and record the date |
-| Browser re-read of B's other eight sources | Five (Anthropic, LinkedIn, Uber, ClickHouse, Hex) were re-read in Chrome on 1 November, quotes checked verbatim (`runs/test-ai-analyst-before-rollout-verification.md`). Snowflake, GitHub, Salesforce, Vercel, Ramp, Prosus, WisdomAI, Grab and Dot's own pages were read only through WebFetch | Re-open each in a browser before B publishes |
+| Census corrections from B's re-read (done 1 November: all eight sources re-opened, every number matched) | Five (Anthropic, LinkedIn, Uber, ClickHouse, Hex) were re-read in Chrome on 1 November, quotes checked verbatim (`runs/test-ai-analyst-before-rollout-verification.md`). Snowflake, GitHub, Salesforce, Vercel, Ramp, Prosus, WisdomAI, Grab and Dot's own pages were read only through WebFetch | Re-open each in a browser before B publishes |
 | The Olist licence | The CC BY-NC-SA 4.0 label (A10) was never verified at source. L1, L2 and L4 are decisions to proceed, not resolutions | Dot verifies the licence, or re-runs on its own data |
 | Assumptions A1–A8 | Each needs Dot's yes, no or change | Section 8 |
 | A number meaning two things, three times in one cluster | B's two fives and two sevens (different groups under one count), then "12 of 12 correct" and "8 of 8 correct", where 3 of 12 and 3 of 8 were correct only under the answer's own stated or a person-decided reading. Our own scores need the same item-by-item discipline rule 18 demands of Dot's answers | `mark_run.py` now prints the split (1 November 2026). A check that flags a bare "N of M correct" in a piece is not written |
@@ -219,6 +219,8 @@ What's missing:
 **The pitch, plainly.** Not "type a topic, get a piece". Every number checked, every claim sourced, every rule enforced, and the four decisions that need judgement are the four you keep.
 
 ## 8. Findings for Rick
+
+**The one-page version, with a line for each answer, ordered by what blocks publication: [DECISIONS-FOR-DOT.md](DECISIONS-FOR-DOT.md).**
 
 ### The context agent: a positioning line Dot isn't using
 
