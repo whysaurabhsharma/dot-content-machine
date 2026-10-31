@@ -578,7 +578,11 @@ def run_posts(path):
         delivers = bool(re.search(r"\blink\b|\bthe piece\b|\bfirst comment\b", last))
         add("P5", "PASS" if delivers else "FAIL", "Ends by saying what the link delivers",
             f"last line: {clean(body[-1])[:60] if body else 'none'}")
-        add(15, *check_figures(prose, fig))
+        # v1.8.13: a post carries no links (the link is in the first comment, to its piece), so a
+        # published number's source is looked for in the piece the post links to.
+        piece_md = ROOT / "pieces" / (fig.name[:-len("-figures.csv")] + ".md") if fig else None
+        piece_body = piece_md.read_text(encoding="utf-8") if piece_md and piece_md.exists() else ""
+        add(15, *check_figures(prose, fig, piece_body))
         add(17, *check_assumptions(prose))
         add(19, *check_banned("\n\n".join(body), prose))
         add("P6", "HUMAN", "Three first lines tried; the most specific kept", "prompts/07-linkedin.md")

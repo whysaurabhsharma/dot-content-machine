@@ -23,3 +23,5 @@ F13,5962902,"F06 to whole BRL, to match the precision of Dot's answers (5,962,90
 F14,987765,"F07 to whole BRL, to match the precision of Dot's answers (987,765.37 unrounded)","F07 rounded to 0 decimals, by script",2026-10-31
 F15,5,"Answers whose own text named the date that set their scope (Q1, Q3, Q4, Q5, Q7), of 8","runs/ai-analyst-follow-up-questions-run.md answer text, classified by script: names 'purchased in', 'purchase date' or 'customer delivery date'",2026-10-31
 F16,8,"Answers that came back with their SQL, of 8","runs/ai-analyst-follow-up-questions-run.md: entries with an SQL block, counted by script",2026-10-31
+TIM-1,5.1,logged minutes of the run stage (dot-runner asking the 8 questions),"runs/ai-analyst-follow-up-questions-timing.csv, run start 13:37:38 to end 13:42:46",2026-11-01
+TIM-2,26.9,"logged machine minutes for the whole piece, research to export, summed by script; a person's time is not logged","runs/ai-analyst-follow-up-questions-timing.csv, sum of the minutes column",2026-11-01
