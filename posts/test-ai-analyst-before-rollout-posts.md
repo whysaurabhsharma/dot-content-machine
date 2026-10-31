@@ -4,6 +4,8 @@ Structures from PLAN.md's cluster table: structure 5, the checklist (Post A); st
 
 ## Post A · test-ai-analyst-before-rollout · the checklist (cluster structure 5)
 
+**Publish note:** Post only after guide F is live; the link in the first comment points to it.
+
 **First lines tried:** (Saurabh, 1 November 2026)
 - Most advice on testing an AI analyst stops at 'build a golden set'. Here's what the companies that published theirs actually do.
 - Eight steps, each with the evidence behind it.
@@ -31,6 +33,8 @@ The piece gives the evidence behind each step: a run of ours on Dot, or companie
 ## Post B · test-ai-analyst-before-rollout · the contrarian read (cluster structure 4)
 
 **Source:** F's step 2 and its second section: our follow-up run (RA-OTHER, RA-F01) and LinkedIn (LIN-3, LIN-4). Angle chosen by Saurabh, 1 November 2026: "One expected answer per question marks right answers wrong."
+
+**Publish note:** Post only after guide F is live.
 
 **First lines tried:** (Saurabh, 1 November 2026)
 - If your test holds one right answer per question, it will mark correct answers wrong. Ours would have.

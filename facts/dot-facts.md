@@ -45,6 +45,20 @@ Made by Saurabh Sharma, 27 October 2026, answering the product-claim list. Rick 
 | A8 | Dot is comfortable publishing a piece where its evaluation passes a 0.52% definition disagreement. | Saurabh's answer: assume | — | 7 |
 | A10 | Olist is acceptable as the trial dataset. Licence: CC BY-NC-SA 4.0. | Rick: pick a realistic dataset; Dot wants to see the thought process | — | — |
 
+## Pending Dot's confirmation
+
+Added 1 November 2026, under Dot's instruction: where there is doubt, take an assumption, label it in the piece, and write a publish note saying what needs fixing. These differ from A1–A8 in kind, and the piece labels them differently so a reader can tell (CLAUDE.md v1.8.16):
+
+- **Untested ("Assumption: … not tested")**: we don't know whether it is true.
+- **Observed, not re-checked ("as observed on <date> and not re-checked since")**: it was true when we looked, and may have changed.
+
+Each P has a publish note (`reviews/<slug>/publish-note.md`) with the exact replacement text if Dot says no. When Dot answers, the P moves to Confirmed, or the replacement goes in and the P is retired, with a change-log line. `check_piece.py` fails a sentence that uses a P keyword without its label ("assumption", or "not re-checked since").
+
+| ID | Assumption | Label kind | Keywords | Pieces | Who confirms |
+|---|---|---|---|---|---|
+| P-1 | Dot's context agent page describes how merging works today: "Merging re-checks accuracy first: Dot answers its 25 questions again and merges at 95% or more." | Untested | merges at 95% or more | B | Rick (DECISIONS-FOR-DOT.md, question 1) |
+| P-2 | Dot's evaluation still holds each test question's expected answer, a unit and a tolerance in percent, as observed on 27 October 2026 (O1). | Observed, not re-checked | a unit and a tolerance in percent | B, F | Rick (question 3), or anyone with a Dot account, by looking |
+
 ## Superseded
 
 Assumptions that a later observation contradicted. Kept as they were stated, with the date and the observation that ended them. A piece may not rely on them: `check_piece.py` fails a piece that uses any keyword in this table's Keywords column, labelled or not. Those keywords name the superseded claim itself, so they can be narrower than the keywords the assumption had while it stood.

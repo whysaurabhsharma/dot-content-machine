@@ -4,6 +4,8 @@ Structures from PLAN.md's cluster table (structure 1, the number; structure 3, t
 
 ## Post A · how-companies-test-ai-data-analysts · the number
 
+**Publish note:** Post only after piece B is live; the link in the first comment points to it.
+
 **First lines tried:** (Saurabh, 1 November 2026)
 - Your AI analyst gives you a number. How do you know it's right before your CFO asks?
 - Before you roll out an AI analyst, you need a test. Most companies won't tell you theirs.
@@ -28,6 +30,8 @@ The piece has one table of all 13: test set, scoring and timing, each row linked
 **Image:** none from the piece (a teardown has no chart). Optional: a crop of the census table with the six bold rows, captioned "How 13 companies test their AI analyst, from their own publications, read 31 October 2026."
 
 ## Post B · how-companies-test-ai-data-analysts · the failure taxonomy
+
+**Publish note:** HOLD. Do not queue this post. It names, in public, what five companies' published testing posts leave out, Snowflake (a Dot integration partner) among them. Whether Dot is comfortable with that is Rick's call (DECISIONS-FOR-DOT.md, question 7). Post it only after he says yes, and only after piece B is live.
 
 **First lines tried:** (Saurabh, 1 November 2026)
 - A company publishes how it tests its AI analyst. You try to copy it, and hit a wall.

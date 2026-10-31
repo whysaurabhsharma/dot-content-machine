@@ -34,6 +34,8 @@ The piece has all six steps and the SQL line that showed the date.
 
 **Source:** `runs/ai-analyst-follow-up-questions-run.md`, Q2 and Q6. Dot's answer is quoted word for word; the run file shows a space before its comma and full stop (the export's spacing), removed here.
 
+**Publish note:** Post only after piece A is live; the link in the first comment points to it.
+
 **First lines tried:** (Saurabh, 1 November 2026)
 - Your AI analyst gives you a number and a definition. It can still be answering a different question than the one you asked.
 - A right answer to the wrong question still looks like a right answer.
@@ -61,6 +63,8 @@ The piece shows the SQL line that settled it, and a six-step test for your own t
 ## Post C · ai-analyst-follow-up-questions · the build log (cluster structure 6)
 
 **Source:** `runs/ai-analyst-follow-up-questions-timing.csv` (figures TIM-1, TIM-2). No credits figure: the screenshot rule was waived for A's run.
+
+**Publish note:** Post only after piece A is live.
 
 **First lines tried:** (Saurabh, 1 November 2026)
 - We timed every stage of writing one evidence-led piece. The machine took 27 minutes. That isn't the interesting number.

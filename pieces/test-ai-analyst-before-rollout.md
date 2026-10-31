@@ -64,7 +64,9 @@ A re-run also needs a rule for small swings between runs. [Uber](https://www.ube
 
 ## Where Dot fits
 
-[Dot answers data questions for your team.](https://www.getdot.ai/blog/conversational-analytics) In both our runs, every answer came back with its SQL. [Dot's evaluation](https://docs.getdot.ai/train-dot/evaluation) holds each test question's expected answer, a unit and a tolerance in percent, so steps 2 and 6 live in one place. More in the [AI Data Analyst Playbook](https://www.getdot.ai/blog/ai-data-analyst-playbook).
+[Dot answers data questions for your team.](https://www.getdot.ai/blog/conversational-analytics) In both our runs, every answer came back with its SQL.
+
+[Dot's evaluation](https://docs.getdot.ai/train-dot/evaluation) holds each test question's expected answer, a unit and a tolerance in percent, so steps 2 and 6 live in one place. That was observed on 27 October 2026 and not re-checked since. More in the [AI Data Analyst Playbook](https://www.getdot.ai/blog/ai-data-analyst-playbook).
 
 ---
 

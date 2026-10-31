@@ -319,6 +319,10 @@ def writing(slug, manifest):
         add("publish", "blocked", "practice piece: not for publication (hard rule 4)")
     elif row and row["status"] == "published":
         add("publish", "done", "bank status published")
+    elif not re.search(r"^\*\*Read by:\*\*\s*\S", read(f"reviews/{slug}/publish-note.md") or "", re.M):
+        # v1.8.16: the note says what is assumed and what to paste if Dot says no; it is read before publishing.
+        add("publish", "waiting", f"Decision 4 waits on the publish note: whoever publishes reads "
+            f"reviews/{slug}/publish-note.md (copied to exports/{slug}/PUBLISH-NOTE.md) and fills its '**Read by:**' line")
     else:
         add("publish", "waiting", f"Decision 4: a person publishes, then runs "
             f"`python scripts/bank.py status {manifest['bank_id']} published --basis \"<URL>\"`")

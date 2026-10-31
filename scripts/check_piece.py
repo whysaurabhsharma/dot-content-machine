@@ -138,7 +138,7 @@ def section_keywords(section, column):
         if line.startswith("## "):
             inside = line.strip() == section
             continue
-        if inside and line.startswith("| A"):
+        if inside and (line.startswith("| A") or line.startswith("| P-")):
             cells = [c.strip() for c in line.strip("|").split("|")]
             if len(cells) > column and cells[column] not in ("", "—", "-"):
                 kws += [(cells[0], k.strip().lower()) for k in cells[column].split(",") if k.strip()]
@@ -147,6 +147,12 @@ def section_keywords(section, column):
 
 def assumption_keywords():
     return section_keywords("## Assumptions", 3)
+
+
+def pending_keywords():
+    """Keywords of assumptions pending Dot's confirmation (v1.8.16). A sentence using one needs its label:
+    "assumption" (untested) or "not re-checked since" (observed once)."""
+    return section_keywords("## Pending Dot's confirmation", 3)
 
 
 def superseded_keywords():
@@ -188,6 +194,14 @@ def check_assumptions(prose):
     for aid, kw in assumption_keywords():
         for s in sentences(prose):
             if kw in s.lower() and "assumption" not in s.lower():
+                unlabelled.append(f"{aid} \"{kw}\": {s[:50]}")
+    # A P label may sit in the claim's sentence or the one after it ("…says: '…95%.' Assumption: …").
+    labelled_by = lambda s: "assumption" in s.lower() or "not re-checked since" in s.lower()
+    for aid, kw in pending_keywords():
+        ss = sentences(prose)
+        for i, s in enumerate(ss):
+            low = s.lower()
+            if kw in low and not labelled_by(s) and not (i + 1 < len(ss) and labelled_by(ss[i + 1])):
                 unlabelled.append(f"{aid} \"{kw}\": {s[:50]}")
     superseded = []
     for aid, kw in superseded_keywords():
