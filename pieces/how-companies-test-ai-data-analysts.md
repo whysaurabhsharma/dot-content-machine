@@ -101,7 +101,7 @@ Each row draws on one company's own publications, read on 31 October 2026. Uber'
 
 ## Where Dot fits
 
-[Dot answers data questions for your team.](https://www.getdot.ai/blog/conversational-analytics) In [Dot's evaluation](https://www.getdot.ai/context-agent), each test question carries an expected answer, a unit and a tolerance in percent, and gets a verdict such as "Exact match". When we tested it, the score updated on save without a re-run; Assumption: it always re-scores when a question is saved. More in the [AI Data Analyst Playbook](https://www.getdot.ai/blog/ai-data-analyst-playbook) and [Dot's docs](https://docs.getdot.ai).
+[Dot answers data questions for your team.](https://www.getdot.ai/blog/conversational-analytics) In [Dot's evaluation](https://docs.getdot.ai/train-dot/evaluation), each test question carries an expected answer, a unit and a tolerance in percent, and gets a verdict such as "Exact match". When we checked it on 27 October, the score updated on save without a re-run; Assumption: it always re-scores when a question is saved. More in the [AI Data Analyst Playbook](https://www.getdot.ai/blog/ai-data-analyst-playbook) and [Dot's docs](https://docs.getdot.ai).
 
 ---
 

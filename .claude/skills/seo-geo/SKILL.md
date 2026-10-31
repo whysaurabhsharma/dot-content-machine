@@ -34,7 +34,7 @@ First action: `python scripts/timing.py <slug> seo-geo start`. Last action: `pyt
    - `reverse_links`: three, each with its anchor text.
    The query is the buyer phrase from the research file that best matches what the piece delivers. Give its volume and difficulty as `keywords.csv` displays them (1.2K, not 1200), dated "Ahrefs, 27–28 October 2026". A phrase not in the file is "not measured"; `not indexed` is not zero. Never estimate a volume.
 2. **Internal links in the body:** five or more, including the Playbook stage (`playbook_url`). Each goes on words already in the piece: wrap them in a link, and change no other character.
-3. **`pieces/<slug>-faq.json`, only where earned.** It is earned when the piece itself answers two or more distinct buyer questions from the research file or `bank/questions.csv`. Each answer is a sentence or two copied word for word from the piece. If not earned, write no file and say why.
+3. **`pieces/<slug>-faq.json`, only where earned.** Kept, not demoted, as the roadmap update proposed: these pieces aren't yet visible in AI answers, where FAQ schema showed no lift (HANDOVER.md, Saurabh, 31 October 2026). It is earned when the piece itself answers two or more distinct buyer questions from the research file or `bank/questions.csv`. Each answer is a sentence or two copied word for word from the piece. If not earned, write no file and say why.
 
 ## Check
 

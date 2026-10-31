@@ -14,24 +14,47 @@ import urllib.request
 import urllib.error
 
 UA = {"User-Agent": "Mozilla/5.0 (Dot content machine link check)"}
+# Some sites refuse a named bot (Uber answered 406, Salesforce 500, 31 October 2026) but serve a browser.
+BROWSER = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
+                         "Chrome/124.0 Safari/537.36",
+           "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+           "Accept-Language": "en-US,en;q=0.9"}
+
+
+def fetch(url, method, headers, timeout):
+    req = urllib.request.Request(url, method=method, headers=headers)
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return r.status, r.geturl()
 
 
 def check(url, timeout=15):
+    result = ("error", url)
     for method in ("HEAD", "GET"):
         try:
-            req = urllib.request.Request(url, method=method, headers=UA)
-            with urllib.request.urlopen(req, timeout=timeout) as r:
-                return r.status, r.geturl()
+            return fetch(url, method, UA, timeout)
         except urllib.error.HTTPError as e:
             # Some sites refuse or mishandle HEAD; Kaggle answers HEAD with 404 and GET with 200.
             if method == "HEAD" and e.code in (403, 404, 405):
                 continue
-            return e.code, url
+            result = (e.code, url)
+            break
         except Exception as e:
             if method == "HEAD":
                 continue
-            return f"error: {type(e).__name__}: {str(e)[:80]}", url
-    return "error", url
+            result = (f"error: {type(e).__name__}: {str(e)[:80]}", url)
+            break
+    # Before reporting a refusal or a server error, retry once as a browser would ask.
+    # A "not found" (404, 410) is reported as it is: some sites answer a browser with 200
+    # even for a page that doesn't exist (Kaggle did, 31 October 2026).
+    if result[0] in (404, 410):
+        return result
+    try:
+        status, final = fetch(url, "GET", BROWSER, timeout)
+        return status, final
+    except urllib.error.HTTPError as e:
+        return result if result[0] != "error" else (e.code, url)
+    except Exception:
+        return result
 
 
 def main(path):
