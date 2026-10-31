@@ -18,7 +18,7 @@ figures: figures/how-companies-test-ai-data-analysts-figures.csv
 dataset: "None for the census: 13 companies' own publications, each re-opened 31 October 2026; no dataset analysed and no Dot batch of its own. The Dot section cites piece A's run (runs/ai-analyst-follow-up-questions-run.md): Olist, CC BY-NC-SA 4.0, licence decision L1."
 ---
 
-**We read how 13 companies, including Anthropic, LinkedIn and Uber, test their AI analysts: the internal agents staff use to ask data questions. Seven of the 13 published an accuracy figure, each measured differently: ClickHouse compared result sets, LinkedIn's experts rated answers, and Vercel counted undefined successes. By the end, you'll have one table of what all 13 measured, with the five that published enough to copy marked. Those five are the most complete descriptions, not proof of better testing.**
+**We read how 13 companies, including Anthropic, LinkedIn and Uber, test their AI analysts: the internal agents their staff use to ask data questions. Seven of the 13 published an accuracy figure, each measured differently: ClickHouse compared result sets, LinkedIn's experts rated answers, Vercel counted successes without defining them. By the end, you'll have one table of what all 13 measured, and the five that published enough to copy are marked. Start from those five: the most complete descriptions, though not proof of better testing.**
 
 **The whole piece in eight lines:**
 
@@ -28,7 +28,7 @@ dataset: "None for the census: 13 companies' own publications, each re-opened 31
 4. Of the 13, 8 build their test set from real questions or ground-truth answers.
 5. A real question can have more than one right answer. About 60% of LinkedIn's benchmark questions do.
 6. Anthropic, Uber, Hex, GitHub and Salesforce re-run their tests on a change, before each deploy, or daily.
-7. Of the 13 publications, only Anthropic's states a bar to clear before launch that we found: about 90%, initially.
+7. Only Anthropic's publication sets a bar to clear before launch: about 90%, at first.
 8. Our earlier run on Dot used the method's core: every expected answer computed before asking.
 
 ## The seven accuracy figures can't be compared
@@ -49,15 +49,15 @@ Eight of the 13 build their [AI analyst](https://www.getdot.ai/blog/conversation
 
 Three of the 13 companies deal in print with questions that have more than one right answer. [About 60% of LinkedIn's benchmark questions](https://www.linkedin.com/blog/engineering/ai/practical-text-to-sql-for-data-analytics) have more than one accepted answer. Without those extra answers, LinkedIn "[underreported recall by 10-15%](https://www.linkedin.com/blog/engineering/ai/practical-text-to-sql-for-data-analytics)". Uber notes that a question can have more than one correct SQL query.
 
-[ClickHouse's](https://clickhouse.com/blog/agentic-analytics-benchmark-data-agent-mnist) model panel dropped 39 of 243 candidate questions where no two models agreed. [A legal review](https://clickhouse.com/blog/agentic-analytics-benchmark-data-agent-mnist) then took 204 down to the final 201. LinkedIn's remedy is a calendar: experts review its benchmark every 3 months and add accepted answers.
+[ClickHouse's](https://clickhouse.com/blog/agentic-analytics-benchmark-data-agent-mnist) model panel dropped 39 of 243 candidate questions where no two models agreed. LinkedIn's remedy is a calendar: experts review its benchmark every 3 months and add accepted answers.
 
 ## More than half score answers with an LLM judge
 
 LinkedIn, Uber, ClickHouse, Hex, Snowflake, WisdomAI and Grab use an LLM to judge their analyst's answers. [Hex](https://hex.tech/blog/evaluate-data-agents/) built one eval where the right answer is 2.04% and a common wrong one is 2.03%. Hex's judge accepted the wrong one [35% of the time](https://hex.tech/blog/evaluate-data-agents/).
 
-LinkedIn and Hex each publish one check on their judge, and the two checks measure different things. [LinkedIn's judge](https://www.linkedin.com/blog/engineering/ai/practical-text-to-sql-for-data-analytics) lands within 1 point of the human score 75% of the time. Of its LLM judge, Hex writes: "[We are biased towards being overly harsh.](https://hex.tech/blog/evaluate-data-agents/)"
+LinkedIn and Hex each publish one check on their judge, and the two checks measure different things. [LinkedIn's judge](https://www.linkedin.com/blog/engineering/ai/practical-text-to-sql-for-data-analytics) lands within 1 point of the human score 75% of the time. Hex says its judge still isn't well calibrated, and that it leans one way on purpose: "[We are biased towards being overly harsh.](https://hex.tech/blog/evaluate-data-agents/)"
 
-Anthropic's post doesn't say what kind of grader it uses, so the count leaves it out. ClickHouse doesn't require an exact match. Its scorer links each answer's columns to the ground truth's, aligns the rows and allows a numeric tolerance. ClickHouse writes that "[84.9% of scored result sets in our test match only through the linked mapping](https://clickhouse.com/blog/agentic-analytics-benchmark-data-agent-mnist)".
+Anthropic's post doesn't say what kind of grader it uses, so the count leaves it out. ClickHouse doesn't require an exact match. Its scorer links each answer's columns to the ground truth's, aligns the rows and allows a numeric tolerance. [ClickHouse reports](https://clickhouse.com/blog/agentic-analytics-benchmark-data-agent-mnist) that 84.9% of its scored answers matched only through that mapping.
 
 ## Anthropic's accuracy drifted within a month
 
@@ -65,7 +65,7 @@ Anthropic's post doesn't say what kind of grader it uses, so the count leaves it
 
 Anthropic, Uber, Hex, GitHub and Salesforce re-run their tests on a change, before each deploy, or daily. Anthropic re-runs the affected evals in CI when a PR touches a dependency. [Uber's Finch](https://www.uber.com/blog/unlocking-financial-insights-with-finch) re-runs historical queries before a prompt or model update deploys. Ramp describes testing but no trigger, so it isn't counted.
 
-This group isn't the bold five in the table. GitHub and Salesforce re-run on a change but don't say how they score. LinkedIn and ClickHouse publish a full method but don't re-run on every change.
+This group isn't the same as the five full methods in the table below. GitHub and Salesforce re-run on a change but don't say how they score. LinkedIn and ClickHouse publish a full method but don't re-run on every change.
 
 Re-runs vary on their own, which makes a small drop hard to read. Uber does "[not over-index decisions based on ~5% run-to-run changes in most metrics](https://www.uber.com/blog/query-gpt)".
 
@@ -75,7 +75,7 @@ Anthropic's is the only publication of the 13 in which we found a number to clea
 
 This section reports the run from [our earlier piece on follow-up questions](https://www.getdot.ai/blog/ai-analyst-follow-up-questions), not a new run. There, we computed every expected answer from the raw data before asking, including the second reading a question allowed. Then we asked eight questions and marked each answer against the definition it stated.
 
-Every answer matched a reading we had computed. Two answers didn't say which date they used, so we read their dates from their SQL. The phrase "delivered in 2017" had two right answers: one by purchase date, one by delivery date.
+Every answer matched a reading we had computed. Three answers didn't say which date they used. For two, we read the date from their SQL; the third matched the date its chat had already named. The phrase "delivered in 2017" had two right answers: one by purchase date, one by delivery date.
 
 That is the census's more-than-one-right-answer problem, found in a run of our own. The run was small: each question asked once, scored without a judge. It shows the method can be run, though not all of it by script.
 
@@ -110,7 +110,7 @@ The five names in bold state their test set, scoring and timing. "(vendor)" mark
 
 ## Where Dot fits
 
-[Dot answers data questions for your team.](https://www.getdot.ai/blog/conversational-analytics) Dot's [context agent page](https://www.getdot.ai/context-agent) says: "[Merging re-checks accuracy first: Dot answers its 25 questions again and merges at 95% or more.](https://www.getdot.ai/context-agent)" In this census, only Anthropic published a numeric bar, and it applies at launch, not to each change.
+[Dot answers data questions for your team.](https://www.getdot.ai/blog/conversational-analytics) Dot's [context agent page](https://www.getdot.ai/context-agent) says: "Merging re-checks accuracy first: Dot answers its 25 questions again and merges at 95% or more." We haven't tested that gate here.
 
 In [Dot's evaluation](https://docs.getdot.ai/train-dot/evaluation), each test question carries an expected answer, a unit and a tolerance in percent. More in the [AI Data Analyst Playbook](https://www.getdot.ai/blog/ai-data-analyst-playbook) and [Dot's docs](https://docs.getdot.ai).
 

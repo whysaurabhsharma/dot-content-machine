@@ -1,5 +1,18 @@
 # Revisions · how-companies-test-ai-data-analysts
 
+## Round 6: after the second phone read (Saurabh, 31 October 2026)
+
+- **The lede, untouched for two rounds: fixed.** Cause: the writer's brief for rounds 4 and 5 said never to change the lede's first two sentences, which protected its stumbles. Now the three readers' version, with one "and" dropped to keep its second sentence at 25 words.
+- **Two or three answers without a date (correctness): fixed.** Piece A's table and F15 show three (Q2, Q6, Q8); two of them (Q6, Q8) were read from the SQL. B now says so (A-4 added).
+- **Where Dot fits ranked Dot above the 13 on an untested gate: fixed.** The contrast with Anthropic is cut; it now says "We haven't tested that gate here."
+- **Forward reference to bold names: fixed.** "This group isn't the same as the five full methods in the table below."
+- **Pocket line 7: fixed.** "Only Anthropic's publication sets a bar to clear before launch: about 90%, at first."
+- **Hex's 35% beside "overly harsh": fixed.** One clause: its judge still isn't well calibrated, and it leans one way on purpose.
+- **ClickHouse's legal review (204 to 201): cut.**
+- **ClickHouse's 84.9% quote: paraphrased,** number kept and linked.
+- **Link each company once: not done.** Every repeated link left sits on a sentence with a published number or a quote, which check 15 (v1.8.6) requires; no link on a bare name repeats. Saurabh to decide between the two rules.
+
+
 ## Round 5: after the phone read (Saurabh, 31 October 2026)
 
 1. **Table:** five columns (Company · Tests against · Scores with · Runs when · Accuracy figure); Published and Bar dropped; the five that state test set, scoring and timing in bold; "(vendor)" on Hex, Snowflake, WisdomAI; cells about six words; every row keeps its source link, LinkedIn's 53% still links the arXiv paper. Uber's ~5% note now lives only in the body (it was already there); Prosus's inclusion reason moved to the table's intro. Intro rewritten: bold, "(vendor)", "Not stated"; "strict" and "bar" no longer used for the five.
