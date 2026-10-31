@@ -1,5 +1,14 @@
 # revisions · ai-analyst-follow-up-questions
 
+## Round 5: house-style title and phone fixes
+
+31 October 2026, Saurabh's instructions. check_piece.py afterwards: 17 pass, 1 fail (check 1: no promise word in the title; held for a decision on check 1), 1,182 words.
+
+- **Title.** Now "Your AI Analyst Picked a Date. It Didn't Say Which.", matching Dot's blog: short flat claims, often "Your X", no colons or how-to promise. title_approved_by updated by Saurabh's instruction; not headline-tested (human.md).
+- **F04.** Description no longer says "recall": "Turns between Q1 and Q5, which asked for Q1's figure again".
+- **Fresh chats.** "Our run used two fresh chats; the test needs only one" is now "You need one fresh chat. We used two."
+- **SQL.** Q2's block cut; the chain's filter is named inline (`order_purchase_timestamp`). One block remains: Q6's delivery-date line alone, verbatim, since that line is the finding. Check 15 confirms it appears whole in the run file.
+
 ## Round 4: second fact-check
 
 31 October 2026. Gemini and ChatGPT, each given the round 3 draft only (prompts/05-fact-check.md, pass 2). Triage approved by Saurabh: 10 fixed, 11 stand. check_piece.py afterwards: 18 pass, 0 fail, 6 for a human (1,187 words). Title, title_approved_by, chart caption and alt text untouched.

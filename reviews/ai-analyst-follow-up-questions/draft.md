@@ -1,4 +1,4 @@
-# “Delivered in 2017” has two right answers. Test which one your AI analyst gives you
+# Your AI Analyst Picked a Date. It Didn't Say Which.
 
 **Asked how many orders "delivered in 2017" were late, [Dot](https://www.getdot.ai/) gave 2,453 in a follow-up chain and 1,762 in a fresh chat. Both are correct: each matches the raw data for its date. The chain named purchase date; the fresh chat silently used delivery date. By the end, you'll have a six-step test that shows which date your analyst used.**
 
@@ -41,20 +41,10 @@ Neither answer is wrong. "Delivered in 2017" can mean orders bought in 2017 that
 
 *Late orders for "delivered in 2017", asked inside a follow-up chain and in a fresh chat. Olist dataset, Dot, 31 October 2026. The run's mode is not stated.*
 
-Each answer's SQL shows its date filter. Here is Q2's, word for word. Asked about "those", it kept Q1's filter on the purchase date.
+Each answer's SQL shows its date filter. Inside the chain, Q2 asked about "those" and kept Q1's filter on `order_purchase_timestamp`, the purchase date. In the fresh chat, Q6's SQL had this line instead, word for word.
 
 ```sql
-WHERE order_status = 'delivered'
-  AND order_purchase_timestamp >= TIMESTAMP '2017-01-01 00:00:00'
-  AND order_purchase_timestamp < TIMESTAMP '2018-01-01 00:00:00'
-```
-
-And here is Q6's, from the fresh chat, filtering on the delivery date.
-
-```sql
-WHERE order_status = 'delivered'
   AND order_delivered_customer_date >= TIMESTAMP '2017-01-01 00:00:00'
-  AND order_delivered_customer_date < TIMESTAMP '2018-01-01 00:00:00'
 ```
 
 The fresh reading covered 40,930 orders delivered in 2017, of which 4.3% arrived late. The chain's 5.6% was a share of a different set: 43,428 orders purchased in 2017 and delivered. The item-price chat read the phrase by delivery date too: BRL 5,612,818, against BRL 5,962,902 by purchase year.
@@ -88,7 +78,7 @@ Scope held in the item-price chat too. Asked "How much of that came in November?
 5. Check whether the answer names its date. If it doesn't, read the date filter in its SQL.
 6. Mark each answer against the reading it used, item by item.
 
-Our run used two fresh chats; the test needs only one.
+You need one fresh chat. We used two.
 
 When you run this, a total that matches under a different date filter is still a different answer.
 

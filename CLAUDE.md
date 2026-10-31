@@ -44,7 +44,7 @@ A piece that breaks any one of these does not ship.
 8. "Where Dot fits" is the last H2, under 80 words, with a docs link.
 9. End on an instruction, then: *If this excites you, we'd love to hear from you. Get in touch.*
 10. Sentences average under 18 words. No paragraph over four sentences.
-11. Read every paragraph aloud, once on a phone screen.
+11. Read every paragraph aloud, once on a phone screen. After a later edit, re-read aloud the paragraphs that changed, not the whole piece.
 12. **Quotable lines carry their own subject.** Models lift self-contained claims, not lines that lean on the sentence before.
 13. SEO title contains the query. Meta under 155 characters. Slug four to six words.
 14. Every image has alt text and a caption with the date and energy mode.
@@ -116,7 +116,7 @@ A "no" on any line means the piece isn't done. Who checks each line is in bracke
 **Review**
 22. READER pass done and its three stopping points fixed. (model, then human)
 23. Lift test in Perplexity and Claude; the intended lines are the ones quoted. (model)
-24. Read aloud once, on a phone, today. (human)
+24. Read aloud once, on a phone, today; after a later edit, the changed paragraphs re-read aloud. (human)
 
 ## Change log
 
@@ -180,3 +180,5 @@ A "no" on any line means the piece isn't done. Who checks each line is in bracke
 - **verify_sources.py.** A HEAD request answered with 404 now falls back to GET, as 403 and 405 already did. Kaggle answers HEAD with 404 and GET with 200, so the Olist link failed falsely.
 - **Lift test record.** Each piece now keeps `reviews/<slug>/lift-lines.md`: the intended lines before the test, what each tool lifted after it, verbatim. An unintended lift that is better is added to the list. Claude may decline to give three verbatim quotes; record how many each tool gave ([prompts/06-edit.md](prompts/06-edit.md), section 3).
 - **Records that overclaim are corrected too.** The piece said Dot "re-ran the query rather than repeating a stored figure"; identical SQL doesn't show that, and execution is not observable via MCP. The run file's Finding 1 and the truth spec's T5 wording made the same claim and were corrected, though neither is published.
+
+**31 October 2026 — v1.6.7.** Style rule 11 and check 24 relaxed, on Saurabh's instruction: an edit after the phone read needs only the changed paragraphs re-read aloud, not the whole piece. The first read is still the whole piece. Origin: `ai-analyst-follow-up-questions` went through several fix rounds in one day, and each edit would otherwise have reset the whole read.
