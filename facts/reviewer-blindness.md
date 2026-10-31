@@ -31,7 +31,7 @@ Tested 31 October 2026 with two probe agents (`tools: Read`, `omitClaudeMd: true
 | No `mcpServers` field (control) | **Yes**: the same six servers. |
 | Parent session started with `--strict-mcp-config` and an empty MCP config | **No**: none at any point, before or after its tool call. |
 
-So B4 is closed only when the session that starts the reviewer has no MCP servers connected. `scripts/run_reviewer.py` does that, and is the only sanctioned way to start a reviewer. **Started any other way, such as from an interactive session with the Agent tool, a reviewer receives ask_dot's description of Dot, and is not blind on product claims.** In that case, its judgements divide like this:
+So B4 is closed only when the session that starts the reviewer has no MCP servers connected. `scripts/run_reviewer.py` does that, and is the only way to start a reviewer. **Started any other way, such as from an interactive session with the Agent tool, a reviewer would receive ask_dot's description of Dot.** So that route fails closed: the launcher sets `DOT_REVIEWER_LAUNCH=<reviewer>` in the session it starts, and the reviewers' hook blocks every file call without it, so a directly launched reviewer can't read the draft and stops. The guard can be defeated only on purpose, by setting that variable in the shell before starting an interactive session. If that happens, or the guard fails, the reviewer's judgements divide like this:
 
 | Judgement | Trustworthy if B4 is open? |
 |---|---|
@@ -45,7 +45,8 @@ Even with B4 closed, product claims still need the second fact-check on a differ
 
 ## Observed: hooks and the shell
 
-- In a headless session started from `run_reviewer.py`, hooks ran in PowerShell, not Git Bash, so `$CLAUDE_PROJECT_DIR` in a hook command was not expanded. The hook commands now use a path relative to the repo root, which works in both shells.
+- In a headless session started from `run_reviewer.py`, hooks ran in PowerShell, not Git Bash, so `$CLAUDE_PROJECT_DIR` in a hook command was not expanded. A path relative to the repo root works in both shells, but only when the session starts in the repo root.
+- The hook commands are now a short `python -c` shim that reads `CLAUDE_PROJECT_DIR` from its own environment and runs the hook script by absolute path. It works in Git Bash and PowerShell from any working directory (tested from the home directory). If the variable is missing or wrong, it blocks with "Hook script not found, CLAUDE_PROJECT_DIR is …" rather than failing silently.
 - When the hook couldn't run, every read was blocked: the reviewer reported it couldn't open the draft and wrote no review. The allowlist fails closed.
 
 ## Observed: what did not reach the probe

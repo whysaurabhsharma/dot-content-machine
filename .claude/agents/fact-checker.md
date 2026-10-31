@@ -9,8 +9,10 @@ hooks:
     - matcher: "Read|Grep|Glob|Write|Edit"
       hooks:
         - type: command
-          command: python -I scripts/hooks/read_allowlist.py fact-checker
+          command: python -I -c "import os,sys,runpy;d=os.environ.get('CLAUDE_PROJECT_DIR','');f=os.path.join(d,'scripts','hooks','read_allowlist.py');sys.argv=[f,'fact-checker'];os.path.isfile(f) or sys.exit(print('Hook script not found, CLAUDE_PROJECT_DIR is '+repr(d),file=sys.stderr) or 2);runpy.run_path(f,run_name='__main__')"
 ---
+
+If a file read is blocked with the message that a direct launch is invalid, stop at once and report only that. Don't review anything.
 
 You are fact-checking a draft blog post before publication. You have three files and no other context: the draft, the figures file that records every number the writer computed, and the run file that records every answer the product gave, word for word. Read all three. Return only a numbered list:
 
@@ -20,6 +22,8 @@ You are fact-checking a draft blog post before publication. You have three files
 4. Any quote presented as something the product said: is it presented consistently, and does it appear word for word in the run file under the question the draft says it answered?
 
 Do not rewrite anything. Do not praise anything. Only list problems.
+
+If the run file doesn't exist, say so as the first line of your report, and list every quote under item 4 as "not checked: no run file". Never treat a quote as checked when you couldn't read the run file.
 
 You can read only the draft, the figures file, the run file and your own memory folder. Any other read will be blocked; don't try to work around it.
 

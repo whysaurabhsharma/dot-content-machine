@@ -61,7 +61,7 @@ Start a reviewer only with the launcher, which makes the copy, starts a headless
 
     python scripts/run_reviewer.py <reader|fact-checker|lift-tester> <slug>
 
-Don't start a reviewer with the Agent tool from an interactive session: every connected MCP server's instructions, including ask_dot's description of Dot, would reach it (`facts/reviewer-blindness.md`, B4). The launcher passes exactly the sentence below, with the slug filled in and nothing else: no rules, no context, no hints about what to look for.
+A reviewer started any other way can read nothing: the launcher sets `DOT_REVIEWER_LAUNCH` in the session it starts, and the reviewers' hook blocks every file call without it, with the message that a direct launch is invalid. That guard exists because a reviewer started with the Agent tool from an interactive session would receive every connected MCP server's instructions, including ask_dot's description of Dot (`facts/reviewer-blindness.md`, B4). The launcher passes exactly the sentence below, with the slug filled in and nothing else: no rules, no context, no hints about what to look for.
 
 | Reviewer | The fixed sentence |
 |---|---|

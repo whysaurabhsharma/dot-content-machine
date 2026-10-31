@@ -3,6 +3,10 @@
 Usage, from an agent's frontmatter:
     python -I "$CLAUDE_PROJECT_DIR/scripts/hooks/read_allowlist.py" <reviewer>
 
+Blocks everything unless the session was started by scripts/run_reviewer.py, which
+sets DOT_REVIEWER_LAUNCH to the reviewer's name: a reviewer started directly with the
+Agent tool would get every connected MCP server's instructions (facts/reviewer-blindness.md, B4).
+
 Covers Read, Grep, Glob, Write and Edit (memory: project turns on Write and Edit
 for the fact-checker). Paths are resolved against the project directory first, so
 "..", absolute paths and symlinks can't step outside the list. Exits 0 when the
@@ -26,6 +30,11 @@ WRITE = {"fact-checker": [".claude/agent-memory/fact-checker/*"]}
 def main():
     reviewer = sys.argv[1] if len(sys.argv) > 1 else ""
     payload = json.load(sys.stdin)
+    # run_reviewer.py sets DOT_REVIEWER_LAUNCH to the reviewer's name in the session it starts.
+    # Started any other way (the Agent tool in an interactive session), every file call is blocked.
+    if os.environ.get("DOT_REVIEWER_LAUNCH") != reviewer:
+        return block(f"{reviewer} was not started by scripts/run_reviewer.py. A direct launch is invalid; "
+                     f"run: python scripts/run_reviewer.py {reviewer} <slug>")
     tool = payload.get("tool_name", "")
     args = payload.get("tool_input", {})
     root = Path(os.environ.get("CLAUDE_PROJECT_DIR") or payload.get("cwd") or ".").resolve()

@@ -63,6 +63,8 @@ Ahrefs access ended on 31 October 2026, so weeks 1 and 4 can't read Ahrefs until
 | Stages 2–7 in Claude Code | Only RESEARCH and the run are subagents | Decide skill or subagent for each |
 | The subagents on a real question | Neither has run yet | Section 2 |
 | Ahrefs access | Ended 31 October 2026 | Reconnect, per `data/ahrefs/README.md` |
+| The Python on a new machine | The scripts need a Python with `requirements.txt` installed. On the author's machine they run because `C:\Python314` has them in the user site-packages and the skills don't use `-I`, which would hide that folder | Install the requirements into whichever `python` comes first on PATH, and check with `python -c "import pandas, matplotlib, docx"` |
+| Pieces older than run files | Pieces 1–3 have no `runs/<piece>-run.md`, so the fact-checker can't check their Dot quotes word for word. It is told to say so plainly, not treat them as checked | Re-run their questions with `dot-runner` if a piece is to be republished |
 | Nobody but the author has run it | The core claim about the machine | Section 2, then one full piece |
 
 ## 6. Accounts and tools you need

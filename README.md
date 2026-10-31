@@ -63,6 +63,10 @@ Expected: `18 pass, 0 fail, 0 partial, 6 for a human`.
 
 Then run `claude` in this folder and type `/mcp` to check that `ask_dot` is connected. `HANDOVER.md` section 1 has the set-up.
 
+**Git Bash and slash commands.** Git Bash rewrites an argument that starts with `/` into a Windows path, so `claude -p "/outline <slug>"` arrives as `D:/…/Git/outline`. Set `MSYS_NO_PATHCONV=1` before invoking a skill from Git Bash, or from any script run there. `scripts/run_reviewer.py` sets it for the session it starts. Typing `/outline` at the Claude Code prompt is unaffected.
+
+**Permissions.** `.claude/settings.json` pre-approves only the five scripts the skills call (`timing.py`, `check_piece.py`, `verify_sources.py`, `export_docx.py`, `export_webflow.py`), each by its exact path, for both the Bash and the PowerShell tool (a headless session on Windows runs commands through PowerShell, which has its own permission rules), so a stage never stops mid-way to ask about logging its time. Everything else still asks.
+
 ## Where the three pieces stand (28 October 2026)
 
 - All three pass every automated check: 18 pass, 0 fail.

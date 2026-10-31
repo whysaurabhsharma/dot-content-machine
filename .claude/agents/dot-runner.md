@@ -12,7 +12,7 @@ hooks:
     - matcher: "Bash"
       hooks:
         - type: command
-          command: python -I scripts/hooks/only_date.py
+          command: python -I -c "import os,sys,runpy;d=os.environ.get('CLAUDE_PROJECT_DIR','');f=os.path.join(d,'scripts','hooks','only_date.py');sys.argv=[f];os.path.isfile(f) or sys.exit(print('Hook script not found, CLAUDE_PROJECT_DIR is '+repr(d),file=sys.stderr) or 2);runpy.run_path(f,run_name='__main__')"
 ---
 
 # Stage 1 · RUN

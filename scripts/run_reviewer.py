@@ -13,8 +13,12 @@ Usage:
 3. That session starts the reviewer with its fixed sentence from
    runs/README.md#reviewers, and nothing else.
 4. Saves the report to reviews/<slug>/<reviewer>.md.
+
+It sets DOT_REVIEWER_LAUNCH=<reviewer> in that session; the reviewers' hook blocks every
+file call without it, so a reviewer started any other way can read nothing.
 """
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -52,7 +56,8 @@ def main(argv):
         return 1
     result = subprocess.run([claude, "-p", task, "--strict-mcp-config", "--mcp-config", f.name,
                              "--allowedTools", *tools],
-                            capture_output=True, text=True, encoding="utf-8", timeout=1200)
+                            capture_output=True, text=True, encoding="utf-8", timeout=1200,
+                            env={**os.environ, "DOT_REVIEWER_LAUNCH": reviewer, "MSYS_NO_PATHCONV": "1"})
     Path(f.name).unlink(missing_ok=True)
     if result.returncode:
         print(result.stdout + result.stderr)
