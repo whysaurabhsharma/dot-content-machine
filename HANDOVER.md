@@ -69,6 +69,14 @@ Ahrefs access ended on 31 October 2026, so weeks 1 and 4 can't read Ahrefs until
 | Pieces older than run files | Pieces 1–3 have no `runs/<piece>-run.md`, so the fact-checker can't check their Dot quotes word for word. It is told to say so plainly, not treat them as checked | Re-run their questions with `dot-runner` if a piece is to be republished |
 | Nobody but the author has run it | The core claim about the machine | Section 2, then one full piece |
 
+## Recommendations for Dot, and roadmap items not adopted
+
+From the roadmap update of 31 October 2026, decided by Saurabh.
+
+- **Byline, a recommendation for Dot.** The roadmap cites evidence that content with a named author is cited about 2.3x more than anonymous content. The pieces carry a reviewed-on date (hard rule 22) but no named author: Rick did not run these tests, and who bylines a piece is Dot's decision. Check 19 forbids a byline nobody approved. If Dot names an author, add the field and drop that sentence from rule 22.
+- **Not adopted: the roadmap's skill names** (`/make-piece-plan`, `make-piece-write.js`, `/gate`). The machine already does the same jobs as `/piece`, `.claude/workflows/piece.js` and `scripts/stage_gate.py`; renaming would cost time and risk breaking references without changing what they do.
+- **Not adopted: the fact-checker's confirmed-claims list.** `facts/dot-facts.md` already has Confirmed and Observed tables; a second list in the fact-checker's memory would duplicate them. Confirmed product claims go in `facts/dot-facts.md`.
+
 ## 6. Accounts and tools you need
 
 Claude Code · Dot (a workspace with the Olist tables or your own data, connected through the `ask_dot` MCP) · Ahrefs (the Getdot project; Rank Tracker already holds 18 keywords; access ended 31 October 2026) · Perplexity and ChatGPT (free plans are enough) · Google Sheets (the tracking sheet) · Python 3.10+ for the scripts.

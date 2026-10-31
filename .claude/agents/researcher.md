@@ -27,7 +27,7 @@ Read CLAUDE.md first. Then fetch these five inputs yourself. Record each in Sour
    - If the question isn't one of the questions that file tracks, write "not measured" for this input. Don't borrow another question's counts.
    - The file holds only marker counts, not the answers in full. Say so plainly. Don't recount and don't reconstruct the answers.
 4. **The top three ranking pages** for the main query. Run WebSearch on the main phrasing, take the first three distinct pages (one URL per page; drop locale copies of the same page), and WebFetch each one. Read each page in full, not the snippet.
-   - For each page, record the title, the opening lines, who published it, its date if shown, and whether it is *evidence* (someone ran something and shows the result) or *advice*.
+   - For each page, record the title, the opening lines, who published it, its date if shown, and whether it is *evidence* (someone ran something and shows the result) or *advice*, and its page type: vendor-owned, listicle, community thread, review profile or documentation (write it in that page's Sources row).
    - If a page fails to load, say so and take the next distinct result. Never describe a page you didn't read.
    - WebSearch is not Google. Say in Sources that the order is WebSearch's, on the date you ran it.
 5. **The plan.** Read `PLAN.md`. If it has a section naming this piece's slug, that section's run needs bind section 7 below: every question, phrasing, repeat and chat it asks for must be among your test questions. Note in Sources that you read it, and which needs it set. If it names neither this slug nor this bank question, write one line saying so and go on.
@@ -53,6 +53,7 @@ Then:
    - **PIECE**: the gap is real and a run in Dot can fill it.
    - **PIECE IF**: a piece only if a named condition holds. State the condition in one line.
    - **NOT A PIECE**: a stop condition applies. Say which.
+   - **NOT A PIECE, BUT A SURFACE**: the question is real, but its answer belongs somewhere other than Dot's blog: a third-party listicle, a review profile, a community thread or Dot's documentation. Say which surface, and why the pages that win it are of that type (input 4's page types). Write the verdict line starting `**NOT A PIECE, BUT A SURFACE**`.
 7. **Section 7 depends on the piece's format** (`"format"` in `runs/<piece>-piece.json`; research if absent; CLAUDE.md, "What this machine makes").
    - **Teardown: write `## 7. Sources`.** One entry per organisation that published how it did the thing the question asks about. For each: the organisation; the primary publication's URL, opened and read in full with WebFetch (never Dot's teardown of it, never a summary, never a secondary article); who published it and when; what it says it did, in its own words; every number it gives, copied exactly with its unit and what it counts. If a primary source fails to load, say so and leave that organisation out. State the count of organisations that meet the bar the caller sets, and list the ones that fell short, with one line each on why. Hard rule 4's cited-publication exception governs every finding here.
    - **Guide: write `## 7. Evidence for each step`.** Each step the guide would give; the run of ours (`runs/<piece>-run.md` and its figures file) or the cited publication that supports it; or "untested" (hard rule 19).

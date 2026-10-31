@@ -48,6 +48,21 @@ Through the gate. Decision 4 (publish) is open. Licence: decision L1, not a reso
 | Piece 2 as research, "Your AI Analyst Counted Late Orders Two Ways" (#41) | Research | A second test-result piece: one format twice. Archived; its run is kept as evidence for F. |
 | Piece 3 as planned, "how much context" (#47) | Research | Replaced by the format plan; never run. Archived. |
 
+## LinkedIn: six posts, six structures, rotated across the cluster
+
+A deliberate change from the roadmap update (31 October 2026). Its post model draws every post from a piece's run files and assumes every piece is research. This cluster is deliberately three formats, and only A has a run file, so the six structures are assigned across the cluster rather than per piece:
+
+| # | Structure | Piece | Drawn from |
+|---|---|---|---|
+| 1 | The number | B | 13 organisations clear the wider bar, 5 the strict one (figures C-1, C-2) |
+| 2 | The transcript | A | A verbatim Dot answer from `runs/ai-analyst-follow-up-questions-run.md` |
+| 3 | The failure taxonomy | B | The 8 that don't clear the strict bar, and what each is missing |
+| 4 | The contrarian read | F | You don't need 50–100 test questions (only if F's evidence supports it) |
+| 5 | The checklist | F | The guide's own steps |
+| 6 | The build log | A | `runs/ai-analyst-follow-up-questions-timing.csv` and what the run took (no credits figure: rule 14 was waived for A's run) |
+
+Post 1 of 6 already exists (A, "the checklist", in `posts/ai-analyst-follow-up-questions-posts.md`); it is rewritten or relabelled to fit this table when `/linkedin` is updated (tier 3, with `check_posts.py` and `posts/queue.csv`). A person writes every first line.
+
 ## Order
 
 1. B: Decision 1, research (the census and its count), then go or no-go.

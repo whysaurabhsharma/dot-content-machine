@@ -25,7 +25,7 @@ The earlier Claude Project trial's pieces and posts are in `archive/` and are no
 | Path | What it is |
 |---|---|
 | `HANDOVER.md` | Set-up in Claude Code, a 15-minute first test, how to run a full piece, the monthly loop, what's still open |
-| `CLAUDE.md` | Every rule: 18 hard rules, 17 style rules, the seven stages, the 24-check gate, a dated change log (v1.6.5). Claude Code reads it automatically |
+| `CLAUDE.md` | Every rule: 23 hard rules, 17 style rules, the seven stages, the 25-check gate, a dated change log (v1.6.5). Claude Code reads it automatically |
 | `.claude/agents/researcher.md` | Stage 1 RESEARCH as a subagent. Reads the Ahrefs snapshot and the citation series, fetches the top three pages, writes `runs/<piece>-research.md` |
 | `.claude/agents/dot-runner.md` | The evidence run as a subagent. Asks Dot each test question verbatim through `ask_dot` and appends every answer to `runs/<piece>-run.md` |
 | `prompts/01-research.md` … `07-linkedin.md` | The seven stage prompts. 01 runs as the `researcher` subagent; 02, 03 and 07 as the `/outline`, `/draft` and `/linkedin` skills; 04–06 are not yet built |
@@ -44,7 +44,7 @@ The earlier Claude Project trial's pieces and posts are in `archive/` and are no
 | `data/ahrefs/` | The Ahrefs snapshot, 27–28 October 2026: keywords, Search Console, Site Explorer, Rank Tracker. Frozen; access ended 31 October 2026 |
 | `data/` | A note on the Olist dataset (CC BY-NC-SA 4.0) and where to download it. The CSVs are not included |
 | `measure/citations.md` | The monthly AI-citation series: citation markers per domain, Perplexity, from Day 0 |
-| `scripts/check_piece.py` | Runs the 24-check gate on a piece: 15 checks decided alone, 3 with a person, 6 flagged for a human. With `--post`, checks each LinkedIn post in a `posts/` file against stage 7 and checks 15, 17 and 19 |
+| `scripts/check_piece.py` | Runs the 25-check gate on a piece: 15 checks decided alone, 3 with a person, 6 flagged for a human. With `--post`, checks each LinkedIn post in a `posts/` file against stage 7 and checks 15, 17 and 19 |
 | `scripts/verify_sources.py` | Opens every link in a piece |
 | `scripts/ground_truth_from_spec.py` | Computes every expected value in a JSON spec from the raw CSVs and writes `figures/<piece>-truth.csv`, with each definition, row count and CSV date. A row that can't be computed carries its reason |
 | `scripts/mark_run.py` | Marks each answer in `runs/<piece>-run.md` against `figures/<piece>-truth.csv`, under the definition the answer stated; gaps under 0.1% are rounding. Appends to `figures/<piece>-figures.csv` and prints "N of M correct" |
@@ -109,7 +109,7 @@ One piece, end to end. One owner. Times are estimates from piece 1, which was ru
 1. **The question.** From the question bank, calls first.
 2. **The outline.** Approved before a word is drafted.
 3. **The title.** Picked from three candidates.
-4. **Publish.** Only when all 24 checks in CLAUDE.md pass.
+4. **Publish.** Only when all 25 checks in CLAUDE.md pass.
 
 ## Eleven steps
 
@@ -125,7 +125,7 @@ One piece, end to end. One owner. Times are estimates from piece 1, which was ru
 | 8 | Fact-check | `prompts/05-fact-check.md`: a fresh chat outside this repo, then a second model, then `verify_sources.py`. Log every fix | 30 min |
 | 9 | Edit | `check_piece.py` until no FAIL; the headline test; the lift test in Perplexity and Claude. Decision 3 | 30 min |
 | 10 | Chart and posts | `charts.py`; `prompts/07-linkedin.md` for each post, each with a different opening structure | 30 min |
-| 11 | Gate and publish | The 24 checks; Decision 4; Webflow with UTM links; request three reverse links; add the target queries to Rank Tracker | 20 min |
+| 11 | Gate and publish | The 25 checks; Decision 4; Webflow optional (Dot's team publishes); UTM links; request three reverse links; add the target queries to Rank Tracker | 20 min |
 
 Steps 5, 6 and 10 run as skills: `/outline <slug>`, then a person fills "Approved by" (Decision 2), then `/draft <slug>` and `/seo-geo <slug>`; `/linkedin <slug>` per post; `/export <slug>` last, which refuses while any check FAILs. The skills haven't yet run on a real piece.
 

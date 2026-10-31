@@ -41,6 +41,10 @@ A piece that breaks any one of these does not ship.
 17. **Every run carries its conditions**: the account, the environment, the mode, and which context notes were active.
 18. **Judge recurrence item by item, not only in total.** Matching totals with changed items is a different finding, and usually a stronger one.
 19. **No remedy the evidence didn't test.** Advice that says doing X fixes Y needs a run of ours, or a cited publication, that shows it. Otherwise cut it, or, in a guide, label the step untested. A limitation is still paired with what the product does (rule 6), from evidence.
+20. **The question is answered completely in the first 100 words**, with no reference to anything above it. The promise of style rule 16 may sit beside the answer, not instead of it. Origin: about 44% of citations come from the first third of a page (roadmap update, 31 October 2026).
+21. **Every H2 section reads standing alone**, with no pronoun or "this" pointing outside it. Engines retrieve passages, not pages.
+22. **Every piece carries a reviewed-on date** (`reviewed_on:` in the front matter): the day a person last read it in full, set at Decision 3. No named author: who bylines a piece is Dot's decision, and check 19 forbids a byline nobody approved. (The roadmap's evidence that authored content is cited about 2.3x more than anonymous is a recommendation for Dot, recorded in HANDOVER.md.)
+23. **Dot is described only in the exact words of `facts/dot-entity.md`**, never paraphrased. How this sits with rule 5: those words are Dot's own description of itself, quoted from its own pages, so a piece may use them as how Dot describes Dot without further evidence. Rule 5 still applies to any product claim a piece makes beyond that wording, or relies on as tested.
 
 ## Style rules
 
@@ -82,7 +86,7 @@ RESEARCH → OUTLINE → DRAFT → READER → FACT-CHECK → EDIT → LINKEDIN
 
 Each stage has a prompt in `prompts/`. Four decisions stay human: the question, the outline, the title, the publish.
 
-1. **RESEARCH.** The gap chain: the buyer's question, what they find today, the gap type, what only Dot can show. Output: Sources rows, dated.
+1. **RESEARCH.** The gap chain: the buyer's question, what they find today, the gap type, what only Dot can show. Output: Sources rows, dated. The verdict is one of four: PIECE, PIECE IF, NOT A PIECE, or NOT A PIECE, BUT A SURFACE (the question is real, but its answer belongs on another surface: a third-party listicle, a review profile, a community thread or Dot's documentation, recorded in the bank's `surface` column).
 2. **OUTLINE.** The Playbook template. Gate: no number that isn't already in Figures. A human approves before drafting. The outline carries a quotable line (one sentence under 25 words, with a number from Figures, built to be lifted word for word) and a freshness line (when the central number was measured, and when to re-measure it, or "not re-measurable, source closed"); `stage_gate.py` refuses an outline without them.
 3. **DRAFT.** 900–1,300 words against the style rules.
 4. **READER.** A Head of Data at a 300-person company, four minutes. Returns three places they'd stop reading, the one sentence they'd quote to their CFO, and the one claim they don't believe. Rewrites nothing. The writer then fixes all three stopping points.
@@ -90,7 +94,7 @@ Each stage has a prompt in `prompts/`. Four decisions stay human: the question, 
 6. **EDIT.** `check_piece.py` clean. A headline test: would a buyer know in three seconds what they get? Then the lift test: paste the piece into Perplexity and Claude, ask each for three bullets with one quotation each. Rewrite until the intended lines are lifted, or until the lifted lines are better than the intended ones.
 7. **LINKEDIN.** Under 150 words. Three first lines tried; the most specific kept. A number within three lines. No hashtags, no emoji. Ends on an action. The link goes in the first comment with a UTM.
 
-## The gate: 24 checks
+## The gate: 25 checks
 
 A "no" on any line means the piece isn't done. Who checks each line is in brackets: script, model, or human.
 
@@ -115,9 +119,9 @@ A "no" on any line means the piece isn't done. Who checks each line is in bracke
 **Evidence**
 15. Every number has a Figures row; a published number's source is linked in the piece; check_piece.py and verify_sources.py are clean. (scripts)
 16. Every finding comes from this piece's run, a cited run of ours, or a cited publication meeting rule 4's four conditions; no untested remedy (rule 19). (human, against the Run Log and the sources)
-17. Every product claim is evidenced, confirmed, or labelled "Assumption". (check_piece.py flags unlabelled claims; human confirms)
+17. Every product claim is evidenced, confirmed, or labelled "Assumption"; Dot is described only in the words of facts/dot-entity.md (hard rule 23). (check_piece.py flags unlabelled claims and paraphrased definitions of Dot; human confirms)
 18. The dataset and its licence are recorded in Sources. (human)
-19. No brackets, placeholders, or byline nobody approved. (check_piece.py)
+19. No brackets, placeholders, or byline nobody approved; a reviewed-on date (hard rule 22) by Decision 3. (check_piece.py)
 
 **Links**
 20. Five or more internal links, including the Playbook stage, each opened to confirm it. (verify_sources.py)
@@ -127,6 +131,7 @@ A "no" on any line means the piece isn't done. Who checks each line is in bracke
 22. READER pass done and its three stopping points fixed. (model, then human)
 23. Lift test in Perplexity and Claude; the intended lines are the ones quoted. (model)
 24. Read aloud once, on a phone, today; after a later edit, the changed paragraphs re-read aloud. (human)
+25. The blind lift-tester's lifted lines reproduce the outline's quotable line in substance: its number, and most of its words. (check_piece.py, against reviews/<slug>/lift-tester.md)
 
 ## Change log
 
@@ -196,3 +201,13 @@ A "no" on any line means the piece isn't done. Who checks each line is in bracke
 **31 October 2026 — v1.6.8.** Style rule 15 and check 1 allow a claim title. Origin: Saurabh read Dot's blog. Rick's titles are 4–9 words, flat claims, often "Your X", with no colons, no quoted jargon and no how-to promise. Check 1 demanded a promise word that no Rick title has. The search-word test stays a FAIL. A claim title is PARTIAL, and the headline test and the lede's promise (check 2) carry what the promise word did.
 
 **31 October 2026 — v1.7.** Formats: research, teardown, guide. Origin: Saurabh chose A (research, done), B (teardown, "How N Companies Test Their AI Data Analyst", #35/#36) and F (guide, "How to Test an AI Analyst Before Rollout", #35) for three formats and three kinds of evidence. Rule 4 gains a narrow cited-publication exception; rules 2, 3, 9 and 10 and style rules 1 and 5 depend on the format; hard rule 19 writes down a practice applied all session. Our shape was built from the Playbook plus Cafe Bench. Length and table rules now follow each format; the pocket guide, the caveats box, "Where Dot fits" and the CTA stay. Rick's essays use none of these, so no essay format is defined until one is written.
+
+**31 October 2026 — v1.8.** From the roadmap update ("the version to deliver"), as decided by Saurabh. Its rules 19–22 become 20–23, since 19 is taken.
+- **/outline** carries a quotable line and a freshness line; the gate refuses an outline without them.
+- **Hard rules 20–23:** answer in the first 100 words; standalone H2 sections; a reviewed-on date and no named author (Dot's decision; the 2.3x byline evidence goes to the handover as a recommendation); Dot described only in `facts/dot-entity.md`'s words, which rule 5 accepts as Dot's own self-description.
+- **A fourth research verdict:** NOT A PIECE, BUT A SURFACE, with a `surface` column in the bank.
+- **Check 25:** the blind lift-tester must reproduce the outline's quotable line in substance; a script compares the two, so the lift-tester stays blind.
+- **Export no longer requires Webflow files.** `export_webflow.py` stays; the gate needs the .docx and the clean Markdown only. Dot's team publishes.
+- **LinkedIn:** the roadmap's six structures are assigned across the cluster, not per piece (PLAN.md), because its post model assumes every piece is research.
+- **Not adopted:** the roadmap's skill names (`/make-piece-*`, `/gate`) and the fact-checker's confirmed-claims list; reasons in HANDOVER.md.
+

@@ -8,6 +8,7 @@ Usage:
     python scripts/bank.py shortlist [--n 15]
     python scripts/bank.py add --question "..." --ai-form "..." --persona "..." --type <problem|evaluation|comparison|implementation> --source "..." [--sales-call]
     python scripts/bank.py top
+    python scripts/bank.py surface <id> <blog|listicle|review-profile|community-thread|documentation> --basis "..."
 
 Factors, each 1 to 3 (ICP question bank PDF, page 4):
 - demand: counted here from the sources the row names. 1 = none named, 2 = one or two,
@@ -35,7 +36,8 @@ BANK = Path("bank/questions.csv")
 KEYWORDS = Path("data/ahrefs/keywords.csv")
 FACTORS = ("demand", "gap", "incumbent", "evidence")
 NEW_COLUMNS = ["from_sales_call", "ahrefs_volume_us"] + \
-    [f"{f}_{s}" for f in FACTORS for s in ("score", "basis", "by")] + ["total", "scored_on"]
+    [f"{f}_{s}" for f in FACTORS for s in ("score", "basis", "by")] + ["total", "scored_on", "surface", "surface_basis"]
+SURFACES = ("blog", "listicle", "review-profile", "community-thread", "documentation")
 # External sources the bank's notes name. Dot's own pages are not evidence that buyers ask.
 SOURCES = ["Querio", "Metabase", "Sigma", "Fabi", "Coefficient", "Chargebee", "Basedash", "Buster",
            "Atlan", "Tableau", "neurlcreators", "Snowflake", "Cortex", "DABstep", "vutr", "InfiniSynapse",
@@ -227,6 +229,23 @@ def status(argv):
     return 0
 
 
+def surface(argv):
+    """surface <id> <blog|listicle|review-profile|community-thread|documentation> --basis "...": where the answer should live."""
+    if len(argv) < 4 or argv[3] not in SURFACES or "--basis" not in argv:
+        print(f"usage: bank.py surface <id> <{'|'.join(SURFACES)}> --basis \"<why>\"")
+        return 2
+    rows = load()
+    row = next((r for r in rows if r["id"] == argv[2]), None)
+    if row is None:
+        print(f"No question {argv[2]}")
+        return 1
+    row["surface"] = argv[3]
+    row["surface_basis"] = f"{argv[argv.index('--basis') + 1]} ({TODAY})"
+    save(rows)
+    print(f"{argv[2]} surface = {argv[3]}")
+    return 0
+
+
 def note(argv):
     """note <id> --text "...": append a dated note to a row's source column, e.g. a partial overlap."""
     if len(argv) < 3 or "--text" not in argv:
@@ -244,7 +263,7 @@ def note(argv):
 
 
 COMMANDS = {"rescore": rescore, "set": set_score, "confirm": confirm, "shortlist": shortlist,
-            "add": add, "top": top, "status": status, "note": note}
+            "add": add, "top": top, "status": status, "note": note, "surface": surface}
 
 if __name__ == "__main__":
     if len(sys.argv) < 2 or sys.argv[1] not in COMMANDS:

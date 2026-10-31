@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""check_piece.py - run the 24-check gate from CLAUDE.md on one piece.
+"""check_piece.py - run the 25-check gate from CLAUDE.md on one piece.
 
 Usage:
     python scripts/check_piece.py pieces/ai-analyst-follow-up-questions.md
@@ -204,6 +204,53 @@ def check_banned(body, prose):
             f"brackets {bad_brackets or 'none'}; placeholders {placeholders or 'none'}; banned {banned or 'none'}")
 
 
+NUMBER_WORDS = r"\b(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|hundred|thousand|million|half)\b"
+
+
+def entity_sentences():
+    """The sentences of facts/dot-entity.md's entity paragraph (hard rule 23)."""
+    f = ROOT / "facts" / "dot-entity.md"
+    if not f.exists():
+        return []
+    quote = next((l[1:].strip() for l in f.read_text(encoding="utf-8").splitlines() if l.startswith(">")), "")
+    return [s.strip().lower() for s in re.split(r"(?<=\.)\s+", quote) if s.strip()]
+
+
+def check_entity(prose):
+    """A sentence that defines Dot ("Dot, an ...", "Dot is a ...") must use the entity file's words."""
+    ents = entity_sentences()
+    found = [m.group(0) for m in re.finditer(r"\bDot(?:,\s+(?:an?|the|your)\s|\s+is\s+(?:an?|the|your)\s)[^.;:]*", prose)]
+    bad = [s for s in found if not any(s.lower().rstrip(" ,") in e or e.rstrip(".") in s.lower() for e in ents)]
+    return found, bad
+
+
+def check_lift(slug):
+    """Check 25: the blind lift-tester's lifted lines reproduce the outline's quotable line in substance."""
+    name = "Lift-tester reproduces the outline's quotable line"
+    outline = ROOT / "pieces" / f"{slug}-outline.md"
+    q = re.search(r"^\**Quotable line:?\**:?\s*(.+)$", outline.read_text(encoding="utf-8"), re.M | re.I) if outline.exists() else None
+    if not q:
+        return "HUMAN", name, "the outline has no quotable line (it predates v1.8); judge the lift test by hand (check 23)"
+    line = re.sub(r"\s*\((?:figures?|ID|IDs?)[^)]*\)\s*$", "", q.group(1).strip(), flags=re.I).strip(" *\"“”")
+    lift = ROOT / "reviews" / slug / "lift-tester.md"
+    if not lift.exists():
+        return "HUMAN", name, f"reviews/{slug}/lift-tester.md not written yet. Quotable line: \"{line}\""
+    lifted = re.findall(r"[\"“]([^\"”]{15,})[\"”]", lift.read_text(encoding="utf-8"))
+    words = lambda s: set(re.findall(r"[a-z0-9]+", s.lower())) - STOP
+    nums = lambda s: set(re.findall(r"\d[\d,.]*", s)) | set(w.lower() for w in re.findall(NUMBER_WORDS, s, re.I))
+    target_w, target_n = words(line), nums(line)
+    best, best_score = "", 0.0
+    for l in lifted:
+        if target_n and not (target_n & nums(l)):
+            continue
+        score = len(target_w & words(l)) / max(len(target_w), 1)
+        if score > best_score:
+            best, best_score = l, score
+    ok = best_score >= 0.5
+    return ("PASS" if ok else "FAIL", name,
+            f"quotable line: \"{line}\"; best lifted match {best_score:.0%}" + (f": \"{best[:70]}\"" if best else ": none with its number"))
+
+
 # ---------- the checks ----------
 def run(path):
     text = Path(path).read_text(encoding="utf-8")
@@ -394,9 +441,19 @@ def run(path):
 
     add(16, "HUMAN", "Findings from this run, a cited run of ours, or a cited publication (rule 4); no untested remedy (rule 19)",
         "check against the Run Log and the sources")
-    add(17, *check_assumptions(prose))
+    st17, nm17, dt17 = check_assumptions(prose)
+    ent_found, ent_bad = check_entity(prose)
+    if ent_bad:
+        st17, dt17 = "FAIL", dt17 + f"; Dot described in words not in facts/dot-entity.md (hard rule 23): {[s[:50] for s in ent_bad]}"
+    elif ent_found:
+        dt17 += f"; {len(ent_found)} definition(s) of Dot, all in facts/dot-entity.md's words"
+    add(17, st17, nm17, dt17)
     add(18, "HUMAN", "Dataset and licence recorded in Sources", "Sources tab")
-    add(19, *check_banned(FENCE.sub("", body), prose))
+    st19, nm19, dt19 = check_banned(FENCE.sub("", body), prose)
+    rev_on = meta.get("reviewed_on", "")
+    if rev_on:
+        dt19 += f"; reviewed_on {rev_on}"
+    add(19, st19, nm19, dt19)
 
     # 20 internal links
     urls = re.findall(r"\]\((https?://[^)\s]+)\)", body)
@@ -411,6 +468,7 @@ def run(path):
     add(22, "HUMAN", "READER pass done; stopping points fixed", "prompts/04-reader.md")
     add(23, "HUMAN", "Lift test in Perplexity and Claude", "prompts/06-edit.md")
     add(24, "HUMAN", "Read aloud once, on a phone", "")
+    add(25, *check_lift(Path(path).stem))
 
     print(f"\ncheck_piece.py  {path}\n")
     for n, st, name, detail in results:

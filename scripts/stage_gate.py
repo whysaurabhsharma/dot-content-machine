@@ -111,6 +111,10 @@ def assess(slug, no_shots=False):
     if not research or section7 not in research:
         add("research", "next", f"runs/{slug}-research.md missing or without '{section7}'")
         return stages
+    if re.search(r"^\*\*NOT A PIECE, BUT A SURFACE", research, re.M):
+        add("research", "waiting", "the verdict is NOT A PIECE, BUT A SURFACE: a person records the surface in "
+            f"bank/questions.csv (python scripts/bank.py surface {manifest['bank_id']} <surface> --basis \"...\"); no piece is written")
+        return stages
     if re.search(r"^\*\*NOT A PIECE", research, re.M):
         add("research", "blocked", "the verdict is NOT A PIECE")
         return stages
@@ -262,9 +266,10 @@ def writing(slug, manifest, no_shots=False):
     human = read(f"reviews/{slug}/human.md") or ""
     ticked = [c for c in HUMAN_CHECKS if re.search(rf"^- \[x\] {re.escape(c)}", human, re.M | re.I)]
     title_ok = fm.get("title_approved_by")
-    if len(ticked) < len(HUMAN_CHECKS) or not title_ok:
+    reviewed = fm.get("reviewed_on")
+    if len(ticked) < len(HUMAN_CHECKS) or not title_ok or not reviewed:
         todo = [c for c in HUMAN_CHECKS if c not in ticked]
-        add("title", "waiting", "Decision 3: a person sets title_approved_by in the front matter"
+        add("title", "waiting", "Decision 3: a person sets title_approved_by and reviewed_on (hard rule 22) in the front matter"
             + (f", and ticks in reviews/{slug}/human.md: {'; '.join(todo)}" if todo else ""))
         return stages
     add("title", "done", f"approved by {title_ok}")
@@ -281,8 +286,9 @@ def writing(slug, manifest, no_shots=False):
     add("linkedin", "done", f"{n_posts} of {STRUCTURES} opening structures used")
 
     out = Path(f"exports/{slug}-practice" if manifest.get("practice") else f"exports/{slug}")
-    if not (out.exists() and list(out.glob("*.docx")) and (out / "webflow.html").exists()):
-        add("export", "next", f"{out}/ (.docx, .md, webflow.html, webflow-fields.json)")
+    # Webflow files are optional since v1.8: Dot's team publishes; export_webflow.py stays for whoever wants it.
+    if not (out.exists() and list(out.glob("*.docx")) and list(out.glob("*.md"))):
+        add("export", "next", f"{out}/ (.docx and clean .md; webflow.html and webflow-fields.json optional)")
         return stages
     add("export", "done", str(out))
 

@@ -39,7 +39,7 @@ Write the piece from the approved outline. Follow CLAUDE.md's style rules exactl
 
 - 900–1,300 words. Sentences average under 18 words; none over 25. No paragraph over four sentences.
 - Open with the outline's opening, in bold. Then the surprising detail, then the pocket guide.
-- Every H2 is a claim. Follow the shape CLAUDE.md gives the piece's format (style rules 1 and 5): research, method then one table then one chart; teardown, one census table linking each primary source; guide, five to nine numbered steps, each starting with a verb. Put `format:` in the front matter, from `runs/<slug>-piece.json`.
+- Every H2 is a claim. Follow the shape CLAUDE.md gives the piece's format (style rules 1 and 5): research, method then one table then one chart; teardown, one census table linking each primary source; guide, five to nine numbered steps, each starting with a verb. Put `format:` in the front matter, from `runs/<slug>-piece.json`. Leave `reviewed_on` out: a person sets it at Decision 3 (hard rule 22). Answer the question completely in the first 100 words (hard rule 20); make every H2 section read standing alone (hard rule 21); describe Dot only in the words of `facts/dot-entity.md` (hard rule 23); build the opening or first H2 around the outline's quotable line.
 - Every number comes from `figures/<slug>-figures.csv`. Every product statement comes from facts/dot-facts.md: Observed and Confirmed facts stated plainly, Assumptions with the word "Assumption" in the same sentence. Never a Superseded assumption.
 - Quotable lines carry their own subject; they must make sense out of context.
 - Product quotes are copied word for word from `runs/<slug>-run.md` and name the question and chat they came from (hard rule 13).
