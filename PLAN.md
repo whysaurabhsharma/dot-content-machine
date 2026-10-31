@@ -9,8 +9,8 @@ One buyer worry: **can I trust an AI analyst's answers before I roll it out?** T
 | # | Piece | Format | Bank | Evidence | What it gives the reader |
 |---|---|---|---|---|---|
 | A | `ai-analyst-follow-up-questions`, "Your AI Analyst Picked a Date. Only the SQL Said Which." | Research | #43 | Our own run (31 October 2026, 8 answers) | The problem, proved on our data: a right answer to a question you didn't mean, and a six-step test that shows which date was used |
-| B | `how-companies-test-ai-data-analysts`, working title "How N Companies Test Their AI Data Analyst" | Teardown | #36 (#35 is marked drafted by the archived trial) | Other organisations' published evaluation methods, primary sources only (hard rule 4's cited-publication exception) | What others actually do to test their analyst, in one census, and the patterns it shows |
-| F | `test-ai-analyst-before-rollout`, working title "How to Test an AI Analyst Before Rollout" | Guide | #35, the only demand-3 question in the bank | B's census (cited publications) and our runs (A's, and piece 2's archived run) | How to do it: the steps, each backed by a run or a publication, or labelled untested (hard rule 19) |
+| B | `how-companies-test-ai-data-analysts`, working title "How N Companies Test Their AI Data Analyst" | Teardown | #35 (reset to unwritten 31 October 2026; the archived trial piece had it) | Other organisations' published evaluation methods, primary sources only (hard rule 4's cited-publication exception) | What others actually do to test their analyst, in one census, and the patterns it shows |
+| F | `test-ai-analyst-before-rollout`, working title "How to Test an AI Analyst Before Rollout" | Guide | #36 ("what questions should I use, and how many") | B's census (cited publications) and our runs (A's, and piece 2's archived run) | How to do it: the steps, each backed by a run or a publication, or labelled untested (hard rule 19) |
 
 **How they compound:** B shows what others do; F turns it into steps; A proves the core step on our own data. B and F need no new Dot run, which also keeps the Olist licence question (facts L1) to A and to whatever F cites from our runs.
 
@@ -34,7 +34,7 @@ Through the gate. Decision 4 (publish) is open. Licence: decision L1, not a reso
 - **Our runs it may cite:** A's run, and piece 2's archived run (`runs/ai-analyst-shows-sql-run.md`: 6 questions in two fresh chats each, 12 of 12 correct; the late-delivery question returned 2,878 and 2,453). Piece 2's conditions were recorded by hand with rule 14 waived, so no claim about mode, credits, environment or notes may rest on it.
 - **Shape:** 1,000–1,900 words; five to nine numbered steps, each starting with a verb; pocket guide, caveats, "Where Dot fits", CTA.
 - **Depends on B:** F's steps cite B's census, so B's research comes first.
-- **Bank:** #35 is marked "drafted" by the archived trial piece, so `stage_gate.py start` will refuse it until a person decides its status.
+- **Bank:** #36, evidence score 2 confirmed by Saurabh (31 October 2026).
 
 ## Not chosen, and why (for the handover)
 
@@ -67,10 +67,10 @@ Post 1 of 6 already exists (A, "the checklist", in `posts/ai-analyst-follow-up-q
 
 1. B: Decision 1, research (the census and its count), then go or no-go.
 2. If go: B's figures, outline (Decision 2), draft, reviews, Decision 3.
-3. F: Decision 1 (after #35's status is settled), research citing B, then the same stages.
+3. F: Decision 1 on #36, research citing B, then the same stages.
 4. Five more LinkedIn posts: one for A, two each for B and F.
 5. Handover.
 
 ## Decisions that stay human
 
-The question (Decision 1), the outline (Decision 2), the title and human checks (Decision 3), the publish (Decision 4); B's go or no-go; #35's bank status; a licence decision for F if it cites Olist-derived figures.
+The question (Decision 1), the outline (Decision 2), the title and human checks (Decision 3), the publish (Decision 4); B's go or no-go (go: 13 on the wider bar); a licence decision for F if it cites Olist-derived figures.
