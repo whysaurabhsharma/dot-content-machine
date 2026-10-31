@@ -53,7 +53,7 @@ ClickHouse's model panel dropped 39 of 243 candidate questions where no two mode
 
 ## More than half score answers with an LLM judge
 
-Seven of the 13 use an LLM judge: LinkedIn, Uber, ClickHouse, Hex, Snowflake, WisdomAI and Grab. [Hex](https://hex.tech/blog/evaluate-data-agents/) built one eval where the right answer is 2.04% and a common wrong one is 2.03%. Hex's judge accepted the wrong one 35% of the time.
+An LLM judge does the scoring at LinkedIn, Uber, ClickHouse, Hex, Snowflake, WisdomAI and Grab. [Hex](https://hex.tech/blog/evaluate-data-agents/) built one eval where the right answer is 2.04% and a common wrong one is 2.03%. Hex's judge accepted the wrong one 35% of the time.
 
 LinkedIn and Hex each publish one check on their judge, and the two checks measure different things. LinkedIn's judge lands within 1 point of the human score 75% of the time. Hex writes that "we still sometimes struggle to calibrate and align our LLM judges".
 

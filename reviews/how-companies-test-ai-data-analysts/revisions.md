@@ -8,6 +8,7 @@
 - **Lede:** ends "Start from those five."
 - **Seven-name sentence:** leads with the count. "Seven of the 13 use an LLM judge: LinkedIn, Uber, ClickHouse, Hex, Snowflake, WisdomAI and Grab."
 - **Hex line, checked before accepting: round 6's wording was ours.** Hex's post doesn't contain "calibrated" or "on purpose". It says "we still sometimes struggle to calibrate and align our LLM judges", and frames the harsh bias as a problem it is "constantly and anxiously improving on". Round 6's "leans one way on purpose" was our reading. Replaced with Hex's own words, quoted and linked.
+- **Two sevens (Saurabh, after the round): fixed.** The judge sentence now opens with the judge, not a count: "An LLM judge does the scoring at LinkedIn, Uber, ClickHouse, Hex, Snowflake, WisdomAI and Grab." Whole-piece scan, by script, for a number naming two groups of companies: none left. 7 = accuracy figures, 5 = full methods, 8 = real questions, 3 = more than one right answer; the re-run group carries no count. Same-number, different-noun uses remain and read as distinct: "three answers" and "eight questions" (piece A's run), Vercel's "5 queries", "eight lines".
 - **Knock-on:** FAQ answer 2 had joined two sentences that the essay link separates, so it wasn't word for word (since round 4b). Now the drift sentence alone.
 
 ## Round 6: after the second phone read (Saurabh, 31 October 2026)
