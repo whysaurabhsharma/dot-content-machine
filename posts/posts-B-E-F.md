@@ -30,7 +30,7 @@ Same ten questions, each in a fresh chat, run twice in Dot. Credits read in Bill
 
 One run per mode, so that is a reading, not a verdict.
 
-Assumption, not confirmed by Dot: 1 credit ≈ $1, so roughly $0.58 an answer. On the free tier, 100 credits covers about 170 answers like these.
+Assumption, not confirmed by Dot: 1 credit ≈ $1, so roughly $0.58 an answer. On the free tier, 300 credits cover about 520 answers like these.
 
 The piece gives you the ten questions, both batch readings, and the method to meter your own. Link in the first comment.
 

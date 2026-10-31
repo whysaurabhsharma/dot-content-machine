@@ -113,19 +113,29 @@ def numbers_in(t):
     return found
 
 
-def assumption_keywords():
+def section_keywords(section, column):
+    """(id, keyword) pairs from one table section of facts/dot-facts.md; column is the Keywords index."""
     if not FACTS.exists():
         return []
-    kws, in_assumptions = [], False
-    for line in FACTS.read_text().splitlines():
+    kws, inside = [], False
+    for line in FACTS.read_text(encoding="utf-8").splitlines():
         if line.startswith("## "):
-            in_assumptions = line.strip() == "## Assumptions"
+            inside = line.strip() == section
             continue
-        if in_assumptions and line.startswith("| A"):
+        if inside and line.startswith("| A"):
             cells = [c.strip() for c in line.strip("|").split("|")]
-            if len(cells) >= 4 and cells[3] not in ("", "—", "-"):
-                kws += [(cells[0], k.strip().lower()) for k in cells[3].split(",") if k.strip()]
+            if len(cells) > column and cells[column] not in ("", "—", "-"):
+                kws += [(cells[0], k.strip().lower()) for k in cells[column].split(",") if k.strip()]
     return kws
+
+
+def assumption_keywords():
+    return section_keywords("## Assumptions", 3)
+
+
+def superseded_keywords():
+    """Keywords of assumptions a later observation contradicted. Using one fails check 17, labelled or not."""
+    return section_keywords("## Superseded", 5)
 
 
 # ---------- the checks ----------
@@ -295,9 +305,16 @@ def run(path):
         for s in sentences(prose):
             if kw in s.lower() and "assumption" not in s.lower():
                 unlabelled.append(f"{aid} \"{kw}\": {s[:50]}")
+    superseded = []
+    for aid, kw in superseded_keywords():
+        for s in sentences(prose):
+            if kw in s.lower():
+                superseded.append(f"{aid} \"{kw}\": {s[:50]}")
     labelled = len(re.findall(r"\bAssumption\b", prose))
-    add(17, "PASS" if not unlabelled else "FAIL", "Product claims evidenced, confirmed or labelled \"Assumption\"",
-        f"{labelled} labelled" + (f"; unlabelled: {unlabelled}" if unlabelled else "; none unlabelled"))
+    add(17, "PASS" if not unlabelled and not superseded else "FAIL",
+        "Product claims evidenced, confirmed or labelled \"Assumption\"",
+        f"{labelled} labelled" + (f"; unlabelled: {unlabelled}" if unlabelled else "; none unlabelled")
+        + (f"; rests on a superseded assumption: {superseded}" if superseded else "; none superseded"))
 
     add(18, "HUMAN", "Dataset and licence recorded in Sources", "Sources tab")
 

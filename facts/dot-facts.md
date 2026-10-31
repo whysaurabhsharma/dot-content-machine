@@ -43,14 +43,15 @@ Made by Saurabh Sharma, 27 October 2026, answering the product-claim list. Rick 
 | A6 | Environments let a team test a definition change before it reaches everyone. | O9 only; the behaviour was not tested | environments let | 5 |
 | A7 | The evaluation always re-scores when a question is saved. | O2, seen twice; Saurabh: yes | always re-scores | 6 |
 | A8 | Dot is comfortable publishing a piece where its evaluation passes a 0.52% definition disagreement. | Saurabh's answer: assume | — | 7 |
-
 | A10 | Olist is acceptable as the trial dataset. Licence: CC BY-NC-SA 4.0. | Rick: pick a realistic dataset; Dot wants to see the thought process | — | — |
 
 ## Superseded
 
-Assumptions that a later observation contradicted. Kept as they were stated, with the date and the observation that ended them. A piece may not rely on them.
+Assumptions that a later observation contradicted. Kept as they were stated, with the date and the observation that ended them. A piece may not rely on them: `check_piece.py` fails a piece that uses any keyword in this table's Keywords column, labelled or not. Those keywords name the superseded claim itself, so they can be narrower than the keywords the assumption had while it stood.
 
-- **A3, superseded 31 October 2026.** Stated 27 October 2026: "The 300 free credits are 100 at signup plus the rest earned by connecting data sources and connectors." Basis then: Saurabh's answer; consistent with the milestones in O7. Keywords then: free credits. Claim-list line 3. **Contradicted** by O7's 31 October 2026 reading: Settings → Billing showed "300 base credits included. Milestones add more." with 0 bonus credits earned, so the 300 is the base allowance, not 100 plus earned credits (screenshot `runs/screenshots/rehearsal-batch-1-credits-before.png`).
+| ID | Stated 27 October 2026 | Basis then | Superseded | Contradicted by | Keywords |
+|---|---|---|---|---|---|
+| A3 | The 300 free credits are 100 at signup plus the rest earned by connecting data sources and connectors. (Keywords then: free credits. Claim-list line 3.) | Saurabh's answer; consistent with the milestones in O7 | 31 October 2026 | O7's 31 October 2026 reading: Settings → Billing showed "300 base credits included. Milestones add more." with 0 bonus credits earned, so the 300 is the base allowance, not 100 plus earned credits (screenshot `runs/screenshots/rehearsal-batch-1-credits-before.png`) | 100 base credits, 100 credits, 100 at signup, the 100 plus |
 
 ## Confirmed
 

@@ -68,7 +68,7 @@ Each reading is rounded to 0.1, so each total can be off by up to 0.1, and the g
 
 We won't split batch 1 into a per-answer price for Balanced. The ten questions are not equal amounts of work, so the leftover after removing one answer is not a price.
 
-What you can quote is the clean batch: about 0.58 credits per correct answer in Economy. On the free tier, 100 credits covers about 170 answers like these. Assumption, not confirmed by Dot: 1 credit is about $1, which makes it roughly $0.58 an answer. We found no Dot page that publishes a dollar price for a credit, so check yours before you show Finance.
+What you can quote is the clean batch: about 0.58 credits per correct answer in Economy. On the free tier, 300 credits cover about 520 answers like these. Assumption, not confirmed by Dot: 1 credit is about $1, which makes it roughly $0.58 an answer. We found no Dot page that publishes a dollar price for a credit, so check yours before you show Finance.
 
 Seat prices don't tell you this. A [Power BI licence](https://www.getdot.ai/blog/microsoft-power-bi-pricing) or a [Tableau seat](https://www.getdot.ai/blog/tableau-pricing) costs the same whether your team asks four questions a month or four hundred. [Credit pricing](https://www.getdot.ai/pricing) moves with use, so the figure that fits your team is one you measure.
 
@@ -99,7 +99,7 @@ So read the scope line before you score the answer. A cost per correct answer is
 
 ## Where Dot fits
 
-Billing counts credits used to 0.1, so a batch's cost is two readings, accurate to about a tenth. Signup gives 100 base credits, with more earned by connecting sources and inviting colleagues. Assumption, not confirmed by Dot: 1 credit is about $1, and the 300 free credits advertised at signup are the 100 plus the rest earned. The details are in [the docs](https://docs.getdot.ai).
+Billing counts credits used to 0.1, so a batch's cost is two readings, accurate to about a tenth. The free tier includes 300 base credits, and milestones such as connecting sources or inviting colleagues add more. Assumption, not confirmed by Dot: 1 credit is about $1, matching the $300 advertised at signup. The details are in [the docs](https://docs.getdot.ai).
 
 ---
 

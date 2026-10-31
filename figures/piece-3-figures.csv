@@ -9,9 +9,9 @@ C07,5.8,Credits for batch 2 (all Economy),73.0 - 67.2,2026-10-28
 C08,0.58,Credits per answer in Economy,5.8 / 10,2026-10-28
 C09,0.52,Credits per answer in Balanced (estimated; 0.5244 unrounded),(5.3 - 0.58) / 9,2026-10-28
 C10,9,Balanced answers in batch 1,Run Log,2026-10-28
-C11,100,Free credits included on signup,Billing page (O7),2026-10-28
-C12,172,Answers 100 credits buy at 0.58,100 / 0.58,2026-10-28
-C13,191,Answers 100 credits buy at the Balanced estimate,100 / 0.5244 (unrounded estimate),2026-10-28
+C11,300,Base credits included on the free tier,Billing page (O7 31 Oct reading; supersedes 100 read 27 Oct),2026-10-31
+C12,517,Answers 300 credits buy at 0.58,300 / 0.58 = 517.24,2026-10-31
+C13,572,Answers 300 credits buy at the Balanced estimate,300 / 0.5244 (unrounded estimate) = 572.08,2026-10-31
 C14,2,Answers per batch scoped to delivered orders by the context note (Q8; Q9),Answer text,2026-10-28
 C15,5962902.01,Item prices for delivered orders purchased in 2017,Dot answer Q8; ground truth,2026-10-28
 C16,6155806.98,Item prices for all orders purchased in 2017,ground_truth.py,2026-10-28
@@ -24,7 +24,7 @@ C22,0.5,Gap between the batch totals in credits (five meter ticks),5.8 - 5.3,202
 C23,1,Economy answers in batch 1 (question 1),Run Log,2026-10-28
 C24,4.72,Batch 1 credits after removing one Economy answer,5.3 - 0.58,2026-10-28
 C25,137.04,Average order value on delivered orders (Q9),Dot answer; ground truth,2026-10-28
-C26,300,Free credits advertised on signup (A3),Signup page (O8),2026-10-28
-C27,170,About how many answers 100 credits cover at 0.58 (100 / 0.58 = 172; stated as about 170),100 / 0.58,2026-10-28
+C26,300,Free credits advertised on signup ($300); basis for A2,Signup page (O8); matches the 300 base credits in O7 (31 Oct),2026-10-31
+C27,520,About how many answers 300 credits cover at 0.58 (300 / 0.58 = 517; stated as about 520),300 / 0.58,2026-10-31
 C28,137.75,Average order value across all orders with items,ground_truth.py,2026-10-28
 C29,0.2,Most the gap between two batch totals can be off from rounding (4 readings x 0.05),Arithmetic,2026-10-28
