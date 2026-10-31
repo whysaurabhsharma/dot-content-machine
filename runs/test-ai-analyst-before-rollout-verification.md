@@ -13,3 +13,5 @@
 | Hex | https://hex.tech/blog/evaluate-data-agents/ | 6 | 6 verbatim. "calibrated" and "on purpose" do not appear (confirms piece B's round 8 correction). The sentence after the calibration line is "We are biased towards being overly harsh, …" |
 
 Not re-opened in the browser: Snowflake, GitHub, Salesforce, Vercel, Ramp, Prosus, WisdomAI, Grab, and Dot's own pages (DABstep post, census of 14, context agent page). F's figures file therefore carries no row from them; B's pre-publish browser re-read is done for the five above only.
+
+**Added 1 November 2026, later the same day.** Also opened in Chrome: the Playbook (https://www.getdot.ai/blog/ai-data-analyst-playbook): Stage 3, "Prove": "Hold access until the tests pass your bar (~80%)" and "Move on when: the tests clear the bar and stay there through a week of changes." Dot's essay (https://www.getdot.ai/blog/your-ai-analyst-will-be-worse-next-month, Rick Radewagen, 31 August 2026): opens "Anthropic got their internal data agent to 95% accuracy. One month later it was at 65%." Both verbatim in the page text.
