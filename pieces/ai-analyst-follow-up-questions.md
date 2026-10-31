@@ -1,5 +1,5 @@
 ---
-title: "AI analyst follow-up questions: a context test you can copy"
+title: "Does your AI analyst remember what you asked? Dot did, reading one phrase two ways"
 title_approved_by: Saurabh, 2026-10-31
 seo_title: "AI Analyst Follow-Up Questions: A Context Test to Copy"
 meta: "Does an AI analyst keep context across follow-up questions? We ran a follow-up chain in Dot on Olist data. Copy the test, and check the SQL's date filter."
@@ -18,9 +18,9 @@ reverse_links:
   - The conversational analytics software post (https://www.getdot.ai/blog/conversational-analytics-software), anchor "AI analyst follow-up questions"
 ---
 
-**Buyers ask whether an AI analyst keeps context across follow-up questions. We tested [Dot](https://www.getdot.ai/) on the Olist dataset with a chain of linked questions, then asked one again in a fresh chat. The phrase "delivered in 2017" gave 2,453 late orders in the chain and 1,762 in the fresh chat. By the end, you will have a five-step follow-up test to run on your own data.**
+**Does your AI analyst remember what you asked? We asked [Dot](https://www.getdot.ai/) eight questions on Olist data; four turns after the first, it returned the same 43,428 orders. "Delivered in 2017" meant purchase date in the chain and delivery date in fresh chats, each matching the raw data for its date. By the end, you'll have a five-step test.**
 
-The two numbers are not a memory failure. Inside the chain, Dot read "delivered in 2017" as orders purchased in 2017. In the fresh chat, Dot read it as orders that reached the customer in 2017. Both readings are defensible, and each answer's SQL showed which one it used.
+The two readings gave 2,453 late orders in the chain and 1,762 in the fresh chat, and that gap is not a memory failure. Inside the chain, Dot read "delivered in 2017" as orders purchased in 2017. In the fresh chat, Dot read it as orders that reached the customer in 2017. Both readings are defensible, and each answer's SQL showed which one it used.
 
 **The whole piece in eight lines:**
 

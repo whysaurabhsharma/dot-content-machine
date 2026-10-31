@@ -61,3 +61,12 @@ Revised 31 October 2026 after the reader, fact-checker and lift-tester reviews. 
 - **Lines starting "But"/"So".** Fixed: the lede and pocket-guide line 6 no longer lean on the sentence before.
 - **"The fix is already on the screen", "Two lines of a WHERE clause".** Fixed: cut.
 - **"All 8 answers were correct" overstates when quoted alone.** Fixed: replaced, see the reader's disbelieved claim.
+
+## After the headline test, 31 October 2026
+
+The headline test failed (reviews/ai-analyst-follow-up-questions/human.md, attempt 1): three readers couldn't tell whether the piece showed Dot working or broken, because the opening gave the gap (2,453 in the chain, 1,762 in a fresh chat) without resolving it. That broke hard rule 6. These revisions came after the three blind reviews, so the reviews describe the old opening, not this one.
+
+- **Lede rewritten** to address the reader, open with the buyer's question, and resolve the gap within 60 words: Dot returned the same 43,428 orders four turns after the first, and "delivered in 2017" meant purchase date in the chain and delivery date in fresh chats, each matching the raw data for its date. Sources: F01, F04, MR-Q1, MR-Q5; MR-Q2 against T2 and MR-Q6 against T2c. 58 words, four sentences.
+- **Second paragraph** now carries the two figures the lede dropped: "The two readings gave 2,453 late orders in the chain and 1,762 in the fresh chat, and that gap is not a memory failure."
+- **Title** changes from "AI analyst follow-up questions: a context test you can copy" to a buyer's question with the result; final wording pending check 1 (it needs a promise word).
+
