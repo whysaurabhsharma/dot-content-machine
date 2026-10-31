@@ -31,3 +31,18 @@ Screenshots show the account holder's name and email. That is fine for internal 
 - A batch is as many questions as fit in one `dot-runner` call, in the order of the research file's test questions.
 - Batches are numbered from 1 within a piece and never renumbered. The next call picks up at the first question not yet recorded.
 - Each batch gets its own five screenshots, named per the scheme above with its own `<n>`. The `credits-after` of batch 1 doesn't stand in for the `credits-before` of batch 2: take both.
+
+## Timing
+
+Every step logs its start and end with `scripts/timing.py` to `runs/<piece>-timing.csv`, using exactly these stage names. `timing.py` rejects any other name; add a new one here and in its `STAGES` list together.
+
+| Stage | Covers | Who logs it |
+|---|---|---|
+| `research` | The researcher: inputs fetched to `runs/<piece>-research.md` written | The caller of the `researcher` agent, or its skill |
+| `truth` | Writing `specs/<piece>-truth.json` and running `ground_truth_from_spec.py` | The person or skill doing it |
+| `run` | One batch of Dot questions: just before the first question to the moment the last answer returns | The `dot-runner` itself, once per batch. Its writing time after the last answer is not counted |
+| `mark` | `mark_run.py` on the run, including any fix needed before it marks correctly | The person or skill doing it |
+| `findings` | Recording the observed findings in the run file | The person or skill doing it |
+
+The `note` column says how each row was made: `logged` (written by `timing.py` at the time), `backfilled` (added later from a timestamp in the record, with its source named), or `not logged` (no evidence; no time is estimated).
+

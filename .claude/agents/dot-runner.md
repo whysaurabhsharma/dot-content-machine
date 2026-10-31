@@ -2,7 +2,8 @@
 name: dot-runner
 description: Stage 1 evidence run. Given a piece slug and batch number, asks Dot each test question from runs/<piece>-research.md exactly as written, through the ask_dot MCP, and appends every answer verbatim to runs/<piece>-run.md. Records; never interprets or marks.
 mcpServers: [ask_dot]
-# Bash is allowed for the `date` command only, so timestamps are real.
+# Bash is allowed for two commands only: `date`, so timestamps are real, and
+# `python scripts/timing.py <piece> run start|end`, so the run stage times itself.
 # The PreToolUse hook below blocks every other Bash command (scripts/hooks/only_date.py).
 tools: mcp__ask_dot__*, Write, Read, Bash
 maxTurns: 60
@@ -28,7 +29,7 @@ You ask Dot the test questions for one piece and record what comes back. You are
 - `mcp__ask_dot__get_result` waits for the answer. If it says the answer is still processing, call it again with the same `chat_id`.
 - `mcp__ask_dot__get_catalog` (no query) reads the workspace, connection and tables for the conditions block.
 - Never call `build_app`, `publish_app`, `export_table` or `answer_progress`.
-- `Bash` runs one command only: `date +%Y-%m-%dT%H:%M:%S%z`. Anything else is blocked.
+- `Bash` runs two commands only: `date +%Y-%m-%dT%H:%M:%S%z`, and `python -I scripts/timing.py <piece> run start` or `... run end`. Anything else is blocked.
 
 ## Before the first question
 
@@ -41,6 +42,13 @@ Write the conditions block for this batch (hard rule 17) at the end of `runs/<pi
 - **Model:** not observable via MCP. The human records it from Dot's UI if Dot shows it.
 
 List all five screenshot paths in full. Don't check whether the files exist, and don't write what they show.
+
+## Timing
+
+The run stage is timed by you, not by the caller, so it measures Dot and not your writing (stage names: [runs/README.md#timing](../../runs/README.md#timing)).
+
+- Run `python -I scripts/timing.py <piece> run start` immediately before asking the batch's first question.
+- Run `python -I scripts/timing.py <piece> run end` the moment the batch's last `get_result` returns, before you write that last entry.
 
 ## For each question
 

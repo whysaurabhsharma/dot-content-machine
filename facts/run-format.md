@@ -25,6 +25,7 @@ A run file is one H1, then for each batch a conditions block followed by one ent
 - `<n>` numbers batches from 1 within the piece ([runs/README.md#batches](../runs/README.md#batches)).
 - `<k>` numbers questions from 1 across the whole piece, in the research file's order. It doesn't restart with each batch.
 - Entries are only ever appended. An earlier entry is never edited.
+- Rival definitions go into the truth spec before the run, not after. If a question has a plausible second reading (all orders vs delivered; with or without shipping), its row is in `specs/<piece>-truth.json` before the first question is asked. A rival added after seeing Dot's answer must say so in the spec.
 
 ## Conditions block, once per batch
 
