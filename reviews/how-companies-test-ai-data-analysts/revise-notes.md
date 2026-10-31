@@ -1,6 +1,6 @@
 # Revise notes · how-companies-test-ai-data-analysts · round 3
 
-From the blind reviews of the reframed draft (31 October 2026). Apply each, and log each in revisions.md as done or one line on why it can't be. Use only numbers in the figures file and quotes the verification file confirms. Never touch the title or title_approved_by. Stay within 1,600 words. The first two notes come from both reviewers.
+From the blind reviews of the reframed draft (31 October 2026). Apply each, and log each in revisions.md as done or one line on why it can't be. Use only numbers in the figures file and quotes the verification file confirms. Never touch the title (already set to the new working title by hand) or title_approved_by. Stay within 1,600 words. The first two notes come from both reviewers.
 
 ## 1. Make the table carry the seven accuracy figures (reader, fact-checker)
 
@@ -55,5 +55,5 @@ With the 13/14 caveat added (note 5), merge two of the existing four so the box 
 
 ## Decided by Saurabh, 31 October 2026
 
-All nine notes approved, including 5 (the 13 against 14 line to the caveats), 6 (cut the always-re-scores claim) and 8 (the re-run heading changes). The working title becomes "You Can't Compare AI Analyst Accuracy Numbers": change `title:` in the front matter to it (Decision 3 still comes after the human checks; leave title_approved_by unset).
+All nine notes approved, including 5 (the 13 against 14 line to the caveats), 6 (cut the always-re-scores claim) and 8 (the re-run heading changes). The working title is now "You Can't Compare AI Analyst Accuracy Numbers", set in the front matter by hand (Decision 3 still comes after the human checks; title_approved_by stays unset).
 
