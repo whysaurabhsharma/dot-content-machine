@@ -18,7 +18,7 @@ You are researching one buyer question for Dot's blog. Follow CLAUDE.md. Use onl
 
 These three close gaps a cold-start test found on 1 November 2026.
 
-- **What Dot's workspace holds.** Read `facts/dot-workspace-setup.md`: the tables and context notes the specs assume. Then call `get_catalog` (free, instant) with a query naming the tables your test questions need, and record in Sources what it returned. If a table or note your questions need is missing, say so in the verdict as a PIECE IF condition naming it; never guess at a table.
+- **What Dot's workspace holds (research pieces only; a teardown or guide needs no Dot workspace, so skip this).** Read `facts/dot-workspace-setup.md`: the tables and context notes the specs assume. Then call `get_catalog` (free, instant) with a query naming the tables your test questions need, and record in Sources what it returned. If a table or note your questions need is missing, say so in the verdict as a PIECE IF condition naming it; never guess at a table.
 - **The bank row.** Read this question's row in `bank/questions.csv`: `gap_basis`, `demand_basis` and `evidence_basis` name the pages already on the topic, Dot's own included. The gap chain must say what Dot's own page on the topic already covers.
 - **The Playbook stage.** Name it from the Playbook itself (https://www.getdot.ai/blog/ai-data-analyst-playbook; Stage 3 is "Prove", the testing stage) and `facts/house-structure-and-links.md`, "Suggested links per piece". Never write "to be confirmed" when either source answers it.
 

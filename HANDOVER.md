@@ -22,6 +22,26 @@ All six LinkedIn posts exist, first lines by Saurabh. Exports are in `exports/<s
 
 **Where to start reading:** this file, then `CLAUDE.md`, then `PLAN.md` (the cluster), then any piece in `pieces/` beside its `figures/` file and its `reviews/` folder.
 
+## For a newcomer: what you're inheriting
+
+**The honest state, 1 November 2026.** The machine produced the three pieces in this repo, but it has never been run end to end by anyone except its author, and never to a piece that was actually published. It has been run cold twice, both times by a fresh Claude Code session (a subagent) given only the README, never by a person:
+
+| Test | How far it got | What it found |
+|---|---|---|
+| 1 (research verdict) | README to a research verdict in about 4 minutes | The first test skipped Decision 1 and the truth spec; the gate had no PIECE IF branch; the researcher guessed the workspace's tables; the docs contradicted each other. **All fixed** (CLAUDE.md v1.8.14, v1.8.21). |
+| 2 (a marked Dot run) | README to a marked Dot run on a practice piece in about 10 minutes; setup 14 of 14, the workspace check 43,428 | The marking script read "2017" as the answer and marked a correct answer wrong, and the gate counted it as done; the gate accepted "not recorded" conditions; two files disagreed about who writes the conditions block. **All fixed** (v1.8.22): a real gap now holds marking for a person. |
+
+**Still open** (records in `runs/coldstart/`; detail in section 6):
+
+- A PIECE IF condition about the run itself can't be cleared before the run.
+- The truth-spec format can't mark a "which month" answer, documents neither its one-table limit nor its built-ins, and nothing checks that a test question's rival readings give different numbers.
+- The researcher skipped two of its newer instructions (the workspace check, naming the Playbook stage) in the second test: instructions changed, behaviour didn't fully follow.
+- `mark_run.py` calls an ambiguous match "no match"; nothing covers a follow-up whose parent asked a clarifying question back; with two numbers of the same unit in one answer it takes the first (a real gap goes to a person, who is the backstop).
+- `--practice` skips the gate's refusals without saying so.
+- Not yet tested at all: a person other than the author running it; a piece through publishing; the monthly measurement loop. The first teardown test (section 3) is new and has not been run cold.
+
+**What has held up.** Every number in the published pieces has a figures row and was re-read against its source in a browser. The checks caught real errors repeatedly (a changed number, a missing label, a stale lift, an overclaimed score), and each bug found in the checks themselves is logged with its fix in `CLAUDE.md`'s change log.
+
 ## 1. The three pieces, and why these three
 
 **One worry, three kinds of evidence.** A buyer asks whether an AI analyst's answers can be trusted before rollout. Each piece answers it with a different kind of evidence (`CLAUDE.md`, "What this machine makes"):
@@ -80,27 +100,30 @@ In dollars, **assumption A2** (1 credit ≈ $1, not stated on any Dot pricing pa
 
 ## 3. Running the machine
 
-### Set it up in Claude Code (10 minutes)
+### Set it up
 
-`CLAUDE.md` is the rulebook. Claude Code reads it automatically whenever it starts in this folder.
+Follow `SETUP.md`: Part 1 for any piece, Part 2 as well for a research piece. `CLAUDE.md` is the rulebook; Claude Code reads it automatically whenever it starts in this folder.
 
-1. Clone the repo and open a terminal in it.
-2. Install the scripts' packages: `python -m pip install -r requirements.txt`. Check with `python -c "import pandas, matplotlib, docx; print('ok')"`.
-3. Connect Dot's MCP, once per machine: `claude mcp add --transport http ask_dot https://app.getdot.ai/ai/mcp`
-4. Run `claude` in the folder. Type `/mcp`, choose `ask_dot`, and sign in to your Dot workspace.
-5. Check the rules loaded: ask *"What are the four human decisions?"* It should answer: the question, the outline, the title, the publish.
-6. Check the agents loaded: type `/agents`. You should see `researcher`, `dot-runner`, `reader`, `fact-checker` and `lift-tester`.
+### First test: a teardown, no Dot needed (about 30 minutes)
 
-### A 30-minute first test
+A teardown works from other organisations' published methods, so it needs only Part 1 of `SETUP.md`: no Dot account, no data. It proves the machine works before you set up anything else. At any point, `python scripts/stage_gate.py test-1` says what comes next.
 
-It follows the gate's order. At any point, `python scripts/stage_gate.py test-1` says what comes next. (Rewritten 1 November 2026: the earlier version skipped Decision 1 and the truth spec, which the gate requires before a run; a cold-start test found it.)
+1. **Decision 1, as practice.** `python scripts/stage_gate.py start test-1 --bank 30 --format teardown --practice`. Bank #30 asks how to write down metric definitions so everyone, AI included, uses the same one; `--practice` marks it as a test that will never be published.
+2. **Research.** `python scripts/timing.py test-1 research start`, then in `claude`: *"Use the researcher agent on bank #30, piece slug test-1. Format teardown. Census bar: the organisation's own publication describes how it writes down or governs its metric definitions."* It reads each organisation's primary publication and writes `runs/test-1-research.md`, section 7 being the census. Then `python scripts/timing.py test-1 research end`.
+3. **Read the verdict.** PIECE, PIECE IF, NOT A PIECE, or NOT A PIECE, BUT A SURFACE. For PIECE IF, check the condition yourself and record it: `python scripts/stage_gate.py clear test-1 --by "<name, date>" --basis "<how it was met>"`.
+4. **Figures.** Copy every number you would use from the census into `figures/test-1-figures.csv`, one row each, its source as `published: <URL>, read <date>`. Open each source in a browser and check the number and any quote against the page itself: the census came through a model's reading of each page, and the first three pieces found quotes cut short or reworded that way.
+5. **Ask the gate.** `python scripts/stage_gate.py test-1` should now say `next outline`. That is the end of the first test: the machine has taken a question to a sourced census and figures, with no Dot involved. To go on, `/piece test-1` runs the outline and waits for your approval (Decision 2).
 
-1. **Decision 1.** Pick a question (`python scripts/bank.py top`, or any unwritten row whose evidence a person has confirmed), then record it: `python scripts/stage_gate.py start test-1 --bank <id> --format research`. If it isn't the top row, add `--why "<reason>"`; the reason is kept in the manifest.
-2. **Research.** First `python scripts/timing.py test-1 research start`. Then *"Use the researcher agent on bank #<id>, piece slug test-1."* It checks the workspace against `facts/dot-workspace-setup.md` with `get_catalog` and writes `runs/test-1-research.md`. Then `python scripts/timing.py test-1 research end` (the researcher can't time itself).
-3. **Read the verdict:** PIECE, PIECE IF, NOT A PIECE, or NOT A PIECE, BUT A SURFACE. For **PIECE IF**, check the condition yourself, then record it: `python scripts/stage_gate.py clear test-1 --by "<name, date>" --basis "<how it was met>"`. The gate waits until you do.
-4. **Truth spec.** Write `specs/test-1-truth.json` from the research's test questions, including every rival reading of an ambiguous phrase, then `python scripts/ground_truth_from_spec.py specs/test-1-truth.json`. A person reads the rival definitions and adds `"reviewed_by": "<name, date>"`. No run starts before this.
-5. **Batch conditions in Dot's own UI:** mode, environment, context notes, credits before, as `## Batch 1: conditions` in `runs/test-1-run.md`, with the screenshots named as in `runs/README.md#screenshots`. Mode, credits, environment and context notes can't be seen through the MCP.
-6. **Run.** *"Use the dot-runner agent on test-1, batch 1, first question only."* It asks Dot word for word and appends the answer to `runs/test-1-run.md`.
+### Second test: a research run (needs SETUP.md Part 2)
+
+Do this after the first test, once Part 2 of `SETUP.md` is done: a Dot workspace set up as `facts/dot-workspace-setup.md` says, and the Olist CSVs in `data/olist/`. It follows the gate's order. At any point, `python scripts/stage_gate.py test-2` says what comes next. (Rewritten 1 November 2026: the earlier version skipped Decision 1 and the truth spec, which the gate requires before a run; a cold-start test found it.)
+
+1. **Decision 1.** Pick a question (`python scripts/bank.py top`, or any unwritten row whose evidence a person has confirmed), then record it: `python scripts/stage_gate.py start test-2 --bank <id> --format research`. If it isn't the top row, add `--why "<reason>"`; the reason is kept in the manifest.
+2. **Research.** First `python scripts/timing.py test-2 research start`. Then *"Use the researcher agent on bank #<id>, piece slug test-2."* It checks the workspace against `facts/dot-workspace-setup.md` with `get_catalog` and writes `runs/test-2-research.md`. Then `python scripts/timing.py test-2 research end` (the researcher can't time itself).
+3. **Read the verdict:** PIECE, PIECE IF, NOT A PIECE, or NOT A PIECE, BUT A SURFACE. For **PIECE IF**, check the condition yourself, then record it: `python scripts/stage_gate.py clear test-2 --by "<name, date>" --basis "<how it was met>"`. The gate waits until you do.
+4. **Truth spec.** Write `specs/test-2-truth.json` from the research's test questions, including every rival reading of an ambiguous phrase, then `python scripts/ground_truth_from_spec.py specs/test-2-truth.json`. A person reads the rival definitions and adds `"reviewed_by": "<name, date>"`. No run starts before this.
+5. **Batch conditions in Dot's own UI:** mode, environment, context notes, credits before, as `## Batch 1: conditions` in `runs/test-2-run.md`, with the screenshots named as in `runs/README.md#screenshots`. Mode, credits, environment and context notes can't be seen through the MCP.
+6. **Run.** *"Use the dot-runner agent on test-2, batch 1, first question only."* It asks Dot word for word and appends the answer to `runs/test-2-run.md`.
 7. **Check the entry** against `facts/run-format.md`.
 
 ### A full piece, on one command
@@ -268,9 +291,9 @@ Each is labelled "Assumption" wherever a piece uses it (`facts/dot-facts.md`). A
 | A7 | The evaluation always re-scores when a question is saved | Fact O2, seen twice | Not used | |
 | A8 | Dot is comfortable publishing a piece where its evaluation passes a 0.52% definition disagreement | Saurabh's answer | Archived piece 1 | |
 
-### Pending: Anthropic's drift sentence
+### Resolved: Anthropic's drift sentence
 
-On 1 November the Anthropic post was re-read in a browser. The drift sentence B relies on continues: "…over a month before we treated this as an engineering problem." B gives the drift (about 95% to about 65% in a month) without that clause. Whether B needs the clause, and whether adding it counts as a correction after Decision 3, is with Saurabh.
+Re-read in a browser on 1 November, Anthropic's sentence continues "…over a month before we treated this as an engineering problem." B and F now carry it in reported speech: "That was before Anthropic treated it as an engineering problem." Nothing for Rick.
 
 ### Recommendations from the roadmap, and what wasn't adopted
 

@@ -4,18 +4,18 @@ Turns a buyer's question into an evidence-led piece for getdot.ai, checks it har
 
 It runs in Claude Code, in this repo. Claude Code reads `CLAUDE.md` automatically, runs the stage subagents in `.claude/agents/`, and talks to Dot through the `ask_dot` MCP.
 
-**New here? Read `HANDOVER.md` first.** It gets you from a fresh clone to a connected Claude Code session in ten minutes, and through a 15-minute test run.
+**Start here: [SETUP.md](SETUP.md).** It takes a fresh machine to a first test, one checked step at a time, and ends by pointing you at the first test.
 
 ## This submission
 
-**New here? [SETUP.md](SETUP.md)** takes a fresh machine to a first run, one checked step at a time. **Start with [STATUS.md](STATUS.md):** what is delivered, what each item waits on, the pre-publish sequence, and what is not done.
+Where the submission stands (what is delivered, what each item waits on, the pre-publish sequence): [STATUS.md](STATUS.md).
 
 Three pieces, one topic cluster, three formats (research, teardown, guide): can you trust an AI analyst's answers before you roll it out? Six LinkedIn posts, two per piece.
 
 | # | Piece | Posts | State (1 November 2026) |
 |---|---|---|---|
 | A | Research, `ai-analyst-follow-up-questions` (bank #43) | 2 of 2 (structures 2 and 6) | Through the gate and exported; Decision 4 (publish) open |
-| B | Teardown, `how-companies-test-ai-data-analysts` (bank #36) | 2 of 2 (structures 1 and 3) | Through Decision 3 and exported; Decision 4 open, with Rick's two sign-offs |
+| B | Teardown, `how-companies-test-ai-data-analysts` (bank #36) | 2 of 2 (structures 1 and 3) | Through Decision 3 and exported; Decision 4 open (one labelled assumption, see its publish note) |
 | F | Guide, `test-ai-analyst-before-rollout` (bank #35), the cluster's hub | 2 of 2 (structures 4 and 5) | Through Decision 3 and exported; Decision 4 open |
 
 Where each piece stands is read from the files by `python scripts/stage_gate.py <slug>`, not from this table. What's left and what needs Rick: `HANDOVER.md`.
