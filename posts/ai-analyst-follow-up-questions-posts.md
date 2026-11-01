@@ -28,7 +28,7 @@ The piece has all six steps and the SQL line that showed the date.
 
 **First comment:** The six-step follow-up test and the SQL behind both counts: https://www.getdot.ai/blog/ai-analyst-follow-up-questions?utm_source=linkedin&utm_medium=social&utm_campaign=content-machine&utm_content=post-a
 
-**Image:** charts/ai-analyst-follow-up-questions-late-orders.png, the piece's bar chart of the two late-order counts. Caption: "Late orders for "delivered in 2017", asked inside a follow-up chain and in a fresh chat. Olist dataset, Dot, 31 October 2026. The run's mode is not stated."
+**Image:** charts/ai-analyst-follow-up-questions-late-orders.png, the piece's bar chart of the two late-order counts. Caption: "Late orders for "delivered in 2017", asked in a follow-up chat and in a fresh chat. Olist dataset, Dot, 31 October 2026. The run's mode is not stated."
 
 ## Post B · ai-analyst-follow-up-questions · the transcript (cluster structure 2)
 
@@ -52,7 +52,7 @@ Nothing in it is wrong; the number matches the raw data. But it doesn't say whic
 
 Its SQL said purchase date. Asked in full in a fresh chat, Dot read delivery date and returned 1,762.
 
-Two right answers, 691 apart, and only the SQL said which.
+Two right answers, 691 apart, and only the SQL said why.
 
 The piece shows the SQL line that settled it, and a six-step test for your own team.
 

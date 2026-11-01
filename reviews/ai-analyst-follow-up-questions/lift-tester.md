@@ -2,52 +2,42 @@
 
 Started with: Read reviews/ai-analyst-follow-up-questions/draft.md as an answer engine and report what you would and would not lift.
 
-- The draft tests whether an AI analyst keeps context across follow-up questions. It asked Dot the same ambiguous question in two ways and got two different counts, both correct. "Asked how many orders "delivered in 2017" were late, Dot said 2,453 in one chat and 1,762 in a fresh one."
-- The two counts used different dates. Only the SQL showed which date the fresh-chat answer used, because its text didn't say. "Where the text was silent, the SQL wasn't."
-- It ends with a six-step test readers can copy, which centres on re-asking a question in a fresh chat and checking which date each answer used. "In a fresh chat, ask one of the chain's questions again, written in full."
+**Summary**
 
-## 1. Would lift
+- Dot gave two different late-order counts for one ambiguous phrase, and both were right: "Dot counted 2,453 late orders by purchase date in a follow-up chat, and 1,762 by delivery date in a fresh chat."
+- The answer text didn't always say which date was used, but the SQL always did: "Every answer in this run, 8 of 8, came back with its SQL, and its date filter named the column."
+- The article ends with a test anyone can repeat: "The test: run a follow-up chat, re-ask one question in a fresh chat, and read the SQL of any answer that doesn't name its date."
 
-1. "The risk isn't a wrong number. It is a right number for a date you didn't mean, with nothing in the text to say so."
-   The clearest statement of the problem. It makes sense on its own and answers the "why should I care" question.
-2. "Both counts match the raw Olist data for the date each used; they sit 691 orders apart."
-   One sentence with a checkable claim, the source data and the size of the gap (2,453 − 1,762 = 691 is correct).
-3. "Inside the chain, Dot counted 2,453 late orders among those purchased in 2017. That matches the raw data by purchase date exactly. In the fresh chat, Dot counted 1,762 late orders among those delivered in 2017. That matches the raw data by delivery date exactly."
-   The core evidence, stated with no references to other parts of the article.
-4. "The test: run a chain, re-ask one question cold, check whether each answer names its date, and read its SQL if not."
-   The whole method in one sentence. It's the best answer to "how do I test this?"
-5. "Asked four turns later to go back to the first question, Dot returned 43,428 again, with the same SQL as its first answer."
-   A direct answer to "does it keep context across follow-ups?", which the article says is the question buyers ask.
-6. "Every answer in this run, 8 of 8, came back with its SQL, and its date filter named the column."
-   A specific, counted claim. The table supports it.
-7. "Most answers also named their date unprompted: 5 of 8."
-   Usable only next to quote 6. On its own, "Most answers" needs that context. The 5 matches the table (Q1, Q3, Q4, Q5, Q7).
-8. ""Delivered in 2017" has two valid readings: bought in 2017, or delivered to the customer in 2017."
-   A clean definition of the ambiguity.
-9. "The fresh reading covered 40,930 orders delivered in 2017, of which 4.3% arrived late."
-   Supporting figure (1,762 / 40,930 = 4.3%). Useful when the question is about late rates.
+**1. Would lift (best first)**
 
-## 2. Would not lift
+1. "Dot counted 2,453 late orders by purchase date in a follow-up chat, and 1,762 by delivery date in a fresh chat." It stands on its own and gives both numbers, both dates and both chat types. It's the main finding in one sentence.
+2. "Every answer in this run, 8 of 8, came back with its SQL, and its date filter named the column." It's a clear, checkable number that answers "how would I know which date it used?"
+3. "Asked four turns later to go back to the first question, Dot returned 43,428 again, with the same SQL as its first answer." It directly answers the buyer's question about whether the analyst keeps context.
+4. "The test: run a follow-up chat, re-ask one question in a fresh chat, and read the SQL of any answer that doesn't name its date." It's a whole method in one line, good for "how do I test this?" questions.
+5. "Both counts match the raw Olist data for the date each used; they sit 691 orders apart." It verifies both counts and sizes the gap. It needs item 1 before it ("Both counts" depends on it), so I'd quote them together.
+6. "It is a right number for a date you didn't mean, with nothing in the text to say so." This is the general warning. I'd only use it next to the sentence before it (see below).
+7. "Late means delivered on a later calendar day than the estimated delivery date." A definition worth citing as support when explaining the numbers.
+8. "This uses purchase date, not delivery date." Dot's own words. It's good evidence that the first answer named its date.
 
-- "An AI analyst's answer can be right and still not say which question it answered."
-  It's built to be quoted, but it generalises from one run on one dataset. The quotes in section 1 make the same point with evidence attached, so I'd use those.
-- "When you run this, a total that matches under a different date filter is still a different answer."
-  "When you run this" ties it to the article. "A total that matches" doesn't say what it matches. Read cold, it's muddled.
-- "You need one fresh chat. We used two."
-  Makes no sense without the method section around it.
-- "Neither answer is wrong."
-  Too short to quote without the paragraph before it.
-- "Dot's 5.6% for 2017 and 7.7% for 2018, Q3 and Q4 in the table above, were display rounding, not gaps."
-  Points to the table ("Q3 and Q4 in the table above"), so it falls apart once lifted out.
-- "In this test, Dot's text didn't always name its date, but its SQL always did: every answer came back with its query."
-  It sits in the vendor section ("Where Dot fits") and repeats the 8-of-8 claim. I'd quote the factual version in section 1 instead.
-- The title, "Your AI Analyst Gave Two Right Answers. Only the SQL Said Why."
-  Slightly overstated. Q1, the chain's first answer, named its date in plain text ("This uses purchase date, not delivery date."). So the SQL wasn't the only thing that said why for the chain.
+**2. Would not lift**
 
-## 3. The one line
+- "An AI analyst's answer can be right and still not say which question it answered." It's written as a pull quote, but it's general and only repeats line 56, which is more specific. An answer engine would take the concrete version.
+- "The risk isn't a wrong number." Taken alone it's a teaser with nothing in it. It only works as a setup for the next sentence.
+- "When you run this, a total that matches under a different date filter is still a different answer." The opening clause depends on what came before, and "a total that matches" doesn't say what it matches. It's hard to read on its own.
+- "You need one fresh chat. We used two." It's catchy but means nothing out of context. It also counts the item-price chat as a "fresh chat", while the method section calls it "A third chat".
+- "Neither answer is wrong." This needs the paragraph before it to make sense.
+- "Where the text was silent, the SQL wasn't." It's a rhetorical lead-in. The 8 of 8 sentence after it carries the actual fact.
+- "In this test, Dot's text didn't always name its date, but its SQL always did: every answer came back with its query." It repeats the 8 of 8 line in a section that reads like a sales pitch, so I'd quote the neutral version.
+- "Before you trust either number, check which date each answer used." "Either number" depends on context, and the line is part of a call to action.
+- "Dot's 5.6% for 2017 and 7.7% for 2018, both in the follow-up chat, were display rounding, not gaps." It's accurate but too detailed for most answers.
 
-"The risk isn't a wrong number. It is a right number for a date you didn't mean, with nothing in the text to say so."
+**3. The one line**
 
-One thing worth fixing that affects quoting: the article offers "a six-step test", but the closing link says "Then run the full eight-step test before rollout." Someone quoting both could think the numbers contradict each other. Adding a clause that says the eight-step test is a separate, broader one would prevent that.
+"Dot counted 2,453 late orders by purchase date in a follow-up chat, and 1,762 by delivery date in a fresh chat."
+
+**Notes**
+
+- I checked the figures against each other and they agree: 2,453 − 1,762 = 691; 2,453 / 43,428 = 5.6%; 1,762 / 40,930 = 4.3%. The table shows 5 answers that named their date and 3 that didn't, matching the "5 of 8" and "three answers stated no date" claims.
+- In the lede, "Dot" is a markdown link (`[Dot](https://www.getdot.ai/)`), so anyone quoting it would quote the displayed text.
 
 File reviewed: C:\Users\LENOVO\OneDrive\Documents\1Sauarbh\1Dot\dot-content-machine\dot-content-machine\reviews\ai-analyst-follow-up-questions\draft.md

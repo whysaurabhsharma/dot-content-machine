@@ -7,10 +7,10 @@
   ],
   "keep_order": true,
   "title": "Same words, two readings: late orders \"delivered in 2017\"",
-  "subtitle": "One Dot answer inside a follow-up chain, one in a fresh chat. Both match the raw data under the date each used.",
+  "subtitle": "One Dot answer in a follow-up chat, one in a fresh chat. Both match the raw data under the date each used.",
   "rows": [
     {
-      "label": "Inside the chain: purchase date",
+      "label": "Follow-up chat: purchase date",
       "value": 2453,
       "accent": true,
       "value_label": "2,453"
@@ -21,6 +21,6 @@
       "value_label": "1,762"
     }
   ],
-  "alt": "Bar chart of two Dot answers to how many orders delivered in 2017 were late, on the Olist dataset. Inside a follow-up chain, Dot used purchase date and returned 2,453. In a fresh chat, it used delivery date and returned 1,762.",
-  "caption": "Late orders for \"delivered in 2017\", asked inside a follow-up chain and in a fresh chat. Olist dataset, Dot, 31 October 2026. The run's mode is not stated."
+  "alt": "Bar chart of two Dot answers to how many orders delivered in 2017 were late, on the Olist dataset. In a follow-up chat, Dot used purchase date and returned 2,453. In a fresh chat, it used delivery date and returned 1,762.",
+  "caption": "Late orders for \"delivered in 2017\", asked in a follow-up chat and in a fresh chat. Olist dataset, Dot, 31 October 2026. The run's mode is not stated."
 }
