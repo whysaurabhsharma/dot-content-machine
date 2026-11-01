@@ -4,7 +4,7 @@ Written 28 October 2026 for Rick and Théo. Rewritten 31 October 2026 for Claude
 
 ## 0. In one page
 
-**What this is.** A repo that turns a buyer's question into an evidence-led blog piece for getdot.ai, with every number checked against a file and every rule enforced by a script. It runs in Claude Code. `CLAUDE.md` is the rulebook (v1.8.26, every change dated in its change log).
+**What this is.** A repo that turns a buyer's question into an evidence-led blog piece for getdot.ai, with every number checked against a file and every rule enforced by a script. It runs in Claude Code. `CLAUDE.md` is the rulebook (v1.8.27, every change dated in its change log).
 
 **What was delivered.** One cluster of three pieces on one buyer worry: *can I trust an AI analyst's answers before I roll it out?*
 
@@ -21,6 +21,8 @@ All six LinkedIn posts exist, first lines by Saurabh. Exports are in `exports/<s
 **SEO and answer-engine choices, and the LinkedIn adaptation:** section 11.
 
 **Where to start reading:** this file, then `CLAUDE.md`, then `PLAN.md` (the cluster), then any piece in `pieces/` beside its `figures/` file and its `reviews/` folder.
+
+**The tracking sheet's six tabs now live in the repo.** The brief's tracking sheet was sent as a link beside this folder; its pointer was removed because nobody else could open it. Each tab's record is a file: **Question bank**, `bank/questions.csv` (with dated copies `bank/scores-YYYY-MM-DD.csv`); **Coverage**, that file's `status` column (unwritten, drafted, covered, published) and `surface` column; **Sources**, section 4 of each `runs/<slug>-research.md`, with the dataset's licence also in each piece's `dataset:` front matter; **Figures**, `figures/<slug>-figures.csv`; **Baseline**, `measure/baseline-YYYY-MM-DD.md`, with the Ahrefs snapshot in `data/ahrefs/`; **Run Log**, `runs/<slug>-run.md` for each run's conditions and answers, and `reviews/<slug>/revisions.md` for the fixes.
 
 ## For a newcomer: what you're inheriting
 

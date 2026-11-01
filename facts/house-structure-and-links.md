@@ -33,6 +33,11 @@ Five or more internal links per piece, including the Playbook stage it runs (che
 | https://www.getdot.ai/blog/tableau-pricing | Opened 28 October 2026 |
 | https://www.getdot.ai/blog/microsoft-power-bi-alternatives | Opened 28 October 2026. The singular "alternative" returns 404 |
 | https://docs.getdot.ai | Opened 28 October 2026 |
+| https://www.getdot.ai/blog/your-ai-analyst-will-be-worse-next-month | Rick's drift essay. Opened by `verify_sources.py` (200), 1 November 2026; linked from B and F |
+| https://www.getdot.ai/blog/from-10-to-90-percent-on-adyens-dabstep | The DABstep post. Opened by `verify_sources.py` (200), 1 November 2026; linked from B |
+| https://www.getdot.ai/blog/how-companies-built-ai-data-analysts | Dot's census of 14. Opened by `verify_sources.py` (200), 1 November 2026; linked from B |
+
+`check_piece.py` check 20 fails a `getdot.ai/blog/` link that names neither a piece's own slug (`pieces/<slug>.md`) nor a URL in this file (v1.8.27). To link a Dot page not listed here, open it first, then add it to this table.
 
 ### Seen in Ahrefs or Search Console, 27 October 2026
 
@@ -69,9 +74,9 @@ These pages rank or receive traffic, so they exist. Open each with `verify_sourc
 
 ### Named in the canon, URL still to find
 
-- Rick's drift essay, *Your AI Analyst Will Be Worse Next Month*
-- The DABstep post
 - The semantic-layer essays
+
+(Rick's drift essay and the DABstep post were found and moved to Verified, 1 November 2026.)
 
 ## Suggested links per piece
 

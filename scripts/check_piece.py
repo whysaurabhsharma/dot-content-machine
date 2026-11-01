@@ -39,6 +39,34 @@ def unquote(s):
     return s[1:-1] if len(s) >= 2 and s[0] == s[-1] == '"' else s
 
 
+def norm_url(u):
+    """getdot.ai URL without scheme, www., query, fragment or trailing slash, lower-cased."""
+    u = re.sub(r"^https?://", "", u.strip().lower())
+    u = re.sub(r"^www\.", "", u)
+    return re.split(r"[?#]", u)[0].rstrip("/")
+
+
+def known_internal():
+    """Every getdot.ai URL named in the link inventory, plus /blog/<slug> for each piece's own slug."""
+    known = set()
+    inv = ROOT / "facts" / "house-structure-and-links.md"
+    if inv.exists():
+        for u in re.findall(r"https?://(?:www\.)?getdot\.ai[^\s)|>`\]]*", inv.read_text(encoding="utf-8")):
+            known.add(norm_url(u))
+    for p in (ROOT / "pieces").glob("*.md"):
+        if p.stem.endswith("-outline"):
+            continue
+        slug = parse_front_matter(p.read_text(encoding="utf-8"))[0].get("slug", "")
+        if slug:
+            known.add(norm_url(f"getdot.ai/blog/{slug}"))
+    return known
+
+
+def unknown_blog_links(urls):
+    known = known_internal()
+    return [u for u in urls if re.search(r"getdot\.ai/blog/[^/?#]+", u) and norm_url(u) not in known]
+
+
 def parse_front_matter(text):
     if not text.startswith("---"):
         return {}, text
@@ -535,8 +563,16 @@ def run(path):
     internal = sorted({u.rstrip("/") for u in urls if "getdot.ai" in u})
     playbook = meta.get("playbook_url", "").rstrip("/")
     ok20 = len(internal) >= 5 and playbook in internal
-    add(20, "PASS" if ok20 else "FAIL", "Five or more internal links, including the Playbook stage",
-        f"{len(internal)} unique internal; Playbook linked {playbook in internal}. Then run verify_sources.py")
+    dt20 = f"{len(internal)} unique internal; Playbook linked {playbook in internal}. Then run verify_sources.py"
+    # v1.8.27: a getdot.ai/blog link must name a piece's own slug or a page in the link inventory.
+    # Before publication a cross-link to an unpublished piece returns 404 either way, so
+    # verify_sources.py can't tell a slug typo from a page not yet live; this can.
+    unknown = unknown_blog_links(internal)
+    if unknown:
+        ok20 = False
+        dt20 += (f"; getdot.ai/blog link names no piece slug and no page in facts/house-structure-and-links.md: "
+                 f"{unknown} (a typo, or a live Dot page to open and add to the inventory)")
+    add(20, "PASS" if ok20 else "FAIL", "Five or more internal links, including the Playbook stage", dt20)
 
     rev = meta.get("reverse_links", []) or []
     add(21, "PASS" if len(rev) >= 3 else "FAIL", "Three reverse links listed", f"{len(rev)} listed")
