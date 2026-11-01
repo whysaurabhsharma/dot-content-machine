@@ -1,4 +1,6 @@
-# AI citation series
+# AI citation series (closed)
+
+**Superseded on 1 November 2026.** This series used three topic labels, the free Perplexity app and no sign-in. Readings now go in `measure/baseline-YYYY-MM-DD.md`: the buyer queries in Google, Perplexity (signed in, same account) and ChatGPT (CLAUDE.md, Measurement, v1.8.26). The readings below are kept for the record. They are not comparable with the baseline files: different questions, a different tool state, signed out against signed in.
 
 How often AI assistants cite Dot when a buyer asks a question Dot could answer.
 Counts are citation markers in the answer text. Read by hand in the free Perplexity app.
@@ -29,7 +31,7 @@ bygravity 4, agentsql 4.
 
 ---
 
-## Method for each monthly check
+## Method for each monthly check (superseded; see the note at the top)
 
 1. Open the free Perplexity app. Ask the same three buyer questions, worded exactly as in day 0.
 2. Paste each answer below the heading for that month, in full.

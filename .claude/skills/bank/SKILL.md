@@ -18,7 +18,7 @@ First action: `python scripts/timing.py bank bank start`. Last action: `python s
 
 ## Inputs and output
 
-- Reads: `bank/questions.csv`, `data/ahrefs/keywords.csv` (frozen snapshot, 27–28 October 2026), `measure/citations.md`, and getdot.ai and docs.getdot.ai, live.
+- Reads: `bank/questions.csv`, `data/ahrefs/keywords.csv` (frozen snapshot, 27–28 October 2026), the latest `measure/baseline-YYYY-MM-DD.md` (and `measure/citations.md`, the closed earlier series), and getdot.ai and docs.getdot.ai, live.
 - Writes: `bank/questions.csv`, only through `scripts/bank.py`. `rescore` also writes the dated copy `bank/scores-YYYY-MM-DD.csv`. Never edit the CSV by hand, and never change the bank's text columns (question, ai_form, demand, gap, weak_competition, evidence, source).
 
 ## add

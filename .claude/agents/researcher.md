@@ -31,9 +31,9 @@ Read CLAUDE.md first. Then fetch these five inputs yourself. Record each in the 
    - A phrase not in the file is written "not measured". Never estimate a volume.
    - `not indexed` is what Ahrefs displayed. It is not a zero; write it as `not indexed`.
    - Date every value "Ahrefs, 27-28 October 2026". The file is a frozen snapshot.
-3. **AI answers to the question.** Read `measure/citations.md` and take the latest monthly reading: the engine, the date, Dot's count and every competitor's count, as recorded. Counts there are citation markers, not pages; say so.
-   - If the question isn't one of the questions that file tracks, write "not measured" for this input. Don't borrow another question's counts.
-   - The file holds only marker counts, not the answers in full. Say so plainly. Don't recount and don't reconstruct the answers.
+3. **AI answers to the question.** Read the latest `measure/baseline-YYYY-MM-DD.md` and take its reading of this question: the date, the conditions, and for each engine Dot's count and every other domain's count, as recorded. Counts there are citation markers, not pages; say so. `measure/citations.md` is the closed 27–29 October series on topic labels; use it only as history, and say it isn't comparable.
+   - If the question isn't one of the queries those files read, write "not measured" for this input. Don't borrow another question's counts.
+   - If a reading holds only counts, not the answers in full (the 1 November 2026 baseline and `measure/citations.md` do), say so plainly. Don't recount and don't reconstruct the answers.
 4. **The top three ranking pages** for the main query. Run WebSearch on the main phrasing, take the first three distinct pages (one URL per page; drop locale copies of the same page), and WebFetch each one. Read each page in full, not the snippet.
    - For each page, record the title, the opening lines, who published it, its date if shown, and whether it is *evidence* (someone ran something and shows the result) or *advice*, and its page type: vendor-owned, listicle, community thread, review profile or documentation (write it in that page's Sources row).
    - If a page fails to load, say so and take the next distinct result. Never describe a page you didn't read.
@@ -47,7 +47,7 @@ Write it all to `runs/<piece>-research.md`, headed with the question, the piece 
 1. **The gap chain**, one line each:
    - what the buyer asks, in their words;
    - what they find today, and whether it is *evidence* (someone ran something) or *advice*;
-   - who gets cited in AI answers, counted from the answer text (citation markers, not pages), as recorded in `measure/citations.md`;
+   - who gets cited in AI answers, counted from the answer text (citation markers, not pages), as recorded in the latest `measure/baseline-YYYY-MM-DD.md`;
    - the gap: advice only, or no answer;
    - what only Dot can show, using its own feature or data.
 2. **The words buyers type.** Up to five phrases from the inputs, for the headline. Use only phrases that appear in the inputs. Give each its volume and difficulty as in input 2.

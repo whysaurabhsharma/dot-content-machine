@@ -29,7 +29,7 @@ The earlier Claude Project trial's pieces and posts are in `archive/` and are no
 | Path | What it is |
 |---|---|
 | `HANDOVER.md` | Set-up in Claude Code, a first test (a teardown, about 10 minutes of machine time), how to run a full piece, the monthly loop, what's still open |
-| `CLAUDE.md` | Every rule: 23 hard rules, 17 style rules, the seven stages, the 25-check gate, a dated change log (v1.8.25). Claude Code reads it automatically |
+| `CLAUDE.md` | Every rule: 23 hard rules, 17 style rules, the seven stages, the 25-check gate, a dated change log (v1.8.26). Claude Code reads it automatically |
 | `.claude/agents/researcher.md` | Stage 1 RESEARCH as a subagent. Reads the Ahrefs snapshot and the citation series, fetches the top three pages, writes `runs/<piece>-research.md` |
 | `.claude/agents/dot-runner.md` | The evidence run as a subagent. Asks Dot each test question verbatim through `ask_dot` and appends every answer to `runs/<piece>-run.md` |
 | `prompts/01-research.md` … `07-linkedin.md` | The seven stage prompts. 01 runs as the `researcher` subagent; 02, 03 and 07 as the `/outline`, `/draft` and `/linkedin` skills; 04–06 are not yet built |
@@ -47,7 +47,9 @@ The earlier Claude Project trial's pieces and posts are in `archive/` and are no
 | `ICP_question_bank_what_Dot_s_buyers_ask__October_2026.pdf` | The source of the question bank |
 | `data/ahrefs/` | The Ahrefs snapshot, 27–28 October 2026: keywords, Search Console, Site Explorer, Rank Tracker. Frozen; access ended 31 October 2026 |
 | `data/` | A note on the Olist dataset (CC BY-NC-SA 4.0; Dot confirmed on 1 November 2026 that it may publish figures from it) and where to download it. The CSVs are not included |
-| `measure/citations.md` | The monthly AI-citation series: citation markers per domain, Perplexity, from Day 0 |
+| `measure/README.md` | How to take a baseline reading: the conditions, which are rules, and the method |
+| `measure/baseline-YYYY-MM-DD.md` | The baseline: buyer queries read in Google, Perplexity and ChatGPT, one dated file per reading, never edited. First: 1 November 2026, 5 of 18 queries |
+| `measure/citations.md` | The earlier Perplexity series (27–29 October 2026, topic labels). Closed; kept for the record |
 | `scripts/check_piece.py` | Runs the 25-check gate on a piece: 15 checks decided alone, 3 with a person, 6 flagged for a human. With `--post`, checks each LinkedIn post in a `posts/` file against stage 7 and checks 15, 17 and 19 |
 | `scripts/verify_sources.py` | Opens every link in a piece |
 | `scripts/ground_truth_from_spec.py` | Computes every expected value in a JSON spec from the raw CSVs and writes `figures/<piece>-truth.csv`, with each definition, row count and CSV date. A row that can't be computed carries its reason |
@@ -137,7 +139,7 @@ A rule 14 waiver (no screenshots) is recorded once: `python scripts/stage_gate.p
 
 | Week | Do |
 |---|---|
-| 1 | Take the baseline readings: Search Console click-through per piece, the Site Explorer AI-responses panel, Rank Tracker. Save them as new dated files in `data/ahrefs/`; never overwrite. Ask the three Perplexity buyer questions and record them in `measure/citations.md` |
+| 1 | Take the baseline readings: Search Console click-through per piece, the Site Explorer AI-responses panel, Rank Tracker. Save them as new dated files in `data/ahrefs/`; never overwrite. Read the buyer queries in Google, Perplexity (signed in, same account) and ChatGPT and record them in a new `measure/baseline-YYYY-MM-DD.md` (CLAUDE.md, Measurement) |
 | 2 | Add new questions from sales calls and from Search Console's non-brand queries to the question bank |
 | 3 | Review the logged fixes (`reviews/<slug>/revisions.md`, the run files). Any mistake seen twice becomes a CLAUDE.md rule with a dated origin, and a check in `check_piece.py` if it can be automated |
 | 4 | Re-run past pieces' evaluations to catch drift. Rewrite any title whose click-through is below the site average after 30 days. Pick the next question |
@@ -151,6 +153,8 @@ Add these in Ahrefs Rank Tracker, US and Germany:
 - best ai data analyst 2026
 - how to evaluate ai data analyst accuracy
 - ai data analyst accuracy
+- text to sql accuracy
+- semantic layer ai analyst
 - ai data analyst
 - reduce ad hoc data requests
 - ai data analyst cost per question

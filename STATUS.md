@@ -11,7 +11,7 @@
 | **F**, guide (the hub): `test-ai-analyst-before-rollout` | "How to Test an AI Data Analyst Before Rollout: 8 Steps", each step tagged with its evidence. 19 pass, 0 fail. Exported |
 | **Six LinkedIn posts** | Two per piece, six different structures, first lines by Saurabh. All pass the post checks. Order: B1, A2, B3, F5, A6, F4 (the cluster numbers in `PLAN.md`) |
 | **The baseline** | `measure/baseline-2026-11-01.md`: 5 of the 18 buyer queries, read in Google, Perplexity and ChatGPT (15 readings) on 1 November 2026, before any piece went live. Dot cited 0 times in 15. This completes the brief's deliverable 4 (Saurabh, 1 November 2026). The other 13 queries are unread (HANDOVER.md section 5) |
-| **The machine** | `/piece <slug>` runs research to export in Claude Code, stopping at seven points a person owns; 25-check gate (`check_piece.py`); rulebook `CLAUDE.md` v1.8.25 |
+| **The machine** | `/piece <slug>` runs research to export in Claude Code, stopping at seven points a person owns; 25-check gate (`check_piece.py`); rulebook `CLAUDE.md` v1.8.26 |
 
 Exports: `exports/<slug>/` (a .docx, clean Markdown, Webflow HTML and fields; not in git).
 
@@ -43,6 +43,8 @@ All three pieces are exported (1 November 2026), each folder with its PUBLISH-NO
 4. Run `python scripts/verify_sources.py pieces/<slug>.md` for all three: every cross-link (A to F, B to A and F, F to A and B) must now return 200.
 5. `python scripts/bank.py status 43 published --basis "<URL>"`, then 36, then 35.
 6. Posts, in order, each after its piece is live: B1, A2, B3, F5, A6, F4.
+
+**Publish order considered and kept: A, B, F (Saurabh, 1 November 2026).** The baseline suggested F first, because its target query has the weakest page one of the five read. Rejected: F is the hub and links to both A and B, so publishing it first would put two dead links on a live page. The order stays A, B, F, all in one session.
 
 **When Rick answers question 1:** apply B's publish note's replacement text, re-read that paragraph aloud, republish, and move P-1 to Confirmed (or retire it) in `facts/dot-facts.md`.
 
