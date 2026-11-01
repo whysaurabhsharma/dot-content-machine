@@ -44,7 +44,7 @@ All three pieces are exported (1 November 2026), each folder with its PUBLISH-NO
 5. `python scripts/bank.py status 43 published --basis "<URL>"`, then 36, then 35.
 6. Posts, in order, each after its piece is live: B1, A2, B3, F5, A6, F4.
 
-**Publish order considered and kept: A, B, F (Saurabh, 1 November 2026).** The baseline suggested F first, because its target query has the weakest page one of the five read. Rejected: F is the hub and links to both A and B, so publishing it first would put two dead links on a live page. The order stays A, B, F, all in one session.
+**Publish order considered and kept: A, B, F (Saurabh, 1 November 2026).** The baseline suggested F first, because its target query has the weakest page one of the five read. Kept A, B, F because F is the hub and both others link to it. **The one-session requirement, not the order, is what prevents dead links**: any order puts at least one dead link live until the last piece is up (A first links to F). Correction: the first version of this note gave the reason as "F first would put two dead links on a live page", which implied A first puts none; Claude corrected it on 1 November 2026.
 
 **When Rick answers question 1:** apply B's publish note's replacement text, re-read that paragraph aloud, republish, and move P-1 to Confirmed (or retire it) in `facts/dot-facts.md`.
 

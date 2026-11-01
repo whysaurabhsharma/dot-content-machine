@@ -21,6 +21,12 @@ The 1 November 2026 reading left two things out. Do them from the next reading o
 1. **Paste each answer's full text,** for Perplexity and ChatGPT alike. The first baseline recorded counts and summaries but not the answers, so its counts can't be recounted. Hard rule 16 says to count from the source text and recount before a number is used again; that needs the text.
 2. **Name inline citation markers and source-panel entries separately.** Perplexity shows both: numbered markers in the answer, and a list of pages beside it. The first baseline called both "sources". CLAUDE.md says markers are counted as markers and never called sources. Record two lists per answer, "markers by domain" and "panel entries by domain", and never call either one sources.
 
+## Carry these corrections into the next dated file
+
+The first baseline is never edited, so its errors are corrected in the next reading's file, each with a line saying what was wrong:
+
+- **Query 2, bank #35's incumbent score.** The file says the result confirms the "weak incumbent 3" condition "the bank scores for". When it was written, the bank scored #35's incumbent 2 (model-unconfirmed, on WebSearch's page order), not 3. The bank was raised to 3 later the same day, from this reading (`bank.py set`, by a person, 1 November 2026). The claim is true now, but it was not true when written.
+
 ## Each reading
 
 1. Copy the previous baseline's list of queries, so readings stay comparable. Add queries only at the end, and say which are new.
