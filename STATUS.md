@@ -46,6 +46,8 @@ All three pieces are exported (1 November 2026), each folder with its PUBLISH-NO
 
 **Publish order considered and kept: A, B, F (Saurabh, 1 November 2026).** The baseline suggested F first, because its target query has the weakest page one of the five read. Kept A, B, F because F is the hub and both others link to it. **The one-session requirement, not the order, is what prevents dead links**: any order puts at least one dead link live until the last piece is up (A first links to F). Correction: the first version of this note gave the reason as "F first would put two dead links on a live page", which implied A first puts none; Claude corrected it on 1 November 2026.
 
+**A link from A to B considered and rejected (Saurabh, 1 November 2026).** A links to F only; F links to A and B; B links to A and F. That is the hub shape by design: F, the hub, is one click from both others, and every piece reaches every other within two clicks (A reaches B through F). Adding A to B would cost a re-read aloud, `check_piece.py` and a re-export on a piece past Decision 3, for little a reader gains. Not a gap.
+
 **When Rick answers question 1:** apply B's publish note's replacement text, re-read that paragraph aloud, republish, and move P-1 to Confirmed (or retire it) in `facts/dot-facts.md`.
 
 ## 4. Not done, and why
