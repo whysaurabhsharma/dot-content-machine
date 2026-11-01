@@ -13,7 +13,7 @@
 | **The baseline** | `measure/baseline-2026-11-01.md`: 5 of the 18 buyer queries, read in Google, Perplexity and ChatGPT (15 readings) on 1 November 2026, before any piece went live. Dot cited 0 times in 15. This completes the brief's deliverable 4 (Saurabh, 1 November 2026). The other 13 queries are unread (HANDOVER.md section 5) |
 | **The machine** | `/piece <slug>` runs research to export in Claude Code, stopping at seven points a person owns; 25-check gate (`check_piece.py`); rulebook `CLAUDE.md` v1.8.28 |
 
-Exports: `exports/<slug>/` (a .docx, clean Markdown, Webflow HTML and fields; not in git).
+Exports: `exports/<slug>/` (a .docx, clean Markdown, Webflow HTML and fields, and PUBLISH-NOTE.md; committed, so a clone has them and nothing needs running to open them). Re-run `/export <slug>` after any change to a piece.
 
 ## 2. What each item waits on
 

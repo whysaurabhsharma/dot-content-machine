@@ -1,0 +1,15 @@
+{
+  "note": "Paste-ready files only. No draft was created in Webflow.",
+  "name": "How to Test an AI Data Analyst Before Rollout: 8 Steps",
+  "slug": "test-ai-analyst-before-rollout",
+  "author": "Saurabh Sharma",
+  "seo_title": "How to Evaluate AI Data Analyst Accuracy Before Rollout",
+  "meta_description": "Eight steps to test an AI data analyst before rollout: real questions, every accepted answer written first, two fresh chats each, and the SQL read.",
+  "post_body": "webflow.html",
+  "images_to_upload": [],
+  "faq_schema": "pieces/test-ai-analyst-before-rollout-faq.json",
+  "publish_note": "PUBLISH-NOTE.md: read it before publishing",
+  "open_with_dot": [
+    "A pass bar in Dot's evaluation: Does Dot's evaluation let a team set a pass bar?"
+  ]
+}

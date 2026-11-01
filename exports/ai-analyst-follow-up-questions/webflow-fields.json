@@ -1,0 +1,20 @@
+{
+  "note": "Paste-ready files only. No draft was created in Webflow.",
+  "name": "Your AI Analyst Gave Two Right Answers. Only the SQL Said Why.",
+  "slug": "ai-analyst-follow-up-questions",
+  "author": "Saurabh Sharma",
+  "seo_title": "AI Analyst Follow-Up Questions: Check Which Date It Used",
+  "meta_description": "“Delivered in 2017” gave Dot two correct late-order counts on Olist data. A six-step test shows which date your analyst used, and where its SQL says so.",
+  "post_body": "webflow.html",
+  "images_to_upload": [
+    {
+      "file": "charts/ai-analyst-follow-up-questions-late-orders.png",
+      "upload_as": "ai-analyst-follow-up-questions-late-orders.png",
+      "alt": "Bar chart of two Dot answers to how many orders delivered in 2017 were late, on the Olist dataset. In a follow-up chat, Dot used purchase date and returned 2,453. In a fresh chat, it used delivery date and returned 1,762.",
+      "exists": true
+    }
+  ],
+  "faq_schema": null,
+  "publish_note": "PUBLISH-NOTE.md: read it before publishing",
+  "open_with_dot": []
+}

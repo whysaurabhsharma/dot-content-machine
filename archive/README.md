@@ -10,7 +10,7 @@ Everything here came from the earlier trial, run 27–29 October 2026 in a Claud
 | `charts/piece-1-*`, `piece-2-*`, `piece-3-*` | Their charts, specs and alt text |
 | `posts/post-A.md`, `piece-2-posts.md`, `posts-B-E-F.md` | Their six LinkedIn posts |
 | `reviews/piece-3/` | Piece 3's blind reviews |
-| `exports/ai-data-analyst-cost-per-question/` | Piece 3's export (local only: `exports/` folders are gitignored) |
+| `exports/ai-data-analyst-cost-per-question/` | Piece 3's export (local only: `archive/exports/` is gitignored; the three current exports in `exports/` are committed) |
 
 The paths inside these files still point to their old locations (`figures/piece-1-figures.csv` and so on), so `check_piece.py` will not find their figures from here. Hard rule 4 still applies: no finding from these files may appear in a current piece unless it recurs in that piece's own run.
 

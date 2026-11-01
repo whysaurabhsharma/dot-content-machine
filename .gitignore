@@ -2,5 +2,5 @@
 .venv/
 __pycache__/
 *.pyc
-exports/
+archive/exports/
 read-all.md

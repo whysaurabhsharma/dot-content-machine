@@ -14,7 +14,7 @@ Written 28 October 2026 for Rick and Théo. Rewritten 31 October 2026 for Claude
 | B · `how-companies-test-ai-data-analysts` | Teardown: a census of 13 companies | Through Decision 3 and exported. Waits on Rick's sign-offs, three census corrections, then Decision 4. 2 posts |
 | F · `test-ai-analyst-before-rollout` | Guide: the cluster's hub | Through Decision 3 and exported. Waits on A and B going live. 2 posts |
 
-All six LinkedIn posts exist, first lines by Saurabh. Exports are in `exports/<slug>/` (a .docx and clean Markdown each; the folder is not in git). Current state, in two minutes: `STATUS.md`.
+All six LinkedIn posts exist, first lines by Saurabh. Exports are in `exports/<slug>/` (a .docx, clean Markdown, Webflow HTML and fields, and the publish note each; committed, so a clone has them). Current state, in two minutes: `STATUS.md`.
 
 **What Rick needs to do:** answer the seven questions in `DECISIONS-FOR-DOT.md`, ordered by what blocks publication. Section 8 has the detail.
 

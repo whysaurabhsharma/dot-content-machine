@@ -1,0 +1,16 @@
+{
+  "note": "Paste-ready files only. No draft was created in Webflow.",
+  "name": "7 Companies Published Their AI Analysts' Accuracy. No Two Measured the Same Thing.",
+  "slug": "how-companies-test-ai-data-analysts",
+  "author": "Saurabh Sharma",
+  "seo_title": "How 13 Companies Test Their AI Data Analyst",
+  "meta_description": "13 companies published how they test their AI analyst. Seven gave an accuracy figure; no two measured the same thing. The six most complete methods.",
+  "post_body": "webflow.html",
+  "images_to_upload": [],
+  "faq_schema": "pieces/how-companies-test-ai-data-analysts-faq.json",
+  "publish_note": "PUBLISH-NOTE.md: read it before publishing",
+  "open_with_dot": [
+    "The context agent page: Does the merging panel on https://www.getdot.ai/context-agent describe how Dot works today, or is it an illustration?",
+    "The DABstep figures: Does a published Dot run cover all 450 tasks of Adyen's DABstep benchmark?"
+  ]
+}
