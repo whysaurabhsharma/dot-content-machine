@@ -10,6 +10,7 @@
 | **B**, teardown: `how-companies-test-ai-data-analysts` | "7 Companies Published Their AI Analysts' Accuracy. No Two Measured the Same Thing." A census of 13 companies' published testing methods. 18 pass, 0 fail. Exported |
 | **F**, guide (the hub): `test-ai-analyst-before-rollout` | "How to Test an AI Data Analyst Before Rollout: 8 Steps", each step tagged with its evidence. 19 pass, 0 fail. Exported |
 | **Six LinkedIn posts** | Two per piece, six different structures, first lines by Saurabh. All pass the post checks. Order: B1, A2, B3, F5, A6, F4 (the cluster numbers in `PLAN.md`) |
+| **The baseline** | `measure/baseline-2026-11-01.md`: 5 of the 18 buyer queries, read in Google, Perplexity and ChatGPT (15 readings) on 1 November 2026, before any piece went live. Dot cited 0 times in 15. This completes the brief's deliverable 4 (Saurabh, 1 November 2026). The other 13 queries are unread (HANDOVER.md section 5) |
 | **The machine** | `/piece <slug>` runs research to export in Claude Code, stopping at seven points a person owns; 25-check gate (`check_piece.py`); rulebook `CLAUDE.md` v1.8.25 |
 
 Exports: `exports/<slug>/` (a .docx, clean Markdown, Webflow HTML and fields; not in git).
@@ -47,8 +48,8 @@ All three pieces are exported (1 November 2026), each folder with its PUBLISH-NO
 
 ## 4. Not done, and why
 
-- **Tier 3** (agreed for after the pieces): the citation reading of the 18 buyer queries, `bank/surfaces.csv`, `/distribute`, `check_posts.py`, a post queue. Not started; the pieces came first.
-- **The 18-query baseline.** The 18 queries are defined (`data/ahrefs/keywords.csv`, `is_buyer_query=yes`), but none has been read in an answer engine. The baseline is 3 Perplexity readings on topic labels (27 October) plus 2 on another question, and the frozen Ahrefs snapshot of 27–28 October. Ahrefs access ended 31 October.
+- **Tier 3** (agreed for after the pieces): the citation reading of the other 13 buyer queries, `bank/surfaces.csv`, `/distribute`, `check_posts.py`, a post queue. Not started; the pieces came first.
+- **13 of the 18 buyer queries are unread.** The baseline read 5 (above). The rest are named in HANDOVER.md section 5. Repeat readings need a Perplexity account (the same one each time) and the same location for Google.
 - **F's final text has not been lift-tested.** The re-run was on the rewrite (61dda1a), before Decision 3's eight small fixes.
 - **Check 25 for a guide** should test whether the steps survive compression, not one quoted line. Recorded in `prompts/06-edit.md`, not built.
 - **No check that pieces agree with each other**, and none that flags a bare "N of M correct". Both errors were caught by people this time.

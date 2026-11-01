@@ -175,17 +175,24 @@ One per bank row, from `bank/questions.csv` (scores: demand · gap · incumbent 
 | Google visibility: rank for the target queries | Ahrefs Rank Tracker (18 keywords loaded 28 Oct, no positions recorded) | Weekly | Content owner | **No.** Ahrefs access ended 31 October 2026 |
 | Google visibility: impressions and clicks | Search Console | Monthly | Content owner | Only the snapshot in `data/ahrefs/search-console*.csv` |
 | AI answers mentioning Dot | Ahrefs Site Explorer, AI-responses panel | Monthly, same day | Content owner | **No**, until Ahrefs returns |
-| Perplexity citations | Free Perplexity app, by hand, counted from the answer text (`measure/citations.md`) | Monthly | Content owner | Yes |
-| ChatGPT citations | Free ChatGPT, by hand, same method | Monthly | Content owner | Yes, but **never read so far** |
+| Google visibility: the top ten, by hand | Google, private window, signed out; location recorded (`measure/baseline-*.md`) | Monthly | Content owner | Yes. First read 1 November 2026 |
+| Perplexity citations | Perplexity, by hand, **signed in to the same account each time**, counted from the answer text (`measure/baseline-*.md`; the older series in `measure/citations.md`) | Monthly | Content owner | Yes. First read on the buyer queries 1 November 2026 |
+| ChatGPT citations | Free ChatGPT, signed out, by hand, same method | Monthly | Content owner | Yes. First read 1 November 2026 |
 | LinkedIn engagement | LinkedIn page analytics | Per post, at 7 days | Whoever posts | Needs Dot's LinkedIn account; never accessed |
 | Qualified traffic | Dot's web analytics, filtered on `utm_campaign=content-machine` | Monthly | Dot | Needs Dot's analytics; never accessed |
 | Conversions | Dot's signups or CRM, by the same UTM | Monthly | Dot | Needs Dot's CRM; never accessed |
 
 Citation markers are counted as markers and never called sources (`CLAUDE.md`, Measurement).
 
+**"AI citations" is not one number.** The 1 November baseline found that which kind of source an engine cites changes with the question type, not with the engine. There were four distinct behaviours in five queries. Perplexity cited vendor blogs on the accuracy queries and Slack's own blog on the problem phrasing ("reduce ad hoc data requests"). ChatGPT cited institutions and benchmarks on the accuracy queries and vendor documentation on the semantic-layer query. Across the first three queries, no domain was cited by both engines. That counts Perplexity's inline citations; Microsoft appears in Perplexity's source list and in ChatGPT's citations on query 3. So report citations per query and per engine, with the kind of source, never as one total. A strategy built per engine would miss what the baseline shows; it has to be built per question type.
+
+**Two conditions for every repeat reading.** Perplexity allows one query per anonymous session, so a repeat reading needs an account, and the same account each time. On 1 November, query 1 was read signed out and queries 2 to 5 signed in, which is a difference within the baseline itself. Google results are location-biased: the baseline was read in Gurugram, India, in a private window, and Google's footer still said "Based on your past activity". Read from the same place, or record the difference.
+
 **The dated baseline.**
 
 What we have:
+
+- **The buyer-query baseline, 1 November 2026** (`measure/baseline-2026-11-01.md`, never edited; later readings go in new dated files, as with `data/ahrefs/`): 5 of the 18 buyer queries, each read in Google's top ten, Perplexity and ChatGPT, 15 readings in all, before any piece was live. **Dot was cited 0 times in 15.** The five: text to sql accuracy; how to evaluate ai data analyst accuracy (F's target); ai data analyst accuracy; reduce ad hoc data requests; semantic layer ai analyst.
 
 - **Perplexity, 27 October 2026:** three buyer questions, recorded by topic label ("Evaluating accuracy", "What changes", "Cost and fit"). Dot was cited on 1 of 3: 5 markers, all to the AI Data Analyst Playbook, on "Evaluating accuracy".
 - **Two later readings on a different question** (28 and 29 October): Dot 0 both times.
@@ -193,7 +200,7 @@ What we have:
 
 What's missing:
 
-- **The 18 buyer queries.** They are the 18 rows of `data/ahrefs/keywords.csv` marked `is_buyer_query=yes`; 5 of the 18 have search volume. **None of the 18 has a citation reading.** The three readings above used topic labels, not these phrases, so all 18 are missing. Reading them by hand in Perplexity and ChatGPT, and recording the winning page type for each, is tier 3 work (`bank/surfaces.csv`, not yet built).
+- **13 of the 18 buyer queries are unread.** The 18 are the rows of `data/ahrefs/keywords.csv` marked `is_buyer_query=yes`. Unread: conversational analytics; ai data analyst; self service analytics tools; data analyst automation; ad hoc data request process; ai data analyst cost per question; ai data analyst vs bi tool; replace data analyst with ai; how to measure data team productivity; data team slack requests; ai analyst data warehouse; natural language query data; ai bi tool comparison. The baseline stopped at five, time-boxed; the remaining queries are mostly broad category terms rather than the questions the three pieces answer. Recording the winning page type for each query is tier 3 work (`bank/surfaces.csv`, not yet built).
 - Any reading after Ahrefs access ended.
 
 ## 6. What's still open
@@ -295,6 +302,10 @@ Each is labelled "Assumption" wherever a piece uses it (`facts/dot-facts.md`). A
 | A6 | Environments let a team test a definition change before it reaches everyone | Fact O9 only; never tested | Archived piece 1 | |
 | A7 | The evaluation always re-scores when a question is saved | Fact O2, seen twice | Not used | |
 | A8 | Dot is comfortable publishing a piece where its evaluation passes a 0.52% definition disagreement | Saurabh's answer | Archived piece 1 | |
+
+### A page that got to B's territory first: colrows.com
+
+colrows.com published *"AI Data Analyst Tools 2026: Nobody Publishes Accuracy"* on 30 August 2026. It compares eight tools on the accuracy evidence each publishes, and it ranks on Google's page one for "ai data analyst accuracy" (the 1 November baseline, query 3). That is the territory next to piece B, entered two months earlier. B's claim is different and better evidenced. B has 13 companies, every row linked and re-read in a browser. And B's finding is that the published figures don't compare, not that they don't exist. Nothing in B needs to change, but Rick should know the page exists before B goes live, in case a reader or a partner points to it. The title and date are as recorded in the baseline; the page was not opened again for this note.
 
 ### Resolved: Anthropic's drift sentence
 
