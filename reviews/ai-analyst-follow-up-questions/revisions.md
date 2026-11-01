@@ -233,3 +233,23 @@ The headline test failed (reviews/ai-analyst-follow-up-questions/human.md, attem
 - Read-aloud fix to the closing (1 November): "Run the six steps this week on one phrase your team argues about. Before you trust either number, check which date each answer used. Then run the full eight-step test before rollout." The link is on the last sentence.
 
 - Closing read aloud: PASS, 1 November (Saurabh). PIECE IF clearance confirmed by Saurabh.
+
+## After Decision 3: the title and the lede's proof, 1 November 2026
+
+Saurabh's instructions, from headline test attempt 5 (four readers; `human.md`).
+
+- **Title.** "Your AI Analyst Picked a Date. Only the SQL Said Which." is now "Your AI Analyst Gave Two Right Answers. Only the SQL Said Why.": the fix three of four readers proposed. `title_approved_by` updated. SEO title, meta and slug unchanged.
+- **Lede, sentence 2.** "Both are correct for their own date:" is now "Both match the raw data for their own date:", so the lede says how "right" is known. The other three sentences are unchanged.
+- **Checks.** `check_piece.py`: 17 pass, 0 fail, 1 partial (check 1, claim title, by design), 7 for a human; longest sentence 25 words. Blind lift-tester re-run through `run_reviewer.py` on the new text: its summary lifts the new sentence 2 verbatim; its one line is the pocket guide's "Dot counted 2,453 late orders by purchase date in a follow-up chain, and 1,762 by delivery date in a fresh chat."; figures re-checked, no inconsistency.
+- **Elsewhere.** The title is updated in STATUS.md and PLAN.md. B, F and the posts link A by URL and never quote its title, so nothing changed there. Records that quote earlier titles (this file, `human.md`, the archived review copies) stay as written.
+- **Still to do:** re-read the title and the lede aloud on a phone (style rule 11); the Perplexity and Claude lift test (check 23) ran on the earlier lede.
+
+## After Decision 3: attempt 5's lede revision, 1 November 2026
+
+Saurabh's instructions, after four readers failed the sentence-2 fix above (diagnosis in `human.md`: restating the title's claim before the mechanism reads as hedging).
+
+- **Lede.** Replaced by Saurabh's five-sentence version, joined to four with a semicolon for check 8 ("…never mentioned it; only its SQL did."). 54 words; the promise starts at word 41. Tested on a copy before applying: as written it failed only check 8.
+- **The raw-data check.** Moved to the first sentence after the lede: "We checked both counts against the raw data of Olist, a public e-commerce dataset, so anyone can recompute them." (was "We ran this test on Olist, a public e-commerce dataset, so anyone can recompute it."). Saurabh's wording was "We checked both figures against the raw Olist data, a public e-commerce dataset, …"; this version keeps the appositive on Olist rather than on "data", as he allowed.
+- **"Dot" left unglossed**, consistent with B and F.
+- **Checks.** `check_piece.py`: 17 pass, 0 fail, 1 partial (check 1, by design), 7 for a human. Blind lift-tester re-run on the new text. Its one line: "The risk isn't a wrong number. It is a right number for a date you didn't mean, with nothing in the text to say so." It raised two points, reported to Saurabh and not acted on here: the title's "Only the SQL Said Why" overstates for the chain, whose first answer named its date in plain text; and the closing's "full eight-step test" beside the piece's six steps could read as a contradiction.
+- **Elsewhere.** STATUS and PLAN carry only the title, which didn't change this round. Exports rebuilt.

@@ -1,6 +1,6 @@
 ---
-title: "Your AI Analyst Picked a Date. Only the SQL Said Which."
-title_approved_by: "Saurabh, 2026-10-31 (fifth title: the attempt 4 readers' fix for the title-lede contradiction in the fourth)"
+title: "Your AI Analyst Gave Two Right Answers. Only the SQL Said Why."
+title_approved_by: "Saurabh, 2026-11-01 (sixth title: the fix three of four attempt 5 readers proposed independently; the fifth title's 'which' read as one answer being wrong)"
 reviewed_on: 2026-10-31
 author: Saurabh Sharma
 author_approved_by: Dot (Rick), 2026-11-01
@@ -20,9 +20,9 @@ reverse_links:
   - The conversational analytics software post (https://www.getdot.ai/blog/conversational-analytics-software), anchor "AI analyst follow-up questions"
 ---
 
-**Asked how many orders "delivered in 2017" were late, [Dot](https://www.getdot.ai/) gave 2,453 after earlier questions in the same chat, and 1,762 in a fresh chat. Both are correct for their own date: the first chat named purchase date, and the fresh chat used delivery date without saying so. Only its SQL did. By the end, you'll have a six-step test that shows which date your analyst used.**
+**Asked how many orders "delivered in 2017" were late, [Dot](https://www.getdot.ai/) said 2,453 in one chat and 1,762 in a fresh one. One counted by purchase date. The other counted by delivery date and never mentioned it; only its SQL did. By the end, you'll have a six-step test for which date your analyst used.**
 
-We ran this test on [Olist, a public e-commerce dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce), so anyone can recompute it. Late means delivered on a later calendar day than the estimated delivery date. Dot's chain answer to "And how many of those were delivered late?" defined it the same way: "meaning delivery occurred after the estimated delivery day."
+We checked both counts against the raw data of [Olist, a public e-commerce dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce), so anyone can recompute them. Late means delivered on a later calendar day than the estimated delivery date. Dot's chain answer to "And how many of those were delivered late?" defined it the same way: "meaning delivery occurred after the estimated delivery day."
 
 **The whole piece in seven lines:**
 
