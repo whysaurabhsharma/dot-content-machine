@@ -52,6 +52,16 @@ HUMAN_CHECKS = ["headline test", "lift test in Perplexity and Claude", "second f
                 "read aloud on a phone"]
 
 
+def pending_signoffs(slug, fm):
+    """v1.8.28: the sign-offs still pending: each '**Dot sign-off:** PENDING' line in the publish note,
+    plus a pending author_approved_by if the note doesn't already list the byline."""
+    note = read(f"reviews/{slug}/publish-note.md") or ""
+    items = [m.group(1).strip(" ·-") for m in re.finditer(r"^\*\*Dot sign-off:\*\*[ \t]*PENDING\b[ \t]*[·:-]?[ \t]*([^.\n]*)", note, re.M)]
+    if "pending" in str(fm.get("author_approved_by") or "").lower() and not any("byline" in i for i in items):
+        items.append("the byline (author_approved_by)")
+    return items
+
+
 def read(path):
     p = Path(path)
     return p.read_text(encoding="utf-8") if p.exists() else None
@@ -341,6 +351,12 @@ def writing(slug, manifest):
         add("publish", "blocked", "practice piece: not for publication (hard rule 4)")
     elif row and row["status"] == "published":
         add("publish", "done", "bank status published")
+    elif pending_signoffs(slug, fm):
+        # v1.8.28: a decision recorded as Saurabh's, awaiting Dot, holds publishing until Dot signs.
+        items = pending_signoffs(slug, fm)
+        add("publish", "waiting", f"Decision 4 refused: Dot's sign-off is pending on {len(items)} item(s): "
+            + "; ".join(items) + f". Each is a '**Dot sign-off:** PENDING' line in reviews/{slug}/publish-note.md "
+            "(or a pending author_approved_by); replace PENDING with who signed and the date")
     elif not re.search(r"^\*\*Read by:\*\*[ \t]*\S", read(f"reviews/{slug}/publish-note.md") or "", re.M):
         # v1.8.16: the note says what is assumed and what to paste if Dot says no; it is read before publishing.
         add("publish", "waiting", f"Decision 4 waits on the publish note: whoever publishes reads "

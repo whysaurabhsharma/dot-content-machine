@@ -130,3 +130,12 @@ No revise-notes.md existed for this round. The fact-checker reported runs/test-a
 - Read-aloud fixes (1 November): step 3's GitHub evidence moved into the body ("GitHub's test harness runs its analytics agent more than once per test case."), tag back to "Evidence: our run; GitHub's harness." Step 8: "Dot's own guidance" became "Our essay on accuracy decay recommends twenty minutes a week …"; tag "our essay". The source is the published essay (read in Chrome, 1 November: "twenty minutes a week with one named owner"), not only our runbook; it is Dot's essay, not the Playbook.
 
 - Read-aloud fixes, 1 November: step 3's GitHub sentence moved straight after the instruction, as support for asking twice; the step runs instruction, evidence, tag. Step 8's tag: "Evidence: 6 of 13 companies, and our essay's guidance." Step 7's tag likewise: "Evidence: one company, and our Playbook's guidance." Guidance is not evidence that a practice works.
+
+## After Decision 3: records corrected, a label restored, a count fixed, 1 November 2026
+
+Saurabh's instructions (CLAUDE.md v1.8.28).
+
+- **The evaluation sentence's label is restored:** "That was observed on 27 October 2026 and not re-checked since." It was removed on 1 November on the strength of a confirmation from Rick that never happened (P-2).
+- **Step 6:** "7 of the 13 companies in Dot's census use an LLM judge" is now "6 of the 13": B's census count was corrected (Snowflake dropped the judge for its main benchmark; figures C-5).
+- **Front matter.** `author_approved_by` and the `dataset:` line say Saurabh decided, Dot sign-off pending.
+- **Still to do:** re-read the changed passages aloud (step 6, the evaluation sentence in "Where Dot fits"); Dot's sign-offs.

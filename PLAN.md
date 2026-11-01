@@ -18,7 +18,7 @@ One buyer worry: **can I trust an AI analyst's answers before I roll it out?** T
 | B | `how-companies-test-ai-data-analysts`, "7 Companies Published Their AI Analysts' Accuracy. No Two Measured the Same Thing." (working title "How N Companies Test Their AI Data Analyst") | Teardown | #36 ("AI data analyst test questions"; swapped from #35, 31 October 2026) | Other organisations' published evaluation methods, primary sources only (hard rule 4's cited-publication exception) | What others actually do to test their analyst, in one census, and the patterns it shows |
 | F | `test-ai-analyst-before-rollout`, "How to Test an AI Data Analyst Before Rollout: 8 Steps" (working title "How to Test an AI Analyst Before Rollout") | Guide | #35 ("how to evaluate AI data analyst accuracy", demand 3), **the hub** | B's census (cited publications) and our runs (A's, and piece 2's archived run) | How to do it: the steps, each backed by a run or a publication, or labelled untested (hard rule 19) |
 
-**How they compound:** B shows what others do; F turns it into steps; A proves the core step on our own data. B and F needed no new Dot run, which kept the Olist licence question to A and to what F cites from our runs. Dot has since confirmed it may publish figures from the Olist dataset (`facts/dot-facts.md`, L-OLIST).
+**How they compound:** B shows what others do; F turns it into steps; A proves the core step on our own data. B and F needed no new Dot run, which kept the Olist licence question to A and to what F cites from our runs. Saurabh decided on 1 November 2026 that the pieces may publish figures from the Olist dataset; Dot's sign-off is pending (`facts/dot-facts.md`, L1).
 
 ## What the plan bound for B's and F's research
 
@@ -33,7 +33,7 @@ A's run was done before this plan was written, so A has no section. The two belo
 - **Figures:** every number a `published: <URL>, read <date>` row (hard rule 3). None combined with our own figures (rule 4, condition d).
 - **Links with F:** B's opening ends by pointing at F as where the method lives, and F links back to B's census. B makes no promise about the reader's own questions; that is F's job (Saurabh, 31 October 2026).
 
-The pre-publish checks this section once listed are now recorded elsewhere: the context agent quote is DECISIONS-FOR-DOT.md question 1 (fact P-1), the DABstep concession is question 2, and Dot's evaluation (fact O1) was confirmed as current by Rick on 1 November (question 3, fact P-2). Every number B uses was re-read in a browser (`runs/how-companies-test-ai-data-analysts-verification.md`).
+The pre-publish checks this section once listed are now recorded elsewhere: the context agent quote is DECISIONS-FOR-DOT.md question 1 (fact P-1), the DABstep concession is question 2, and Dot's evaluation (fact O1) is pending Dot's confirmation (question 3, fact P-2) and labelled in the text. Every number B uses was re-read in a browser (`runs/how-companies-test-ai-data-analysts-verification.md`).
 
 ### F, `test-ai-analyst-before-rollout`: guide
 

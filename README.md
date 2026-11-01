@@ -29,7 +29,7 @@ The earlier Claude Project trial's pieces and posts are in `archive/` and are no
 | Path | What it is |
 |---|---|
 | `HANDOVER.md` | Set-up in Claude Code, a first test (a teardown, about 10 minutes of machine time), how to run a full piece, the monthly loop, what's still open |
-| `CLAUDE.md` | Every rule: 23 hard rules, 17 style rules, the seven stages, the 25-check gate, a dated change log (v1.8.27). Claude Code reads it automatically |
+| `CLAUDE.md` | Every rule: 23 hard rules, 17 style rules, the seven stages, the 25-check gate, a dated change log (v1.8.28). Claude Code reads it automatically |
 | `.claude/agents/researcher.md` | Stage 1 RESEARCH as a subagent. Reads the Ahrefs snapshot and the citation series, fetches the top three pages, writes `runs/<piece>-research.md` |
 | `.claude/agents/dot-runner.md` | The evidence run as a subagent. Asks Dot each test question verbatim through `ask_dot` and appends every answer to `runs/<piece>-run.md` |
 | `prompts/01-research.md` … `07-linkedin.md` | The seven stage prompts. 01 runs as the `researcher` subagent; 02, 03 and 07 as the `/outline`, `/draft` and `/linkedin` skills; 04–06 are not yet built |
@@ -38,7 +38,7 @@ The earlier Claude Project trial's pieces and posts are in `archive/` and are no
 | `runs/` | Every Dot answer, word for word, one file per piece. The screenshot scheme and batching rules are in `runs/README.md` |
 | `runs/screenshots/` | The five conditions screenshots per batch, taken in Dot's UI |
 | `runs/smoke-test.md` | The 31 October 2026 smoke test of the `ask_dot` MCP |
-| `facts/dot-facts.md` | Observed in Dot (O1–O11), assumed (A1–A10, with basis), confirmed (D1: Dot's voice, "we" = Dot; P-2; the Olist licence; the byline) |
+| `facts/dot-facts.md` | Observed in Dot (O1–O11), assumed (A1–A10, with basis), confirmed (D1: Dot's voice, "we" = Dot), pending Dot (P-1, P-2), and Saurabh's decisions awaiting Dot's sign-off (the Olist licence, the byline, naming partners) |
 | `facts/dot-mcp.md` | What the `ask_dot` MCP exposes, observed 31 October 2026, and what it can't show |
 | `facts/run-format.md` | The run-file format that `dot-runner` writes and check 16 and `mark_run.py` read, with a worked example |
 | `facts/house-structure-and-links.md` | The anatomy of a piece; ten internal links verified 28 October 2026 |
@@ -46,7 +46,7 @@ The earlier Claude Project trial's pieces and posts are in `archive/` and are no
 | `scripts/bank.py`, `.claude/skills/bank/` | The monthly entry point: `/bank add`, `/bank rescore`, `/bank top` |
 | `ICP_question_bank_what_Dot_s_buyers_ask__October_2026.pdf` | The source of the question bank |
 | `data/ahrefs/` | The Ahrefs snapshot, 27–28 October 2026: keywords, Search Console, Site Explorer, Rank Tracker. Frozen; access ended 31 October 2026 |
-| `data/` | A note on the Olist dataset (CC BY-NC-SA 4.0; Dot confirmed on 1 November 2026 that it may publish figures from it) and where to download it. The CSVs are not included |
+| `data/` | A note on the Olist dataset (CC BY-NC-SA 4.0; publishing figures from it is Saurabh's decision of 1 November 2026, Dot sign-off pending) and where to download it. The CSVs are not included |
 | `measure/README.md` | How to take a baseline reading: the conditions, which are rules, and the method |
 | `measure/baseline-YYYY-MM-DD.md` | The baseline: buyer queries read in Google, Perplexity and ChatGPT, one dated file per reading, never edited. First: 1 November 2026, 5 of 18 queries |
 | `measure/citations.md` | The earlier Perplexity series (27–29 October 2026, topic labels). Closed; kept for the record |

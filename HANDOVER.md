@@ -4,7 +4,7 @@ Written 28 October 2026 for Rick and Théo. Rewritten 31 October 2026 for Claude
 
 ## 0. In one page
 
-**What this is.** A repo that turns a buyer's question into an evidence-led blog piece for getdot.ai, with every number checked against a file and every rule enforced by a script. It runs in Claude Code. `CLAUDE.md` is the rulebook (v1.8.27, every change dated in its change log).
+**What this is.** A repo that turns a buyer's question into an evidence-led blog piece for getdot.ai, with every number checked against a file and every rule enforced by a script. It runs in Claude Code. `CLAUDE.md` is the rulebook (v1.8.28, every change dated in its change log).
 
 **What was delivered.** One cluster of three pieces on one buyer worry: *can I trust an AI analyst's answers before I roll it out?*
 
@@ -212,9 +212,9 @@ What's missing:
 | Item | Why it matters | What closes it |
 |---|---|---|
 | Decision 4 for A, B and F | Publishing | `STATUS.md`, section 3: A, then B, then F; each later piece links the earlier ones, which return 404 until live |
-| Re-check fact O2 on the current account | O1 was confirmed current by Rick on 1 November (fact P-2). O2 (the evaluation re-scores on save) was observed on the dry-run account on 27 October and isn't used in any piece | Only before a piece relies on O2: look in Dot's UI and record the date |
+| Re-check fact O2 on the current account | O1 was observed on 27 October and not re-checked; P-2 is pending again (its 1 November "confirmation" was not Dot's, CLAUDE.md v1.8.28), so B and F carry the label. O2 (the evaluation re-scores on save) was observed on the dry-run account on 27 October and isn't used in any piece | Only before a piece relies on O2: look in Dot's UI and record the date |
 | Census corrections from B's re-read (done 1 November: all eight sources re-opened, every number matched; three corrections applied the same day: Snowflake's scoring cell, Snowflake added to "more than one right answer" (3 to 4), Ramp added to the strict bar and the re-run count (5 to 6)) | Five (Anthropic, LinkedIn, Uber, ClickHouse, Hex) were re-read in Chrome on 1 November, quotes checked verbatim (`runs/test-ai-analyst-before-rollout-verification.md`). Snowflake, GitHub, Salesforce, Vercel, Ramp, Prosus, WisdomAI, Grab and Dot's own pages were read only through WebFetch | Re-open each in a browser before B publishes |
-| The Olist licence | **Resolved 1 November 2026: Dot confirmed it may publish figures from the Olist dataset** (Rick and Théo). L1, L2 and L4 are confirmed, not only decisions | Nothing |
+| The Olist licence | **Decided by Saurabh, 1 November 2026; Dot sign-off pending.** First recorded as Dot's confirmation (Rick and Théo); nobody at Dot had given it (CLAUDE.md v1.8.28). L1, L2 and L4 remain Saurabh's decisions | Dot signs off, or the runs are repeated on data Dot may publish; `stage_gate.py` refuses Decision 4 until then |
 | Assumptions A1–A8 | Each needs Dot's yes, no or change | Section 8 |
 | A number meaning two things, three times in one cluster | B's two fives and two sevens (different groups under one count), then "12 of 12 correct" and "8 of 8 correct", where 3 of 12 and 3 of 8 were correct only under the answer's own stated or a person-decided reading. Our own scores need the same item-by-item discipline rule 18 demands of Dot's answers | `mark_run.py` now prints the split (1 November 2026). A check that flags a bare "N of M correct" in a piece is not written |
 | No check that pieces agree with each other | B said two of A's answers didn't name their date; A's own table says three. Caught by a phone read, fixed in B | A script that compares a cited figure with the cited piece's Figures row |
@@ -286,7 +286,7 @@ It is the strongest positioning line in the cluster. Caveats: the panel is an il
 
 ### The byline
 
-The roadmap cites evidence that a named author is cited about 2.3x more than anonymous content. The pieces carry a reviewed-on date (hard rule 22) but no author, because who bylines a piece is Dot's decision. If Dot names one, add the field and drop that sentence from rule 22.
+The roadmap cites evidence that a named author is cited about 2.3x more than anonymous content. Saurabh decided on 1 November 2026 that the pieces carry his name, Saurabh Sharma; Dot's sign-off is pending, and each piece's `author_approved_by` says so. That decision was first recorded as Rick's approval; nobody at Dot had given it (CLAUDE.md v1.8.28). If Dot says no, delete the `author` lines and re-export.
 
 ### The closing line
 

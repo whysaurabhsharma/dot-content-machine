@@ -14,11 +14,11 @@ queries:
   - text to sql accuracy
 playbook_url: https://www.getdot.ai/blog/ai-data-analyst-playbook
 figures: figures/how-companies-test-ai-data-analysts-figures.csv
-dataset: "None for the census: 13 companies' own publications, each re-opened 31 October 2026; no dataset analysed and no Dot batch of its own. The Dot section cites piece A's run (runs/ai-analyst-follow-up-questions-run.md): Olist, CC BY-NC-SA 4.0; Dot confirmed on 1 November 2026 that it may publish figures from it (facts L-OLIST)."
+dataset: "None for the census: 13 companies' own publications, each re-opened 31 October 2026; no dataset analysed and no Dot batch of its own. The Dot section cites piece A's run (runs/ai-analyst-follow-up-questions-run.md): Olist, CC BY-NC-SA 4.0; publication decided by Saurabh, 1 November 2026, Dot sign-off pending (facts L1)."
 title_approved_by: Saurabh, 2026-10-31
 reviewed_on: 2026-10-31
 author: Saurabh Sharma
-author_approved_by: Dot (Rick), 2026-11-01
+author_approved_by: "Decided by Saurabh, 2026-11-01; Dot sign-off pending"
 ---
 
 **We read how 13 companies, including Anthropic, LinkedIn and Uber, test their AI analysts: the internal agents their staff use to ask data questions. Seven of the 13 published an accuracy figure, each measured differently: ClickHouse compared result sets, LinkedIn's experts rated answers, Vercel counted successes without defining them. By the end, you'll have one table of what all 13 measured, and the six that published enough to copy are marked. Start from those six.**
@@ -56,9 +56,9 @@ Uber notes that a question can have more than one correct SQL query. Snowflake's
 
 ClickHouse narrowed 501 candidate questions to 243. Its model panel then dropped 39 where no two models agreed, and a legal review removed 3 more, leaving 201. LinkedIn's remedy is a calendar: experts review its benchmark every 3 months and add accepted answers.
 
-## More than half score answers with an LLM judge
+## Six of 13 score answers with an LLM judge, and Snowflake dropped one
 
-Seven of the 13 score answers with an LLM judge: LinkedIn, Uber, ClickHouse, Hex, Snowflake, WisdomAI and Grab. [Hex](https://hex.tech/blog/evaluate-data-agents/) built one eval where the right answer is 2.04% and a common wrong one is 2.03%. Hex's judge accepted the wrong one 35% of the time.
+Six of the 13 score answers with an LLM judge: LinkedIn, Uber, ClickHouse, Hex, WisdomAI and Grab. Snowflake tried LLM judges for its main benchmark and dropped them, finding that evaluating SQL "can be as challenging as generating the correct SQL itself." [Hex](https://hex.tech/blog/evaluate-data-agents/) built one eval where the right answer is 2.04% and a common wrong one is 2.03%. Hex's judge accepted the wrong one 35% of the time.
 
 LinkedIn and Hex each publish one check on their judge. LinkedIn's lands within 1 point of the human score 75% of the time. Hex's is the eval above, where its judge took the wrong answer 35% of the time. Hex writes that it still sometimes struggles to calibrate its LLM judges.
 
@@ -117,7 +117,7 @@ The six names in bold state their test set, scoring and timing; that makes them 
 
 [Dot answers data questions for your team.](https://www.getdot.ai/blog/conversational-analytics) Dot's [context agent page](https://www.getdot.ai/context-agent) says: "Merging re-checks accuracy first: Dot answers its 25 questions again and merges at 95% or more." Assumption: the page describes how merging works today; we haven't tested it.
 
-In [Dot's evaluation](https://docs.getdot.ai/train-dot/evaluation), each test question carries an expected answer, a unit and a tolerance in percent. More in the [AI Data Analyst Playbook](https://www.getdot.ai/blog/ai-data-analyst-playbook) and [Dot's docs](https://docs.getdot.ai).
+In [Dot's evaluation](https://docs.getdot.ai/train-dot/evaluation), each test question carries an expected answer, a unit and a tolerance in percent. That was observed on 27 October 2026 and not re-checked since. More in the [AI Data Analyst Playbook](https://www.getdot.ai/blog/ai-data-analyst-playbook) and [Dot's docs](https://docs.getdot.ai).
 
 ---
 

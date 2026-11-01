@@ -272,3 +272,15 @@ URL: https://engineering.grab.com/grab-bench-evaluating-ai (12 August 2026; Chri
 10. Anthropic: the page names "the grader" without saying it is an LLM, and states "there’s often only a single correct answer using a single correct source". Neither contradicts section 7, but Anthropic is not counted as using an LLM judge (C-5).
 
 No qualifying entry lost its basis. Grab remains the softest (a general model-evaluation harness, not a data analyst's answers), as section 7 already says.
+
+## Snowflake re-read in a browser, 1 November 2026 (later the same day)
+
+Both posts opened in Chrome to settle the LLM-judge count (CLAUDE.md v1.8.28).
+
+| Post | Item | Status | Exact text |
+|---|---|---|---|
+| https://www.snowflake.com/en/engineering-blog/cortex-analyst-text-to-sql-accuracy-bi/ (2024, the post B links) | LLM judges tried and dropped for the main benchmark | CONFIRMED | "we experimented with several methods for evaluating SQL more flexibly, including using large language models (LLMs) as judges. However, we found that evaluating SQL can be as challenging as generating the correct SQL itself." |
+| same | what replaced them | CONFIRMED | "Human-informed gold standards" and "we calculate precision and recall for column matching" |
+| https://www.snowflake.com/en/engineering-blog/agentic-semantic-model-text-to-sql (2025, not linked from B) | LLM judge in a BIRD experiment | CONFIRMED | "We use a two-step process:" · "The LLM_JUDGE was Mistral Large 2" |
+
+**Result:** Snowflake is no longer counted among the organisations that score answers with an LLM judge (figures C-5: 7 to 6).

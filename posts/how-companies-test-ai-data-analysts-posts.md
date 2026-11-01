@@ -31,7 +31,7 @@ The piece has one table of all 13: test set, scoring and timing, each row linked
 
 ## Post B · how-companies-test-ai-data-analysts · the failure taxonomy
 
-**Publish note:** Post only after piece B is live. (Was on hold until Dot approved naming partners' gaps in public: approved by Rick and Théo, 1 November 2026, since Dot already publishes comparison pages at getdot.ai/compare.)
+**Publish note:** Post only after piece B is live and Dot has signed off naming partners' gaps in public. Saurabh decided yes on 1 November 2026, since Dot already publishes comparison pages at getdot.ai/compare; that was first recorded as Rick and Théo's approval, and corrected the same day (CLAUDE.md v1.8.28).
 
 **First lines tried:** (Saurabh, 1 November 2026)
 - A company publishes how it tests its AI analyst. You try to copy it, and hit a wall.

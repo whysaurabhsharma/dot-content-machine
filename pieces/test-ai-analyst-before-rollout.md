@@ -15,11 +15,11 @@ queries:
   - ai data analyst accuracy
 playbook_url: https://www.getdot.ai/blog/ai-data-analyst-playbook
 figures: figures/test-ai-analyst-before-rollout-figures.csv
-dataset: "No new run. The steps cite two earlier runs of ours on the Olist public e-commerce dataset (orders and order items tables): piece A's run (runs/ai-analyst-follow-up-questions-run.md) and piece 2's archived run (runs/ai-analyst-shows-sql-run.md). Licence CC BY-NC-SA 4.0; Dot confirmed on 1 November 2026 that it may publish figures from it (facts L-OLIST)."
+dataset: "No new run. The steps cite two earlier runs of ours on the Olist public e-commerce dataset (orders and order items tables): piece A's run (runs/ai-analyst-follow-up-questions-run.md) and piece 2's archived run (runs/ai-analyst-shows-sql-run.md). Licence CC BY-NC-SA 4.0; publication decided by Saurabh, 1 November 2026, Dot sign-off pending (facts L4)."
 title_approved_by: Saurabh, 2026-11-01
 reviewed_on: 2026-11-01
 author: Saurabh Sharma
-author_approved_by: Dot (Rick), 2026-11-01
+author_approved_by: "Decided by Saurabh, 2026-11-01; Dot sign-off pending"
 ---
 
 **To test an AI data analyst before rollout, ask real questions with every right answer written down first. Then ask each one twice, in fresh chats, worded identically. In our run on Dot, one question returned 2,878 late orders counting by the exact delivery timestamp, and 2,453 counting by the delivery day. By the end, you'll have eight steps, and the two published bars to set yours against: Anthropic's ~90% and our Playbook's ~80%.**
@@ -44,7 +44,7 @@ Each step ends with its evidence: a run of ours, a count from [Dot's census of 1
 3. **Ask each question twice, each time in a fresh chat, worded identically, and compare.** [GitHub's test harness](https://github.blog/ai-and-ml/github-copilot/how-we-built-an-internal-data-analytics-agent/) runs its analytics agent more than once per test case. In our repeat-question run, 5 of 6 questions matched across chats, but "How many orders were delivered late in 2017?" did not (2,878 and 2,453). Both answers counted orders placed in 2017. One counted late as "delivery occurred after the estimated delivery timestamp" and the other as "they arrived after the estimated delivery day". *Evidence: our run; GitHub's harness.*
 4. **Open the SQL behind every answer, not only the text.** In our follow-up run, all 8 answers came back with their SQL, but three answers didn't name their date. Every query filtered on a named date column, so the SQL showed what the text left out. *Evidence: our run.*
 5. **Test a follow-up chain, then ask one of its questions again, in full, in a fresh chat.** In our follow-up run, Dot read the chain's first question by purchase date and kept that reading for 4 turns. Asked in full, in a fresh chat, about late orders "delivered in 2017", it read the phrase by delivery date. Its count sat 691 below the chain's. *Evidence: our run, one chain.*
-6. **Mark each answer against your written answers before trusting an LLM judge. Sort each gap into display rounding or real disagreement.** In our follow-up run, Dot gave the late share as 5.6% for 2017 and 7.7% for 2018, each our computed share rounded for display. [Hex](https://hex.tech/blog/evaluate-data-agents/) built one eval where the right answer is 2.04% and a common wrong one is 2.03%. Its LLM judge accepted the wrong one 35% of the time, and 7 of the 13 companies in Dot's census use an LLM judge. *Evidence: our run; Hex's eval.*
+6. **Mark each answer against your written answers before trusting an LLM judge. Sort each gap into display rounding or real disagreement.** In our follow-up run, Dot gave the late share as 5.6% for 2017 and 7.7% for 2018, each our computed share rounded for display. [Hex](https://hex.tech/blog/evaluate-data-agents/) built one eval where the right answer is 2.04% and a common wrong one is 2.03%. Its LLM judge accepted the wrong one 35% of the time, and 6 of the 13 companies in Dot's census use an LLM judge. *Evidence: our run; Hex's eval.*
 7. **Decide the bar a result must clear before you see the results.** [Anthropic](https://claude.com/blog/how-anthropic-enables-self-service-data-analytics-with-claude) "initially used ~90%" as the threshold a domain's eval slice must clear before launch. [Our Playbook](https://www.getdot.ai/blog/ai-data-analyst-playbook) suggests about 80%: "Hold access until the tests pass your bar (~80%)". No published evidence settles which is right for your team, so write yours down before the first run. *Evidence: one company, and our Playbook's guidance.*
 8. **Re-run the test on a schedule, and whenever something it depends on changes**: a definition, a table, a model. Of the 13 companies in Dot's census, 6 re-run on a change, before each deploy, or daily. [Our essay on accuracy decay](https://www.getdot.ai/blog/your-ai-analyst-will-be-worse-next-month) recommends twenty minutes a week with one named owner, ending with a re-run of the test questions. *Evidence: 6 of 13 companies, and our essay's guidance.*
 
@@ -68,7 +68,7 @@ A re-run also needs a rule for small swings between runs. [Uber](https://www.ube
 
 [Dot answers data questions for your team.](https://www.getdot.ai/blog/conversational-analytics) In both our runs, every answer came back with its SQL.
 
-[Dot's evaluation](https://docs.getdot.ai/train-dot/evaluation) holds each test question's expected answer, a unit and a tolerance in percent, so steps 2 and 6 live in one place. More in the [AI Data Analyst Playbook](https://www.getdot.ai/blog/ai-data-analyst-playbook).
+[Dot's evaluation](https://docs.getdot.ai/train-dot/evaluation) holds each test question's expected answer, a unit and a tolerance in percent, so steps 2 and 6 live in one place. That was observed on 27 October 2026 and not re-checked since. More in the [AI Data Analyst Playbook](https://www.getdot.ai/blog/ai-data-analyst-playbook).
 
 ---
 
