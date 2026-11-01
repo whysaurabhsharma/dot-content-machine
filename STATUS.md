@@ -6,7 +6,7 @@
 
 | What | One line |
 |---|---|
-| **A**, research: `ai-analyst-follow-up-questions` | "Your AI Analyst Gave Two Right Answers. Only the SQL Said Why." Our run on Dot: two right answers to one phrase, 691 apart, and a six-step test. 17 pass, 0 fail. Exported |
+| **A**, research: `ai-analyst-follow-up-questions` | "Your AI Analyst Gave Two Right Answers. Only the SQL Said Why." Our run on Dot: two right answers to one phrase, 691 apart, and a six-step test. 17 pass, 0 fail. Exported. **Held at Decision 3:** the phone read-aloud of the passages changed on 1 November is not done (section 2) |
 | **B**, teardown: `how-companies-test-ai-data-analysts` | "7 Companies Published Their AI Analysts' Accuracy. No Two Measured the Same Thing." A census of 13 companies' published testing methods. 18 pass, 0 fail. Exported |
 | **F**, guide (the hub): `test-ai-analyst-before-rollout` | "How to Test an AI Data Analyst Before Rollout: 8 Steps", each step tagged with its evidence. 19 pass, 0 fail. Exported |
 | **Six LinkedIn posts** | Two per piece, six different structures, first lines by Saurabh. All pass the post checks. Order: B1, A2, B3, F5, A6, F4 (the cluster numbers in `PLAN.md`) |
@@ -21,7 +21,8 @@ Dot answered five of the eight questions on 1 November 2026 (Rick and Théo): th
 
 | Item | Waiting on | Who |
 |---|---|---|
-| A, B, F | Each piece's publish note read and signed ("**Read by:**"), then Decision 4 | **Whoever publishes** |
+| A | `stage_gate.py` holds A at Decision 3, waiting on "read aloud on a phone". As `human.md` records it: **NOT DONE for today's changes, 1 November 2026.** Saurabh read the five changed passages on screen, not aloud on a phone: the title, the lede, the paragraph after the lede, the SQL paragraph (both chat blocks) and the closing paragraph. That is not the style rule 11 read-aloud, so the line in `reviews/ai-analyst-follow-up-questions/human.md` is not ticked. The renamed sentences elsewhere (pocket guide, method paragraph, table, chart, second section, test steps 3 and 4) were not re-read either way. Then its publish note read and signed ("**Read by:**"), then Decision 4 | **Whoever publishes** |
+| B, F | Each piece's publish note read and signed ("**Read by:**"), then Decision 4 | **Whoever publishes** |
 | All six posts | Their piece live (post B3 released from hold) | Publishing order |
 
 | Piece | Publish note | Still labelled in the text |
@@ -37,7 +38,7 @@ Still open with Dot, none blocking: question 1 (context agent page, labelled in 
 All three pieces are exported (1 November 2026), each folder with its PUBLISH-NOTE.md and the byline in `webflow-fields.json`: A 17 pass, B 18 pass, F 19 pass, 0 fail each.
 
 **One session, in this order:**
-1. Read A's publish note; fill its "Read by:" line. Publish A at `/blog/ai-analyst-follow-up-questions`, author Saurabh Sharma.
+1. Read A's changed passages aloud on a phone and tick that line in `human.md`, or record the skip there in your own name (section 2). Then read A's publish note; fill its "Read by:" line. Publish A at `/blog/ai-analyst-follow-up-questions`, author Saurabh Sharma.
 2. The same for B, at `/blog/how-companies-test-ai-data-analysts`.
 3. The same for F, at `/blog/test-ai-analyst-before-rollout`.
 4. Run `python scripts/verify_sources.py pieces/<slug>.md` for all three: every cross-link (A to F, B to A and F, F to A and B) must now return 200.
@@ -52,6 +53,7 @@ All three pieces are exported (1 November 2026), each folder with its PUBLISH-NO
 
 ## 4. Not done, and why
 
+- **A's changed passages have been read on screen, not aloud.** A's title and lede changed four times between them on 1 November, and its labels were renamed throughout (the two chats, the question numbers). The changed passages were read on screen, not aloud on a phone. Whoever publishes should do that read first, or record the skip in their own name in `reviews/ai-analyst-follow-up-questions/human.md`.
 - **A short demo: not recorded, by decision (Saurabh, 1 November 2026).** The brief asks for one. Saurabh decided not to record it; this is a decision, not an omission. Its stage directions (`DEMO-SCRIPT.md`) were removed from the repo the same day, as a working aid rather than a deliverable.
 - **Tier 3** (agreed for after the pieces): the citation reading of the other 13 buyer queries, `bank/surfaces.csv`, `/distribute`, `check_posts.py`, a post queue. Not started; the pieces came first.
 - **13 of the 18 buyer queries are unread.** The baseline read 5 (above). The rest are named in HANDOVER.md section 5. Repeat readings need a Perplexity account (the same one each time) and the same location for Google.
