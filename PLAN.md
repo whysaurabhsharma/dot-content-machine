@@ -1,6 +1,12 @@
 # The three-piece plan
 
-Rewritten 31 October 2026, after Saurabh chose the three pieces (A, B and F below). Where each piece actually stands is read from the files by `python scripts/stage_gate.py <slug>`. A section here that names a piece's slug binds its research (`.claude/agents/researcher.md`, input 5).
+Written 31 October 2026, after Saurabh chose the three pieces (A, B and F below). Rewritten 1 November 2026 as a record of that plan, now that the pieces are through it, and as the place to plan the next piece. Where each piece stands is read from the files by `python scripts/stage_gate.py <slug>`, not from here.
+
+## How this file is used: shaping a new piece's research
+
+**To shape a new piece's research, add a section here named by its slug** (for example `### C, metric-definitions-back-doors`). Put in it what the research must deliver: for a research piece, the questions, phrasings, repeats and chats the run needs; for a teardown, the census bar and the go/no-go count; for a guide, which runs or publications each step may rest on. The researcher reads this file as input 5 (`.claude/agents/researcher.md`), and `/piece` checks the research against it (`.claude/workflows/piece.js`): a section naming the slug binds the research's section 7, and a research file that doesn't meet it stops as blocked. A piece with no section here is researched from its bank row alone.
+
+Write the section before Decision 1's research starts, and leave it once the research is done: the research file records which section it followed. The sections for B and F below are kept for that reason.
 
 ## The cluster
 
@@ -9,38 +15,35 @@ One buyer worry: **can I trust an AI analyst's answers before I roll it out?** T
 | # | Piece | Format | Bank | Evidence | What it gives the reader |
 |---|---|---|---|---|---|
 | A | `ai-analyst-follow-up-questions`, "Your AI Analyst Picked a Date. Only the SQL Said Which." | Research | #43 | Our own run (31 October 2026, 8 answers: all correct, 5 under the definition asked, 3 (Q6, Q7, Q8) only under the delivery-date reading) | The problem, proved on our data: a right answer to a question you didn't mean, and a six-step test that shows which date was used |
-| B | `how-companies-test-ai-data-analysts`, working title "How N Companies Test Their AI Data Analyst" | Teardown | #36 ("AI data analyst test questions"; swapped from #35, 31 October 2026) | Other organisations' published evaluation methods, primary sources only (hard rule 4's cited-publication exception) | What others actually do to test their analyst, in one census, and the patterns it shows |
-| F | `test-ai-analyst-before-rollout`, working title "How to Test an AI Analyst Before Rollout" | Guide | #35 ("how to evaluate AI data analyst accuracy", demand 3), **the hub** | B's census (cited publications) and our runs (A's, and piece 2's archived run) | How to do it: the steps, each backed by a run or a publication, or labelled untested (hard rule 19) |
+| B | `how-companies-test-ai-data-analysts`, "7 Companies Published Their AI Analysts' Accuracy. No Two Measured the Same Thing." (working title "How N Companies Test Their AI Data Analyst") | Teardown | #36 ("AI data analyst test questions"; swapped from #35, 31 October 2026) | Other organisations' published evaluation methods, primary sources only (hard rule 4's cited-publication exception) | What others actually do to test their analyst, in one census, and the patterns it shows |
+| F | `test-ai-analyst-before-rollout`, "How to Test an AI Data Analyst Before Rollout: 8 Steps" (working title "How to Test an AI Analyst Before Rollout") | Guide | #35 ("how to evaluate AI data analyst accuracy", demand 3), **the hub** | B's census (cited publications) and our runs (A's, and piece 2's archived run) | How to do it: the steps, each backed by a run or a publication, or labelled untested (hard rule 19) |
 
-**How they compound:** B shows what others do; F turns it into steps; A proves the core step on our own data. B and F need no new Dot run, which also keeps the Olist licence question (facts L1) to A and to whatever F cites from our runs.
+**How they compound:** B shows what others do; F turns it into steps; A proves the core step on our own data. B and F needed no new Dot run, which kept the Olist licence question to A and to what F cites from our runs. Dot has since confirmed it may publish figures from the Olist dataset (`facts/dot-facts.md`, L-OLIST).
 
-## What each piece needs
+## What the plan bound for B's and F's research
 
-### A, `ai-analyst-follow-up-questions`: done
-
-Through the gate. Decision 4 (publish) is open. Licence: decision L1, not a resolution.
+A's run was done before this plan was written, so A has no section. The two below are what B's and F's research files followed (each cites "PLAN.md, section B" or "section F").
 
 ### B, `how-companies-test-ai-data-analysts`: teardown
 
 - **Section 7 of the research: a census of organisations that published how they test their AI analyst.** For each: the primary publication, opened and read in full (never Dot's teardown of it, never a summary); who published it and when; the method in their words; every number copied exactly.
 - **The bar for an entry:** a real published evaluation method, meaning what they test against, how they score, and when they run it, not a passing mention of accuracy.
-- **Go or no-go:** five or more organisations meet the bar, or B is not a piece and a different third piece is chosen (Saurabh, 31 October 2026).
+- **Go or no-go:** five or more organisations meet the bar, or B is not a piece and a different third piece is chosen (Saurabh, 31 October 2026). Result: go, 13 on the wider bar.
 - **Shape (style rules 1 and 5):** 1,000–1,600 words; one census table, one row per publication, each row linking its primary source; pocket guide, "Things to keep in mind", "Where Dot fits", CTA.
 - **Figures:** every number a `published: <URL>, read <date>` row (hard rule 3). None combined with our own figures (rule 4, condition d).
-- **When F exists:** B's opening ends by pointing at F as where the method lives (link the five "methods to start from" to F), and F links back to B's census. B makes no promise about the reader's own questions; that is F's job (Saurabh, 31 October 2026).
-- **Before publishing: Rick signs off the context agent claim** in "Where Dot fits": Dot's context agent page (https://www.getdot.ai/context-agent) says "Merging re-checks accuracy first: Dot answers its 25 questions again and merges at 95% or more." It sits in the page's top product panel, an illustration, and the page doesn't describe the process further or say what happens below 95%. The piece quotes it as Dot's stated behaviour, not as something we observed (hard rule 5).
-- **Before publishing: Rick signs off the DABstep concession** in the first section ("Dot publishes an accuracy figure too: 90% on a 30-task slice of Adyen's public DABstep benchmark…"); it is a product claim (hard rule 5). See also HANDOVER.md, "Found while writing".
-- **Before publishing:** re-check facts O1 and O2 (Dot's evaluation: expected answer, unit, tolerance, verdict; re-scoring on save) on the current account, since both were observed on the dry-run account on 27 October 2026; and re-read in a browser the numbers the draft uses, since every source was read through WebFetch.
+- **Links with F:** B's opening ends by pointing at F as where the method lives, and F links back to B's census. B makes no promise about the reader's own questions; that is F's job (Saurabh, 31 October 2026).
+
+The pre-publish checks this section once listed are now recorded elsewhere: the context agent quote is DECISIONS-FOR-DOT.md question 1 (fact P-1), the DABstep concession is question 2, and Dot's evaluation (fact O1) was confirmed as current by Rick on 1 November (question 3, fact P-2). Every number B uses was re-read in a browser (`runs/how-companies-test-ai-data-analysts-verification.md`).
 
 ### F, `test-ai-analyst-before-rollout`: guide
 
 - **Section 7 of the research: evidence for each step.** Each step, and the publication from B's census or the run of ours behind it, or "untested".
 - **Our runs it may cite:** A's run, and piece 2's archived run (`runs/ai-analyst-shows-sql-run.md`: 6 questions in two fresh chats each, 12 of 12 correct, but only 9 under the definition asked: 3 (Q2, Q5, Q8) were correct only under the answer's own stated rival definition; the late-delivery question returned 2,878 and 2,453). Piece 2's conditions were recorded by hand with rule 14 waived, so no claim about mode, credits, environment or notes may rest on it.
 - **Shape:** 1,000–1,900 words; five to nine numbered steps, each starting with a verb; pocket guide, caveats, "Where Dot fits", CTA.
-- **Depends on B:** F's steps cite B's census, so B's research comes first.
-- **Bank:** #35, the how-to query (swapped from #36 on 31 October 2026). F is the cluster's hub: it links to A and B as its evidence, and both link back to it once it exists.
+- **Depends on B:** F's steps cite B's census, so B's research came first.
+- **Bank:** #35, the how-to query (swapped from #36 on 31 October 2026). F is the cluster's hub: it links to A and B as its evidence, and both link back to it.
 
-## Not chosen, and why (for the handover)
+## Not chosen, and why
 
 | Candidate | Format | Why not |
 |---|---|---|
@@ -75,16 +78,8 @@ A deliberate change from the roadmap update (31 October 2026). Its post model dr
 | 5 | The checklist | F | The guide's own steps |
 | 6 | The build log | A | `runs/ai-analyst-follow-up-questions-timing.csv` and what the run took (no credits figure: rule 14 was waived for A's run) |
 
-Post 1 of 6 already exists (A, "the checklist", in `posts/ai-analyst-follow-up-questions-posts.md`); it is rewritten or relabelled to fit this table when `/linkedin` is updated (tier 3, with `check_posts.py` and `posts/queue.csv`). A person writes every first line.
-
-## Order
-
-1. B: Decision 1, research (the census and its count), then go or no-go.
-2. If go: B's figures, outline (Decision 2), draft, reviews, Decision 3.
-3. F: Decision 1 on #35, research citing B, then the same stages.
-4. Five more LinkedIn posts: one for A, two each for B and F.
-5. Handover.
+All six posts were written to this table (`posts/<slug>-posts.md`); the publishing order is in STATUS.md. The `/linkedin` skill still lists its older five structures, so a new piece's posts take their structure from a table like this one until the skill is updated. A person writes every first line.
 
 ## Decisions that stay human
 
-The question (Decision 1), the outline (Decision 2), the title and human checks (Decision 3), the publish (Decision 4); B's go or no-go (go: 13 on the wider bar); a licence decision for F if it cites Olist-derived figures.
+The question (Decision 1), the outline (Decision 2), the title and human checks (Decision 3), the publish (Decision 4), and, for a teardown, the go or no-go on the census count (CLAUDE.md, "The seven stages").

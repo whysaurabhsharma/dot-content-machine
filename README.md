@@ -88,7 +88,7 @@ Then run `claude` in this folder and type `/mcp` to check that `ask_dot` is conn
 - **What `check_piece.py` prints (1 November 2026):** A, 17 pass, 0 fail, 1 partial, 7 for a human; B, 18 pass, 0 fail, 1 partial, 6 for a human; F, 19 pass, 0 fail, 0 partial, 6 for a human. A's and B's partial is check 1, a claim title, by design (the headline test covers it). A's extra human check is 25: its outline predates the quotable line.
 - **A and B** have each had the three blind reviewers, a second fact-check on other models, the headline test, the lift test and a phone read, recorded in `reviews/<slug>/human.md`.
 - **F** is through Decision 3 and exported.
-- **Before publishing:** the pre-publish list in `PLAN.md` and HANDOVER.md section 6: Rick's sign-offs, a re-check of facts O1 and O2 on the current account, A live before B. Run scores are quoted item by item, never as a bare total (CLAUDE.md v1.8.10).
+- **Before publishing:** the pre-publish sequence in `STATUS.md` section 3 (each publish note signed, then A, B and F in one session). Rick's open questions are in `DECISIONS-FOR-DOT.md`; none blocks publishing. Run scores are quoted item by item, never as a bare total (CLAUDE.md v1.8.10).
 - The earlier pieces 1–3 of 28 October are archived in `archive/` and are not part of this submission.
 
 ## What has been tested, and what hasn't

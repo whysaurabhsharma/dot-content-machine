@@ -18,7 +18,7 @@ All six LinkedIn posts exist, first lines by Saurabh. Exports are in `exports/<s
 
 **What Rick needs to do:** answer the seven questions in `DECISIONS-FOR-DOT.md`, ordered by what blocks publication. Section 8 has the detail.
 
-**SEO and answer-engine choices, and the LinkedIn adaptation:** section 11. **A five-minute demo script:** `DEMO-SCRIPT.md`.
+**SEO and answer-engine choices, and the LinkedIn adaptation:** section 11.
 
 **Where to start reading:** this file, then `CLAUDE.md`, then `PLAN.md` (the cluster), then any piece in `pieces/` beside its `figures/` file and its `reviews/` folder.
 
@@ -210,7 +210,7 @@ What's missing:
 | Item | Why it matters | What closes it |
 |---|---|---|
 | Decision 4 for A, B and F | Publishing | `STATUS.md`, section 3: A, then B, then F; each later piece links the earlier ones, which return 404 until live |
-| Re-check facts O1 and O2 on the current account | Both were observed on the dry-run account on 27 October | Look in Dot's UI and record the date |
+| Re-check fact O2 on the current account | O1 was confirmed current by Rick on 1 November (fact P-2). O2 (the evaluation re-scores on save) was observed on the dry-run account on 27 October and isn't used in any piece | Only before a piece relies on O2: look in Dot's UI and record the date |
 | Census corrections from B's re-read (done 1 November: all eight sources re-opened, every number matched; three corrections applied the same day: Snowflake's scoring cell, Snowflake added to "more than one right answer" (3 to 4), Ramp added to the strict bar and the re-run count (5 to 6)) | Five (Anthropic, LinkedIn, Uber, ClickHouse, Hex) were re-read in Chrome on 1 November, quotes checked verbatim (`runs/test-ai-analyst-before-rollout-verification.md`). Snowflake, GitHub, Salesforce, Vercel, Ramp, Prosus, WisdomAI, Grab and Dot's own pages were read only through WebFetch | Re-open each in a browser before B publishes |
 | The Olist licence | **Resolved 1 November 2026: Dot confirmed it may publish figures from the Olist dataset** (Rick and Théo). L1, L2 and L4 are confirmed, not only decisions | Nothing |
 | Assumptions A1–A8 | Each needs Dot's yes, no or change | Section 8 |
